@@ -255,6 +255,207 @@ class Installer {
 
         break;
       }
+      case 'obsidian-export': {
+        // Export entire BMad core as Obsidian-friendly markdown to target directory
+        spinner.text = 'Exporting BMad core for Obsidian...';
+
+        const sourceDir = resourceLocator.getBmadCorePath();
+        const targetRoot = path.isAbsolute(config.obsidianTarget)
+          ? config.obsidianTarget
+          : path.resolve(installDir, config.obsidianTarget);
+
+        // Find all files under bmad-core
+        const foundFiles = await resourceLocator.findFiles('**/*', {
+          cwd: sourceDir,
+          nodir: true,
+          ignore: ['**/.git/**', '**/node_modules/**'],
+        });
+
+        // Export each file
+        let exportedCount = 0;
+        for (const rel of foundFiles) {
+          const srcPath = path.join(sourceDir, rel);
+          const destPath = path.join(targetRoot, 'bmad-core', rel);
+
+          // Determine treatment based on extension
+          const ext = path.extname(rel).toLowerCase();
+          const isMarkdown = ext === '.md';
+          const isTextLike = [
+            '.yaml',
+            '.yml',
+            '.json',
+            '.js',
+            '.ts',
+            '.sh',
+            '.py',
+            '.toml',
+            '.ini',
+            '.conf',
+            '.txt',
+            '.xml',
+            '.css',
+            '.html',
+          ].includes(ext);
+
+          await fs.ensureDir(path.dirname(destPath));
+          if (isMarkdown) {
+            // Copy .md as-is
+            await fs.copy(srcPath, destPath);
+          } else if (isTextLike) {
+            const langMap = {
+              '.yaml': 'yaml',
+              '.yml': 'yaml',
+              '.json': 'json',
+              '.js': 'javascript',
+              '.ts': 'typescript',
+              '.sh': 'bash',
+              '.py': 'python',
+              '.toml': 'toml',
+              '.ini': 'ini',
+              '.conf': 'conf',
+              '.txt': '',
+              '.xml': 'xml',
+              '.css': 'css',
+              '.html': 'html',
+            };
+            const content = await fs.readFile(srcPath, 'utf8');
+            const lang = langMap[ext] || '';
+            const fenced = `\n\n\`\`\`${lang}\n${content}\n\`\`\`\n`;
+            const mdDest = destPath + '.md';
+            await fs.writeFile(mdDest, fenced, 'utf8');
+          } else {
+            // Binary or unknown: copy as-is
+            await fs.copy(srcPath, destPath);
+          }
+          exportedCount++;
+        }
+
+        // Export common/ items and docs/ into the same targetRoot under corresponding folders
+        spinner.text = 'Exporting common and docs for Obsidian...';
+
+        const commonDir = path.join(__dirname, '..', '..', 'common');
+        if (await fs.pathExists(commonDir)) {
+          const commonFiles = await resourceLocator.findFiles('**/*', {
+            cwd: commonDir,
+            nodir: true,
+            ignore: ['**/.git/**', '**/node_modules/**'],
+          });
+          for (const rel of commonFiles) {
+            const src = path.join(commonDir, rel);
+            const dest = path.join(targetRoot, 'common', rel);
+            const ext = path.extname(rel).toLowerCase();
+            const isMarkdown = ext === '.md';
+            const isTextLike = [
+              '.yaml',
+              '.yml',
+              '.json',
+              '.js',
+              '.ts',
+              '.sh',
+              '.py',
+              '.toml',
+              '.ini',
+              '.conf',
+              '.txt',
+              '.xml',
+              '.css',
+              '.html',
+            ].includes(ext);
+            await fs.ensureDir(path.dirname(dest));
+            if (isMarkdown) {
+              await fs.copy(src, dest);
+            } else if (isTextLike) {
+              const langMap = {
+                '.yaml': 'yaml',
+                '.yml': 'yaml',
+                '.json': 'json',
+                '.js': 'javascript',
+                '.ts': 'typescript',
+                '.sh': 'bash',
+                '.py': 'python',
+                '.toml': 'toml',
+                '.ini': 'ini',
+                '.conf': 'conf',
+                '.txt': '',
+                '.xml': 'xml',
+                '.css': 'css',
+                '.html': 'html',
+              };
+              const content = await fs.readFile(src, 'utf8');
+              const lang = langMap[ext] || '';
+              const fenced = `\n\n\`\`\`${lang}\n${content}\n\`\`\`\n`;
+              const mdDest = dest + '.md';
+              await fs.writeFile(mdDest, fenced, 'utf8');
+            } else {
+              await fs.copy(src, dest);
+            }
+          }
+        }
+
+        const docsDir = path.join(__dirname, '..', '..', '..', 'docs');
+        if (await fs.pathExists(docsDir)) {
+          const docsFiles = await resourceLocator.findFiles('**/*', {
+            cwd: docsDir,
+            nodir: true,
+            ignore: ['**/.git/**', '**/node_modules/**'],
+          });
+          for (const rel of docsFiles) {
+            const src = path.join(docsDir, rel);
+            const dest = path.join(targetRoot, 'docs', rel);
+            const ext = path.extname(rel).toLowerCase();
+            const isMarkdown = ext === '.md';
+            const isTextLike = [
+              '.yaml',
+              '.yml',
+              '.json',
+              '.js',
+              '.ts',
+              '.sh',
+              '.py',
+              '.toml',
+              '.ini',
+              '.conf',
+              '.txt',
+              '.xml',
+              '.css',
+              '.html',
+            ].includes(ext);
+            await fs.ensureDir(path.dirname(dest));
+            if (isMarkdown) {
+              await fs.copy(src, dest);
+            } else if (isTextLike) {
+              const langMap = {
+                '.yaml': 'yaml',
+                '.yml': 'yaml',
+                '.json': 'json',
+                '.js': 'javascript',
+                '.ts': 'typescript',
+                '.sh': 'bash',
+                '.py': 'python',
+                '.toml': 'toml',
+                '.ini': 'ini',
+                '.conf': 'conf',
+                '.txt': '',
+                '.xml': 'xml',
+                '.css': 'css',
+                '.html': 'html',
+              };
+              const content = await fs.readFile(src, 'utf8');
+              const lang = langMap[ext] || '';
+              const fenced = `\n\n\`\`\`${lang}\n${content}\n\`\`\`\n`;
+              const mdDest = dest + '.md';
+              await fs.writeFile(mdDest, fenced, 'utf8');
+            } else {
+              await fs.copy(src, dest);
+            }
+          }
+        }
+
+        spinner.succeed(`Exported ${exportedCount} files to ${targetRoot}`);
+
+        files = []; // We do not create an install manifest for Obsidian export
+        break;
+      }
       case 'single-agent': {
         // Single agent installation
         spinner.text = `Installing ${config.agent} agent...`;

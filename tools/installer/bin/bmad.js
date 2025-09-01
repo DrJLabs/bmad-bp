@@ -47,6 +47,11 @@ program
   .option('-f, --full', 'Install complete BMad Method')
   .option('-x, --expansion-only', 'Install only expansion packs (no bmad-core)')
   .option('-d, --directory <path>', 'Installation directory')
+  .option('--obsidian', 'Export installation as Obsidian-friendly Markdown in target dir')
+  .option(
+    '--obsidian-target <path>',
+    'Target directory for Obsidian export (defaults to ./bmad-obsidian)',
+  )
   .option(
     '-i, --ide <ide...>',
     'Configure for specific IDE(s) - can specify multiple (cursor, claude-code, windsurf, trae, roo, kilo, cline, gemini, qwen-code, github-copilot, codex, codex-web, other)',
@@ -57,7 +62,7 @@ program
   )
   .action(async (options) => {
     try {
-      if (!options.full && !options.expansionOnly) {
+      if (!options.full && !options.expansionOnly && !options.obsidian) {
         // Interactive mode
         const answers = await promptInstallation();
         if (!answers._alreadyInstalled) {
@@ -75,6 +80,12 @@ program
           ides: (options.ide || []).filter((ide) => ide !== 'other'),
           expansionPacks: options.expansionPacks || [],
         };
+
+        if (options.obsidian) {
+          config.installType = 'obsidian-export';
+          config.obsidian = true;
+          config.obsidianTarget = options.obsidianTarget || 'bmad-obsidian';
+        }
         await installer.install(config);
         process.exit(0);
       }
