@@ -288,6 +288,16 @@ class FileManager {
         coreConfig.architecture.architectureSharded = config.architectureSharded;
       }
 
+      // Toggle markdown exploder if specified
+      if (config.markdownExploder !== undefined) {
+        coreConfig.markdownExploder = !!config.markdownExploder;
+      }
+
+      // Optional code output mode hint for agents/tools
+      if (config.codeOutputMode) {
+        coreConfig.codeOutputMode = config.codeOutputMode;
+      }
+
       // Write back the modified config
       await fs.writeFile(coreConfigPath, yaml.dump(coreConfig, { indent: 2 }));
 

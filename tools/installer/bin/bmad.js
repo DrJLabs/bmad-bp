@@ -53,6 +53,10 @@ program
     'Target directory for Obsidian export (defaults to ./bmad-obsidian)',
   )
   .option(
+    '--obsidian-coding',
+    'Configure installed core to keep AI-generated code as fenced Markdown (disable exploder)',
+  )
+  .option(
     '-i, --ide <ide...>',
     'Configure for specific IDE(s) - can specify multiple (cursor, claude-code, windsurf, trae, roo, kilo, cline, gemini, qwen-code, github-copilot, codex, codex-web, other)',
   )
@@ -85,6 +89,9 @@ program
           config.installType = 'obsidian-export';
           config.obsidian = true;
           config.obsidianTarget = options.obsidianTarget || 'bmad-obsidian';
+        }
+        if (options.obsidianCoding) {
+          config.obsidianCoding = true;
         }
         await installer.install(config);
         process.exit(0);

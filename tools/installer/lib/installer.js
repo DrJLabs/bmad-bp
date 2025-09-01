@@ -614,13 +614,74 @@ class Installer {
       }
     }
 
-    // Modify core-config.yaml if sharding preferences were provided
-    if (
-      config.installType !== 'expansion-only' &&
-      (config.prdSharded !== undefined || config.architectureSharded !== undefined)
-    ) {
-      spinner.text = 'Configuring document sharding settings...';
-      await fileManager.modifyCoreConfig(installDir, config);
+    // Modify core-config.yaml if preferences were provided (sharding, markdown exploder, output mode)
+    if (config.installType !== 'expansion-only') {
+      const needsConfigUpdate =
+        config.prdSharded !== undefined ||
+        config.architectureSharded !== undefined ||
+        config.markdownExploder !== undefined ||
+        !!config.codeOutputMode ||
+        !!config.obsidianCoding;
+
+      if (needsConfigUpdate) {
+        spinner.text = 'Configuring core settings...';
+        const cfg = { ...config };
+        if (config.obsidianCoding) {
+          cfg.markdownExploder = false;
+          cfg.codeOutputMode = 'markdown-fenced';
+        }
+        await fileManager.modifyCoreConfig(installDir, cfg);
+
+        // Drop a helper script and a short guide when obsidian coding mode is enabled
+        if (config.obsidianCoding) {
+          const toolsDir = path.join(installDir, '.bmad-core', 'tools');
+          await fs.ensureDir(toolsDir);
+          const helperPath = path.join(toolsDir, 'obsidian-code-output.js');
+          const helperContent = (function () {
+            const lines = [];
+            lines.push(
+              '#!/usr/bin/env node',
+              "const fs = require('node:fs').promises;",
+              "const path = require('node:path');",
+              '',
+              'const LANG_MAP = {',
+              "  '.js': 'javascript', '.ts': 'typescript', '.py': 'python', '.sh': 'bash', '.json': 'json',",
+              "  '.yaml': 'yaml', '.yml': 'yaml', '.toml': 'toml', '.ini': 'ini', '.conf': 'conf', '.sql': 'sql',",
+              "  '.xml': 'xml', '.html': 'html', '.css': 'css', '.go': 'go', '.rs': 'rust', '.java': 'java',",
+              "  '.cs': 'csharp', '.rb': 'ruby', '.php': 'php', '.kt': 'kotlin', '.swift': 'swift', '.scala': 'scala' ",
+              '};',
+              '',
+              '(async () => {',
+              '  const args = process.argv.slice(2);',
+              '  let outRel = null, langOverride = null;',
+              '  for (let i=0;i<args.length;i++){',
+              "    const a = args[i]; if (a === '--out' && i+1 < args.length) { outRel = args[++i]; continue; } if (a === '--lang' && i+1 < args.length) { langOverride = args[++i]; continue; }",
+              '  }',
+              "  if (!outRel) { console.error('Missing --out'); process.exit(1); }",
+              '',
+              '  const ext = path.extname(outRel).toLowerCase();',
+              "  const lang = langOverride || LANG_MAP[ext] || ''; ",
+              '  const chunks = [];',
+              '  for await (const chunk of process.stdin) chunks.push(chunk);',
+              "  const content = Buffer.concat(chunks).toString('utf8');",
+              "  const fenced = '\\n\\n' + '```' + lang + '\\n' + content + '\\n' + '```' + '\\n';",
+              "  const mdPath = path.join(process.cwd(), outRel + '.md');",
+              '  await fs.mkdir(path.dirname(mdPath), { recursive: true });',
+              "  await fs.writeFile(mdPath, fenced, 'utf8');",
+              "  console.log('Wrote', mdPath);",
+              '})();',
+            );
+            return lines.join('\n') + '\n';
+          })();
+
+          await fs.writeFile(helperPath, helperContent, 'utf8');
+          await fs.chmod(helperPath, 0o755);
+
+          const guidePath = path.join(installDir, '.bmad-core', 'obsidian-coding-mode.md');
+          const guide = `# Obsidian Coding Mode\n\n- Code generation writes fenced Markdown instead of real code files.\n- Core setting: markdownExploder: false; codeOutputMode: markdown-fenced.\n\nUsage helper:\n\n- Pipe code to .bmad-core/tools/obsidian-code-output.js to write md next to intended file path.\n\nExample:\n\n  echo "console.log('hi')" \\n    | node .bmad-core/tools/obsidian-code-output.js --out src/app.js\n\nThis writes src/app.js.md with a \\\`javascript fenced block.\n`;
+          await fs.writeFile(guidePath, guide, 'utf8');
+        }
+      }
     }
 
     // Create manifest (skip for expansion-only installations)
