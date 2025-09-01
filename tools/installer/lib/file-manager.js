@@ -298,6 +298,18 @@ class FileManager {
         coreConfig.codeOutputMode = config.codeOutputMode;
       }
 
+      if (config.fsWriteDisabled !== undefined) {
+        coreConfig.fsWriteDisabled = !!config.fsWriteDisabled;
+      }
+
+      if (config.obsidian !== undefined) {
+        coreConfig.obsidian = !!config.obsidian;
+      }
+
+      if (config.codeMdOutputRoot) {
+        coreConfig.codeMdOutputRoot = config.codeMdOutputRoot;
+      }
+
       // Write back the modified config
       await fs.writeFile(coreConfigPath, yaml.dump(coreConfig, { indent: 2 }));
 

@@ -10,6 +10,40 @@ const { extractYamlFromAgent } = require('../../lib/yaml-utils');
 const resourceLocator = require('./resource-locator');
 
 class Installer {
+  async applyObsidianOutputPolicy(installDir) {
+    const devPath = path.join(installDir, '.bmad-core', 'agents', 'dev.md');
+    try {
+      let content = await fs.readFile(devPath, 'utf8');
+
+      if (!content.includes('## Obsidian Vault Output Policy')) {
+        const policy = `
+
+## Obsidian Vault Output Policy
+
+Applies when codeOutputMode in core-config.yaml is set to 'markdown-fenced' or fsWriteDisabled is true.
+
+- Never write real code files or run shell commands.
+- For every intended code file at a path like \`path/to/File.ext\`, emit a Markdown file at \`path/to/File.ext.md\` in the same relative location (or under the configured codeMdOutputRoot in core-config).
+- The Markdown file MUST contain a single code fence using the correct language for the extension (e.g., js→javascript, ts→typescript, py→python).
+
+Format:
+
+\`\`\`<language>
+<full file content>
+\`\`\`
+
+- When updating existing files, overwrite the entire fenced block in the corresponding .md file.
+- Update the Story File List with the \`.md\` paths for all created/changed files.
+- Keep a brief change summary above the fence if helpful.
+`;
+        content = content + policy;
+        await fs.writeFile(devPath, content, 'utf8');
+      }
+    } catch (error) {
+      console.warn('Failed to apply Obsidian output policy to dev agent:', error.message);
+    }
+  }
+
   async getCoreVersion() {
     try {
       // Always use package.json version
@@ -621,7 +655,8 @@ class Installer {
         config.architectureSharded !== undefined ||
         config.markdownExploder !== undefined ||
         !!config.codeOutputMode ||
-        !!config.obsidianCoding;
+        !!config.obsidianCoding ||
+        !!config.obsidianVault;
 
       if (needsConfigUpdate) {
         spinner.text = 'Configuring core settings...';
@@ -629,6 +664,12 @@ class Installer {
         if (config.obsidianCoding) {
           cfg.markdownExploder = false;
           cfg.codeOutputMode = 'markdown-fenced';
+        }
+        if (config.obsidianVault) {
+          cfg.markdownExploder = false;
+          cfg.codeOutputMode = 'markdown-fenced';
+          cfg.fsWriteDisabled = true;
+          cfg.obsidian = true;
         }
         await fileManager.modifyCoreConfig(installDir, cfg);
 
@@ -680,6 +721,12 @@ class Installer {
           const guidePath = path.join(installDir, '.bmad-core', 'obsidian-coding-mode.md');
           const guide = `# Obsidian Coding Mode\n\n- Code generation writes fenced Markdown instead of real code files.\n- Core setting: markdownExploder: false; codeOutputMode: markdown-fenced.\n\nUsage helper:\n\n- Pipe code to .bmad-core/tools/obsidian-code-output.js to write md next to intended file path.\n\nExample:\n\n  echo "console.log('hi')" \\n    | node .bmad-core/tools/obsidian-code-output.js --out src/app.js\n\nThis writes src/app.js.md with a \\\`javascript fenced block.\n`;
           await fs.writeFile(guidePath, guide, 'utf8');
+        }
+
+        // Patch agent guidance for Obsidian vault mode
+        if (config.obsidianVault) {
+          spinner.text = 'Patching agents for Obsidian vault output policy...';
+          await this.applyObsidianOutputPolicy(installDir);
         }
       }
     }

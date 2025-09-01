@@ -53,6 +53,14 @@ program
     'Target directory for Obsidian export (defaults to ./bmad-obsidian)',
   )
   .option(
+    '--obsidian-vault',
+    'Install for Obsidian vault usage: disable real file writes and instruct agents to output fenced Markdown code files',
+  )
+  .option(
+    '--obsidian-output-root <path>',
+    'Root folder in vault to place generated code Markdown (defaults to src)',
+  )
+  .option(
     '--obsidian-coding',
     'Configure installed core to keep AI-generated code as fenced Markdown (disable exploder)',
   )
@@ -89,6 +97,10 @@ program
           config.installType = 'obsidian-export';
           config.obsidian = true;
           config.obsidianTarget = options.obsidianTarget || 'bmad-obsidian';
+        }
+        if (options.obsidianVault) {
+          config.obsidianVault = true;
+          if (options.obsidianOutputRoot) config.codeMdOutputRoot = options.obsidianOutputRoot;
         }
         if (options.obsidianCoding) {
           config.obsidianCoding = true;
