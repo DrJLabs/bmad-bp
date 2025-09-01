@@ -136,7 +136,7 @@ What the installer does in vault modes:
 - Sets `.bmad-core/core-config.yaml` according to the chosen mode:
   - Writable: `markdownExploder: false`, `codeOutputMode: markdown-fenced`, `obsidian: true`, optional `codeMdOutputRoot`
   - Strict: same as writable plus `fsWriteDisabled: true`
-- Patches ALL agents with an “Obsidian Vault Output Policy” reminding them to write `.md` code outputs with a single fenced block.
+- Integrates Obsidian output policy into the Dev agent’s YAML so code is written as `.md` with a single fenced block (partial or full updates allowed).
 - Normalizes BMAD docs/workflows in the vault to use `--agent` invocations.
 
 ## How To Use Inside Obsidian

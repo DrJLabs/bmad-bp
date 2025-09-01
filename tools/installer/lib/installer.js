@@ -51,6 +51,76 @@ class Installer {
     }
   }
 
+  /**
+   * Inject Obsidian vault output policy into YAML of agents that produce code.
+   * Currently targets only the dev agent; other agents remain untouched.
+   */
+  async injectYamlVaultPolicy(installDir) {
+    const fsPromises = require('node:fs').promises;
+    const yaml = require('js-yaml');
+    const devAgentPath = path.join(installDir, '.bmad-core', 'agents', 'dev.md');
+
+    const ensureList = (obj, key) => {
+      if (!obj[key]) obj[key] = [];
+      if (!Array.isArray(obj[key])) obj[key] = [String(obj[key])];
+    };
+
+    const policyActivation =
+      'OBSIDIAN VAULT OUTPUT MODE: When writing code, write to path/to/File.ext.md with exactly one fenced code block using the correct language; partial or full updates are allowed. If .bmad-core/core-config.yaml sets codeMdOutputRoot, place files under that root; do not write raw source files.';
+    const policyPrinciple =
+      'In Obsidian vaults, output code as Markdown (.md) with a single fenced block; allow partial or full updates within the fence; avoid writing raw source files; honor codeMdOutputRoot when present.';
+
+    // Helper: replace YAML fenced block in markdown content
+    const replaceYamlBlock = (md, newYamlStr) =>
+      md.replace(/```ya?ml\n([\s\S]*?)\n```/, '```yaml\n' + newYamlStr.trimEnd() + '\n```');
+
+    try {
+      // Only modify if dev agent exists
+      if (!(await fs.pathExists(devAgentPath))) return;
+
+      let content = await fsPromises.readFile(devAgentPath, 'utf8');
+      const yamlMatch = content.replaceAll('\r', '').match(/```ya?ml\n([\s\S]*?)\n```/);
+      if (!yamlMatch) return; // no YAML block; do nothing
+
+      const originalYaml = yamlMatch[1].trim();
+      let data;
+      try {
+        data = yaml.load(originalYaml) || {};
+      } catch {
+        // If YAML parsing fails, do not alter the file
+        return;
+      }
+
+      // activation-instructions: append policy line if not present
+      ensureList(data, 'activation-instructions');
+      if (
+        !data['activation-instructions'].some((s) =>
+          String(s).includes('OBSIDIAN VAULT OUTPUT MODE'),
+        )
+      ) {
+        data['activation-instructions'].push(policyActivation);
+      }
+
+      // core_principles: append policy principle if not present
+      ensureList(data, 'core_principles');
+      if (!data.core_principles.some((s) => String(s).includes('Obsidian vaults'))) {
+        data.core_principles.push(policyPrinciple);
+      }
+
+      // Optional cue for LLMs
+      if (!data.output_mode) data.output_mode = 'markdown-fenced';
+
+      const newYamlStr = yaml.dump(data, { indent: 2, lineWidth: 100 });
+      const updated = replaceYamlBlock(content, newYamlStr);
+
+      if (updated !== content) {
+        await fsPromises.writeFile(devAgentPath, updated, 'utf8');
+      }
+    } catch (error) {
+      console.warn('Failed to inject Obsidian YAML policy:', error.message);
+    }
+  }
+
   async install(config) {
     const spinner = ora('Analyzing installation directory...').start();
 
@@ -725,10 +795,10 @@ class Installer {
           await fs.writeFile(guidePath, guide, 'utf8');
         }
 
-        // Patch agent guidance for Obsidian vault mode
+        // Integrate Obsidian output policy directly into YAML of code-writing agents
         if (config.obsidianVault || config.obsidianVaultWritable) {
-          spinner.text = 'Patching agents for Obsidian vault output policy...';
-          await this.applyObsidianOutputPolicy(installDir);
+          spinner.text = 'Integrating Obsidian output policy into agent YAML...';
+          await this.injectYamlVaultPolicy(installDir);
         }
       }
     }
