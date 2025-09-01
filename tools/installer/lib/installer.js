@@ -19,8 +19,8 @@ class Installer {
       '\n- For every intended code file at a path like `path/to/File.ext`, emit a Markdown file at `path/to/File.ext.md` in the same relative location (or under the configured codeMdOutputRoot in core-config).' +
       '\n- The Markdown file MUST contain a single code fence using the correct language for the extension (e.g., js→javascript, ts→typescript, py→python).' +
       '\n\nFormat:' +
-      '\n\n```<language>\n<full file content>\n```' +
-      '\n\n- When updating existing files, overwrite the entire fenced block in the corresponding .md file.' +
+      '\n\n```<language>\n<code>\n```' +
+      '\n\n- When updating existing files, update the fenced code block as needed (full or partial changes are acceptable).' +
       '\n- Update the Story File List with the `.md` paths for all created/changed files.' +
       '\n- Keep a brief change summary above the fence if helpful.\n';
     try {
@@ -651,7 +651,8 @@ class Installer {
         config.markdownExploder !== undefined ||
         !!config.codeOutputMode ||
         !!config.obsidianCoding ||
-        !!config.obsidianVault;
+        !!config.obsidianVault ||
+        !!config.obsidianVaultWritable;
 
       if (needsConfigUpdate) {
         spinner.text = 'Configuring core settings...';
@@ -664,6 +665,12 @@ class Installer {
           cfg.markdownExploder = false;
           cfg.codeOutputMode = 'markdown-fenced';
           cfg.fsWriteDisabled = true;
+          cfg.obsidian = true;
+        }
+        if (config.obsidianVaultWritable) {
+          // Writable vault mode: Markdown-only outputs, do not disable FS writes
+          cfg.markdownExploder = false;
+          cfg.codeOutputMode = 'markdown-fenced';
           cfg.obsidian = true;
         }
         await fileManager.modifyCoreConfig(installDir, cfg);
@@ -719,7 +726,7 @@ class Installer {
         }
 
         // Patch agent guidance for Obsidian vault mode
-        if (config.obsidianVault) {
+        if (config.obsidianVault || config.obsidianVaultWritable) {
           spinner.text = 'Patching agents for Obsidian vault output policy...';
           await this.applyObsidianOutputPolicy(installDir);
         }

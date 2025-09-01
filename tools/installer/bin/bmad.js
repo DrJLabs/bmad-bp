@@ -65,6 +65,10 @@ program
     'Configure installed core to keep AI-generated code as fenced Markdown (disable exploder)',
   )
   .option(
+    '--obsidian-vault-writable',
+    'Install for Obsidian vault usage with Markdown-only code outputs but allow writing .md files (does not set fsWriteDisabled)',
+  )
+  .option(
     '-i, --ide <ide...>',
     'Configure for specific IDE(s) - can specify multiple (cursor, claude-code, windsurf, trae, roo, kilo, cline, gemini, qwen-code, github-copilot, codex, codex-web, other)',
   )
@@ -102,6 +106,10 @@ program
           config.obsidianVault = true;
           if (options.obsidianOutputRoot) config.codeMdOutputRoot = options.obsidianOutputRoot;
         }
+        if (options.obsidianVaultWritable) {
+          config.obsidianVaultWritable = true;
+          if (options.obsidianOutputRoot) config.codeMdOutputRoot = options.obsidianOutputRoot;
+        }
         if (options.obsidianCoding) {
           config.obsidianCoding = true;
         }
@@ -110,6 +118,37 @@ program
       }
     } catch (error) {
       console.error(chalk.red('Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+// Convenience subcommand: obsidian-vault install with current directory as default
+program
+  .command('obsidian-vault')
+  .description(
+    'Install BMAD to current directory as an Obsidian vault (Markdown-only code outputs, writable)',
+  )
+  .option(
+    '-d, --directory <path>',
+    'Installation directory (defaults to current working directory)',
+  )
+  .option(
+    '--obsidian-output-root <path>',
+    'Root folder in vault to place generated code Markdown (defaults to src)',
+  )
+  .action(async (options) => {
+    try {
+      const directory = options.directory || '.';
+      const config = {
+        installType: 'full',
+        directory,
+        obsidianVaultWritable: true,
+      };
+      if (options.obsidianOutputRoot) config.codeMdOutputRoot = options.obsidianOutputRoot;
+      await installer.install(config);
+      process.exit(0);
+    } catch (error) {
+      console.error(chalk.red('Obsidian vault installation failed:'), error.message);
       process.exit(1);
     }
   });
