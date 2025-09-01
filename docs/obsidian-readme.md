@@ -5,7 +5,6 @@ This installation of BMAD is configured for Obsidian vault usage. It keeps all c
 Key behavior:
 
 - Code output: For any intended file `path/to/File.ext`, write to `path/to/File.ext.md` containing exactly one fenced block with the correct language.
-- Updates: Replace the entire fenced block with the updated full file content.
 - Location: If `.bmad-core/core-config.yaml` sets `codeMdOutputRoot`, place `.md` files under that root. Otherwise, write alongside the intended path.
 - Agents: Invoke agents with `--dev`, `--qa`, `--pm`, `--po`, `--sm`, `--architect`, `--analyst`, `--ux-expert`, `--bmad-master`, `--bmad-orchestrator`.
 - Tasks: Use BMAD star-commands as usual (e.g., `*help`, `*develop-story`, `*review`, `*gate`, `*trace`).
