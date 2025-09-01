@@ -7,7 +7,17 @@ import yml from 'eslint-plugin-yml';
 export default [
   // Global ignores for files/folders that should not be linted
   {
-    ignores: ['dist/**', 'coverage/**', '**/*.min.js'],
+    ignores: [
+      'dist/**',
+      'coverage/**',
+      '**/*.min.js',
+      // Obsidian/Copilot vault artifacts should never be linted
+      '**/.obsidian/**',
+      '**/.copilot/**',
+      '**/copilot-*/**',
+      '**/copilot-conversations/**',
+      '**/copilot-custom-prompts/**',
+    ],
   },
 
   // Base JavaScript recommended rules
