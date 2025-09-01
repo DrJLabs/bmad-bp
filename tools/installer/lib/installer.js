@@ -11,36 +11,31 @@ const resourceLocator = require('./resource-locator');
 
 class Installer {
   async applyObsidianOutputPolicy(installDir) {
-    const devPath = path.join(installDir, '.bmad-core', 'agents', 'dev.md');
+    const agentsDir = path.join(installDir, '.bmad-core', 'agents');
+    const policy =
+      '\n\n## Obsidian Vault Output Policy' +
+      '\n\nApplies when codeOutputMode in core-config.yaml is set to "markdown-fenced" or fsWriteDisabled is true.' +
+      '\n\n- Never write real code files or run shell commands.' +
+      '\n- For every intended code file at a path like `path/to/File.ext`, emit a Markdown file at `path/to/File.ext.md` in the same relative location (or under the configured codeMdOutputRoot in core-config).' +
+      '\n- The Markdown file MUST contain a single code fence using the correct language for the extension (e.g., js→javascript, ts→typescript, py→python).' +
+      '\n\nFormat:' +
+      '\n\n```<language>\n<full file content>\n```' +
+      '\n\n- When updating existing files, overwrite the entire fenced block in the corresponding .md file.' +
+      '\n- Update the Story File List with the `.md` paths for all created/changed files.' +
+      '\n- Keep a brief change summary above the fence if helpful.\n';
     try {
-      let content = await fs.readFile(devPath, 'utf8');
-
-      if (!content.includes('## Obsidian Vault Output Policy')) {
-        const policy = `
-
-## Obsidian Vault Output Policy
-
-Applies when codeOutputMode in core-config.yaml is set to 'markdown-fenced' or fsWriteDisabled is true.
-
-- Never write real code files or run shell commands.
-- For every intended code file at a path like \`path/to/File.ext\`, emit a Markdown file at \`path/to/File.ext.md\` in the same relative location (or under the configured codeMdOutputRoot in core-config).
-- The Markdown file MUST contain a single code fence using the correct language for the extension (e.g., js→javascript, ts→typescript, py→python).
-
-Format:
-
-\`\`\`<language>
-<full file content>
-\`\`\`
-
-- When updating existing files, overwrite the entire fenced block in the corresponding .md file.
-- Update the Story File List with the \`.md\` paths for all created/changed files.
-- Keep a brief change summary above the fence if helpful.
-`;
-        content = content + policy;
-        await fs.writeFile(devPath, content, 'utf8');
+      const entries = await fs.readdir(agentsDir);
+      for (const name of entries) {
+        if (!name.endsWith('.md')) continue;
+        const p = path.join(agentsDir, name);
+        let content = await fs.readFile(p, 'utf8');
+        if (!content.includes('## Obsidian Vault Output Policy')) {
+          content += policy;
+          await fs.writeFile(p, content, 'utf8');
+        }
       }
     } catch (error) {
-      console.warn('Failed to apply Obsidian output policy to dev agent:', error.message);
+      console.warn('Failed to apply Obsidian output policy to agents:', error.message);
     }
   }
 

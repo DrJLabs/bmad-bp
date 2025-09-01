@@ -56,6 +56,13 @@
     "version:patch": "node tools/version-bump.js patch"
   },
   "lint-staged": {
+    "ignore": [
+      "**/.obsidian/**",
+      "**/.copilot/**",
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**"
+    ],
     "**/*.{js,cjs,mjs}": [
       "eslint --fix --max-warnings=0",
       "prettier --write"

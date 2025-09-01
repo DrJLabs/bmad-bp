@@ -1,0 +1,6 @@
+.obsidian/
+.copilot/
+node_modules/
+dist/
+build/
+
