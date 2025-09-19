@@ -1,0 +1,65 @@
+# workflow
+id: focused-epic
+name: "Focused Epic Development"
+description: >-
+  For creating and executing a single, well-defined epic without the upfront PRD and architecture phases.
+  Ideal for adding self-contained features to existing projects or for small, single-purpose new projects.
+type: hybrid
+project_types:
+  - feature-addition
+  - small-project-mvp
+  - prototype
+
+sequence:
+  - agent: pm
+    action: create-brownfield-epic
+    creates: epic.md
+    notes: "PM agent works with the user to define a single, self-contained epic, capturing its goals, stories, and integration requirements."
+
+  - agent: sm
+    action: create_story
+    requires: epic.md
+    creates: story.md
+    repeats: for_each_story_in_epic
+    notes: "SM Agent drafts the initial story from the epic definition."
+
+  - agent: researcher
+    action: validate-plan
+    requires: story.md
+    notes: "Researcher automatically validates and modernizes the story draft with current best practices."
+
+  - agent: qa
+    action: risk-profile
+    requires: story.md
+    creates: risk-profile.md
+    notes: "QA Agent generates the risk profile for the updated story."
+
+  - agent: qa
+    action: test-design
+    requires: story.md
+    creates: test-design.md
+    notes: "QA Agent creates the formal test design based on the story's requirements."
+
+  - agent: researcher
+    action: validate-plan
+    requires: test-design.md
+    notes: "Researcher validates and enhances the test design with modern testing strategies."
+
+  - agent: po
+    action: validate-story-draft
+    requires: story.md
+    notes: "Product Owner performs the final validation of the fully-enriched story before it is approved for development."
+
+  - agent: dev
+    action: implement_story
+    creates: implementation_files
+    requires: story.md
+    notes: "Dev Agent implements the fully validated and approved story."
+
+  - repeat_development_cycle:
+      action: continue_for_all_stories_in_epic
+      notes: "Repeat the story creation and validation cycle (SM -> Researcher -> QA -> PO -> Dev) until all stories defined in the epic are complete."
+
+  - workflow_end:
+      action: epic_complete
+      notes: "All stories for the epic have been implemented and reviewed. The feature is complete."
