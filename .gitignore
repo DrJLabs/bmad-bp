@@ -39,6 +39,8 @@ CLAUDE.md
 .claude
 .gemini
 .iflow
+.obsidian/
+copilot-custom-prompts/
 
 # Project-specific
 .bmad-creator-tools

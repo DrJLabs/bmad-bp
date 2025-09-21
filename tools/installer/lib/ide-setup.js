@@ -761,6 +761,21 @@ class IdeSetup extends BaseIdeSetup {
     section += `- Reinstall BMAD core and regenerate AGENTS.md: \`npx bmad-method install -f -i codex\`\n`;
     section += `- Validate configuration: \`npx bmad-method validate\`\n\n`;
 
+    section += `## Focused Epic Development Workflow\n\n`;
+    section += `Use this workflow when you need a single, well-scoped epic delivered quickly without running the full PRD + architecture cycle.\n\n`;
+    section += `- Kick off with \`bmad workflow run focused-epic --dry-run\` to preview; run without \`--dry-run\` to execute.\n`;
+    section += `- Follow the story loop: pm → sm → researcher → qa (risk) → qa (test design) → researcher → po → dev.\n`;
+    section += `- Save each \`story.md\` under \`docs/stories/\` before hand-off.\n`;
+    section += `- Keep \`risk-profile.md\` and \`test-design.md\` beside the story; the Researcher validates both documents.\n`;
+    section += `- Repeat the loop for every story until the workflow reports \`epic_complete\`.\n\n`;
+
+    section += `## Researcher Agent (Dr. Evelyn Reed)\n\n`;
+    section += `- Activate with \`bmad agent researcher help\` (terminal) or \`*researcher\` inside Codex CLI.\n`;
+    section += `- Run \`*validate-plan {artifact_path}\` to execute the autonomous validation task against a story or test design.\n`;
+    section += `- The task automatically: loads the artifact, generates targeted research prompts, applies modern updates, cascades edits to related files, and appends a \`## 🔬 Research & Validation Log\`.\n`;
+    section += `- Summaries must cite recent sources with access dates and call out any unresolved risks before handing back to QA/PO.\n`;
+    section += `- Use \`*research-topic {topic}\` for deeper investigations that feed the validation workflow.\n\n`;
+
     // Agents directory table
     section += `## Agents\n\n`;
     section += `### Directory\n\n`;

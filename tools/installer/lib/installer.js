@@ -1989,6 +1989,7 @@ class Installer {
 
   async flatten(options) {
     const { spawn } = require('node:child_process');
+    const { getInvocationCwd } = require('../../shared/invocationCwd');
     const flattenerPath = path.join(__dirname, '..', '..', 'flattener', 'main.js');
 
     const arguments_ = [];
@@ -1999,9 +2000,11 @@ class Installer {
       arguments_.push('--output', options.output);
     }
 
+    const invCwd = getInvocationCwd();
     const child = spawn('node', [flattenerPath, ...arguments_], {
       stdio: 'inherit',
-      cwd: process.cwd(),
+      cwd: invCwd,
+      env: { ...process.env, BMAD_INVOCATION_CWD: invCwd },
     });
 
     child.on('exit', (code) => {

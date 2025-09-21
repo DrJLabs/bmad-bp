@@ -181,8 +181,8 @@ program
 program
   .command('flatten')
   .description('Flatten codebase to XML format')
-  .option('-i, --input <path>', 'Input directory to flatten', process.cwd())
-  .option('-o, --output <path>', 'Output file path', 'flattened-codebase.xml')
+  .option('-i, --input <path>', 'Input directory to flatten')
+  .option('-o, --output <path>', 'Output file path')
   .action(async (options) => {
     try {
       await installer.flatten(options);

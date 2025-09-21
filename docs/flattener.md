@@ -48,8 +48,19 @@ The generated XML file contains your project's text-based source files in a stru
 ## Advanced Usage & Options
 
 - CLI options
-  - `-i, --input <path>`: Directory to flatten. Default: current working directory or auto-detected project root when run interactively.
-  - `-o, --output <path>`: Output file path. Default: `flattened-codebase.xml` in the chosen directory.
+- `-i, --input <path>`: Directory to flatten. Default: the invoking shell directory (robustly detected), or auto-detected project root when run interactively.
+- `-o, --output <path>`: Output file path. Default: `flattened-codebase.xml` in the chosen directory.
+
+### Invocation directory detection
+
+The flattener now prefers the original directory you ran the command from, even when launched via `npm`, `pnpm`, `yarn`, or `npx`:
+
+- Uses `BMAD_INVOCATION_CWD` if set (explicit override)
+- Falls back to `INIT_CWD` (set by most package managers)
+- Finally falls back to the current process directory
+
+This prevents accidental flattening of the BMAD package directory when the tool is invoked through a package manager wrapper.
+
 - Interactive mode
   - If you do not pass `--input` and `--output` and the terminal is interactive (TTY), the tool will attempt to detect your project root (by looking for markers like `.git`, `package.json`, etc.) and prompt you to confirm or override the paths.
   - In non-interactive contexts (e.g., CI), it will prefer the detected root silently; otherwise it falls back to the current directory and default filename.

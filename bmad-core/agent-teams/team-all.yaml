@@ -10,6 +10,7 @@ workflows:
   - brownfield-fullstack.yaml
   - brownfield-service.yaml
   - brownfield-ui.yaml
+  - focused-epic.yaml
   - greenfield-fullstack.yaml
   - greenfield-service.yaml
   - greenfield-ui.yaml

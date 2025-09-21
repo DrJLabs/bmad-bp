@@ -7,8 +7,10 @@ agents:
   - bmad-orchestrator
   - analyst
   - pm
+  - researcher
   - architect
   - po
 workflows:
+  - focused-epic.yaml
   - greenfield-service.yaml
   - brownfield-service.yaml

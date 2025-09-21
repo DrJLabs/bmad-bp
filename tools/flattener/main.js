@@ -2,6 +2,7 @@ const { Command } = require('commander');
 const fs = require('fs-extra');
 const path = require('node:path');
 const process = require('node:process');
+const { getInvocationCwd } = require('../shared/invocationCwd');
 
 // Modularized components
 const { findProjectRoot } = require('./projectRoot.js');
@@ -70,11 +71,14 @@ program
   .name('bmad-flatten')
   .description('BMAD-METHOD™ codebase flattener tool')
   .version('1.0.0')
-  .option('-i, --input <path>', 'Input directory to flatten', process.cwd())
-  .option('-o, --output <path>', 'Output file path', 'flattened-codebase.xml')
+  .option('-i, --input <path>', 'Input directory to flatten')
+  .option('-o, --output <path>', 'Output file path')
   .action(async (options) => {
-    let inputDir = path.resolve(options.input);
-    let outputPath = path.resolve(options.output);
+    const invCwd = getInvocationCwd();
+    let inputDir = options.input ? path.resolve(options.input) : invCwd;
+    let outputPath = options.output
+      ? path.resolve(options.output)
+      : path.resolve('flattened-codebase.xml');
 
     // Detect if user explicitly provided -i/--input or -o/--output
     const argv = process.argv.slice(2);
@@ -87,7 +91,7 @@ program
     const noPathArguments = !userSpecifiedInput && !userSpecifiedOutput;
 
     if (noPathArguments) {
-      const detectedRoot = await findProjectRoot(process.cwd());
+      const detectedRoot = await findProjectRoot(invCwd);
       const suggestedOutput = detectedRoot
         ? path.join(detectedRoot, 'flattened-codebase.xml')
         : path.resolve('flattened-codebase.xml');
@@ -101,7 +105,7 @@ program
           inputDir = detectedRoot;
           outputPath = suggestedOutput;
         } else {
-          inputDir = await promptPath('Enter input directory path', process.cwd());
+          inputDir = await promptPath('Enter input directory path', invCwd);
           outputPath = await promptPath(
             'Enter output file path',
             path.join(inputDir, 'flattened-codebase.xml'),
@@ -109,7 +113,7 @@ program
         }
       } else {
         console.log('Could not auto-detect a project root.');
-        inputDir = await promptPath('Enter input directory path', process.cwd());
+        inputDir = await promptPath('Enter input directory path', invCwd);
         outputPath = await promptPath(
           'Enter output file path',
           path.join(inputDir, 'flattened-codebase.xml'),
