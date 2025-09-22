@@ -42,6 +42,7 @@ cmd: @po shard docs/prd.md
 cmd: @po shard docs/architecture.md`"]
     O --> P["`Ready for SM/Dev cycle
 cmd: npx bmad-method install
+cmd: coordinate pm→sm→researcher→qa→po→dev per focused-epic workflow
 cmd: npm run bmad:validate`"]
 ```
 

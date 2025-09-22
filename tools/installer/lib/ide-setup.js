@@ -763,8 +763,7 @@ class IdeSetup extends BaseIdeSetup {
 
     section += `## Focused Epic Development Workflow\n\n`;
     section += `Use this workflow when you need a single, well-scoped epic delivered quickly without running the full PRD + architecture cycle.\n\n`;
-    section += `- Kick off with \`bmad workflow run focused-epic --dry-run\` to preview; run without \`--dry-run\` to execute.\n`;
-    section += `- Follow the story loop: pm → sm → researcher → qa (risk) → qa (test design) → researcher → po → dev.\n`;
+    section += `- Kick off with the PM agent to draft the epic, then hand off to the SM, Researcher, QA, PO, and Dev agents in sequence (pm → sm → researcher → qa (risk) → qa (test design) → researcher → po → dev).\n`;
     section += `- Save each \`story.md\` under \`docs/stories/\` before hand-off.\n`;
     section += `- Keep \`risk-profile.md\` and \`test-design.md\` beside the story; the Researcher validates both documents.\n`;
     section += `- Repeat the loop for every story until the workflow reports \`epic_complete\`.\n\n`;
@@ -898,14 +897,19 @@ class IdeSetup extends BaseIdeSetup {
       } else {
         // Local-only: add ignores if missing
         let base = exists ? await fileManager.readFile(gitignorePath) : '';
-        const haveCore = base.includes('.bmad-core/');
-        const haveStar = base.includes('.bmad-*/');
-        if (!haveCore || !haveStar) {
+        const lines = base.split(/\r?\n/);
+        const needsHeader = !lines.includes(ignoreLines[0]);
+        const needsCore = !lines.includes(ignoreLines[1]);
+        const needsStar = !lines.includes(ignoreLines[2]);
+
+        if (needsHeader || needsCore || needsStar) {
+          const additions = [];
+          if (needsHeader) additions.push(ignoreLines[0]);
+          if (needsCore) additions.push(ignoreLines[1]);
+          if (needsStar) additions.push(ignoreLines[2]);
+
           const sep = base.endsWith('\n') || base.length === 0 ? '' : '\n';
-          const add = [!haveCore || !haveStar ? ignoreLines.join('\n') : '']
-            .filter(Boolean)
-            .join('\n');
-          const out = base + sep + add + '\n';
+          const out = base + sep + additions.join('\n') + '\n';
           await fileManager.writeFile(gitignorePath, out);
           console.log(chalk.green('✓ Added .bmad-core/* to .gitignore for local-only Codex setup'));
         }
@@ -1521,8 +1525,8 @@ class IdeSetup extends BaseIdeSetup {
           const yamlMatch = agentContent.match(/```ya?ml\r?\n([\s\S]*?)```/);
 
           if (yamlMatch) {
-            const yaml = yamlMatch[1];
-            const titleMatch = yaml.match(/title:\s*(.+)/);
+            const yamlText = yamlMatch[1];
+            const titleMatch = yamlText.match(/title:\s*(.+)/);
             if (titleMatch) {
               return titleMatch[1].trim();
             }
@@ -1882,15 +1886,17 @@ class IdeSetup extends BaseIdeSetup {
         continue;
       }
 
-      const yaml = yamlMatch[1];
+      const yamlText = yamlMatch[1];
 
       // Robust fallback for title and icon
       const title =
-        yaml.match(/title:\s*(.+)/)?.[1]?.trim() || (await this.getAgentTitle(agentId, installDir));
-      const icon = yaml.match(/icon:\s*(.+)/)?.[1]?.trim() || '🤖';
-      const whenToUse = yaml.match(/whenToUse:\s*"(.+)"/)?.[1]?.trim() || `Use for ${title} tasks`;
+        yamlText.match(/title:\s*(.+)/)?.[1]?.trim() ||
+        (await this.getAgentTitle(agentId, installDir));
+      const icon = yamlText.match(/icon:\s*(.+)/)?.[1]?.trim() || '🤖';
+      const whenToUse =
+        yamlText.match(/whenToUse:\s*"(.+)"/)?.[1]?.trim() || `Use for ${title} tasks`;
       const roleDefinition =
-        yaml.match(/roleDefinition:\s*"(.+)"/)?.[1]?.trim() ||
+        yamlText.match(/roleDefinition:\s*"(.+)"/)?.[1]?.trim() ||
         `You are a ${title} specializing in ${title.toLowerCase()} tasks and responsibilities.`;
 
       const relativePath = path.relative(installDir, agentPath).replaceAll('\\', '/');
@@ -1901,24 +1907,23 @@ class IdeSetup extends BaseIdeSetup {
 
       // Begin .kilocodemodes block
       newContent += ` - slug: ${slug}\n`;
-      newContent += `   name: '${icon} ${title}'\n`;
+      newContent += `   name: ${JSON.stringify(`${icon} ${title}`)}\n`;
       if (agentPermission) {
-        newContent += `   description: '${agentPermission.description}'\n`;
+        newContent += `   description: ${JSON.stringify(agentPermission.description)}\n`;
       }
 
-      newContent += `   roleDefinition: ${roleDefinition}\n`;
-      newContent += `   whenToUse: ${whenToUse}\n`;
-      newContent += `   customInstructions: ${customInstructions}\n`;
+      newContent += `   roleDefinition: ${JSON.stringify(roleDefinition)}\n`;
+      newContent += `   whenToUse: ${JSON.stringify(whenToUse)}\n`;
+      newContent += `   customInstructions: ${JSON.stringify(customInstructions)}\n`;
       newContent += `   groups:\n`;
       newContent += `    - read\n`;
+      newContent += `    - edit\n`;
 
       if (agentPermission) {
-        newContent += `    - - edit\n`;
-        newContent += `      - fileRegex: ${agentPermission.fileRegex}\n`;
-        newContent += `        description: ${agentPermission.description}\n`;
-      } else {
-        // Fallback to generic edit
-        newContent += `    - edit\n`;
+        newContent += `   permissions:\n`;
+        newContent += `     edit:\n`;
+        newContent += `       fileRegex: ${JSON.stringify(agentPermission.fileRegex)}\n`;
+        newContent += `       description: ${JSON.stringify(agentPermission.description)}\n`;
       }
 
       console.log(chalk.green(`✓ Added Kilo mode: ${slug} (${icon} ${title})`));
@@ -1954,7 +1959,7 @@ class IdeSetup extends BaseIdeSetup {
         const agentContent = await fileManager.readFile(agentPath);
 
         // Get numeric prefix for ordering
-        const order = agentOrder[agentId] || 99;
+        const order = agentOrder[agentId] ?? 99;
         const prefix = order.toString().padStart(2, '0');
         const mdPath = path.join(clineRulesDir, `${prefix}-${agentId}.md`);
 

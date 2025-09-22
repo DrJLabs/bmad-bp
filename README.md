@@ -90,6 +90,14 @@ This single command handles:
 
 **Prerequisites**: [Node.js](https://nodejs.org) v20+ required
 
+> ✅ **Need the DrJ Labs focused-epic bundle?** Install the customized workflow + researcher package straight from this repository:
+>
+> ```bash
+> npx -y drj-bmad@latest install --full --directory . --ide codex
+> ```
+>
+> Add `--ide codex-web` if you plan to commit `.bmad-core/` for Codex Web. `--full` lays down the entire `.bmad-core` bundle plus the focused-epic workflow, researcher agent, and supporting tasks. The `drj-bmad` wrapper keeps a local cache of `DrJLabs/bmad-bp` in sync before delegating to the standard installer, so you always pick up the latest enhancements.
+
 ### Fastest Start: Web UI Full Stack Team at your disposal (2 minutes)
 
 1. **Get the bundle**: Save or clone the [full stack team file](dist/teams/team-fullstack.txt) or choose another team

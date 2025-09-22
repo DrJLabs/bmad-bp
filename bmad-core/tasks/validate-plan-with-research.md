@@ -40,9 +40,9 @@ Automatically review a project artifact, conduct targeted research on its core c
 - Apply edits directly to the primary artifact.
 - Locate related artifacts (risk profiles, test designs, etc.) with matching story/test IDs and apply cascade updates.
 - For each touched artifact, create or append a `## 🔬 Research & Validation Log` section recording:
-  - Date of validation.
+  - Date of validation (ISO 8601 format).
   - Changes made.
-  - Supporting sources with access dates.
+  - Supporting source URLs with access dates and license/usage notes.
   - Outstanding risks or open questions.
 
 ### 6. Generate Final Summary Report
@@ -51,7 +51,8 @@ Automatically review a project artifact, conduct targeted research on its core c
 
 ---
 
-**Research & Validation Summary**
+```md
+### Research & Validation Summary
 
 - **Primary Artifact Validated:** `{{artifact_path}}`
 - **Status:** Complete. Artifacts have been updated automatically.
@@ -62,10 +63,11 @@ Automatically review a project artifact, conduct targeted research on its core c
 
 **Summary of Changes:**
 
-- **Modernization:** Updated the authentication strategy in the story to use passwordless WebAuthn, which is the current industry standard for security and user experience.
+- **Modernization:** Updated the authentication strategy in the story to use passwordless WebAuthn, reflecting the current recommended practice for security and user experience.
 - **Security Enhancement:** Added a task to the story to implement Content Security Policy (CSP) headers, based on research showing their effectiveness against XSS attacks.
 - **Test Plan Improvement:** Modified the `test-design.md` to include visual regression testing, as research indicated this is a best practice for component libraries of this type.
 
 _For a detailed breakdown of every change, please see the "Research & Validation Log" section in the primary artifact._
+```
 
 ---

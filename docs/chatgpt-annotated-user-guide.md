@@ -1,3 +1,4 @@
+```mermaid
 graph TD
 A["Start: Project Idea"] --> B{"Optional: Analyst Research"}
 B -->|Yes| C["Analyst: Brainstorming (Optional)<br/>Cursor: @analyst brainstorm and outline → write docs/briefs/brief.md<br/>Claude: /analyst Brainstorm and outline → write docs/briefs/brief.md"]
@@ -29,6 +30,8 @@ K --> N["📁 Switch to IDE (If in a Web Agent Platform)<br/>Action: open repo i
 N --> O["PO: Shard Documents<br/>Cursor: @po shard PRD into epics/stories → write docs/epics/ and docs/stories/<br/>Claude: /po Shard PRD → docs/epics/ and docs/stories/"]
 O --> P["Ready for SM/Dev Cycle"]
 
+%% See also: bmad-core/workflows/focused-epic.yaml for the executable workflow that implements this loop.
+
     style A fill:#f5f5f5,color:#000
     style B fill:#e3f2fd,color:#000
     style C fill:#e8f5e9,color:#000
@@ -54,3 +57,4 @@ O --> P["Ready for SM/Dev Cycle"]
     style N fill:#1a73e8,color:#fff
     style O fill:#f9ab00,color:#fff
     style P fill:#34a853,color:#fff
+```

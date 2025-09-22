@@ -187,6 +187,8 @@ If you want to do the planning on the web with Claude (Sonnet 4 or Opus), Gemini
 npx bmad-method install
 ```
 
+> **DrJ Labs bundle:** run `npx -y drj-bmad@latest install --full --directory . --ide codex` to install the focused-epic workflow, researcher agent, and validation tasks maintained in `DrJLabs/bmad-bp`. Use `--ide codex-web` if you intend to commit `.bmad-core/` for Codex Web. (`--full` copies the entire BMAD core bundle plus DrJ Labs enhancements into your project.)
+
 ### OpenCode
 
 BMAD integrates with OpenCode via a project-level `opencode.jsonc`/`opencode.json` (JSON-only, no Markdown fallback).

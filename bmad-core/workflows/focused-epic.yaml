@@ -77,7 +77,7 @@ workflow:
       requires:
         - story.md
         - implementation_files
-      creates: traceability_report.md
+      creates: qa/assessments/traceability_report.md
       notes: |
         QA maps each acceptance criterion to concrete tests and records the findings in the trace matrix under `qa/assessments`.
 

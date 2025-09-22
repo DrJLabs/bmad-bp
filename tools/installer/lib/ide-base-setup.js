@@ -110,8 +110,8 @@ class BaseIdeSetup {
       const content = await fileManager.readFile(agentPath);
       const yamlContent = extractYamlFromAgent(content);
       if (yamlContent) {
-        const metadata = yaml.load(yamlContent);
-        return metadata.agent_name || agentId;
+        const metadata = yaml.load(yamlContent) || {};
+        return metadata.agent?.title || metadata.title || metadata.agent_name || agentId;
       }
     } catch {
       // Fallback to agent ID

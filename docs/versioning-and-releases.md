@@ -118,6 +118,17 @@ You can also trigger releases through GitHub Actions:
 1. **Develop Freely** - Merge PRs to main without triggering releases
 2. **Test Unreleased Changes** - Clone repo to test latest main branch
 3. **Release When Ready** - Use command line or GitHub Actions to cut releases
+
+## 🔐 Authenticating for npm Publish
+
+- The repository ships with an `.npmrc` that reads `NODE_AUTH_TOKEN`. Export your npm automation token before running `npm publish`:
+
+  ```bash
+  export NODE_AUTH_TOKEN="<your-token>"
+  npm publish --otp <if-2fa-required>
+  ```
+
+- In CI, add the token as a secret (e.g., `NODE_AUTH_TOKEN`) and the publish job will pick it up automatically. Automation tokens skip OTP prompts and are the recommended approach for scripted releases.
 4. **Users Get Updates** - Via simple `npx bmad-method install` command
 
 This gives you complete control over when releases happen while automating all the tedious parts like version bumping, release notes, and publishing.

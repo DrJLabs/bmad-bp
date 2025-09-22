@@ -10,13 +10,20 @@ package-lock.json
 logs/
 *.log
 npm-debug.log*
+yarn-error.log*
 
 # Build output
 build/*.txt
 web-bundles/
+dist/
+out/
+coverage/
+.nyc_output/
 
 # Environment variables
 .env
+.env.*
+.envrc
 
 # System files
 .DS_Store
@@ -32,6 +39,8 @@ Thumbs.db
 .bmad*/
 !.bmad-core/
 .cursor/
+.vscode/
+.idea/
 
 # AI assistant files
 CLAUDE.md

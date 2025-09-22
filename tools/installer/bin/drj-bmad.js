@@ -43,21 +43,24 @@ function updateRepository() {
 }
 
 function ensureDependencies() {
-  const commanderPath = path.join(cacheDir, 'node_modules', 'commander');
   const packageJsonPath = path.join(cacheDir, 'package.json');
-
-  if (fs.existsSync(commanderPath)) {
-    return;
-  }
 
   if (!fs.existsSync(packageJsonPath)) {
     console.error(`package.json not found in ${cacheDir}.`);
     process.exit(1);
   }
 
-  console.log('Installing BMAD dependencies (npm install --omit=dev)...');
-  const env = { ...process.env, HUSKY: '0' };
-  const result = spawnSync('npm', ['install', '--omit=dev'], {
+  const lockFilePath = path.join(cacheDir, 'package-lock.json');
+  const hasLockFile = fs.existsSync(lockFilePath);
+  const npmArgs = hasLockFile ? ['ci', '--omit=dev'] : ['install', '--omit=dev'];
+  console.log(`Installing BMAD dependencies (npm ${npmArgs[0]} ${npmArgs.slice(1).join(' ')})...`);
+  const env = {
+    ...process.env,
+    HUSKY: '0',
+    npm_config_audit: 'false',
+    npm_config_fund: 'false',
+  };
+  const result = spawnSync('npm', npmArgs, {
     cwd: cacheDir,
     stdio: 'inherit',
     env,
@@ -76,12 +79,14 @@ function runInstaller(argv) {
     process.exit(1);
   }
 
-  const result = spawnSync('node', [cliPath, ...argv], { stdio: 'inherit', env: process.env });
+  const invocationCwd = process.env.BMAD_INVOCATION_CWD || process.env.INIT_CWD || process.cwd();
+  const env = { ...process.env, BMAD_INVOCATION_CWD: path.resolve(invocationCwd) };
+  const result = spawnSync('node', [cliPath, ...argv], { stdio: 'inherit', env });
   if (result.error) {
     console.error(result.error.message);
     process.exit(1);
   }
-  process.exit(result.status ?? 0);
+  process.exit(result.status ?? 1);
 }
 
 updateRepository();

@@ -75,10 +75,10 @@ program
   .option('-o, --output <path>', 'Output file path')
   .action(async (options) => {
     const invCwd = getInvocationCwd();
-    let inputDir = options.input ? path.resolve(options.input) : invCwd;
+    let inputDir = options.input ? path.resolve(invCwd, options.input) : invCwd;
     let outputPath = options.output
-      ? path.resolve(options.output)
-      : path.resolve('flattened-codebase.xml');
+      ? path.resolve(invCwd, options.output)
+      : path.join(invCwd, 'flattened-codebase.xml');
 
     // Detect if user explicitly provided -i/--input or -o/--output
     const argv = process.argv.slice(2);
@@ -90,11 +90,13 @@ program
     );
     const noPathArguments = !userSpecifiedInput && !userSpecifiedOutput;
 
-    if (noPathArguments) {
+    const isInteractive = process.stdin.isTTY && process.stdout.isTTY;
+
+    if (noPathArguments && isInteractive) {
       const detectedRoot = await findProjectRoot(invCwd);
       const suggestedOutput = detectedRoot
         ? path.join(detectedRoot, 'flattened-codebase.xml')
-        : path.resolve('flattened-codebase.xml');
+        : path.join(invCwd, 'flattened-codebase.xml');
 
       if (detectedRoot) {
         const useDefaults = await promptYesNo(
@@ -119,6 +121,10 @@ program
           path.join(inputDir, 'flattened-codebase.xml'),
         );
       }
+    } else if (noPathArguments) {
+      const detectedRoot = await findProjectRoot(invCwd);
+      inputDir = detectedRoot || invCwd;
+      outputPath = path.join(inputDir, 'flattened-codebase.xml');
     }
 
     // Ensure output directory exists

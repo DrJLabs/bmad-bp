@@ -8,6 +8,7 @@ const configLoader = require('./config-loader');
 const ideSetup = require('./ide-setup');
 const { extractYamlFromAgent } = require('../../lib/yaml-utils');
 const resourceLocator = require('./resource-locator');
+const { getInvocationCwd } = require('../../shared/invocationCwd');
 
 class Installer {
   async getCoreVersion() {
@@ -27,7 +28,7 @@ class Installer {
 
     try {
       // Store the original CWD where npx was executed
-      const originalCwd = process.env.INIT_CWD || process.env.PWD || process.cwd();
+      const originalCwd = getInvocationCwd();
 
       // Resolve installation directory relative to where the user ran the command
       let installDir = path.isAbsolute(config.directory)
@@ -396,7 +397,7 @@ class Installer {
     if (config.includeWebBundles && config.webBundlesDirectory) {
       spinner.text = 'Installing web bundles...';
       // Resolve web bundles directory using the same logic as the main installation directory
-      const originalCwd = process.env.INIT_CWD || process.env.PWD || process.cwd();
+      const originalCwd = getInvocationCwd();
       let resolvedWebBundlesDir = path.isAbsolute(config.webBundlesDirectory)
         ? config.webBundlesDirectory
         : path.resolve(originalCwd, config.webBundlesDirectory);
@@ -913,7 +914,7 @@ class Installer {
     if (config.includeWebBundles && config.webBundlesDirectory) {
       const bundleInfo = this.getWebBundleInfo(config);
       // Resolve the web bundles directory for display
-      const originalCwd = process.env.INIT_CWD || process.env.PWD || process.cwd();
+      const originalCwd = getInvocationCwd();
       const resolvedWebBundlesDir = path.isAbsolute(config.webBundlesDirectory)
         ? config.webBundlesDirectory
         : path.resolve(originalCwd, config.webBundlesDirectory);
@@ -2007,8 +2008,17 @@ class Installer {
       env: { ...process.env, BMAD_INVOCATION_CWD: invCwd },
     });
 
-    child.on('exit', (code) => {
-      process.exit(code);
+    child.on('close', (code, signal) => {
+      if (signal) {
+        console.error(`Flatten command terminated by signal ${signal}`);
+        process.exit(1);
+      }
+      process.exit(code ?? 1);
+    });
+
+    child.on('error', (error) => {
+      console.error('Failed to launch flattener:', error.message);
+      process.exit(1);
     });
   }
 }

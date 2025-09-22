@@ -33,9 +33,25 @@ The expansion framework relies on the existing BMAD core (agents, tasks, templat
 - `docs/expansion-packs.md` references available packs and authoring guidance.
 - `dist/` receives regenerated bundles per pack/team for distribution.
 
+```text
+expansion-packs/
+  awesome-pack/
+    config.yaml
+    agents/
+      strategist.md
+    tasks/
+      capture-market-scan.md
+    templates/
+      narrative-outline-tmpl.md
+    docs/
+      README.md
+```
+
+Use this skeleton as a starting point when scaffolding a new focused epic or researcher-driven pack.
+
 ### Data Flow
 
-1. Author drafts requirements in `docs/prd.md` and architectural updates here.
+1. Author drafts requirements in `docs/prd.md` and architectural updates here (see also `bmad-core/workflows/focused-epic.yaml` for the end-to-end workflow the new bundles plug into).
 2. PO/Architect define pack assets under `expansion-packs/`.
 3. CLI (`npm run build`) resolves dependencies and emits bundles into `dist/`.
 4. Codex/AGENTS tooling ingests updated bundles for IDE/web agents.

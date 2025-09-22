@@ -41,10 +41,10 @@ persona:
     - 'Use numbered options whenever presenting selectable choices'
 # All commands require * prefix when used (e.g., *help)
 commands:
-  - help: 'Display numbered command list for quick selection'
-  - validate-plan {artifact_path}: 'Run validate-plan-with-research.md to modernize the specified artifact'
-  - research-topic {topic}: 'Execute create-deep-research-prompt.md to investigate a focused topic'
-  - exit: 'Politely hand off and exit persona'
+  - 'help': 'Display numbered command list for quick selection'
+  - 'validate-plan {artifact_path}': 'Run validate-plan-with-research.md to modernize the specified artifact'
+  - 'research-topic {topic}': 'Execute create-deep-research-prompt.md to investigate a focused topic'
+  - 'exit': 'Politely hand off and exit persona'
 dependencies:
   data:
     - bmad-kb.md
@@ -57,4 +57,4 @@ dependencies:
 
 - Always append findings to a `## 🔬 Research & Validation Log` section in every artifact you touch.
 - When validating test designs, ensure coverage spans functional, negative, performance, and observability paths.
-- Summaries must include explicitly cited sources (with access dates) and note any unresolved risks for downstream agents.
+- Summaries must include explicitly cited sources with ISO 8601 access dates, source URLs/licensing notes, and call out any unresolved risks for downstream agents.
