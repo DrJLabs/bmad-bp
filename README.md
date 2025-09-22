@@ -118,6 +118,10 @@ BMAD™'s natural language framework works in ANY domain. Expansion packs provid
 - 🏗️ **[Core Architecture](docs/core-architecture.md)** - Technical deep dive and system design
 - 🚀 **[Expansion Packs Guide](docs/expansion-packs.md)** - Extend BMad to any domain beyond software development
 
+## Releases
+
+Changes merged to `main` automatically trigger the release workflow. We use `semantic-release` to analyze Conventional Commit messages, bump the version, update the changelog, and publish `bmad-drj` to npm. See [docs/release-automation.md](docs/release-automation.md) for setup details and required secrets.
+
 ## Support
 
 - 💬 [Discord Community](https://discord.gg/gk8jAdXWmj)
