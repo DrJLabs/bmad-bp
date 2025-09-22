@@ -10,9 +10,9 @@ Our `bmad-drj` package now publishes automatically whenever changes land on `mai
 
 ## Required secrets
 
-| Secret      | Purpose                                                 |
-| ----------- | ------------------------------------------------------- |
-| `NPM_TOKEN` | npm automation token with publish rights on `bmad-drj`. |
+| Secret      | Purpose                                                                                         |
+| ----------- | ----------------------------------------------------------------------------------------------- |
+| `NPM_TOKEN` | npm automation token with publish rights on `bmad-drj`. Store it as a repository or org secret. |
 
 The token can be scoped to the package or org. Keep two-factor authentication enabled for the account that created it; automation tokens satisfy npm's requirement without prompting for OTP.
 
@@ -21,6 +21,14 @@ The token can be scoped to the package or org. Keep two-factor authentication en
 ## Commit conventions
 
 `semantic-release` expects Conventional Commit prefixes (`feat:`, `fix:`, `chore:`, etc.) to determine version bumps. Make sure PR titles and merge commits follow the convention.
+
+Set up the included commit template once to make this painless:
+
+```bash
+git config commit.template .github/commit-template.txt
+```
+
+Git will pre-fill new commit messages with the Conventional Commit skeleton. Disable it any time with `git config --unset commit.template`.
 
 ## Manual overrides
 
