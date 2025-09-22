@@ -5,6 +5,18 @@
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)](https://nodejs.org)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289da?logo=discord&logoColor=white)](https://discord.gg/gk8jAdXWmj)
 
+## DrJLabs Custom Implementation
+
+This fork keeps the core BMAD playbook intact while layering automation and workflow tweaks tailored for DrJLabs builds:
+
+- **Package rename.** Everything ships from [`bmad-drj`](https://www.npmjs.com/package/bmad-drj), so local installs use `npm exec --package bmad-drj -- bmad-method ...` or `npx -p bmad-drj ...`.
+- **Continuous releases.** Merges into `main` trigger `.github/workflows/release.yaml`, a provenance-enabled `semantic-release` flow that tags, publishes, and attaches tarballs automatically. Details live in [docs/release-automation.md](docs/release-automation.md).
+- **Commit discipline.** Enable the Conventional Commit template once (`git config commit.template .github/commit-template.txt`) so release notes stay accurate and automation can infer version bumps.
+- **Slimmer npm payload.** `.npmignore` drops sample projects, AI scratch pads, and root `.env*` files to keep secrets out of published artefacts.
+- **Docs parity.** Quick-start commands, badges, and clone URLs now reference this repository and package so onboarding stays consistent.
+
+> **Migrating from upstream BMAD?** Follow the tips above, then continue with the standard guide below—most of the original README content still applies.
+
 Foundations in Agentic Agile Driven Development, known as the Breakthrough Method of Agile AI-Driven Development, yet so much more. Transform any domain with specialized AI expertise: software development, entertainment, creative writing, business strategy to personal wellness just to name a few.
 
 **[Subscribe to BMadCode on YouTube](https://www.youtube.com/@BMadCode?sub_confirmation=1)**
