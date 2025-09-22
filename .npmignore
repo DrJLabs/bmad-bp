@@ -1,0 +1,20 @@
+# Exclude development tooling folders that should not ship in the package
+.github/
+.husky/
+.vscode/
+
+# Omit local environment secrets or overrides
+tools/.env
+tools/.env.local
+
+# Ignore dependencies, logs, and temporary artifacts
+node_modules/
+**/node_modules/
+npm-debug.log*
+*.log
+.DS_Store
+Thumbs.db
+tmp/
+temp/
+coverage/
+
