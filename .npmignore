@@ -6,6 +6,8 @@
 # Omit local environment secrets or overrides
 tools/.env
 tools/.env.local
+.env
+.env.*
 
 # Ignore dependencies, logs, and temporary artifacts
 node_modules/
