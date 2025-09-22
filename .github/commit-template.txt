@@ -1,0 +1,16 @@
+# Conventional Commit template
+# Format: type(scope?): short summary
+# Examples:
+#   feat(core): add semantic-release automation
+#   fix: handle OTP challenge for npm publish
+# Leave scope empty if not needed. Keep summary under 72 characters.
+
+type(scope?): short summary of the change
+
+# Body (optional). Wrap at 72 characters per line.
+# - Explain the motivation, context, or implementation details.
+# - Separate paragraphs with blank lines.
+
+# Footer (optional)
+# BREAKING CHANGE: describe breaking change
+# Closes: #123
