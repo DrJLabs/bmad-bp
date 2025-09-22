@@ -14,6 +14,14 @@ Generate well-structured research prompts that:
 - Guide systematic investigation of complex topics
 - Ensure actionable insights are captured
 
+## Mode Awareness
+
+Always tailor the prompt to the researcher’s active mode:
+
+- **Solo (default):** Emphasize low-overhead research with fast, high-impact wins. Highlight FOSS-first tools, automation scripts, and deprioritize bureaucracy.
+- **Small-team:** Balance depth with knowledge sharing. Capture owner/reviewer assignments, CI/CD touchpoints, and lightweight governance artifacts.
+- **Enterprise:** Require exhaustive coverage, compliance control mapping, and audit-ready documentation. Call out data classification, sign-off checkpoints, and vendor due diligence.
+
 ## Research Type Selection
 
 CRITICAL: First, help the user select the most appropriate research focus based on their needs and any input documents they've provided.
@@ -119,6 +127,10 @@ CRITICAL: collaborate with the user to articulate clear, specific objectives for
 - Key decisions the research will inform
 - Success criteria for the research
 - Constraints and boundaries
+- **Mode considerations:**
+  - Solo → Focus on immediate implementation guidance and risk triage.
+  - Small-team → Capture collaboration touchpoints, ownership, and shared artifacts.
+  - Enterprise → Include compliance, governance, and audit evidence requirements.
 
 #### B. Research Questions
 
@@ -129,12 +141,20 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Central questions that must be answered
 - Priority ranking of questions
 - Dependencies between questions
+- **Mode considerations:**
+  - Solo → Prioritize questions that unblock development quickly.
+  - Small-team → Add questions about process integration, release readiness, and shared tooling.
+  - Enterprise → Expand to regulatory obligations, threat modeling, and long-term scalability.
 
 **Supporting Questions:**
 
 - Additional context-building questions
 - Nice-to-have insights
 - Future-looking considerations
+- **Mode considerations:**
+  - Solo → Capture backlog ideas with clear ROI.
+  - Small-team → Identify knowledge gaps between functions (dev, ops, product).
+  - Enterprise → Surface cross-org dependencies, change management, and vendor impacts.
 
 #### C. Research Methodology
 
@@ -144,6 +164,10 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Primary research approaches (if applicable)
 - Data quality requirements
 - Source credibility criteria
+- **Mode considerations:**
+  - Solo → Emphasize open docs, standards bodies, and community knowledge bases.
+  - Small-team → Add lightweight interviews or async surveys with stakeholders.
+  - Enterprise → Require authoritative standards, legal guidance, and formal approvals.
 
 **Analysis Frameworks:**
 
@@ -151,6 +175,10 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Comparison criteria
 - Evaluation methodologies
 - Synthesis approaches
+- **Mode considerations:**
+  - Solo → Leverage simplified scoring matrices for fast prioritization.
+  - Small-team → Incorporate frameworks that aid group decision-making (e.g., RICE, DACI).
+  - Enterprise → Use risk matrices, compliance control mapping, and cost-benefit analyses.
 
 #### D. Output Requirements
 
@@ -160,6 +188,10 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Detailed findings structure
 - Visual/tabular presentations
 - Supporting documentation
+- **Mode considerations:**
+  - Solo → Provide concise action lists and automation scripts/snippets.
+  - Small-team → Include handoff packets, change summaries, and owner/reviewer tables.
+  - Enterprise → Produce audit trails, risk registers, and linkage to corporate standards.
 
 **Key Deliverables:**
 
@@ -167,6 +199,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Decision-support elements
 - Action-oriented recommendations
 - Risk and uncertainty documentation
+- **FOSS-first guidance:** Always prefer open-source tooling; document justification when recommending paid services.
 
 ### 4. Prompt Generation
 
@@ -176,6 +209,12 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 ## Research Objective
 
 [Clear statement of what this research aims to achieve]
+
+## Active Mode
+
+- Operating mode: [solo | small-team | enterprise]
+- Resource & time constraints: [hours, budget, access limits]
+- Collaboration & approvals: [owners, reviewers, stakeholders]
 
 ## Background Context
 
@@ -199,15 +238,20 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 
 ### Information Sources
 
-- [Specific source types and priorities]
+- [Priority source types: standards bodies, OSS docs, vendor references]
 
 ### Analysis Frameworks
 
-- [Specific frameworks to apply]
+- [Frameworks/models tuned to the active mode]
 
 ### Data Requirements
 
 - [Quality, recency, credibility needs]
+
+## Tooling & Source Preferences
+
+- Preferred FOSS tools/platforms: [...]
+- Paid tooling (if unavoidable) + justification: [...]
 
 ## Expected Deliverables
 
@@ -215,17 +259,23 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 
 - Key findings and insights
 - Critical implications
-- Recommended actions
+- Recommended actions with owners
 
 ### Detailed Analysis
 
-[Specific sections needed based on research type]
+[Specific sections needed based on research type and mode]
 
 ### Supporting Materials
 
-- Data tables
-- Comparison matrices
-- Source documentation
+- Data tables / comparison matrices
+- Source documentation with access dates
+- Risk register or checklist excerpts
+
+## Governance & Risk
+
+- Compliance or security considerations
+- Monitoring / observability requirements
+- Residual risks and open questions
 
 ## Success Criteria
 
@@ -233,7 +283,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 
 ## Timeline and Priority
 
-[If applicable, any time constraints or phasing]
+[Time constraints, review cadence, follow-up milestones]
 ```
 
 ### 5. Review and Refinement
@@ -241,12 +291,12 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 1. **Present Complete Prompt**
    - Show the full research prompt
    - Explain key elements and rationale
-   - Highlight any assumptions made
+   - Highlight how the prompt satisfies the active mode requirements
 
 2. **Gather Feedback**
    - Are the objectives clear and correct?
    - Do the questions address all concerns?
-   - Is the scope appropriate?
+   - Is the scope appropriate for the active mode?
    - Are output requirements sufficient?
 
 3. **Refine as Needed**
@@ -269,6 +319,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Which team members should review results
 - How to validate findings
 - When to revisit or expand research
+- Which checklist items (from `researcher-checklist.md`) must be completed for the selected mode
 
 ## Important Notes
 
@@ -276,5 +327,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Be specific rather than general in research questions
 - Consider both current state and future implications
 - Balance comprehensiveness with focus
-- Document assumptions and limitations clearly
+- Document assumptions, limitations, and confidence levels clearly
 - Plan for iterative refinement based on initial findings
+- Always log the active mode and cite sources with access dates to maintain traceability
+- Favor open-source tooling; when recommending paid solutions, provide cost/risk comparison and migration path
