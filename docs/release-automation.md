@@ -1,0 +1,36 @@
+# Release Automation
+
+Our `bmad-drj` package now publishes automatically whenever changes land on `main`.
+
+## How it works
+
+- **Workflow trigger** – `.github/workflows/release.yaml` runs on every push to `main` (and can be invoked manually). The job installs dependencies, executes the validation suite, and calls `semantic-release`.
+- **Version & changelog** – `semantic-release` uses Conventional Commit messages to decide whether to cut a release, updates `CHANGELOG.md`, bumps `package.json` / `package-lock.json`, syncs `tools/installer/package.json`, and tags the repo.
+- **Publish** – `@semantic-release/npm` publishes `bmad-drj` to npm using your automation token. Tarballs are saved as workflow artifacts.
+- **Release metadata** – The workflow runs `NPM_CONFIG_PROVENANCE=true npx semantic-release`, which tags the repo, updates `CHANGELOG.md`, and attaches the generated tarball to the GitHub Release.
+
+## Required secrets
+
+| Secret      | Purpose                                                                                         |
+| ----------- | ----------------------------------------------------------------------------------------------- |
+| `NPM_TOKEN` | npm automation token with publish rights on `bmad-drj`. Store it as a repository or org secret. |
+
+The token can be scoped to the package or org. Keep two-factor authentication enabled for the account that created it; automation tokens satisfy npm's requirement without prompting for OTP.
+
+> **Tip:** npm also supports [trusted publishing via GitHub's OIDC tokens](https://docs.npmjs.com/trusted-publishers/?utm_source=openai). When you are ready, connect this repository as a trusted publisher in npm. After that you can remove `NPM_TOKEN` and rely on OIDC with provenance enabled.
+
+## Commit conventions
+
+`semantic-release` expects Conventional Commit prefixes (`feat:`, `fix:`, `chore:`, etc.) to determine version bumps. Make sure PR titles and merge commits follow the convention.
+
+Set up the included commit template once to make this painless:
+
+```bash
+git config commit.template .github/commit-template.txt
+```
+
+Git will pre-fill new commit messages with the Conventional Commit skeleton. Disable it any time with `git config --unset commit.template`.
+
+## Manual overrides
+
+The existing `Manual Release` workflow is still available for ad-hoc releases or emergency patches. Running it will publish immediately, independent of `semantic-release`.

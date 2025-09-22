@@ -4,7 +4,6 @@ pnpm-lock.yaml
 bun.lock
 deno.lock
 pnpm-workspace.yaml
-package-lock.json
 
 # Logs
 logs/
@@ -14,6 +13,7 @@ npm-debug.log*
 # Build output
 build/*.txt
 web-bundles/
+release-tarballs/
 
 # Environment variables
 .env

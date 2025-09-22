@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "bmad-method",
-  "version": "4.43.0",
+  "name": "bmad-drj",
+  "version": "4.43.2",
   "description": "Breakthrough Method of Agile AI-driven Development",
   "keywords": [
     "agile",
@@ -12,9 +12,13 @@
     "agents",
     "bmad"
   ],
+  "homepage": "https://github.com/DrJLabs/bmad-bp#readme",
+  "bugs": {
+    "url": "https://github.com/DrJLabs/bmad-bp/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bmadcode/BMAD-METHOD.git"
+    "url": "git+https://github.com/DrJLabs/bmad-bp.git"
   },
   "license": "MIT",
   "author": "Brian (BMad) Madison",
@@ -87,6 +91,7 @@
   "devDependencies": {
     "@eslint/js": "^9.34.0",
     "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
