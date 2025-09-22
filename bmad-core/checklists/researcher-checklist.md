@@ -7,7 +7,9 @@ Use this checklist to confirm research and validation work meets the baseline hy
 ## Global Hygiene
 
 - [ ] Document the active mode and rationale in the research log.
-- [ ] Cite all key findings with source, publisher, and access date (prefer open standards/community sources).
+- [ ] Cite all key findings with source, publisher, publish/version date, and access date.
+- [ ] Use durable links: prefer permalinks to specific versions/tags and capture an archived copy (e.g., web.archive) for each URL.
+- [ ] Record license/usage terms for tools and sources; flag incompatible or high-risk licenses and suggest compliant alternatives.
 - [ ] Cross-check medium/high-risk claims with at least two credible references.
 - [ ] Flag deprecated, end-of-life, or insecure patterns and propose modern alternatives.
 - [ ] Note residual risks, confidence levels, and required follow-up owners.
@@ -30,8 +32,9 @@ Use this checklist to confirm research and validation work meets the baseline hy
 
 ## Enterprise Focus
 
-- [ ] Map findings to relevant compliance or security controls (e.g., SOC2, ISO 27001, OWASP ASVS).
+- [ ] Map findings to relevant compliance or security controls (e.g., SOC2, ISO 27001, OWASP ASVS) and reference specific control IDs.
 - [ ] Provide threat model updates and monitoring/logging guidance.
 - [ ] Document data classification, retention, and access control impacts.
+- [ ] Note data residency/jurisdictional constraints and third-party/vendor risk (DPAs, sub-processors, attestations).
 - [ ] Record sign-off checkpoints, required stakeholders, and audit evidence locations.
 - [ ] Provide rollback, incident response, and change management considerations.

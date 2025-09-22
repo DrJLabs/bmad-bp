@@ -27,9 +27,16 @@
 
 1. `.bmad-core/agents/researcher.md`
 2. `.bmad-core/tasks/validate-plan-with-research.md`
-3. `bmad-core/tasks/create-deep-research-prompt.md`
+3. `.bmad-core/tasks/create-deep-research-prompt.md`
 4. `bmad-core/checklists/researcher-checklist.md` (new)
 5. Supporting docs/templates as needed (e.g., research log scaffolding)
+
+## Rollout & Success Metrics
+
+- Feature gating: ship the mode-aware flow behind a config flag with `solo` as the default fallback.
+- Deployment plan: dry run with internal champions → small cohort rollout → org-wide enablement.
+- KPIs: reduced time-to-decision, lower defect rate in validated artifacts, higher citation completeness, fewer audit findings post-merge.
+- Rollback: toggle the config flag off and restore prior templates if regressions surface.
 
 ## Open Questions
 

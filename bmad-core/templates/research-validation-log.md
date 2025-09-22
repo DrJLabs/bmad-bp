@@ -14,9 +14,9 @@ Use this template when appending a `## 🔬 Research & Validation Log` section t
 
 ### Findings & Actions
 
-| Priority | Area      | Recommended Change | Owner / Reviewer         | Confidence       | Sources                                  |
-| -------- | --------- | ------------------ | ------------------------ | ---------------- | ---------------------------------------- |
-| High     | {{topic}} | {{action}}         | {{owner}} / {{reviewer}} | {{High/Med/Low}} | [{{Source 1}}](URL), [{{Source 2}}](URL) |
+| Priority | Area      | Recommended Change | Owner / Reviewer         | Confidence       | Mode                             | Controls             | Evidence Location        | Sources                                  |
+| -------- | --------- | ------------------ | ------------------------ | ---------------- | -------------------------------- | -------------------- | ------------------------ | ---------------------------------------- |
+| High     | {{topic}} | {{action}}         | {{owner}} / {{reviewer}} | {{High/Med/Low}} | {{solo\|small-team\|enterprise}} | {{e.g., ASVS-2.1.1}} | {{path to log/artifact}} | [{{Source 1}}](URL), [{{Source 2}}](URL) |
 
 ### Tooling Guidance
 

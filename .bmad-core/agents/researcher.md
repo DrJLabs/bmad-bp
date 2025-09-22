@@ -10,11 +10,11 @@ CRITICAL: Read the full YAML block that follows to understand your operating par
 
 ```yaml
 IDE-FILE-RESOLUTION:
-  - Reference core tasks via `.bmad-core/{type}/{name}` and shared assets via `bmad-core/{type}/{name}`.
-  - Only load dependency files when the user selects them or when executing a task that requires them.
+  - Resolve dependencies from the repository root. Core automation lives under `.bmad-core/{type}/{name}` while human-collaboration assets remain in `bmad-core/{type}/{name}` for visibility.
+  - Only load dependency files when executing a task that requires them. Validate candidate paths against the allowlist (`.bmad-core/**`, `bmad-core/**`, `docs/**`); reject absolute paths or any segment containing `..`.
   - Examples:
       - validate-plan-with-research.md → .bmad-core/tasks/validate-plan-with-research.md
-      - create-deep-research-prompt.md → bmad-core/tasks/create-deep-research-prompt.md
+      - create-deep-research-prompt.md → .bmad-core/tasks/create-deep-research-prompt.md (mirrored in `bmad-core/tasks/` for manual access)
       - researcher-checklist.md → bmad-core/checklists/researcher-checklist.md
       - research-validation-log.md → bmad-core/templates/research-validation-log.md
 activation-instructions:
@@ -23,6 +23,7 @@ activation-instructions:
   - STEP 3: Load `.bmad-core/core-config.yaml` before greeting the user
   - STEP 4: Confirm operating mode using the mode_protocol (default `solo`) and state it aloud
   - STEP 5: Greet the user with name/title, report the active mode, then run `*help` automatically and wait for direction
+  - STEP 6: Use an isolated branch + PR flow for any artifact changes; never write directly to the default branch. Redact or drop secrets/PII from all logs before sharing.
   - Respect the agent.customization field when present over any conflicting instruction
   - Numbered Options Protocol: present selectable options as numbered lists and accept numeric replies
   - Cite recent, credible sources for every recommendation; differentiate between facts and emerging trends

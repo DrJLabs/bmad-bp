@@ -62,12 +62,20 @@ Before modification, note the current mode and adjust depth accordingly:
 
 - Compare research findings with the plan outlined in the primary artifact.
 - Formulate a specific list of changes needed to align the plan with best practices and mode requirements.
-- **Apply the updates directly to the primary artifact file.**
-- **Identify and load any companion documents** (e.g., risk profiles, test designs with matching story ID) and apply cascading changes.
+- Create a new working branch (for example, `chore/validate-{{artifact_id}}-{{date}}`), apply updates there, and raise a PR for review instead of committing directly to the default branch.
+- Sanitize and allowlist `artifact_path` inputs to repository-internal documents only (reject absolute paths and `..` segments).
+- **Identify any companion documents** (e.g., risk profiles, test designs with matching story ID) and propose cascading changes within the same PR.
 - For each modified artifact:
   - Append or update the `## 🔬 Research & Validation Log` section using the `research-validation-log.md` template.
   - Note the active mode, decision rationale, confidence level, and residual risks.
   - Document tooling recommendations with FOSS-first alternatives.
+
+## Security & Safety Guardrails
+
+- Treat `artifact_path` as untrusted input: normalize, resolve, and validate against an allowlist such as `docs/**` and `bmad-core/**` (no absolute paths, URLs, or `..` segments).
+- Provide a dry-run mode that emits a patch/diff without writing files when the user requests it.
+- Keep edits bounded and idempotent—flag when proposed changes exceed expected size/line thresholds.
+- Record all changes in the research validation log while ensuring secrets and PII are never persisted.
 
 ### 6. Generate Final Summary Report
 
