@@ -4,6 +4,7 @@
 #   feat(core): add semantic-release automation
 #   fix: handle OTP challenge for npm publish
 # Leave scope empty if not needed. Keep summary under 72 characters.
+# Common types: feat, fix, perf, refactor, docs, chore, test, build, ci, revert
 
 type(scope?): short summary of the change
 

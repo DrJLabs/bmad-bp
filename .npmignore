@@ -18,3 +18,13 @@ tmp/
 temp/
 coverage/
 
+# Project-specific and AI assistant artifacts
+test-project-install/
+sample-project/
+flattened-codebase.xml
+*.stats.md
+.ai/
+copilot-custom-prompts/
+.claude
+.gemini
+.iflow

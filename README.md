@@ -1,6 +1,6 @@
 # BMAD-METHOD™: Universal AI Agent Framework
 
-[![Version](https://img.shields.io/npm/v/bmad-method?color=blue&label=version)](https://www.npmjs.com/package/bmad-method)
+[![Version](https://img.shields.io/npm/v/bmad-drj?color=blue&label=version)](https://www.npmjs.com/package/bmad-drj)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)](https://nodejs.org)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289da?logo=discord&logoColor=white)](https://discord.gg/gk8jAdXWmj)
@@ -52,8 +52,10 @@ This two-phase approach eliminates both **planning inconsistency** and **context
 **Stay up-to-date effortlessly!** If you already have BMAD-METHOD™ installed in your project, simply run:
 
 ```bash
-npx bmad-method install
+npm exec --package bmad-drj -- bmad-method install
 # OR
+npx -p bmad-drj bmad-method install
+# If you already have BMad installed:
 git pull
 npm run install:bmad
 ```
@@ -74,8 +76,10 @@ This makes it easy to benefit from the latest improvements, bug fixes, and new a
 **Just run one of these commands:**
 
 ```bash
-npx bmad-method install
-# OR if you already have BMad installed:
+npm exec --package bmad-drj -- bmad-method install
+# OR
+npx -p bmad-drj bmad-method install
+# If you already have BMad installed:
 git pull
 npm run install:bmad
 ```
@@ -102,7 +106,7 @@ This single command handles:
 ### Alternative: Clone and Build
 
 ```bash
-git clone https://github.com/bmadcode/bmad-method.git
+git clone https://github.com/DrJLabs/bmad-bp.git
 npm run install:bmad # build and install all to a destination folder
 ```
 
@@ -125,8 +129,8 @@ Changes merged to `main` automatically trigger the release workflow. We use `sem
 ## Support
 
 - 💬 [Discord Community](https://discord.gg/gk8jAdXWmj)
-- 🐛 [Issue Tracker](https://github.com/bmadcode/bmad-method/issues)
-- 💬 [Discussions](https://github.com/bmadcode/bmad-method/discussions)
+- 🐛 [Issue Tracker](https://github.com/DrJLabs/bmad-bp/issues)
+- 💬 [Discussions](https://github.com/DrJLabs/bmad-bp/discussions)
 
 ## Contributing
 
@@ -145,7 +149,7 @@ See our [Fork CI/CD Guide](.github/FORK_GUIDE.md) for instructions on enabling w
 #### Contributing Workflow
 
 1. **Fork the repository** - Click the Fork button on GitHub
-2. **Clone your fork** - `git clone https://github.com/YOUR-USERNAME/BMAD-METHOD.git`
+2. **Clone your fork** - `git clone https://github.com/YOUR-USERNAME/bmad-bp.git`
 3. **Create a feature branch** - `git checkout -b feature/amazing-feature`
 4. **Make your changes** - Test locally with `npm test`
 5. **Commit your changes** - `git commit -m 'feat: add amazing feature'`
@@ -162,6 +166,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 BMAD™ and BMAD-METHOD™ are trademarks of BMad Code, LLC. All rights reserved.
 
-[![Contributors](https://contrib.rocks/image?repo=bmadcode/bmad-method)](https://github.com/bmadcode/bmad-method/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=DrJLabs/bmad-bp)](https://github.com/DrJLabs/bmad-bp/graphs/contributors)
 
 <sub>Built with ❤️ for the AI-assisted development community</sub>

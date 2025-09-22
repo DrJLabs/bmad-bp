@@ -12,9 +12,13 @@
     "agents",
     "bmad"
   ],
+  "homepage": "https://github.com/DrJLabs/bmad-bp#readme",
+  "bugs": {
+    "url": "https://github.com/DrJLabs/bmad-bp/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bmadcode/BMAD-METHOD.git"
+    "url": "git+https://github.com/DrJLabs/bmad-bp.git"
   },
   "license": "MIT",
   "author": "Brian (BMad) Madison",

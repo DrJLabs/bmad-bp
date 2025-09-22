@@ -7,6 +7,7 @@ Our `bmad-drj` package now publishes automatically whenever changes land on `mai
 - **Workflow trigger** – `.github/workflows/release.yaml` runs on every push to `main` (and can be invoked manually). The job installs dependencies, executes the validation suite, and calls `semantic-release`.
 - **Version & changelog** – `semantic-release` uses Conventional Commit messages to decide whether to cut a release, updates `CHANGELOG.md`, bumps `package.json` / `package-lock.json`, syncs `tools/installer/package.json`, and tags the repo.
 - **Publish** – `@semantic-release/npm` publishes `bmad-drj` to npm using your automation token. Tarballs are saved as workflow artifacts.
+- **Release metadata** – The workflow runs `NPM_CONFIG_PROVENANCE=true npx semantic-release`, which tags the repo, updates `CHANGELOG.md`, and attaches the generated tarball to the GitHub Release.
 
 ## Required secrets
 
