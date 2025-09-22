@@ -32,6 +32,7 @@ Thumbs.db
 .bmad*/
 !.bmad-core/
 .cursor/
+.obsidian/
 
 # AI assistant files
 CLAUDE.md
@@ -39,6 +40,7 @@ CLAUDE.md
 .claude
 .gemini
 .iflow
+copilot-custom-prompts/
 
 # Project-specific
 .bmad-creator-tools
