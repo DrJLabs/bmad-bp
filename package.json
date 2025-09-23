@@ -31,6 +31,8 @@
     "build": "node tools/cli.js build",
     "build:agents": "node tools/cli.js build --agents-only",
     "build:teams": "node tools/cli.js build --teams-only",
+    "check:all": "npm run validate && npm run lint && npm run format:check",
+    "check:prepush": "npm run lint && npm run format:check",
     "fix": "npm run format && npm run lint:fix",
     "flatten": "node tools/flattener/main.js",
     "format": "prettier --write \"**/*.{js,cjs,mjs,json,md,yaml}\"",
