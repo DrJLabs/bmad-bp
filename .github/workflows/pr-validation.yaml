@@ -35,6 +35,27 @@ jobs:
       - name: Run tests (if available)
         run: npm test --if-present
 
+      - name: Install Semgrep CLI
+        run: pip install "semgrep>=1.86.0,<2.0.0"
+
+      - name: Reviewer preflight
+        run: npm run reviewer:preflight
+
+      - name: Reviewer scan
+        run: npm run reviewer:scan
+
+      - name: Reviewer metrics validation
+        run: |
+          latest=$(ls -1d artifacts/reviewer/* 2>/dev/null | sort | tail -n 1)
+          if [ -z "$latest" ]; then
+            echo 'No reviewer artifacts found';
+            exit 1;
+          fi
+          npm run reviewer:validate -- --file "$latest/metrics.json"
+
+      - name: Reviewer prune fixtures
+        run: npm run reviewer:prune:test
+
       - name: Comment on PR if checks fail
         if: failure()
         uses: actions/github-script@v7

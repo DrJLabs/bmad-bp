@@ -28,6 +28,9 @@
     "bmad-method": "tools/bmad-npx-wrapper.js"
   },
   "scripts": {
+    "bmad:list": "bmad-method list:agents",
+    "bmad:refresh": "bmad-method install -f -i codex",
+    "bmad:validate": "bmad-method validate",
     "build": "node tools/cli.js build",
     "build:agents": "node tools/cli.js build --agents-only",
     "build:teams": "node tools/cli.js build --teams-only",
@@ -48,6 +51,11 @@
     "release:minor": "gh workflow run \"Manual Release\" -f version_bump=minor",
     "release:patch": "gh workflow run \"Manual Release\" -f version_bump=patch",
     "release:watch": "gh run watch",
+    "reviewer:preflight": "bash tools/reviewer/preflight.sh",
+    "reviewer:prune": "node tools/reviewer/prune-cache.js",
+    "reviewer:prune:test": "node tools/reviewer/prune-cache.test.js",
+    "reviewer:scan": "node tools/reviewer/collect-scans.js",
+    "reviewer:validate": "node tools/reviewer/validate-metrics.js",
     "setup:hooks": "chmod +x tools/setup-hooks.sh && ./tools/setup-hooks.sh",
     "validate": "node tools/cli.js validate",
     "version:all": "node tools/bump-all-versions.js",
