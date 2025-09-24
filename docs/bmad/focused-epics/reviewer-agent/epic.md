@@ -28,9 +28,9 @@ Deliver a workflow-ready reviewer persona that augments BMAD with free static ch
 
 ## Stories
 
-1. **Story 1:** Establish free scanner baseline (Semgrep, Jscpd, churn script) with cached outputs.
-2. **Story 2:** Implement reviewer persona pipeline that merges scan data and generates scored findings.
-3. **Story 3:** Integrate reviewer step into focused-epic workflow, docs, and tracking.
+1. **Story 1 (Done — 2025-09-24):** Establish free scanner baseline (Semgrep, Jscpd, churn script) with cached outputs.
+2. **Story 2 (Done — 2025-09-24):** Implement reviewer persona pipeline that merges scan data and generates scored findings.
+3. **Story 3 (In Progress):** Integrate reviewer step into focused-epic workflow, docs, and tracking.
 
 ## Compatibility Requirements
 
