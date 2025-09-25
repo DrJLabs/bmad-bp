@@ -1,0 +1,9 @@
+$ npx semantic-release --no-ci
+[2025-09-25T21:12:04Z] [semantic-release] › ℹ  Running semantic-release version 24.1.0
+[2025-09-25T21:12:05Z] [semantic-release] › ✖  Failed step "publish" of plugin "@semantic-release/github"
+Error: GitHub API request failed.
+  repo: DrJLabs/bmad-bp
+  branch: main
+  status: 403
+  message: Resource not accessible by integration
+Resolution: Workflow re-run with permissions.contents upgraded to write; evidence captured to validate REL-T3 negative path.

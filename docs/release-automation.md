@@ -11,7 +11,7 @@ The release pipeline now mirrors BMAD’s GitHub-only semantic-release pattern. 
 
 ## Evidence capture checklist (Story 1 & 1.2)
 
-For the contributor-facing overview, see [Versioning and Releases](versioning-and-releases.md#-automated-release-workflow); that section links back to this checklist so maintainers can navigate between the matrix and evidence steps.
+For the contributor-facing overview, see [Versioning and Releases](versioning-and-releases.md#automated-release-workflow); that section links back to this checklist so maintainers can navigate between the matrix and evidence steps.
 
 1. Run `npx semantic-release --dry-run --ci false` on the feature branch and save the stdout log to `docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log`.
 2. After the merge, locate the most recent `Release` workflow run in GitHub Actions and record the run ID, Release URL, and artifact paths in the Story 1 change log so auditors can trace the execution.

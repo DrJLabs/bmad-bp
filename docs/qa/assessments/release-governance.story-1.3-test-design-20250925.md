@@ -56,7 +56,7 @@ Verify that Story 1.3 closes all outstanding release-governance evidence gaps, c
 
 ## Additional Notes
 
-- Use GitHub’s retention setting (90-day default) as a reminder to download logs immediately after each run.citeturn0search0
+- Use GitHub’s retention setting (90-day default) as a reminder to download logs immediately after each run (GitHub Docs, accessed 2025-09-25).
 - Treat evidence capture steps as atomic; if any log is missing, rerun the workflow before considering the story ready for QA gate.
 - Consider scripting log downloads in a future story to minimize manual steps.
 
@@ -68,6 +68,6 @@ Verify that Story 1.3 closes all outstanding release-governance evidence gaps, c
 ## 🔬 Research & Validation Log
 
 - 2025-09-25 — Mode: solo. Reviewed scenarios against Story 1.3 acceptance criteria and Story 1 follow-ups; coverage spans evidence capture, documentation cross-links, manual release safeguards, and epic checklist closure. References: docs/stories/1.3.release-evidence-audit-closure.md, docs/bmad/focused-epics/release-governance/story-1.md.
-- 2025-09-25 — Verified REL1.3-T2/T3 align with semantic-release guidance to dry-run before dispatching the GitHub workflow and to confirm attachment policy.citeturn0search2
+- 2025-09-25 — Verified REL1.3-T2/T3 align with semantic-release guidance to dry-run before dispatching the GitHub workflow and to confirm attachment policy (semantic-release docs, accessed 2025-09-25).
 - 2025-09-25 — Confirmed REL1.3-T4 leverages existing anchors; recommended adding a note to record the link-check date in Story 1 change log so auditors can trace verification. Source: docs/release-automation.md, docs/versioning-and-releases.md.
 - 2025-09-25 — Residual risk: automation for evidence downloads still manual; noted in Follow-Up Tasks to converge with future automation story.

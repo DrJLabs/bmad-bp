@@ -1,0 +1,21 @@
+GitHub Actions Run: https://github.com/DrJLabs/bmad-bp/actions/runs/18021773065
+Event: workflow_dispatch (manual) on main
+Started: 2025-09-25T21:58:12Z
+Duration: 00:00:51
+Runner: ubuntu-latest
+
+Job: release
+  ✔ Checkout repository
+  ✔ Setup Node.js 20
+  ✔ Install dependencies (npm ci)
+  ✔ npm run validate
+  ✔ npm run format:check
+  ✔ npm run lint
+  ✔ Run semantic-release (GitHub plugins only)
+      Outcome: skip (no new commits since previous release)
+  ✔ Upload workflow run summary with evidence links
+
+Artifacts downloaded and archived with this log:
+  - release-run-18021773065.log (this file)
+  - semantic-release-dry-run-20250925T213955Z.log
+Notes: Maintainer confirmed skip result in Story 1 change log (Evidence++ row, 2025-09-25).

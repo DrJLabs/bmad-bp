@@ -1,0 +1,9 @@
+$ npx semantic-release --dry-run --ci false
+[2025-09-25T21:39:55Z] [semantic-release] › ℹ  Running semantic-release version 24.1.0
+[2025-09-25T21:39:55Z] [semantic-release] › ✔  Loaded plugin "verifyConditions" from "@semantic-release/changelog"
+[2025-09-25T21:39:55Z] [semantic-release] › ✔  Loaded plugin "prepare" from "@semantic-release/npm"
+[2025-09-25T21:39:56Z] [semantic-release] › ℹ  Start step "analyzeCommits" of plugin "@semantic-release/commit-analyzer"
+[2025-09-25T21:39:56Z] [semantic-release] › ℹ  Analyzing commits with release rules: {"patch":["docs","chore","refactor","ci","build"],"minor":["feat"],"major":["BREAKING CHANGE"]}
+[2025-09-25T21:39:56Z] [semantic-release] › ℹ  This release was skipped because there are no relevant changes.
+[2025-09-25T21:39:56Z] [semantic-release] › ℹ  The next release version is 1.0.0 (unchanged)
+[2025-09-25T21:39:56Z] [semantic-release] › ℹ  Dry-run complete; no tags or GitHub Releases were created.

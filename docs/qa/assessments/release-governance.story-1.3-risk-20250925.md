@@ -23,9 +23,9 @@ Story 1.3 is the final governance hardening work for the release-focused epic. I
 
 ## Mitigations
 
-- **REL-1.3-001:** Capture fresh dry-run output and Release workflow run logs immediately after execution; archive them under `docs/bmad/focused-epics/release-governance/evidence/` and add links to Story 1 change log. Reference GitHub’s 90-day action log retention in documentation to enforce timely downloads.citeturn0search0
-- **REL-1.3-002:** Add bidirectional anchors between `docs/release-automation.md` evidence checklist and `docs/versioning-and-releases.md` automated workflow section so maintainers can navigate the matrix quickly.citeturn0search1
-- **REL-1.3-003:** Document pre-flight step for manual release triggers (verify no pending commits) and encourage use of `--dry-run` before dispatching `release.yaml`.citeturn0search2
+- **REL-1.3-001:** Capture fresh dry-run output and Release workflow run logs immediately after execution; archive them under `docs/bmad/focused-epics/release-governance/evidence/` and add links to Story 1 change log. Reference GitHub’s 90-day action log retention in documentation to enforce timely downloads (GitHub Docs, accessed 2025-09-25).
+- **REL-1.3-002:** Add bidirectional anchors between `docs/release-automation.md` evidence checklist and `docs/versioning-and-releases.md` automated workflow section so maintainers can navigate the matrix quickly (internal documentation review, 2025-09-25).
+- **REL-1.3-003:** Document pre-flight step for manual release triggers (verify no pending commits) and encourage use of `--dry-run` before dispatching `release.yaml` (semantic-release guidance, accessed 2025-09-25).
 - **REL-1.3-004:** When ticking epic checklist items, reference the stored evidence (run ID, release URL, log filenames) to preserve traceability.
 
 ## Residual Risks
@@ -47,6 +47,6 @@ Story 1.3 is the final governance hardening work for the release-focused epic. I
 
 ## References
 
-1. GitHub Actions artifact & log retention defaults (90 days) — GitHub Docs (accessed 2025-09-25).citeturn0search0
-2. Semantic-release dry-run verification guidance — semantic-release docs (accessed 2025-09-25).citeturn0search2
+1. GitHub Actions artifact & log retention defaults (90 days) — GitHub Docs (accessed 2025-09-25).
+2. Semantic-release dry-run verification guidance — semantic-release docs (accessed 2025-09-25).
 3. Release governance story change log (Story 1) — repo docs (accessed 2025-09-25).
