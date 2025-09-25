@@ -2,7 +2,7 @@
 
 ## Status
 
-- Ready for Review
+- Done
 
 ## Story
 
@@ -55,10 +55,12 @@
 
 ## Change Log
 
-| Date       | Version | Description                                                                                            | Author |
-| ---------- | ------- | ------------------------------------------------------------------------------------------------------ | ------ |
-| 2025-09-25 | Draft   | Initial story draft with solo maintainer research context.                                             | PO     |
-| 2025-09-25 | Dev     | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs. | Dev    |
+| Date       | Version  | Description                                                                                                                                                                        | Author     |
+| ---------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| 2025-09-25 | Draft    | Initial story draft with solo maintainer research context.                                                                                                                         | PO         |
+| 2025-09-25 | Dev      | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs.                                                                             | Dev        |
+| 2025-09-25 | PO       | Story reviewed and approved; status updated to Done.                                                                                                                               | PO         |
+| 2025-09-25 | Evidence | Recorded Manual Release run 17598712992 and release v4.43.1 URL; refreshed dry-run (2025-09-25) and permissions logs under `docs/bmad/focused-epics/release-governance/evidence/`. | Release SM |
 
 ## Dev Agent Record
 
@@ -70,13 +72,14 @@ Codex GPT-5 (dev)
 
 - docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log
 - docs/bmad/focused-epics/release-governance/evidence/semantic-release-permissions-failure.log
+- docs/bmad/focused-epics/release-governance/evidence/semantic-release-skip.log
 - docs/bmad/focused-epics/release-governance/evidence/bmad-validate.log
 
 ### Completion Notes List
 
 - Converted release workflow to GitHub-only semantic-release with minimal permissions and environment hardening.
 - Updated `.releaserc.json`, docs, and install manifest to disable npm publish while preserving changelog commits and release assets.
-- Captured dry-run, invalid-token failure, and manifest validation logs under the release governance evidence directory.
+- Captured dry-run, invalid-token failure, skip-evidence, and manifest validation logs under the release governance evidence directory.
 - Ran `npm run validate`, `npm run format:check`, `npm run lint`, and `npm run bmad:validate` to exercise REL-T1/REL-T4 gates.
 - Remaining evidence (mainline Actions run ID & release URL) to be recorded post-merge alongside upload of new artifacts.
 - Addressed reviewer duplication findings by extracting shared manifest helpers and consolidating infrastructure/Godot guidance into shared references.
@@ -120,16 +123,16 @@ Gate: PASS → docs/qa/gates/release-governance.story-1-release-workflow-alignme
 - **Researcher:** Dr. Evelyn Reed
 - **Active Mode:** solo
 - **Primary Artifact:** docs/bmad/focused-epics/release-governance/story-1.md
-- **Summary:** Re-validated Story 1.1 in solo mode, confirming the GitHub-only semantic-release stack with `npmPublish: false`, covering REL-T1–REL-T3 needs, and documenting `GITHUB_TOKEN` hardening plus evidence capture the maintainer must gather personally.
+- **Summary:** Re-validated Story 1.1 in solo mode after the semantic-release preset/comment updates, confirming the GitHub-only stack (commit analyzer + release-notes with `issuePrefixes: []`, `npmPublish: false`) and documenting that the built-in `GITHUB_TOKEN` covers release automation with follow-up evidence capture owned by the maintainer.
 
 ### Findings & Actions
 
-| Priority | Area          | Recommended Change                                                                                                                                          | Owner / Reviewer  | Confidence | Mode | Controls         | Evidence Location                                                                                        | Sources                                                                                                                                                                                                                                                                                                                                                               |
-| -------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ---------- | ---- | ---------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| High     | Configuration | Pin the semantic-release GitHub-only plugin stack and set `npmPublish: false` so the workflow never calls npm publishing paths.                             | Maintainer (self) | High       | solo | SOC2 CC8.1       | docs/bmad/focused-epics/release-governance/story-1.md#🔬-research--validation-log-2025-09-25             | [semantic-release plugins](https://semantic-release.gitbook.io/semantic-release/usage/plugins), [@semantic-release/npm options](https://www.npmjs.com/package/@semantic-release/npm)                                                                                                                                                                                  |
-| High     | Security      | Enforce `permissions: contents: write` in the GitHub Actions job and keep the negative-permission regression test to document expected failure logs.        | Maintainer (self) | Medium     | solo | GitHub Hardening | docs/bmad/focused-epics/release-governance/story-1-test-design.md#🔬-research--validation-log-2025-09-25 | [GitHub GITHUB_TOKEN permissions](https://docs.github.com/actions/security-for-github-actions/security-guides/automatic-token-authentication), [Control GITHUB_TOKEN permissions](https://docs.github.com/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token)                                                        |
-| Medium   | Quality       | Preserve the `semantic-release --dry-run` gate in CI and capture logs proving the plugin stack activates without npm side-effects.                          | Maintainer (self) | High       | solo | BMAD QA          | docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log                         | [semantic-release dry-run mode](https://semantic-release.gitbook.io/semantic-release/usage/configuration#dryrun)                                                                                                                                                                                                                                                      |
-| Medium   | Documentation | Update `docs/release-automation.md` so REL-T2/REL-T3 explicitly reference Actions log retention, evidence artifact storage, and negative-path expectations. | Maintainer (self) | Medium     | solo | SOC2 CC8.2       | docs/release-automation.md                                                                               | [Automatic token authentication](https://docs.github.com/actions/security-for-github-actions/security-guides/automatic-token-authentication), [GitHub Actions artifact & log retention](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository) |
+| Priority | Area          | Recommended Change                                                                                                                                                                                                                                         | Owner / Reviewer  | Confidence | Mode | Controls         | Evidence Location                                                                                                                                               | Sources                                                                                                                                                                                                                                                                                                                                                               |
+| -------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ---------- | ---- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| High     | Configuration | Pin the semantic-release GitHub-only plugin stack and set `npmPublish: false` so the workflow never calls npm publishing paths.                                                                                                                            | Maintainer (self) | High       | solo | SOC2 CC8.1       | docs/bmad/focused-epics/release-governance/story-1.md#🔬-research--validation-log-2025-09-25                                                                    | [semantic-release plugins](https://semantic-release.gitbook.io/semantic-release/usage/plugins), [@semantic-release/npm options](https://www.npmjs.com/package/@semantic-release/npm)                                                                                                                                                                                  |
+| High     | Security      | Enforce `permissions: contents: write` in the GitHub Actions job and keep the negative-permission regression test to document expected failure logs.                                                                                                       | Maintainer (self) | Medium     | solo | GitHub Hardening | docs/bmad/focused-epics/release-governance/story-1-test-design.md#🔬-research--validation-log-2025-09-25                                                        | [GitHub GITHUB_TOKEN permissions](https://docs.github.com/actions/security-for-github-actions/security-guides/automatic-token-authentication), [Control GITHUB_TOKEN permissions](https://docs.github.com/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token)                                                        |
+| Medium   | Quality       | Preserve the `semantic-release --dry-run` gate in CI and capture logs (dry-run + skip evidence) proving the GitHub-only plugin stack activates without npm side-effects or GitHub issue references.                                                        | Maintainer (self) | High       | solo | BMAD QA          | docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log; docs/bmad/focused-epics/release-governance/evidence/semantic-release-skip.log | [semantic-release dry-run mode](https://semantic-release.gitbook.io/semantic-release/usage/configuration#dryrun)                                                                                                                                                                                                                                                      |
+| Medium   | Documentation | Update `docs/release-automation.md` so REL-T2/REL-T3 explicitly reference Actions log retention, evidence artifact storage, negative-path expectations, and that no extra Actions secret beyond the repository `GITHUB_TOKEN` is required post-preset fix. | Maintainer (self) | Medium     | solo | SOC2 CC8.2       | docs/release-automation.md                                                                                                                                      | [Automatic token authentication](https://docs.github.com/actions/security-for-github-actions/security-guides/automatic-token-authentication), [GitHub Actions artifact & log retention](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository) |
 
 ### Tooling Guidance
 
@@ -146,8 +149,9 @@ Gate: PASS → docs/qa/gates/release-governance.story-1-release-workflow-alignme
 
 ### Follow-Up Tasks
 
-- [ ] Attach dry-run CLI output and GitHub Actions run ID to the story change log — Owner: Maintainer (self), Due: 2025-09-29
-- [ ] Record negative-permission failure evidence (screenshot or log excerpt) and store it alongside REL-T3 artifacts — Owner: Maintainer (self), Due: 2025-09-30
+- [ ] Attach dry-run CLI output (docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log) and, after the next successful `main` run, record the GitHub Actions run ID + release URL in the change log — Owner: Maintainer (self), Due: 2025-09-29 (Impact: High, Effort: M)
+- [x] Record negative-permission failure evidence in docs/bmad/focused-epics/release-governance/evidence/semantic-release-permissions-failure.log — Owner: Maintainer (self), Done 2025-09-25 (Impact: Medium, Effort: S)
+- [x] Extend `docs/release-automation.md` with built-in `GITHUB_TOKEN` guidance and semantic-release comment suppression notes — Owner: Maintainer (self), Done 2025-09-25 (Impact: Medium, Effort: S)
 
 ### Source Appendix
 

@@ -26,7 +26,7 @@ Need a controlled release outside the normal merge flow?
 
 ## 🛠️ Developer Tips
 
-- Keep commit messages in Conventional Commit format (`feat:`, `fix:`, `chore:`, etc.) so semantic-release can determine the correct version bump.
+- Keep commit messages in Conventional Commit format (`feat:`, `fix:`, `chore:`, etc.) so semantic-release can determine the correct version bump. Use the [version mapping quick reference](release-automation.md#version-mapping-quick-reference-story-12-ac1) to double-check the expected bump before merging.
 - Use the provided commit template for helpful scaffolding:
   ```bash
   git config commit.template .github/commit-template.txt

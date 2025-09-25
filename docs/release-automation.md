@@ -5,16 +5,18 @@ The release pipeline now mirrors BMAD’s GitHub-only semantic-release pattern. 
 ## How it works
 
 - **Workflow trigger** – `.github/workflows/release.yaml` runs on every push to `main` and supports manual dispatch. The job installs dependencies, runs `npm run validate`, `npm run format:check`, and `npm run lint`, then executes `semantic-release`.
-- **Version & changelog** – `semantic-release` inspects Conventional Commit history, bumps `package.json`, `package-lock.json`, and `tools/installer/package.json`, and appends to `CHANGELOG.md` with the GitHub-only plugin stack (`@semantic-release/release-notes-generator`, `@semantic-release/changelog`, `@semantic-release/github`).
+- **Version & changelog** – `semantic-release` inspects Conventional Commit history, bumps `package.json`, `package-lock.json`, and `tools/installer/package.json`, and appends to `CHANGELOG.md` with the GitHub-only plugin stack (`@semantic-release/release-notes-generator`, `@semantic-release/changelog`, `@semantic-release/github`). Success/fail/label comments are disabled in `.releaserc.json`, so the workflow never posts issue cross-links back to PRs.
 - **Release assets** – `@semantic-release/npm` prepares tarballs locally with `npmPublish` disabled. The GitHub plugin attaches those tarballs to the GitHub Release alongside the generated notes.
 - **Permissions** – The workflow sets `permissions: contents: write` and exports only `GITHUB_TOKEN` to `semantic-release`. Dropping permissions to `contents: read` should trigger the expected failure for the REL-T3 negative-path test.
 
-## Evidence capture checklist (Story 1 AC6)
+## Evidence capture checklist (Story 1 & 1.2)
 
-1. Run `npx semantic-release --dry-run --ci false` on the feature branch and attach the log to the story change log before merging.
-2. After merging, record the successful Actions run ID and GitHub Release URL in the story change log.
-3. Execute the restricted-permission validation (set job permissions to `contents: read`) and store the resulting failure log next to the dry-run output.
-4. Keep all artifacts under `docs/bmad/focused-epics/release-governance/` so future audits have a stable location.
+1. Run `npx semantic-release --dry-run --ci false` on the feature branch and save the stdout log to `docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log`.
+2. After the merge, locate the most recent `Release` workflow run in GitHub Actions and record the run ID, Release URL, and artifact paths in the Story 1 change log so auditors can trace the execution.
+3. Execute the restricted-permission regression (duplicate the workflow with `permissions: contents: read`) and store the failure log beside the dry-run output (`semantic-release-permissions-failure.log`).
+4. Download all evidence within the repository’s Action retention window (Settings → Actions → Artifact & log retention, default 90 days) and archive under `docs/bmad/focused-epics/release-governance/evidence/` to prevent expiration.
+5. Capture a skip-behavior log (e.g., empty `chore:` commit) and save it as `docs/bmad/focused-epics/release-governance/evidence/semantic-release-skip.log` to document REL-T6.
+6. Confirm the evidence directory now contains: dry-run log, permissions failure log, skip log, Release run transcript, and any supporting screenshots referenced by Story 1 or Story 1.2.
 
 ## Required secrets
 
@@ -29,6 +31,29 @@ No npm credentials are needed. The default repository `GITHUB_TOKEN` is sufficie
 ```bash
 git config commit.template .github/commit-template.txt
 ```
+
+### Version mapping quick reference (Story 1.2 AC1)
+
+| Conventional Commit prefix                                | Typical semantic-release bump   | Notes                                                                                     |
+| --------------------------------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------- |
+| `feat:`                                                   | Minor                           | Generates release notes entry under “Features”.                                           |
+| `fix:`                                                    | Patch                           | Captures bug fixes; includes `perf:` commits.                                             |
+| `docs:`, `chore:`, `refactor:` (no `!`)                   | Patch (if releasable) / skipped | When no production code changes are detected, semantic-release may skip the publish step. |
+| `build:`, `ci:`                                           | Patch                           | Use for pipeline/config changes impacting deployments.                                    |
+| Any prefix with `!` or explicit `BREAKING CHANGE:` footer | Major                           | Requires change log entry describing the breaking impact.                                 |
+
+**Pre-merge validation checklist**
+
+- [ ] Run `npx semantic-release --dry-run --ci false` and ensure the reported next version matches expectations from the table above.
+- [ ] Confirm the change log preview lists the intended commits and contains no unexpected breaking changes.
+- [ ] Update Story 1 change log with the dry-run evidence path before merging.
+- [ ] If the dry-run reports “This release was skipped”, confirm the commit type should indeed be skipped (e.g., doc-only change) and note that outcome in the change log.
+
+### Release artifact policy (Story 1.2 AC2)
+
+- Tarball attachments created by `@semantic-release/npm` remain enabled. After each release run, verify the GitHub Release shows the tarball assets and note the download URLs in the change log.
+- If attachments are intentionally disabled in future, document the rollback decision and consumer expectations here before merging the change.
+- Store any downloaded artifacts or screenshots that prove attachment status in `docs/bmad/focused-epics/release-governance/evidence/`.
 
 ## Manual overrides
 

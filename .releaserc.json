@@ -2,9 +2,27 @@
   "branches": ["main"],
   "npmPublish": false,
   "plugins": [
-    ["@semantic-release/commit-analyzer", { "preset": "conventionalcommits" }],
-    ["@semantic-release/release-notes-generator", { "preset": "conventionalcommits" }],
-    ["@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" }],
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits"
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "issuePrefixes": []
+        }
+      }
+    ],
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
     [
       "@semantic-release/npm",
       {
@@ -39,7 +57,11 @@
             "path": "release-tarballs/*.tgz",
             "label": "BMAD CLI distribution (${nextRelease.version})"
           }
-        ]
+        ],
+        "successComment": false,
+        "failComment": false,
+        "labels": false,
+        "releasedLabels": false
       }
     ]
   ]
