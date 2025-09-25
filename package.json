@@ -30,7 +30,7 @@
   "scripts": {
     "bmad:list": "bmad-method list:agents",
     "bmad:refresh": "bmad-method install -f -i codex",
-    "bmad:validate": "bmad-method validate",
+    "bmad:validate": "node tools/cli.js validate",
     "build": "node tools/cli.js build",
     "build:agents": "node tools/cli.js build --agents-only",
     "build:teams": "node tools/cli.js build --teams-only",

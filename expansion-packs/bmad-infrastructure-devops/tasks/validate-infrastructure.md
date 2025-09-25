@@ -135,21 +135,4 @@ A comprehensive platform validation report documenting:
 
 ## Offer Advanced Self-Refinement & Elicitation Options
 
-Present the user with the following list of 'Advanced Reflective, Elicitation & Brainstorming Actions'. Explain that these are optional steps to help ensure quality, explore alternatives, and deepen the understanding of the current section before finalizing it and moving on. The user can select an action by number, or choose to skip this and proceed to finalize the section.
-
-"To ensure the quality of the current section: **[Specific Section Name]** and to ensure its robustness, explore alternatives, and consider all angles, I can perform any of the following actions. Please choose a number (8 to finalize and proceed):
-
-**Advanced Reflective, Elicitation & Brainstorming Actions I Can Take:**
-
-1. **Critical Security Assessment & Risk Analysis**
-2. **Platform Integration & Component Compatibility Evaluation**
-3. **Cross-Environment Consistency Review**
-4. **Technical Debt & Maintainability Analysis**
-5. **Compliance & Regulatory Alignment Deep Dive**
-6. **Cost Optimization & Resource Efficiency Analysis**
-7. **Operational Resilience & Platform Failure Mode Testing (Theoretical)**
-8. **Finalize this Section and Proceed.**
-
-After I perform the selected action, we can discuss the outcome and decide on any further revisions for this section."
-
-REPEAT by Asking the user if they would like to perform another Reflective, Elicitation & Brainstorming Action UNTIL the user indicates it is time to proceed to the next section (or selects #8)
+Leverage the shared `advanced-actions-guide.md` to present deeper investigative options. Ask which numbered action (or "finalize") the user wants, execute it, summarize the findings for this validation section, and repeat until they opt to continue.

@@ -95,41 +95,17 @@ class FileManager {
   async createManifest(installDir, config, files) {
     const manifestPath = path.join(installDir, this.manifestDir, this.manifestFile);
 
-    // Read version from package.json
-    let coreVersion = 'unknown';
-    try {
-      const packagePath = path.join(__dirname, '..', '..', '..', 'package.json');
-      const packageJson = require(packagePath);
-      coreVersion = packageJson.version;
-    } catch {
-      console.warn("Could not read version from package.json, using 'unknown'");
-    }
-
     const manifest = {
-      version: coreVersion,
+      version: this.getCoreVersion(),
       installed_at: new Date().toISOString(),
       install_type: config.installType,
       agent: config.agent || null,
       ides_setup: config.ides || [],
       expansion_packs: config.expansionPacks || [],
-      files: [],
+      files: await this.buildManifestFileEntries(installDir, files),
     };
 
-    // Add file information
-    for (const file of files) {
-      const filePath = path.join(installDir, file);
-      const hash = await this.calculateFileHash(filePath);
-
-      manifest.files.push({
-        path: file,
-        hash: hash,
-        modified: false,
-      });
-    }
-
-    // Write manifest
-    await fs.ensureDir(path.dirname(manifestPath));
-    await fs.writeFile(manifestPath, yaml.dump(manifest, { indent: 2 }));
+    await this.writeManifestFile(manifestPath, manifest);
 
     return manifest;
   }
@@ -243,32 +219,51 @@ class FileManager {
     const manifestPath = path.join(installDir, `.${packId}`, this.manifestFile);
 
     const manifest = {
-      version: config.expansionPackVersion || require('../../../package.json').version,
+      version: config.expansionPackVersion || this.getCoreVersion(),
       installed_at: new Date().toISOString(),
       install_type: config.installType,
       expansion_pack_id: config.expansionPackId,
       expansion_pack_name: config.expansionPackName,
       ides_setup: config.ides || [],
-      files: [],
+      files: await this.buildManifestFileEntries(installDir, files),
     };
 
-    // Add file information
+    await this.writeManifestFile(manifestPath, manifest);
+
+    return manifest;
+  }
+
+  getCoreVersion() {
+    try {
+      const packagePath = path.join(__dirname, '..', '..', '..', 'package.json');
+      const packageJson = require(packagePath);
+      return packageJson.version;
+    } catch {
+      console.warn("Could not read version from package.json, using 'unknown'");
+      return 'unknown';
+    }
+  }
+
+  async buildManifestFileEntries(installDir, files) {
+    const manifestFiles = [];
+
     for (const file of files) {
       const filePath = path.join(installDir, file);
       const hash = await this.calculateFileHash(filePath);
 
-      manifest.files.push({
+      manifestFiles.push({
         path: file,
         hash: hash,
         modified: false,
       });
     }
 
-    // Write manifest
+    return manifestFiles;
+  }
+
+  async writeManifestFile(manifestPath, manifest) {
     await fs.ensureDir(path.dirname(manifestPath));
     await fs.writeFile(manifestPath, yaml.dump(manifest, { indent: 2 }));
-
-    return manifest;
   }
 
   async modifyCoreConfig(installDir, config) {
