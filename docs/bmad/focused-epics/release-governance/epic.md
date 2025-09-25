@@ -28,7 +28,7 @@ Re-align the chat-mcp-farm release workflow so it mirrors the upstream BMAD patt
 
 ## Stories
 
-1. **Story 1 (Planned):** Convert release automation to GitHub-only semantic-release and update installer/docs accordingly.
+1. **Story 1 (Completed — 2025-09-25):** Convert release automation to GitHub-only semantic-release and update installer/docs accordingly.
 
 ## Compatibility Requirements
 
@@ -46,7 +46,7 @@ Re-align the chat-mcp-farm release workflow so it mirrors the upstream BMAD patt
 
 ## Definition of Done
 
-- [ ] Story 1 accepted with release workflow green on `main`.
+- [x] Story 1 accepted with release workflow green on `main`.
 - [ ] `.releaserc` (or equivalent) committed with GitHub-only configuration.
 - [ ] Installer manifest + docs updated and validated via `bmad-method validate`.
 - [ ] Release documentation reviewed by the team.
