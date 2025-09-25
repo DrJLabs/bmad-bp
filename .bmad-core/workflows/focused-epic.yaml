@@ -65,7 +65,7 @@ sequence:
       Steps:
         1. `bash tools/reviewer/preflight.sh`
         2. `bmad reviewer run --mode ${{ inputs.reviewer_strict && 'strict' || 'default' }} --model ${{ inputs.reviewer_model }}`
-        3. `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md`
+        3. `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer`
       Workflow inputs:
         - `BMAD_REVIEWER_SKIP` (default false) → bypass reviewer stage for doc-only/trivial diffs
         - `BMAD_REVIEWER_STRICT` (default false) → enforce strict-mode gating when ready

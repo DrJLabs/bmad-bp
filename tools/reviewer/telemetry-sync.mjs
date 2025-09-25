@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
+import yaml from 'js-yaml';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,7 +10,7 @@ const repoRoot = path.resolve(__dirname, '..', '..');
 
 function usage() {
   console.log(
-    `Usage: npm run reviewer:telemetry-sync -- --metrics <file|dir> --tracker <markdown> [options]\n\nOptions:\n  --report <file>          Optional reviewer report JSON for severity metrics\n  --mode <name>            Reviewer execution mode (default, strict, etc.)\n  --run-id <id>            Override run identifier (defaults to GITHUB_RUN_ID or metrics timestamp)\n  --repo <name>            Override repository name (defaults to metrics.repo or GITHUB_REPOSITORY)\n  --dry-run                Print the computed row without editing the tracker\n  --help                   Show this message\n`,
+    `Usage: npm run reviewer:telemetry-sync -- --metrics <file|dir> [--tracker <markdown>] [options]\n\nOptions:\n  --report <file>          Optional reviewer report JSON for severity metrics\n  --mode <name>            Reviewer execution mode (default, strict, etc.)\n  --run-id <id>            Override run identifier (defaults to GITHUB_RUN_ID or metrics timestamp)\n  --repo <name>            Override repository name (defaults to metrics.repo or GITHUB_REPOSITORY)\n  --tracker <markdown>     Override tracker path (defaults to reviewer.telemetryTracker in core-config)\n  --dry-run                Print the computed row without editing the tracker\n  --help                   Show this message\n`,
   );
 }
 
@@ -78,6 +79,20 @@ function resolvePath(input) {
   return path.isAbsolute(input) ? input : path.join(repoRoot, input);
 }
 
+function loadCoreConfig() {
+  const configPath = path.join(repoRoot, '.bmad-core', 'core-config.yaml');
+  if (!fs.existsSync(configPath)) {
+    return {};
+  }
+  try {
+    const contents = fs.readFileSync(configPath, 'utf8');
+    return yaml.load(contents) || {};
+  } catch (error) {
+    console.warn(`Could not parse ${path.relative(repoRoot, configPath)}: ${error.message}`);
+    return {};
+  }
+}
+
 function isDirectory(target) {
   try {
     return fs.statSync(target).isDirectory();
@@ -105,6 +120,23 @@ function latestMetricsFromDir(dir) {
   }
   entries.sort((a, b) => (a.dir < b.dir ? 1 : -1));
   return entries[0].metrics;
+}
+
+function resolveTrackerCandidate(options, config) {
+  if (options.tracker) {
+    const candidate = resolvePath(options.tracker);
+    if (candidate) {
+      return candidate;
+    }
+  }
+  const configTracker = config?.reviewer?.telemetryTracker;
+  if (configTracker) {
+    const candidate = resolvePath(configTracker);
+    if (candidate) {
+      return candidate;
+    }
+  }
+  return resolvePath('docs/bmad/issues/reviewer-rollout.md');
 }
 
 function ensureFile(filePath, description) {
@@ -213,6 +245,14 @@ function formatNumber(value, fractionDigits = 2) {
   return Number(value || 0).toFixed(fractionDigits);
 }
 
+function buildReportLink({ repo, runId, linkTarget }) {
+  if (repo && runId) {
+    const server = (process.env.GITHUB_SERVER_URL || 'https://github.com').replace(/\/$/, '');
+    return `${server}/${repo}/actions/runs/${runId}`;
+  }
+  return linkTarget || 'N/A';
+}
+
 function updateTelemetryTable(trackerPath, row) {
   const content = fs.readFileSync(trackerPath, 'utf8');
   const lines = content.split('\n');
@@ -242,6 +282,7 @@ function main() {
       usage();
       return;
     }
+    const coreConfig = loadCoreConfig();
     const metricsInput = options.metrics || 'artifacts/reviewer/metrics.json';
     let metricsPath = resolvePath(metricsInput);
     if (!metricsPath) {
@@ -259,10 +300,8 @@ function main() {
 
     ensureFile(metricsPath, 'metrics file');
     const metrics = readJson(metricsPath);
-    const trackerPath = ensureFile(
-      resolvePath(options.tracker || 'docs/bmad/issues/reviewer-rollout.md'),
-      'tracker file',
-    );
+    const trackerCandidate = resolveTrackerCandidate(options, coreConfig);
+    const trackerPath = ensureFile(trackerCandidate, 'tracker file');
 
     const repo = inferRepo(options, metrics);
     const runId = inferRunId(options, metrics);
@@ -278,6 +317,7 @@ function main() {
     const linkTarget =
       reportMdPath && fs.existsSync(reportMdPath) ? reportMdPath : reportPath || metricsPath;
     const relativeLink = toPosix(path.relative(repoRoot, linkTarget));
+    const reportLink = buildReportLink({ repo, runId, linkTarget: relativeLink });
 
     const row = {
       runId,
@@ -289,7 +329,7 @@ function main() {
       falsePositiveRate: formatNumber(
         typeof falsePositiveRate === 'number' ? falsePositiveRate : 0,
       ),
-      reportLink: relativeLink,
+      reportLink,
       toString() {
         return `| ${this.runId} | ${this.repo} | ${this.mode} | ${this.runtime} | ${this.highFindings} | ${this.falsePositiveRate} | ${this.reportLink} |`;
       },

@@ -43,7 +43,7 @@ We are piloting the reviewer persona focused epic to ensure BMAD workflows surfa
 | 20250924T231715Z | BMAD            | default | 23.01     | 0             | 0.00                | artifacts/reviewer/20250924T231715Z/metrics.json |
 | 20250924T231519Z | BMAD            | default | 25.20     | 0             | 0.00                | artifacts/reviewer/20250924T231519Z/metrics.json |
 
-> Populated by `npm run reviewer:telemetry-sync -- --metrics <path-or-dir> --tracker docs/bmad/issues/reviewer-rollout.md`.
+> Populated by `npm run reviewer:telemetry-sync -- --metrics <path-or-dir>` (tracker path defaults to `.bmad-core/core-config.yaml` `reviewer.telemetryTracker`).
 
 ## Strict-Mode Governance Checklist
 
@@ -63,7 +63,7 @@ We are piloting the reviewer persona focused epic to ensure BMAD workflows surfa
 
 ## Rollback Procedure
 
-1. Set `reviewer.enabled: false` (and optionally `reviewer.strict: false`) in `bmad-core/core-config.yaml`.
+1. Set `reviewer.enabled: false` (and optionally `reviewer.strict: false`) in `.bmad-core/core-config.yaml`.
 2. Comment out the reviewer stage block in `.bmad-core/workflows/focused-epic.yaml` while leaving instructions for future reinstatement.
 3. Remove reviewer artifact upload steps from CI jobs; retain previously generated artifacts for audit.
 4. Record the rollback decision and justification in the strict-mode checklist above.

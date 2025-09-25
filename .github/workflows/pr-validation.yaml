@@ -131,11 +131,13 @@ jobs:
         id: reviewer-artifacts
         run: |
           set -euo pipefail
-          latest=$(ls -d artifacts/reviewer/*/ 2>/dev/null | sort | tail -n1 || true)
-          if [ -z "$latest" ]; then
+          shopt -s nullglob
+          matches=(artifacts/reviewer/*/)
+          if [ ${#matches[@]} -eq 0 ]; then
             echo "No reviewer artifacts found" >&2
             exit 1
           fi
+          latest=$(printf '%s\n' "${matches[@]}" | sort | tail -n1)
           dir="${latest%/}"
           echo "dir=$dir" >> "$GITHUB_OUTPUT"
 
@@ -144,11 +146,11 @@ jobs:
 
       - name: Sync telemetry (dry-run)
         if: github.event_name != 'push' || github.ref != 'refs/heads/main'
-        run: npm run reviewer:telemetry-sync -- --metrics "${{ steps.reviewer-artifacts.outputs.dir }}" --tracker docs/bmad/issues/reviewer-rollout.md --mode "${{ matrix.mode }}" --dry-run
+        run: npm run reviewer:telemetry-sync -- --metrics "${{ steps.reviewer-artifacts.outputs.dir }}" --mode "${{ matrix.mode }}" --dry-run
 
       - name: Sync telemetry (main)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: npm run reviewer:telemetry-sync -- --metrics "${{ steps.reviewer-artifacts.outputs.dir }}" --tracker docs/bmad/issues/reviewer-rollout.md --mode "${{ matrix.mode }}" --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
+        run: npm run reviewer:telemetry-sync -- --metrics "${{ steps.reviewer-artifacts.outputs.dir }}" --mode "${{ matrix.mode }}" --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
 
       - name: Upload reviewer artifacts
         if: always()
@@ -197,10 +199,10 @@ jobs:
         run: |
           set -euo pipefail
           if [ -d reviewer-default ]; then
-            npm run reviewer:telemetry-sync -- --metrics reviewer-default/artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md --mode default --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
+            npm run reviewer:telemetry-sync -- --metrics reviewer-default/artifacts/reviewer --mode default --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
           fi
           if [ -d reviewer-strict ]; then
-            npm run reviewer:telemetry-sync -- --metrics reviewer-strict/artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md --mode strict --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
+            npm run reviewer:telemetry-sync -- --metrics reviewer-strict/artifacts/reviewer --mode strict --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
           fi
 
       - name: Commit telemetry update

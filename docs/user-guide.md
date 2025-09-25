@@ -277,7 +277,7 @@ This agent should NOT be used within the IDE, it is a heavyweight, special-purpo
 ### Reviewer Persona Quick Start
 
 - Follow the checklist in [`docs/bmad/reviewer/README.md`](bmad/reviewer/README.md#quick-start-checklist) whenever the reviewer stage runs.
-- Sync telemetry via `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md` so the rollout tracker stays current.
+- Sync telemetry via `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer` so the rollout tracker (path defaults to `.bmad-core/core-config.yaml` `reviewer.telemetryTracker`) stays current.
 - Review the strict-mode governance checklist inside [`docs/bmad/issues/reviewer-rollout.md`](bmad/issues/reviewer-rollout.md#strict-mode-governance-checklist) before enabling gating.
 
 ### How Agents Work

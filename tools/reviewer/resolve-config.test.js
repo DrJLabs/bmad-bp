@@ -61,6 +61,9 @@ function main() {
   const overrideConfig = createTempConfig(
     `reviewer:\n  enabled: true\n  strict: false\n  skipTrivialDiff: false\n  perStoryOverrideKey: story.review.override_skip\n`,
   );
+  const snakeCaseConfig = createTempConfig(
+    `reviewer:\n  enabled: true\n  strict: false\n  skip_trivial_diff: true\n`,
+  );
 
   // Disabled config should never run reviewer
   const disabled = runResolver(disabledConfig);
@@ -83,6 +86,9 @@ function main() {
     strictByEnv.strictMode === true,
     'Expected strictMode=true when BMAD_REVIEWER_STRICT=true',
   );
+
+  const snakeCase = runResolver(snakeCaseConfig);
+  assert(snakeCase.skipTrivialDiff === true, 'Expected snake_case skip flag to be detected');
 
   const overrideStory = createTempStory(`---\nstory:\n  review:\n    override_skip: true\n---\n`);
   const overrideResult = runResolver(overrideConfig, {}, overrideStory);

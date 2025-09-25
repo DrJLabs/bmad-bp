@@ -28,11 +28,11 @@ This is a simple step-by-step guide to help you efficiently manage your developm
 - **Command chain:**
   1. `bash tools/reviewer/preflight.sh`
   2. `bmad reviewer run --mode ${{ inputs.reviewer_strict && 'strict' || 'default' }} --model ${{ inputs.reviewer_model }}`
-  3. `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md --mode ${{ inputs.reviewer_mode || 'default' }}`
+  3. `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --mode ${{ inputs.reviewer_strict && 'strict' || 'default' }}`
 - **Skip conditions:** set `BMAD_REVIEWER_SKIP=1` (or `story.review.override_skip: true`) for doc-only/trivial (<5 LOC) diffs.
 - **Strict mode:** enable via `BMAD_REVIEWER_STRICT=1` or config toggle once the rollout checklist thresholds are green.
 - **Artifacts:** reviewer outputs live under `artifacts/reviewer/<timestamp>/` — attach `report.md`, `report.sarif`, `report.json`, and `metrics.json` to QA deliverables.
-- **Telemetry:** every run must call the sync command above so [`docs/bmad/issues/reviewer-rollout.md`](bmad/issues/reviewer-rollout.md) records runtime, findings, and false-positive rate.
+- **Telemetry:** every run must call the sync command above so [`docs/bmad/issues/reviewer-rollout.md`](docs/bmad/issues/reviewer-rollout.md) records runtime, findings, and false-positive rate.
 - **Rollback:** toggle `reviewer.enabled: false` in `.bmad-core/core-config.yaml` and comment the workflow block if the stage must be suspended; retain telemetry rows for audit history.
 
 ## Test Architect Integration Throughout Workflow

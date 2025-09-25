@@ -17,7 +17,7 @@
 3. Create or update `docs/bmad/issues/reviewer-rollout.md` to capture rollout status, owners, runtime/false-positive metrics, and telemetry links.
 4. Publish telemetry metrics to the rollout tracker automatically after each focused-epic workflow run.
 5. Invoke `tools/reviewer/preflight.sh` followed by `bmad reviewer run` within the workflow step, piping artifacts (`report.md`, `report.sarif`, `report.json`, `metrics.json`) for downstream QA tasks.
-6. Introduce reviewer config toggle in `bmad-core/core-config.yaml` enabling skip for trivial diffs (with per-story overrides) and document rollback procedure.
+6. Introduce reviewer config toggle in `.bmad-core/core-config.yaml` enabling skip for trivial diffs (with per-story overrides) and document rollback procedure.
 7. Ensure reviewer outputs referenced by QA tasks (risk/test docs) via artifact hints and update templates accordingly.
 8. Add optional dry-run matrix job (e.g., GitHub Actions) to surface reviewer summaries without gating merges.
 9. Validate workflow changes via dry-run before merge to guarantee backwards compatibility and no secret requirements.
@@ -28,9 +28,9 @@
 - [x] Modify `.bmad-core/workflows/focused-epic.yaml` to insert the reviewer stage immediately after `dev: implement_story`, chaining:
   - `bash tools/reviewer/preflight.sh`
   - `bmad reviewer run --mode ${{ inputs.reviewer_strict && 'strict' || 'default' }} --model ${{ inputs.reviewer_model }}`
-  - `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md`
+  - `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer`
     Document inputs `BMAD_REVIEWER_SKIP`, `BMAD_REVIEWER_STRICT`, `BMAD_REVIEWER_MODEL` in the workflow metadata and expose skip guidance in the notes. **Owner:** dev agent (AC 1,4,5)
-- [x] Add reviewer toggle configuration to `bmad-core/core-config.yaml` (`reviewer: { enabled: false, strict: false, skip_trivial_diff: true }`) and describe per-story overrides in the workflow notes. **Owner:** dev agent (AC 6,10)
+- [x] Add reviewer toggle configuration to `.bmad-core/core-config.yaml` (`reviewer: { enabled: false, strict: false, skip_trivial_diff: true }`) and describe per-story overrides in the workflow notes. **Owner:** dev agent (AC 6,10)
 - [x] Create `tools/reviewer/telemetry-sync.mjs` plus npm script `reviewer:telemetry-sync` that consumes `metrics.json` and appends a row to the "Telemetry Runs" table in `docs/bmad/issues/reviewer-rollout.md` (columns: repo, run_id, mode, runtime_s, high_findings, false_positive_rate, report_link). **Owner:** dev agent (AC 4)
 - [x] Update `docs/bmad/reviewer/README.md` with quick-start checklist, skip/strict guidance, telemetry troubleshooting, and rollback procedure referencing the new workflow stage and telemetry sync command. Include direct links to the rollout tracker and focused-epic workflow docs. **Owner:** analyst agent (AC 2,6,10)
 - [x] Extend `docs/enhanced-ide-development-workflow.md` (Focused Epic section) to call out the reviewer stage, skip criteria, and telemetry expectations for teams adopting the persona. **Owner:** analyst agent (AC 2)
@@ -47,9 +47,9 @@
 ## Dev Notes
 
 - **Workflow insertion:** Add a `reviewer` stage/job immediately after `dev: implement_story`, executing `bash tools/reviewer/preflight.sh`, `bmad reviewer run`, and the telemetry sync command. Capture artifacts under `artifacts/reviewer/` and surface skip/model inputs within the workflow parameters.
-- **Telemetry sync:** Implement `tools/reviewer/telemetry-sync.mjs` invoked via `npm run reviewer:telemetry-sync -- --metrics <path-or-dir> --tracker docs/bmad/issues/reviewer-rollout.md`. The script should append to the "Telemetry Runs" table, deriving repository, run ID, and mode from GitHub environment variables when available.
+- **Telemetry sync:** Implement `tools/reviewer/telemetry-sync.mjs` invoked via `npm run reviewer:telemetry-sync -- --metrics <path-or-dir>` (tracker path defaults to `.bmad-core/core-config.yaml` `reviewer.telemetryTracker`). The script should append to the "Telemetry Runs" table, deriving repository, run ID, and mode from GitHub environment variables when available.
 - **Skip strategy:** Maintain default skip for doc-only diffs or changes <5 LOC; expose overrides via workflow inputs and per-story config (`story.review.override_skip`).
-- **Configuration toggle:** Add `reviewer` block in `bmad-core/core-config.yaml` with defaults (`enabled`, `strict`, `skip_trivial_diff`) and document overrides plus rollback steps.
+- **Configuration toggle:** Add `reviewer` block in `.bmad-core/core-config.yaml` with defaults (`enabled`, `strict`, `skip_trivial_diff`) and document overrides plus rollback steps.
 - **Documentation updates:** Ensure `docs/bmad/reviewer/README.md`, `docs/enhanced-ide-development-workflow.md`, and `docs/user-guide.md` all cross-link the reviewer stage, skip options, telemetry expectations, and rollback procedure.
 - **Rollout tracker:** Extend `docs/bmad/issues/reviewer-rollout.md` with the "Telemetry Runs" table schema (repo, run_id, mode, runtime_s, high_findings, false_positive_rate, report_link) and strict-mode governance checklist referenced by the telemetry sync script.
 - **QA artifacts:** Update `.bmad-core/templates/qa-gate-tmpl.yaml`, the Story 3 risk profile, and test design documents to include reviewer artifact hints (`reviewer/report.md`, `reviewer/report.sarif`, `reviewer/report.json`, `reviewer/metrics.json`).
@@ -80,10 +80,17 @@ reviewer-dry-run:
       run: bmad reviewer run --mode ${{ matrix.mode }} --model ${{ inputs.reviewer_model }}
     - id: reviewer-artifacts
       run: |
-        latest=$(ls -d artifacts/reviewer/*/ | sort | tail -n1)
+        set -e -o pipefail
+        shopt -s nullglob
+        matches=(artifacts/reviewer/*/)
+        if [ ${#matches[@]} -eq 0 ]; then
+          echo "No reviewer artifacts found" >&2
+          exit 1
+        fi
+        latest=$(printf '%s\n' "${matches[@]}" | sort | tail -n1)
         echo "dir=${latest%/}" >> "$GITHUB_OUTPUT"
     - name: Sync telemetry
-      run: npm run reviewer:telemetry-sync -- --metrics "${{ steps.reviewer-artifacts.outputs.dir }}" --tracker docs/bmad/issues/reviewer-rollout.md --mode ${{ matrix.mode }}
+      run: npm run reviewer:telemetry-sync -- --metrics "${{ steps.reviewer-artifacts.outputs.dir }}" --mode ${{ matrix.mode }}
     - name: Upload reviewer artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -100,7 +107,7 @@ reviewer-dry-run:
 
 - ✅ `bash tools/reviewer/preflight.sh`
 - ✅ `npm run reviewer:scan`
-- ✅ `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md --mode default`
+- ✅ `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --mode default`
 - ✅ `npm run reviewer:validate -- --file artifacts/reviewer/20250924T231715Z/metrics.json`
 - ✅ `npm run lint`
 - ⚪️ Pending: dedicated skip-flag regression (requires BMAD workflow harness)

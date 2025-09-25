@@ -8,8 +8,8 @@ Reviewer: Quinn (Test Architect)
 ### Coverage Summary
 
 - Total Requirements: 10
-- Fully Covered: 5 (50%)
-- Partially Covered: 5 (50%)
+- Fully Covered: 6 (60%)
+- Partially Covered: 4 (40%)
 - Not Covered: 0 (0%)
 
 ### Requirement Mappings
@@ -68,7 +68,7 @@ Coverage: PARTIAL
 
 Coverage: PARTIAL
 
-- Command: `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md`
+- Command: `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer`
   - Given: Reviewer metrics generated from local dry-run
   - When: Telemetry sync command executes
   - Then: Row appended to Telemetry Runs table with runtime, findings, false-positive rate

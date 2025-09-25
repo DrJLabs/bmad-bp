@@ -31,7 +31,9 @@ function resolveConfig(options = {}) {
 
   const baseEnabled = parseBool(reviewerConfig.enabled);
   const baseStrict = parseBool(reviewerConfig.strict);
-  const skipTrivialDiff = parseBool(reviewerConfig.skipTrivialDiff);
+  const skipTrivialDiff = parseBool(
+    reviewerConfig.skipTrivialDiff ?? reviewerConfig.skip_trivial_diff,
+  );
 
   const envSkip = parseBool(process.env.BMAD_REVIEWER_SKIP);
   const envStrict = parseBool(process.env.BMAD_REVIEWER_STRICT);

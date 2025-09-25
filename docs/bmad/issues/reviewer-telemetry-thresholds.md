@@ -39,8 +39,8 @@ Capture decision-ready telemetry thresholds to determine when the reviewer perso
 
 ## References
 
-[^thoughtworks-fast]: James Shore, "Keep the Build Fast" (accessed 2025-09-24), https://www.jamesshore.com/v2/blog/2021/continuous-delivery/keep-the-build-fast/.
+[^thoughtworks-fast]: James Shore, "Keep the Build Fast" (accessed 2025-09-24), <https://www.jamesshore.com/v2/blog/2021/continuous-delivery/keep-the-build-fast/>.
 
-[^ten-minute-build]: James Shore, "Continuous Integration: The Ten-Minute Build" (accessed 2025-09-24), https://www.jamesshore.com/v2/blog/2006/continuous-integration-the-ten-minute-build/.
+[^ten-minute-build]: James Shore, "Continuous Integration: The Ten-Minute Build" (accessed 2025-09-24), <https://www.jamesshore.com/v2/blog/2006/continuous-integration-the-ten-minute-build/>.
 
-[^synopsys-fp]: Synopsys Software Integrity Group, "How to Mitigate False Positives in SAST" (accessed 2025-09-24), https://www.synopsys.com/blogs/software-security/static-analysis-false-positive-rate/.
+[^synopsys-fp]: Synopsys Software Integrity Group, "How to Mitigate False Positives in SAST" (accessed 2025-09-24), <https://www.synopsys.com/blogs/software-security/static-analysis-false-positive-rate/>.
