@@ -38,6 +38,7 @@ We are piloting the reviewer persona focused epic to ensure BMAD workflows surfa
 
 | run_id                | repo            | mode    | runtime_s | high_findings | false_positive_rate | report_link                                                           |
 | --------------------- | --------------- | ------- | --------- | ------------- | ------------------- | --------------------------------------------------------------------- |
+| 18016472517           | DrJLabs/bmad-bp | strict  | 14.73     | 0             | 0.00                | https://github.com/DrJLabs/bmad-bp/actions/runs/18016472517           |
 | 20250925T170806Z      | BMAD            | default | 23.02     | 0             | 0.00                | https://github.com/BMAD/actions/runs/20250925T170806Z                 |
 | 17999944558           | DrJLabs/bmad-bp | strict  | 15.69     | 0             | 0.00                | https://github.com/DrJLabs/bmad-bp/actions/runs/17999944558           |
 | local-20250925T040122 | DrJLabs/bmad-bp | default | 25.18     | 0             | 0.00                | https://github.com/DrJLabs/bmad-bp/actions/runs/local-20250925T040122 |
