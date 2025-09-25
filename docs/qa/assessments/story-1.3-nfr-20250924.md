@@ -6,9 +6,9 @@ Reviewer: Quinn (Test Architect)
 ## Summary
 
 - Security: PASS — Reviewer stage and telemetry sync introduce no new secret handling; commands operate on repository artifacts only.
-- Performance: PASS — Reviewer dry-run shows 23–25s runtime (well below 180s warning threshold) with cache footprint <5 MB.
+- Performance: PASS — Reviewer dry-run shows 23–25s runtime (well below the P95 ≤ 180s governance target documented in docs/bmad/issues/reviewer-telemetry-thresholds.md) with cache footprint <5 MB.
 - Reliability: PASS — Reviewer dry-run matrix (GitHub Actions run 17993801430) executed default and strict modes with metrics validation.
-- Maintainability: PASS — Strict-mode governance thresholds documented and linked in rollout checklist; telemetry script automation remains future work.
+- Maintainability: PASS — Strict-mode governance thresholds (P95 ≤ 180s, false-positive ≤10%) documented and linked in rollout checklist; telemetry script automation remains future work.
 
 ## Critical Issues
 
@@ -33,13 +33,13 @@ nfr_validation:
     notes: Reviewer commands operate locally; no new secrets or external calls introduced.
   performance:
     status: PASS
-    notes: Latest reviewer runs finish in ≤25s with <5 MB cache usage (targets <180s/<250 MB).
+    notes: Latest reviewer runs finish in ≤25s with <5 MB cache usage; governance target remains P95 ≤ 180s per docs/bmad/issues/reviewer-telemetry-thresholds.md.
   reliability:
     status: PASS
     notes: Reviewer dry-run matrix (run 17993801430) validated default/strict reviewer execution in GitHub Actions.
   maintainability:
     status: PASS
-    notes: Strict-mode thresholds documented with cited benchmarks; telemetry sync script untested.
+    notes: Strict-mode thresholds (P95 ≤ 180s, false-positive ≤10%) documented with cited benchmarks; telemetry sync script untested.
 ```
 
 Gate NFR block ready → paste into qa.qaLocation/gates/1.3-integrate-reviewer-into-focused-epic-workflow.yaml under nfr_validation

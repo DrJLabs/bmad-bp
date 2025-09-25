@@ -173,7 +173,7 @@ Coverage: FULL
 - Documentation: `docs/bmad/issues/reviewer-telemetry-thresholds.md`
   - Given: Reviewer runtime and false-positive targets defined with cited benchmarks
   - When: QA reviews strict-mode criteria
-  - Then: Governance thresholds exist with measurement windows supporting checklist validation
+  - Then: Governance thresholds (P50/P95 runtime targets with P95 ≤ 180s and false-positive ceiling ≤10%) exist with measurement windows supporting checklist validation
   - Coverage: full (manual validation)
 
 - Validation: `docs/bmad/issues/reviewer-rollout.md::Strict-Mode Governance Checklist`

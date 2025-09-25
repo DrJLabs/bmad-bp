@@ -24,10 +24,10 @@ nfr_validation:
     notes: "Reviewer commands operate locally; no new secrets or external calls introduced."
   performance:
     status: PASS
-    notes: "Latest reviewer runs finish in ≤25s with <5 MB cache usage (targets <180s/<250 MB)."
+    notes: "Latest reviewer runs finish in ≤25s with <5 MB cache usage; governance target remains P95 ≤ 180s per docs/bmad/issues/reviewer-telemetry-thresholds.md."
   reliability:
     status: PASS
     notes: "PR Validation workflow run 17993801430 executed reviewer default/strict jobs and validated metrics."
   maintainability:
     status: PASS
-    notes: "Strict-mode thresholds documented with cited benchmarks; telemetry sync script untested."
+    notes: "Strict-mode thresholds (P95 ≤ 180s, false-positive ≤ 10%) documented with cited benchmarks; telemetry sync script untested."
