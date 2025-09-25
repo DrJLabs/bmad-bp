@@ -141,21 +141,4 @@ A comprehensive infrastructure review report that includes:
 
 ## Offer Advanced Self-Refinement & Elicitation Options
 
-Present the user with the following list of 'Advanced Reflective, Elicitation & Brainstorming Actions'. Explain that these are optional steps to help ensure quality, explore alternatives, and deepen the understanding of the current section before finalizing it and moving on. The user can select an action by number, or choose to skip this and proceed to finalize the section.
-
-"To ensure the quality of the current section: **[Specific Section Name]** and to ensure its robustness, explore alternatives, and consider all angles, I can perform any of the following actions. Please choose a number (8 to finalize and proceed):
-
-**Advanced Reflective, Elicitation & Brainstorming Actions I Can Take:**
-
-1. **Root Cause Analysis & Pattern Recognition**
-2. **Industry Best Practice Comparison**
-3. **Future Scalability & Growth Impact Assessment**
-4. **Security Vulnerability & Threat Model Analysis**
-5. **Operational Efficiency & Automation Opportunities**
-6. **Cost Structure Analysis & Optimization Strategy**
-7. **Compliance & Governance Gap Assessment**
-8. **Finalize this Section and Proceed.**
-
-After I perform the selected action, we can discuss the outcome and decide on any further revisions for this section."
-
-REPEAT by Asking the user if they would like to perform another Reflective, Elicitation & Brainstorming Action UNTIL the user indicates it is time to proceed to the next section (or selects #8)
+When additional deep-dive support is requested, reference `advanced-actions-guide.md` for the shared menu of reflective activities (root-cause analysis, best-practice comparison, cost/capacity reviews, etc.). Confirm with the user which action number (or "finalize") they prefer, execute it, summarize the outcome, and offer another selection until they opt to proceed.

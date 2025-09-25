@@ -49,5 +49,7 @@ sample-project/*
 flattened-codebase.xml
 *.stats.md
 # BMAD local cache
-.bmad-core/
+.bmad-cache/
+.bmad-core/cache/
 .bmad-*/
+artifacts/

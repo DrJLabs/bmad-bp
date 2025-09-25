@@ -1,0 +1,36 @@
+schema: 1
+story: release-governance.story-1
+gate: PASS
+status_reason: GitHub-only release workflow validated; pending evidence tracked for
+  post-merge follow-up.
+reviewer: Quinn
+updated: "2025-09-25T17:25:00Z"
+top_issues:
+- id: REL-002
+  severity: medium
+  finding: Documentation reviewer approval outstanding (REL-T5 follow-up).
+  suggested_action: Complete PM/QA documentation review after mainline deployment.
+- id: REL-006
+  severity: medium
+  finding: Mainline release evidence (run ID, release URL) pending until workflow
+    executes on main.
+  suggested_action: Record Actions run ID and release URL after merge to close REL-T2
+    coverage.
+waiver:
+  active: false
+trace:
+  totals:
+    requirements: 7
+    full: 5
+    partial: 2
+    none: 0
+  planning_ref: docs/qa/assessments/release-governance.story-1-test-design-20250925.md
+  uncovered:
+  - ac: AC6
+    reason: Awaiting mainline workflow evidence (run ID, release URL)
+  - ac: AC4
+    reason: Awaiting formal doc reviewer sign-off (REL-T5)
+  notes: See docs/qa/assessments/release-governance.story-1-trace-20250925.md
+nfr:
+  status: PASS_WITH_FOLLOWUP
+  report: docs/qa/assessments/release-governance.story-1-nfr-20250925.md

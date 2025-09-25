@@ -565,16 +565,13 @@ sections:
   - id: epic-list
     title: Epic List
     instruction: |
-      Present a high-level list of all epics for user approval. Each epic should have a title and a short (1 sentence) goal statement. This allows the user to review the overall structure before diving into details.
+      Present a high-level list of all epics for user approval. Each epic should have a title and a short (1 sentence) goal statement to confirm overall game flow before diving into details.
 
-      CRITICAL: Epics MUST be logically sequential following agile best practices:
+      Follow the epic sequencing principles documented in `shared-epic-guidelines.md`, with additional emphasis on:
 
-      - Each epic should be focused on a single phase and it's design from the development-phases section and deliver a significant, end-to-end, fully deployable increment of testable functionality
-      - Epic 1 must establish Phase 1: Godot Foundation & Core Systems (Project setup with TDD, node architecture, InputMap) unless we are adding new functionality to an existing app, while also delivering an initial piece of functionality with 60+ FPS performance!
-      - Each subsequent epic builds upon previous epics' functionality delivering major blocks of functionality that provide tangible value to users or business when deployed
-      - Not every project needs multiple epics, an epic needs to deliver value. For example, an API, component, or Resource completed can deliver value even if a scene or node is not complete and planned for a separate epic.
-      - Err on the side of less epics, but let the user know your rationale and offer options for splitting them if it seems some are too large or focused on disparate things.
-      - Cross Cutting Concerns should flow through epics and stories and not be final stories. For example, adding a logging framework as a last story of an epic, or at the end of a project as a final epic or story would be terrible as we would not have logging from the beginning.
+      - Establishing the Godot foundation (project scaffolding, InputMap, profiling hooks) in Epic 1 unless you are extending a shipped title.
+      - Guaranteeing every epic maintains 60+ FPS targets and includes testing checkpoints for core mechanics.
+      - Coordinating scenes, resources, and cross-cutting systems (analytics, logging, save data) across epics instead of batching them at the end.
     elicit: true
     examples:
       - "Epic 1: Godot Foundation & Core Systems: TDD setup (GUT/GoDotTest), node architecture, InputMap configuration"

@@ -1,36 +1,35 @@
 # Release Automation
 
-Our `bmad-drj` package now publishes automatically whenever changes land on `main`.
+The release pipeline now mirrors BMAD’s GitHub-only semantic-release pattern. There is no npm publish step—everything relies on the repository `GITHUB_TOKEN`.
 
 ## How it works
 
-- **Workflow trigger** – `.github/workflows/release.yaml` runs on every push to `main` (and can be invoked manually). The job installs dependencies, executes the validation suite, and calls `semantic-release`.
-- **Version & changelog** – `semantic-release` uses Conventional Commit messages to decide whether to cut a release, updates `CHANGELOG.md`, bumps `package.json` / `package-lock.json`, syncs `tools/installer/package.json`, and tags the repo.
-- **Publish** – `@semantic-release/npm` publishes `bmad-drj` to npm using your automation token. Tarballs are saved as workflow artifacts.
-- **Release metadata** – The workflow runs `NPM_CONFIG_PROVENANCE=true npx semantic-release`, which tags the repo, updates `CHANGELOG.md`, and attaches the generated tarball to the GitHub Release.
+- **Workflow trigger** – `.github/workflows/release.yaml` runs on every push to `main` and supports manual dispatch. The job installs dependencies, runs `npm run validate`, `npm run format:check`, and `npm run lint`, then executes `semantic-release`.
+- **Version & changelog** – `semantic-release` inspects Conventional Commit history, bumps `package.json`, `package-lock.json`, and `tools/installer/package.json`, and appends to `CHANGELOG.md` with the GitHub-only plugin stack (`@semantic-release/release-notes-generator`, `@semantic-release/changelog`, `@semantic-release/github`).
+- **Release assets** – `@semantic-release/npm` prepares tarballs locally with `npmPublish` disabled. The GitHub plugin attaches those tarballs to the GitHub Release alongside the generated notes.
+- **Permissions** – The workflow sets `permissions: contents: write` and exports only `GITHUB_TOKEN` to `semantic-release`. Dropping permissions to `contents: read` should trigger the expected failure for the REL-T3 negative-path test.
+
+## Evidence capture checklist (Story 1 AC6)
+
+1. Run `npx semantic-release --dry-run --ci false` on the feature branch and attach the log to the story change log before merging.
+2. After merging, record the successful Actions run ID and GitHub Release URL in the story change log.
+3. Execute the restricted-permission validation (set job permissions to `contents: read`) and store the resulting failure log next to the dry-run output.
+4. Keep all artifacts under `docs/bmad/focused-epics/release-governance/` so future audits have a stable location.
 
 ## Required secrets
 
-| Secret      | Purpose                                                                                         |
-| ----------- | ----------------------------------------------------------------------------------------------- |
-| `NPM_TOKEN` | npm automation token with publish rights on `bmad-drj`. Store it as a repository or org secret. |
+No npm credentials are needed. The default repository `GITHUB_TOKEN` is sufficient for tagging, changelog commits, and publishing GitHub Releases.
 
-The token can be scoped to the package or org. Keep two-factor authentication enabled for the account that created it; automation tokens satisfy npm's requirement without prompting for OTP.
-
-> **Tip:** npm also supports [trusted publishing via GitHub's OIDC tokens](https://docs.npmjs.com/trusted-publishers/?utm_source=openai). When you are ready, connect this repository as a trusted publisher in npm. After that you can remove `NPM_TOKEN` and rely on OIDC with provenance enabled.
+> **Verification tip:** Inspect the "Run semantic-release (GitHub plugins only)" step in the Actions log—the only credential passed through the environment is `GITHUB_TOKEN`.
 
 ## Commit conventions
 
-`semantic-release` expects Conventional Commit prefixes (`feat:`, `fix:`, `chore:`, etc.) to determine version bumps. Make sure PR titles and merge commits follow the convention.
-
-Set up the included commit template once to make this painless:
+`semantic-release` still expects Conventional Commit prefixes (`feat:`, `fix:`, `chore:`, etc.) to determine version bumps. Configure the provided commit template if you want Git to pre-fill commit messages:
 
 ```bash
 git config commit.template .github/commit-template.txt
 ```
 
-Git will pre-fill new commit messages with the Conventional Commit skeleton. Disable it any time with `git config --unset commit.template`.
-
 ## Manual overrides
 
-The existing `Manual Release` workflow is still available for ad-hoc releases or emergency patches. Running it will publish immediately, independent of `semantic-release`.
+The "Manual Release" workflow remains available for ad-hoc releases or emergency patches. It reuses the GitHub-only configuration, so no npm tokens are required.

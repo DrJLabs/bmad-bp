@@ -1,27 +1,45 @@
 {
   "branches": ["main"],
+  "npmPublish": false,
   "plugins": [
     ["@semantic-release/commit-analyzer", { "preset": "conventionalcommits" }],
-    "@semantic-release/release-notes-generator",
+    ["@semantic-release/release-notes-generator", { "preset": "conventionalcommits" }],
     ["@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" }],
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": ".",
+        "tarballDir": "release-tarballs",
+        "npmPublish": false
+      }
+    ],
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "node tools/sync-installer-version.js && npm run build"
+        "prepareCmd": "node tools/sync-installer-version.js"
       }
     ],
-    ["@semantic-release/npm", { "pkgRoot": ".", "tarballDir": "release-tarballs" }],
     [
       "@semantic-release/git",
       {
-        "assets": ["CHANGELOG.md", "package.json", "tools/installer/package.json"],
+        "assets": [
+          "CHANGELOG.md",
+          "package.json",
+          "package-lock.json",
+          "tools/installer/package.json"
+        ],
         "message": "chore(release): ${nextRelease.version}"
       }
     ],
     [
       "@semantic-release/github",
       {
-        "assets": ["release-tarballs/*.tgz"]
+        "assets": [
+          {
+            "path": "release-tarballs/*.tgz",
+            "label": "BMAD CLI distribution (${nextRelease.version})"
+          }
+        ]
       }
     ]
   ]
