@@ -52,6 +52,8 @@ git config commit.template .github/commit-template.txt
 ### Release artifact policy (Story 1.2 AC2)
 
 - Tarball attachments created by `@semantic-release/npm` remain enabled. After each release run, verify the GitHub Release shows the tarball assets and note the download URLs in the change log.
+- Initial manual release (`run 17598712992`) captured baseline evidence; subsequent Release run on `main` should be used for ongoing verification.
+- 2025-09-25 Release workflow run `18019240174` (workflow_dispatch on `main`) completed in 44s end-to-end; treat ≤60 s runtime as the expected health target. The run skipped publishing (no commits) but validated the GitHub release `v1.0.0` continues to expose asset `bmad-drj-1.0.0.tgz`.
 - If attachments are intentionally disabled in future, document the rollback decision and consumer expectations here before merging the change.
 - Store any downloaded artifacts or screenshots that prove attachment status in `docs/bmad/focused-epics/release-governance/evidence/`.
 
