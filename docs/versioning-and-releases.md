@@ -14,6 +14,8 @@ Because the automation runs on every push to `main`, you get predictable, increm
 
 ## 🔐 Permissions & Evidence
 
+Refer to [Release Automation – Evidence capture checklist](release-automation.md#evidence-capture-checklist-story-1--1-2) for the step-by-step log download and retention guidance; record the verification timestamp in Story 1 change log each time you validate anchors.
+
 - The workflow sets `permissions: contents: write`. Dropping permissions to `contents: read` should cause the job to fail gracefully (REL-T3) and produce evidence that the repository token is required.
 - Capture the dry-run output (`npx semantic-release --dry-run --ci false`), the Actions run ID, the GitHub Release URL, and the restricted-permission failure log in the story change log for auditability.
 

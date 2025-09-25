@@ -55,13 +55,14 @@
 
 ## Change Log
 
-| Date       | Version   | Description                                                                                                                                                                                           | Author     |
-| ---------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 2025-09-25 | Draft     | Initial story draft with solo maintainer research context.                                                                                                                                            | PO         |
-| 2025-09-25 | Dev       | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs.                                                                                                | Dev        |
-| 2025-09-25 | PO        | Story reviewed and approved; status updated to Done.                                                                                                                                                  | PO         |
-| 2025-09-25 | Evidence  | Recorded Manual Release run 17598712992 and release v4.43.1 URL; refreshed dry-run (2025-09-25) and permissions logs under `docs/bmad/focused-epics/release-governance/evidence/`.                    | Release SM |
-| 2025-09-25 | Evidence+ | Release workflow run 18019240174 (workflow_dispatch on main) completed in 44s; runtime captured and log archived; release v1.0.0 includes asset `bmad-drj-1.0.0.tgz` confirming tarball availability. | Release SM |
+| Date       | Version    | Description                                                                                                                                                                                                                                                   | Author     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| 2025-09-25 | Draft      | Initial story draft with solo maintainer research context.                                                                                                                                                                                                    | PO         |
+| 2025-09-25 | Dev        | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs.                                                                                                                                                        | Dev        |
+| 2025-09-25 | PO         | Story reviewed and approved; status updated to Done.                                                                                                                                                                                                          | PO         |
+| 2025-09-25 | Evidence   | Recorded Manual Release run 17598712992 and release v4.43.1 URL; refreshed dry-run (2025-09-25) and permissions logs under `docs/bmad/focused-epics/release-governance/evidence/`.                                                                            | Release SM |
+| 2025-09-25 | Evidence+  | Release workflow run 18019240174 (workflow_dispatch on main) completed in 44s; runtime captured and log archived; release v1.0.0 includes asset `bmad-drj-1.0.0.tgz` confirming tarball availability.                                                         | Release SM |
+| 2025-09-25 | Evidence++ | Captured new dry-run log (semantic-release-dry-run-20250925T213955Z.log), verified doc cross-links, recorded 2025-09-25T21:45Z anchor check in change log; Release workflow run 18021773065 (workflow_dispatch on main) completed with skip (no new commits). | Release SM |
 
 ## Dev Agent Record
 

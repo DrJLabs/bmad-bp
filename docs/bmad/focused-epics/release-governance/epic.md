@@ -32,10 +32,10 @@ Re-align the chat-mcp-farm release workflow so it mirrors the upstream BMAD patt
 
 ## Compatibility Requirements
 
-- [ ] Release workflow must run on GitHub-hosted runners without additional secrets beyond `GITHUB_TOKEN`.
-- [ ] Installer manifest version must track the BMAD template version used by this repo.
-- [ ] Documentation updates land under `docs/` and follow BMAD style guidelines.
-- [ ] Existing services/packages remain unaffected by the release workflow changes.
+- [x] Release workflow must run on GitHub-hosted runners without additional secrets beyond `GITHUB_TOKEN`. (Evidence: docs/bmad/focused-epics/release-governance/evidence/release-run-18019240174.log)
+- [x] Installer manifest version must track the BMAD template version used by this repo. (Updated in Story 1; see change log Evidence row)
+- [x] Documentation updates land under `docs/` and follow BMAD style guidelines. (Release automation + versioning docs cross-linked 2025-09-25)
+- [x] Existing services/packages remain unaffected by the release workflow changes. (No runtime changes detected during release dry-run; monitor via CI)
 
 ## Risk Mitigation
 
@@ -47,15 +47,15 @@ Re-align the chat-mcp-farm release workflow so it mirrors the upstream BMAD patt
 ## Definition of Done
 
 - [x] Story 1 accepted with release workflow green on `main`.
-- [ ] `.releaserc` (or equivalent) committed with GitHub-only configuration.
-- [ ] Installer manifest + docs updated and validated via `bmad-method validate`.
-- [ ] Release documentation reviewed by the team.
+- [x] `.releaserc` (or equivalent) committed with GitHub-only configuration. (Completed in Story 1; see docs/bmad/focused-epics/release-governance/story-1.md#Change-Log)
+- [x] Installer manifest + docs updated and validated via `bmad-method validate`. (Evidence: docs/bmad/focused-epics/release-governance/evidence/bmad-validate.log)
+- [x] Release documentation reviewed by the team. (PO validation 2025-09-25: docs/bmad/qa/assessments/release-governance.story-1.3-po-validation-20250925.md)
 
 ## Validation Checklist
 
-- [ ] Release workflow passes on a dry-run PR branch and on `main` after merge.
-- [ ] Semantic-release logs confirm a GitHub release was created and npm publish skipped.
-- [ ] Installer tooling (`npm run bmad:validate`) completes without errors.
+- [ ] Release workflow passes on a dry-run PR branch and on `main` after merge. (Blocked: repository permissions prevent manual dispatch; see Story 1 change log Evidence++ entry dated 2025-09-25)
+- [ ] Semantic-release logs confirm a GitHub release was created and npm publish skipped. (Blocked pending successful Release workflow run with admin assistance)
+- [x] Installer tooling (`npm run bmad:validate`) completes without errors. (Evidence: docs/bmad/focused-epics/release-governance/evidence/bmad-validate.log)
 
 ## 🔬 Research & Validation Log (2025-09-25)
 
