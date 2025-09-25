@@ -4,6 +4,8 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
 
 jobs:
   validate:
@@ -35,8 +37,11 @@ jobs:
       - name: Run tests (if available)
         run: npm test --if-present
 
+      - name: Reviewer docs lint
+        run: npm run reviewer:lint-docs
+
       - name: Install Semgrep CLI
-        run: pip install "semgrep>=1.86.0,<2.0.0"
+        run: python -m pip install "semgrep>=1.86.0,<2.0.0"
 
       - name: Reviewer preflight
         run: npm run reviewer:preflight
@@ -56,6 +61,9 @@ jobs:
       - name: Reviewer prune fixtures
         run: npm run reviewer:prune:test
 
+      - name: Reviewer config toggle test
+        run: npm run reviewer:config-test
+
       - name: Comment on PR if checks fail
         if: failure()
         uses: actions/github-script@v7
@@ -66,11 +74,146 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `❌ **PR Validation Failed**
-              
+
               This PR has validation errors that must be fixed before merging:
               - Run \`npm run validate\` to check agent/team configs
               - Run \`npm run format:check\` to check formatting (fix with \`npm run format\`)
               - Run \`npm run lint\` to check linting issues (fix with \`npm run lint:fix\`)
-              
+
               Please fix these issues and push the changes.`
             })
+
+  reviewer-dry-run:
+    name: Reviewer dry-run
+    needs: validate
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    if: github.event.repository.fork != true || vars.ENABLE_CI_IN_FORK == 'true'
+    permissions:
+      contents: read
+      actions: write
+    strategy:
+      matrix:
+        mode: [default, strict]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Semgrep CLI
+        run: pip install "semgrep>=1.86.0,<2.0.0"
+
+      - name: Execute reviewer stage (${{ matrix.mode }})
+        env:
+          REVIEWER_MODE: ${{ matrix.mode }}
+        run: |
+          set -euo pipefail
+          bash tools/reviewer/preflight.sh
+          MODE="${REVIEWER_MODE}"
+          if [ "$MODE" = "strict" ]; then
+            export BMAD_REVIEWER_STRICT=1
+          else
+            unset BMAD_REVIEWER_STRICT
+          fi
+          export BMAD_REVIEWER_MODE="$MODE"
+          npm run reviewer:scan
+
+      - name: Capture reviewer artifacts
+        id: reviewer-artifacts
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          matches=(artifacts/reviewer/*/)
+          if [ ${#matches[@]} -eq 0 ]; then
+            echo "No reviewer artifacts found" >&2
+            exit 1
+          fi
+          latest=$(printf '%s\n' "${matches[@]}" | sort | tail -n1)
+          dir="${latest%/}"
+          echo "dir=$dir" >> "$GITHUB_OUTPUT"
+
+      - name: Validate reviewer metrics
+        run: npm run reviewer:validate -- --file "${{ steps.reviewer-artifacts.outputs.dir }}/metrics.json"
+
+      - name: Sync telemetry (dry-run)
+        if: github.event_name != 'push' || github.ref != 'refs/heads/main'
+        run: npm run reviewer:telemetry-sync -- --metrics "${{ steps.reviewer-artifacts.outputs.dir }}" --mode "${{ matrix.mode }}" --dry-run
+
+      - name: Sync telemetry (main)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npm run reviewer:telemetry-sync -- --metrics "${{ steps.reviewer-artifacts.outputs.dir }}" --mode "${{ matrix.mode }}" --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
+
+      - name: Upload reviewer artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reviewer-${{ matrix.mode }}
+          path: ${{ steps.reviewer-artifacts.outputs.dir }}
+
+  telemetry-update:
+    name: Record telemetry (main)
+    needs:
+      - reviewer-dry-run
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download default artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: reviewer-default
+          path: reviewer-default
+
+      - name: Download strict artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: reviewer-strict
+          path: reviewer-strict
+        continue-on-error: true
+
+      - name: Append telemetry rows
+        run: |
+          set -euo pipefail
+          if [ -d reviewer-default ]; then
+            npm run reviewer:telemetry-sync -- --metrics reviewer-default/artifacts/reviewer --mode default --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
+          fi
+          if [ -d reviewer-strict ]; then
+            npm run reviewer:telemetry-sync -- --metrics reviewer-strict/artifacts/reviewer --mode strict --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
+          fi
+
+      - name: Commit telemetry update
+        run: |
+          set -euo pipefail
+          if git diff --quiet docs/bmad/issues/reviewer-rollout.md; then
+            echo "No telemetry changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add docs/bmad/issues/reviewer-rollout.md
+          git commit -m "chore: record reviewer telemetry ${{ github.run_id }}"
+          git push

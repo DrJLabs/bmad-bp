@@ -11,6 +11,14 @@ Designer: Quinn (Test Architect)
 - E2E tests: 1 (14%)
 - Priority distribution: P0: 3, P1: 3, P2: 1
 
+## Reviewer Artifact Hints
+
+- Markdown summary: `artifacts/reviewer/<timestamp>/report.md`
+- SARIF export: `artifacts/reviewer/<timestamp>/report.sarif`
+- JSON package: `artifacts/reviewer/<timestamp>/report.json`
+- Telemetry metrics: `artifacts/reviewer/<timestamp>/metrics.json`
+- Sync evidence: `docs/bmad/issues/reviewer-rollout.md` → “Telemetry Runs” table
+
 ## Test Scenarios by Acceptance Criteria
 
 ### AC1: Workflow update

@@ -12,10 +12,11 @@ function resetFixture() {
 
 function touchDir(dir, date) {
   fs.utimesSync(dir, date, date);
-  for (const entry of fs.readdirSync(dir)) {
-    const target = path.join(dir, entry);
-    const stat = fs.statSync(target);
-    if (stat.isFile()) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const target = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      touchDir(target, date);
+    } else {
       fs.utimesSync(target, date, date);
     }
   }
@@ -23,11 +24,13 @@ function touchDir(dir, date) {
 
 function createFixture() {
   // Old run (age pruning)
-  const oldRun = path.join(fixtureRoot, 'sha-old', '20240101T000000Z');
+  const oldSha = path.join(fixtureRoot, 'sha-old');
+  const oldRun = path.join(oldSha, '20240101T000000Z');
   fs.mkdirSync(oldRun, { recursive: true });
   fs.writeFileSync(path.join(oldRun, 'metrics.json'), '{}');
   const eightDaysAgo = new Date(Date.now() - 8 * 24 * 60 * 60 * 1000);
   touchDir(oldRun, eightDaysAgo);
+  touchDir(oldSha, eightDaysAgo);
 
   // Oversized run (size pruning)
   const heavyRun = path.join(fixtureRoot, 'sha-heavy', '20250924T000000Z');

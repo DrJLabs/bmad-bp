@@ -24,6 +24,13 @@ Reviewer: Quinn (Test Architect)
 - **TECH-003:** Provide compatibility symlink or update QA docs referencing new artifact path, ensure workflow config toggle defaults to off, and add integration regression tests.
 - **BUS-003:** Add quick-start checklist, recorded demo link, office hours in tracker, and telemetry dashboard showing runtime & false positive trends.
 
+### Reviewer Artifact Hints
+
+- `artifacts/reviewer/<timestamp>/report.md` — primary reviewer summary
+- `artifacts/reviewer/<timestamp>/report.sarif` — SARIF for code scanning ingestion
+- `artifacts/reviewer/<timestamp>/report.json` — machine-readable findings package
+- `artifacts/reviewer/<timestamp>/metrics.json` — telemetry payload consumed by sync script
+
 ## Recommendations
 
 - Must Fix: OPS-003 before merging workflow change.
