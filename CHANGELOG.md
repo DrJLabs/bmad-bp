@@ -1,3 +1,9 @@
+## <small>1.0.1 (2025-09-25)</small>
+
+- Merge pull request #11 from DrJLabs/chore/research-story-1-validation ([c31dcf7](https://github.com/DrJLabs/bmad-bp/commit/c31dcf7)), closes [#11](https://github.com/DrJLabs/bmad-bp/issues/11)
+- chore: finalize release evidence documentation ([f5c3104](https://github.com/DrJLabs/bmad-bp/commit/f5c3104))
+- fix: capture release evidence across docs ([d91e8d0](https://github.com/DrJLabs/bmad-bp/commit/d91e8d0))
+
 ## 1.0.0 (2025-09-25)
 
 - chore: add code formatting config and pre-commit hooks (#450) ([ed53943](https://github.com/DrJLabs/bmad-bp/commit/ed53943)), closes [#450](https://github.com/DrJLabs/bmad-bp/issues/450)
