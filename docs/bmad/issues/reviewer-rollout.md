@@ -36,12 +36,13 @@ We are piloting the reviewer persona focused epic to ensure BMAD workflows surfa
 
 ## Telemetry Runs (auto-updated)
 
-| run_id           | repo            | mode    | runtime_s | high_findings | false_positive_rate | report_link                                      |
-| ---------------- | --------------- | ------- | --------- | ------------- | ------------------- | ------------------------------------------------ |
-| 17993801430      | DrJLabs/bmad-bp | strict  | 14.42     | 0             | 0.00                | artifacts/reviewer/20250925T010832Z/metrics.json |
-| 17993801430      | DrJLabs/bmad-bp | default | 14.14     | 0             | 0.00                | artifacts/reviewer/20250925T010849Z/metrics.json |
-| 20250924T231715Z | BMAD            | default | 23.01     | 0             | 0.00                | artifacts/reviewer/20250924T231715Z/metrics.json |
-| 20250924T231519Z | BMAD            | default | 25.20     | 0             | 0.00                | artifacts/reviewer/20250924T231519Z/metrics.json |
+| run_id                | repo            | mode    | runtime_s | high_findings | false_positive_rate | report_link                                                           |
+| --------------------- | --------------- | ------- | --------- | ------------- | ------------------- | --------------------------------------------------------------------- |
+| local-20250925T040122 | DrJLabs/bmad-bp | default | 25.18     | 0             | 0.00                | https://github.com/DrJLabs/bmad-bp/actions/runs/local-20250925T040122 |
+| 17993801430           | DrJLabs/bmad-bp | strict  | 14.42     | 0             | 0.00                | artifacts/reviewer/20250925T010832Z/metrics.json                      |
+| 17993801430           | DrJLabs/bmad-bp | default | 14.14     | 0             | 0.00                | artifacts/reviewer/20250925T010849Z/metrics.json                      |
+| 20250924T231715Z      | BMAD            | default | 23.01     | 0             | 0.00                | artifacts/reviewer/20250924T231715Z/metrics.json                      |
+| 20250924T231519Z      | BMAD            | default | 25.20     | 0             | 0.00                | artifacts/reviewer/20250924T231519Z/metrics.json                      |
 
 > Populated by `npm run reviewer:telemetry-sync -- --metrics <path-or-dir>` (tracker path defaults to `.bmad-core/core-config.yaml` `reviewer.telemetryTracker`).
 
