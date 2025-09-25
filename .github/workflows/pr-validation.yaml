@@ -198,12 +198,40 @@ jobs:
       - name: Append telemetry rows
         run: |
           set -euo pipefail
-          if [ -d reviewer-default ]; then
-            npm run reviewer:telemetry-sync -- --metrics reviewer-default/artifacts/reviewer --mode default --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
-          fi
-          if [ -d reviewer-strict ]; then
-            npm run reviewer:telemetry-sync -- --metrics reviewer-strict/artifacts/reviewer --mode strict --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
-          fi
+
+          sync_metrics() {
+            local label="$1"
+            local dir="$2"
+            local mode="$3"
+
+            if [ ! -d "$dir" ]; then
+              echo "Skipping $label telemetry: directory $dir not found"
+              return
+            fi
+
+            local metrics_dir="$dir"
+            if [ ! -f "$metrics_dir/metrics.json" ]; then
+              if [ -d "$dir/artifacts/reviewer" ]; then
+                metrics_dir="$dir/artifacts/reviewer"
+              else
+                local metrics_file
+                metrics_file=$(find "$dir" -name metrics.json -print -quit || true)
+                if [ -n "$metrics_file" ]; then
+                  metrics_dir=$(dirname "$metrics_file")
+                fi
+              fi
+            fi
+
+            if [ ! -f "$metrics_dir/metrics.json" ]; then
+              echo "Skipping $label telemetry: metrics.json not found under $dir"
+              return
+            fi
+
+            npm run reviewer:telemetry-sync -- --metrics "$metrics_dir" --mode "$mode" --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
+          }
+
+          sync_metrics "default" "reviewer-default" "default"
+          sync_metrics "strict" "reviewer-strict" "strict"
 
       - name: Commit telemetry update
         run: |
