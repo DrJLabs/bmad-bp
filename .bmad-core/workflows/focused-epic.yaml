@@ -56,6 +56,22 @@ sequence:
     requires: story.md
     notes: "Dev Agent implements the fully validated and approved story."
 
+  - agent: reviewer
+    action: run_reviewer_stage
+    requires: implementation_files
+    creates: reviewer_artifacts
+    notes: |
+      Execute the reviewer pipeline immediately after development unless `BMAD_REVIEWER_SKIP` is true.
+      Steps:
+        1. `bash tools/reviewer/preflight.sh`
+        2. `bmad reviewer run --mode ${{ inputs.reviewer_strict && 'strict' || 'default' }} --model ${{ inputs.reviewer_model }}`
+        3. `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md`
+      Workflow inputs:
+        - `BMAD_REVIEWER_SKIP` (default false) → bypass reviewer stage for doc-only/trivial diffs
+        - `BMAD_REVIEWER_STRICT` (default false) → enforce strict-mode gating when ready
+        - `BMAD_REVIEWER_MODEL` → override default reviewer model name
+      Artifacts exported under `artifacts/reviewer/<timestamp>/` (report.md, report.json, report.sarif, metrics.json) feed downstream QA tasks.
+
   - repeat_development_cycle:
       action: continue_for_all_stories_in_epic
       notes: "Repeat the story creation and validation cycle (SM -> Researcher -> QA -> PO -> Dev) until all stories defined in the epic are complete."

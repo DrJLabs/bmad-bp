@@ -274,6 +274,12 @@ If you don't want to bother switching between different agents aside from the de
 
 This agent should NOT be used within the IDE, it is a heavyweight, special-purpose agent that utilizes a lot of context and can morph into any other agent. This exists solely to facilitate the teams within the web bundles. If you use a web bundle you will be greeted by the BMad Orchestrator.
 
+### Reviewer Persona Quick Start
+
+- Follow the checklist in [`docs/bmad/reviewer/README.md`](bmad/reviewer/README.md#quick-start-checklist) whenever the reviewer stage runs.
+- Sync telemetry via `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --tracker docs/bmad/issues/reviewer-rollout.md` so the rollout tracker stays current.
+- Review the strict-mode governance checklist inside [`docs/bmad/issues/reviewer-rollout.md`](bmad/issues/reviewer-rollout.md#strict-mode-governance-checklist) before enabling gating.
+
 ### How Agents Work
 
 #### Dependencies System

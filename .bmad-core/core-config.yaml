@@ -18,6 +18,13 @@ devLoadAlwaysFiles:
   - docs/architecture/coding-standards.md
   - docs/architecture/tech-stack.md
   - docs/architecture/source-tree.md
+reviewer:
+  enabled: false
+  strict: false
+  skipTrivialDiff: true
+  perStoryOverrideKey: story.review.override_skip
+  telemetryTracker: docs/bmad/issues/reviewer-rollout.md
+  metricsFile: artifacts/reviewer/metrics.json
 devDebugLog: .ai/debug-log.md
 devStoryLocation: docs/stories
 slashPrefix: BMad

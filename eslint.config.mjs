@@ -116,4 +116,12 @@ export default [
       'unicorn/filename-case': 'off',
     },
   },
+
+  // QA gate artifacts retain .yml extension for compatibility with downstream tooling
+  {
+    files: ['docs/qa/gates/**/*.yml'],
+    rules: {
+      'yml/file-extension': 'off',
+    },
+  },
 ];
