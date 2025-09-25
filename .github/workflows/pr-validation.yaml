@@ -209,12 +209,25 @@ jobs:
               return
             fi
 
-            if [ ! -f "$dir/metrics.json" ]; then
-              echo "Skipping $label telemetry: $dir/metrics.json missing"
+            local metrics_dir="$dir"
+            if [ ! -f "$metrics_dir/metrics.json" ]; then
+              if [ -d "$dir/artifacts/reviewer" ]; then
+                metrics_dir="$dir/artifacts/reviewer"
+              else
+                local metrics_file
+                metrics_file=$(find "$dir" -name metrics.json -print -quit || true)
+                if [ -n "$metrics_file" ]; then
+                  metrics_dir=$(dirname "$metrics_file")
+                fi
+              fi
+            fi
+
+            if [ ! -f "$metrics_dir/metrics.json" ]; then
+              echo "Skipping $label telemetry: metrics.json not found under $dir"
               return
             fi
 
-            npm run reviewer:telemetry-sync -- --metrics "$dir" --mode "$mode" --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
+            npm run reviewer:telemetry-sync -- --metrics "$metrics_dir" --mode "$mode" --repo "${{ github.repository }}" --run-id "${{ github.run_id }}"
           }
 
           sync_metrics "default" "reviewer-default" "default"
