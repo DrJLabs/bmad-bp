@@ -233,6 +233,10 @@ jobs:
           sync_metrics "default" "reviewer-default" "default"
           sync_metrics "strict" "reviewer-strict" "strict"
 
+      - name: Cleanup downloaded reviewer artifacts
+        if: always()
+        run: rm -rf reviewer-default reviewer-strict
+
       - name: Commit telemetry update
         run: |
           set -euo pipefail
