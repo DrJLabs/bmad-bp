@@ -41,6 +41,9 @@ jobs:
           npm run format:check
           npm run lint
 
+      - name: Build CLI distribution
+        run: npm run build
+
       - name: Run semantic-release (GitHub plugins only)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

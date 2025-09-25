@@ -14,6 +14,12 @@
       }
     ],
     [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "node tools/sync-installer-version.js"
+      }
+    ],
+    [
       "@semantic-release/git",
       {
         "assets": [
