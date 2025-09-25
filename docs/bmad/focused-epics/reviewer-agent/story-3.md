@@ -2,7 +2,7 @@
 
 ## Status
 
-- Review
+- Done
 
 ## Story
 
@@ -114,10 +114,11 @@ reviewer-dry-run:
 
 ## Change Log
 
-| Date       | Version | Description                                                                                                  | Author |
-| ---------- | ------- | ------------------------------------------------------------------------------------------------------------ | ------ |
-| 2025-09-24 | v0.1.0  | Story drafted aligning reviewer integration with focused-epic workflow, telemetry, and documentation updates | Codex  |
-| 2025-09-24 | v0.2.0  | Implemented reviewer stage, telemetry sync script, documentation updates, and generated pilot telemetry run  | James  |
+| Date       | Version | Description                                                                                                     | Author |
+| ---------- | ------- | --------------------------------------------------------------------------------------------------------------- | ------ |
+| 2025-09-24 | v0.1.0  | Story drafted aligning reviewer integration with focused-epic workflow, telemetry, and documentation updates    | Codex  |
+| 2025-09-24 | v0.2.0  | Implemented reviewer stage, telemetry sync script, documentation updates, and generated pilot telemetry run     | James  |
+| 2025-09-25 | v1.0.0  | Merged reviewer workflow integration to main, centralized telemetry config defaults, and retired feature branch | James  |
 
 ## Dev Agent Record
 

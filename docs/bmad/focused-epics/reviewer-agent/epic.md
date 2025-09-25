@@ -30,7 +30,7 @@ Deliver a workflow-ready reviewer persona that augments BMAD with free static ch
 
 1. **Story 1 (Done — 2025-09-24):** Establish free scanner baseline (Semgrep, Jscpd, churn script) with cached outputs.
 2. **Story 2 (Done — 2025-09-24):** Implement reviewer persona pipeline that merges scan data and generates scored findings.
-3. **Story 3 (In Progress):** Integrate reviewer step into focused-epic workflow, docs, and tracking.
+3. **Story 3 (Done — 2025-09-25):** Integrate reviewer step into focused-epic workflow, docs, and tracking.
 
 ## Compatibility Requirements
 
@@ -47,11 +47,11 @@ Deliver a workflow-ready reviewer persona that augments BMAD with free static ch
 
 ## Definition of Done
 
-- [ ] All three stories implemented and validated.
-- [ ] Reviewer artifacts stored in `artifacts/reviewer/` with timestamped folders.
-- [ ] Focused-epic workflow updated and documented.
-- [ ] Adoption tracker created with owners and follow-up checklist.
-- [ ] QA sign-off covering risk profile + test design for each story.
+- [x] All three stories implemented and validated.
+- [x] Reviewer artifacts stored in `artifacts/reviewer/` with timestamped folders.
+- [x] Focused-epic workflow updated and documented.
+- [x] Adoption tracker created with owners and follow-up checklist.
+- [x] QA sign-off covering risk profile + test design for each story.
 
 ## Validation Checklist
 
