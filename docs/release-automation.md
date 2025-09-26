@@ -13,7 +13,7 @@ The release pipeline now mirrors BMAD’s GitHub-only semantic-release pattern. 
 
 For the contributor-facing overview, see [Versioning and Releases](versioning-and-releases.md#automated-release-workflow); that section links back to this checklist so maintainers can navigate between the matrix and evidence steps.
 
-1. Run `npx semantic-release --dry-run --ci false` on the feature branch and save the stdout log to `docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log`.
+1. Run `npx semantic-release --dry-run --no-ci` on the feature branch and save the stdout log to `docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log`.
 2. After the merge, locate the most recent `Release` workflow run in GitHub Actions and record the run ID, Release URL, and artifact paths in the Story 1 change log so auditors can trace the execution.
 3. Execute the restricted-permission regression (duplicate the workflow with `permissions: contents: read`) and store the failure log beside the dry-run output (`semantic-release-permissions-failure.log`).
 4. Download all evidence within the repository’s Action retention window (Settings → Actions → Artifact & log retention, default 90 days) and archive under `docs/bmad/focused-epics/release-governance/evidence/` to prevent expiration.
@@ -46,7 +46,7 @@ git config commit.template .github/commit-template.txt
 
 **Pre-merge validation checklist**
 
-- [ ] Run `npx semantic-release --dry-run --ci false` and ensure the reported next version matches expectations from the table above.
+- [ ] Run `npx semantic-release --dry-run --no-ci` and ensure the reported next version matches expectations from the table above.
 - [ ] Confirm the change log preview lists the intended commits and contains no unexpected breaking changes.
 - [ ] Update Story 1 change log with the dry-run evidence path before merging.
 - [ ] If the dry-run reports “This release was skipped”, confirm the commit type should indeed be skipped (e.g., doc-only change) and note that outcome in the change log.

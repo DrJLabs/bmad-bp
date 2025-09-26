@@ -19,7 +19,7 @@ Verify that Story 1.3 closes all outstanding release-governance evidence gaps, c
 | ID        | Priority | Level       | Scenario                                                                                                           | Method                                                                                               | Mitigates   |
 | --------- | -------- | ----------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- | ----------- |
 | REL1.3-T1 | P0       | Process     | Confirm Story 1 change log includes latest Release run ID, release URL, dry-run, skip, and permissions failure log | Inspect change log entry after evidence capture; cross-check log filenames exist in evidence folder  | REL-1.3-001 |
-| REL1.3-T2 | P0       | Integration | Execute `npx semantic-release --dry-run --ci false` and verify output stored at timestamped evidence path          | Run command locally, diff new log vs prior, ensure stored under evidence/ with new date stamp        | REL-1.3-001 |
+| REL1.3-T2 | P0       | Integration | Execute `npx semantic-release --dry-run --no-ci` and verify output stored at timestamped evidence path             | Run command locally, diff new log vs prior, ensure stored under evidence/ with new date stamp        | REL-1.3-001 |
 | REL1.3-T3 | P0       | Integration | Trigger GitHub `Release` workflow (manual dispatch) and capture run ID, outcome, tarball status                    | Dispatch workflow, download log archive, verify attachments match documented policy                  | REL-1.3-003 |
 | REL1.3-T4 | P0       | Process     | Validate cross-links between release docs (matrix ↔ checklist ↔ retention guidance) work bidirectionally         | Click anchors in `release-automation.md` and `versioning-and-releases.md`; ensure anchor IDs resolve | REL-1.3-002 |
 | REL1.3-T5 | P1       | Process     | Update epic checklist with evidence links and note any waivers                                                     | Review epic file; confirm each checkbox references stored evidence or recorded waiver                | REL-1.3-004 |
@@ -34,7 +34,7 @@ Verify that Story 1.3 closes all outstanding release-governance evidence gaps, c
 
 ## Tooling
 
-- `npx semantic-release --dry-run --ci false`
+- `npx semantic-release --dry-run --no-ci`
 - `gh workflow run release.yaml --ref main` (or GitHub UI manual dispatch)
 - `gh run view <run-id> --log` to pull log details if needed
 - Markdown link checker (optional) to validate cross-links

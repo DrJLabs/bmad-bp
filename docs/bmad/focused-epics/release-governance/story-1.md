@@ -40,7 +40,7 @@
 
 ## Testing
 
-- **REL-T1 (Dry run / AC1, AC2, AC6):** Run `npx semantic-release --dry-run --ci false` on the feature branch and attach the console output to the change log.
+- **REL-T1 (Dry run / AC1, AC2, AC6):** Run `npx semantic-release --dry-run --no-ci` on the feature branch and attach the console output to the change log.
 - **REL-T2 (Mainline release / AC1–AC4, AC6):** After merging, confirm the `release` workflow succeeds on `main`, produces a GitHub release with notes, and record the run ID plus release URL in the change log.
 - **REL-T3 (Negative permissions / AC5):** Execute a branch run with `permissions: contents: read` to validate the expected failure; store the log excerpt alongside REL-T1 artifacts.
 - **REL-T4 (Manifest validation / AC3):** Run `npm run bmad:validate` after manifest updates and retain the command output.
@@ -55,14 +55,14 @@
 
 ## Change Log
 
-| Date       | Version    | Description                                                                                                                                                                                                                                                   | Author     |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 2025-09-25 | Draft      | Initial story draft with solo maintainer research context.                                                                                                                                                                                                    | PO         |
-| 2025-09-25 | Dev        | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs.                                                                                                                                                        | Dev        |
-| 2025-09-25 | PO         | Story reviewed and approved; status updated to Done.                                                                                                                                                                                                          | PO         |
-| 2025-09-25 | Evidence   | Recorded Manual Release run 17598712992 and release v4.43.1 URL; refreshed dry-run (2025-09-25) and permissions logs under `docs/bmad/focused-epics/release-governance/evidence/`.                                                                            | Release SM |
-| 2025-09-25 | Evidence+  | Release workflow run 18019240174 (workflow_dispatch on main) completed in 44s; runtime captured and log archived; release v1.0.0 includes asset `bmad-drj-1.0.0.tgz` confirming tarball availability.                                                         | Release SM |
-| 2025-09-25 | Evidence++ | Captured new dry-run log (semantic-release-dry-run-20250925T213955Z.log), verified doc cross-links, recorded 2025-09-25T21:45Z anchor check in change log; Release workflow run 18021773065 (workflow_dispatch on main) completed with skip (no new commits). | Release SM |
+| Date       | Version          | Description                                                                                                                                                                                                                                                   | Author     |
+| ---------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| 2025-09-25 | Draft            | Initial story draft with solo maintainer research context.                                                                                                                                                                                                    | PO         |
+| 2025-09-25 | Dev              | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs.                                                                                                                                                        | Dev        |
+| 2025-09-25 | PO               | Story reviewed and approved; status updated to Done.                                                                                                                                                                                                          | PO         |
+| 2025-09-25 | Evidence         | Recorded Manual Release run 17598712992 and release v4.43.1 URL; refreshed dry-run (2025-09-25) and permissions logs under `docs/bmad/focused-epics/release-governance/evidence/`.                                                                            | Release SM |
+| 2025-09-25 | Evidence+        | Release workflow run 18019240174 (workflow_dispatch on main) completed in 44s; runtime captured and log archived; release v1.0.0 includes asset `bmad-drj-1.0.0.tgz` confirming tarball availability.                                                         | Release SM |
+| 2025-09-25 | Evidence++&nbsp; | Captured new dry-run log (semantic-release-dry-run-20250925T213955Z.log), verified doc cross-links, recorded 2025-09-25T21:45Z anchor check in change log; Release workflow run 18021773065 (workflow_dispatch on main) completed with skip (no new commits). | Release SM |
 
 ## Dev Agent Record
 
@@ -140,7 +140,7 @@ Gate: PASS → docs/qa/gates/release-governance.story-1-release-workflow-alignme
 
 - **FOSS-first Recommendation:** Use the upstream `semantic-release` CLI with the default GitHub plugins and `semantic-release --dry-run` for validation.
 - **Paid Option (if required):** None — no paid services needed if GitHub-hosted runners meet retention requirements.
-- **Automation / Scripts:** `npx semantic-release --dry-run --ci false` (for PR validation) and a one-off workflow job that toggles `permissions: contents: read` to exercise the negative path.
+- **Automation / Scripts:** `npx semantic-release --dry-run --no-ci` (for PR validation) and a one-off workflow job that toggles `permissions: contents: read` to exercise the negative path.
 
 ### Risk & Compliance Notes
 

@@ -17,7 +17,7 @@
   - Test File: docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log
     - Test Case: semantic-release dry run (REL-T1)
     - Given: Repository on feature branch with updated workflow
-    - When: Running `npx semantic-release --dry-run --ci false`
+    - When: Running `npx semantic-release --dry-run --no-ci`
     - Then: Workflow executes with GitHub-only plugins and no npm publish step
   - Test File: GitHub Actions `release` workflow (REL-T2, to be captured on `main`)
     - Test Case: release workflow run on `main`

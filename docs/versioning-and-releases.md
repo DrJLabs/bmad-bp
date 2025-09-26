@@ -17,7 +17,7 @@ Because the automation runs on every push to `main`, you get predictable, increm
 Refer to [Release Automation – Evidence capture checklist](release-automation.md#evidence-capture-checklist-story-1--12) for the step-by-step log download and retention guidance; record the verification timestamp in Story 1 change log each time you validate anchors.
 
 - The workflow sets `permissions: contents: write`. Dropping permissions to `contents: read` should cause the job to fail gracefully (REL-T3) and produce evidence that the repository token is required.
-- Capture the dry-run output (`npx semantic-release --dry-run --ci false`), the Actions run ID, the GitHub Release URL, and the restricted-permission failure log in the story change log for auditability.
+- Capture the dry-run output (`npx semantic-release --dry-run --no-ci`), the Actions run ID, the GitHub Release URL, and the restricted-permission failure log in the story change log for auditability.
 
 ## 📝 Manual Release Options
 
@@ -28,6 +28,8 @@ Need a controlled release outside the normal merge flow?
 
 ## 🛠️ Developer Tips
 
+<a id="developer-tips"></a>
+
 - Keep commit messages in Conventional Commit format (`feat:`, `fix:`, `chore:`, etc.) so semantic-release can determine the correct version bump. Use the [version mapping quick reference](release-automation.md#version-mapping-quick-reference-story-12-ac1) to double-check the expected bump before merging.
 - Use the provided commit template for helpful scaffolding:
   ```bash
@@ -35,7 +37,7 @@ Need a controlled release outside the normal merge flow?
   ```
 - Preview pending release notes locally with:
   ```bash
-  npx semantic-release --dry-run --ci false
+  npx semantic-release --dry-run --no-ci
   ```
   The dry-run shows the next version, generated notes, and which commits will appear in the release.
 
