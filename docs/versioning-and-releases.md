@@ -14,7 +14,7 @@ Because the automation runs on every push to `main`, you get predictable, increm
 
 ## 🔐 Permissions & Evidence
 
-Refer to [Release Automation – Evidence capture checklist](release-automation.md#evidence-capture-checklist-story-1--12) for the step-by-step log download and retention guidance; record the verification timestamp in Story 1 change log each time you validate anchors.
+Refer to [Release Automation – Evidence capture checklist](release-automation.md#evidence-capture-checklist-story-1-1-4) for the step-by-step log download and retention guidance; record the verification timestamp in Story 1 change log each time you validate anchors.
 
 - The workflow sets `permissions: contents: write`. Dropping permissions to `contents: read` should cause the job to fail gracefully (REL-T3) and produce evidence that the repository token is required.
 - Capture the dry-run output (`npx semantic-release --dry-run --no-ci`), the Actions run ID, the GitHub Release URL, and the restricted-permission failure log in the story change log for auditability.
@@ -40,6 +40,8 @@ Need a controlled release outside the normal merge flow?
   npx semantic-release --dry-run --no-ci
   ```
   The dry-run shows the next version, generated notes, and which commits will appear in the release.
+- Alternatively, run `npm run release:evidence -- --skip-dry-run` while validating a feature branch to archive the dry-run output alongside gh auth status snapshots.
+- After merging, run `npm run release:evidence -- --run-id <run-id>` (omit the flag to use the latest `release.yaml` run) so Story 1’s Evidence++ table always references fresh logs, artifacts, and dry-run output.
 
 ## 🔍 Troubleshooting
 

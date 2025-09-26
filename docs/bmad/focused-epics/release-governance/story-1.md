@@ -55,14 +55,15 @@
 
 ## Change Log
 
-| Date       | Version          | Description                                                                                                                                                                                                                                                   | Author     |
-| ---------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 2025-09-25 | Draft            | Initial story draft with solo maintainer research context.                                                                                                                                                                                                    | PO         |
-| 2025-09-25 | Dev              | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs.                                                                                                                                                        | Dev        |
-| 2025-09-25 | PO               | Story reviewed and approved; status updated to Done.                                                                                                                                                                                                          | PO         |
-| 2025-09-25 | Evidence         | Recorded Manual Release run 17598712992 and release v4.43.1 URL; refreshed dry-run (2025-09-25) and permissions logs under `docs/bmad/focused-epics/release-governance/evidence/`.                                                                            | Release SM |
-| 2025-09-25 | Evidence+        | Release workflow run 18019240174 (workflow_dispatch on main) completed in 44s; runtime captured and log archived; release v1.0.0 includes asset `bmad-drj-1.0.0.tgz` confirming tarball availability.                                                         | Release SM |
-| 2025-09-25 | Evidence++&nbsp; | Captured new dry-run log (semantic-release-dry-run-20250925T213955Z.log), verified doc cross-links, recorded 2025-09-25T21:45Z anchor check in change log; Release workflow run 18021773065 (workflow_dispatch on main) completed with skip (no new commits). | Release SM |
+| Date       | Version    | Description                                                                                                                                                                                                                                                   | Author     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| 2025-09-25 | Draft      | Initial story draft with solo maintainer research context.                                                                                                                                                                                                    | PO         |
+| 2025-09-25 | Dev        | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs.                                                                                                                                                        | Dev        |
+| 2025-09-25 | PO         | Story reviewed and approved; status updated to Done.                                                                                                                                                                                                          | PO         |
+| 2025-09-25 | Evidence   | Recorded Manual Release run 17598712992 and release v4.43.1 URL; refreshed dry-run (2025-09-25) and permissions logs under `docs/bmad/focused-epics/release-governance/evidence/`.                                                                            | Release SM |
+| 2025-09-25 | Evidence+  | Release workflow run 18019240174 (workflow_dispatch on main) completed in 44s; runtime captured and log archived; release v1.0.0 includes asset `bmad-drj-1.0.0.tgz` confirming tarball availability.                                                         | Release SM |
+| 2025-09-25 | Evidence++ | Captured new dry-run log (semantic-release-dry-run-20250925T213955Z.log), verified doc cross-links, recorded 2025-09-25T21:45Z anchor check in change log; Release workflow run 18021773065 (workflow_dispatch on main) completed with skip (no new commits). | Release SM |
+| 2025-09-26 | Automation | Added `npm run release:evidence` CLI, timestamped evidence directory structure, and documentation updates covering retention checks and gh auth status capture.                                                                                               | Dev        |
 
 ## Dev Agent Record
 
@@ -151,7 +152,7 @@ Gate: PASS → docs/qa/gates/release-governance.story-1-release-workflow-alignme
 
 ### Follow-Up Tasks
 
-- [ ] Attach dry-run CLI output (docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log) and, after the next successful `main` run, record the GitHub Actions run ID + release URL in the change log — Owner: Maintainer (self), Due: 2025-09-29 (Impact: High, Effort: M)
+- [ ] Run `npm run release:evidence -- --run-id <main-run>` after the next successful `main` release to capture fresh dry-run output, workflow logs, artifacts, and update the Story 1 change log with the run ID + release URL — Owner: Maintainer (self), Due: 2025-09-29 (Impact: High, Effort: M)
 - [x] Record negative-permission failure evidence in docs/bmad/focused-epics/release-governance/evidence/semantic-release-permissions-failure.log — Owner: Maintainer (self), Done 2025-09-25 (Impact: Medium, Effort: S)
 - [x] Extend `docs/release-automation.md` with built-in `GITHUB_TOKEN` guidance and semantic-release comment suppression notes — Owner: Maintainer (self), Done 2025-09-25 (Impact: Medium, Effort: S)
 

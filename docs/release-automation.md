@@ -9,16 +9,17 @@ The release pipeline now mirrors BMAD’s GitHub-only semantic-release pattern. 
 - **Release assets** – `@semantic-release/npm` prepares tarballs locally with `npmPublish` disabled. The GitHub plugin attaches those tarballs to the GitHub Release alongside the generated notes.
 - **Permissions** – The workflow sets `permissions: contents: write` and exports only `GITHUB_TOKEN` to `semantic-release`. Dropping permissions to `contents: read` should trigger the expected failure for the REL-T3 negative-path test.
 
-## Evidence capture checklist (Story 1 & 1.2)
+## Evidence capture checklist (Story 1-1.4)
 
 For the contributor-facing overview, see [Versioning and Releases](versioning-and-releases.md#automated-release-workflow); that section links back to this checklist so maintainers can navigate between the matrix and evidence steps.
 
-1. Run `npx semantic-release --dry-run --no-ci` on the feature branch and save the stdout log to `docs/bmad/focused-epics/release-governance/evidence/semantic-release-dry-run.log`.
-2. After the merge, locate the most recent `Release` workflow run in GitHub Actions and record the run ID, Release URL, and artifact paths in the Story 1 change log so auditors can trace the execution.
-3. Execute the restricted-permission regression (duplicate the workflow with `permissions: contents: read`) and store the failure log beside the dry-run output (`semantic-release-permissions-failure.log`).
-4. Download all evidence within the repository’s Action retention window (Settings → Actions → Artifact & log retention, default 90 days) and archive under `docs/bmad/focused-epics/release-governance/evidence/` to prevent expiration.
-5. Capture a skip-behavior log (e.g., empty `chore:` commit) and save it as `docs/bmad/focused-epics/release-governance/evidence/semantic-release-skip.log` to document REL-T6.
-6. Confirm the evidence directory now contains: dry-run log, permissions failure log, skip log, Release run transcript, and any supporting screenshots referenced by Story 1 or Story 1.2.
+1. Before merging, run `npx semantic-release --dry-run --no-ci` (or `npm run release:evidence`) on your feature branch to verify the next version, inspect release notes, and stage a fresh dry-run log for review.
+2. After merging, capture the production evidence in one step with `npm run release:evidence -- --run-id <run-id>` (omit `--run-id` to grab the latest `release.yaml` run on `main`). The command verifies `gh auth status`, stores a success note, downloads run metadata/logs/artifacts into a timestamped subdirectory of `docs/bmad/focused-epics/release-governance/evidence/`, and records a new dry-run log for auditability.
+3. Execute the restricted-permission regression (duplicate the workflow with `permissions: contents: read`) and store the failure log beside the automation output (`semantic-release-permissions-failure.log`).
+4. Review the Story 1 change log Evidence++ table and append the new run ID, release URL, tarball status, and evidence directory that the automation command produced.
+5. Ensure the Actions retention policy (default 90 days) still covers your stored artifacts; prune or archive evidence older than the policy window so the repository stays lean while preserving audit history.
+6. Capture a skip-behavior log (e.g., empty `chore:` commit) and save it as `docs/bmad/focused-epics/release-governance/evidence/semantic-release-skip.log` to document REL-T6.
+7. Confirm the evidence directory now contains: gh auth status verification note, release workflow metadata/logs, downloaded artifacts (if any), the latest dry-run log, permissions failure log, skip log, and any supporting screenshots referenced by Story 1 and follow-up stories.
 
 ## Required secrets
 

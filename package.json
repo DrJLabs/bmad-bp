@@ -47,6 +47,8 @@
     "pre-release": "npm run validate && npm run format:check && npm run lint",
     "prepare": "husky",
     "preview:release": "node tools/preview-release-notes.js",
+    "release:evidence": "node tools/release/capture-release-evidence.js",
+    "release:evidence:test": "node --test tools/release/__tests__/capture-release-evidence.test.js",
     "release:major": "gh workflow run \"Manual Release\" -f version_bump=major",
     "release:minor": "gh workflow run \"Manual Release\" -f version_bump=minor",
     "release:patch": "gh workflow run \"Manual Release\" -f version_bump=patch",
