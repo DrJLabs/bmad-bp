@@ -73,5 +73,5 @@ Re-align the chat-mcp-farm release workflow so it mirrors the upstream BMAD patt
 
 ### Follow-Up Tasks
 
-- [ ] Confirm version bump rules align with conventional commits.
-- [ ] Decide whether to attach build artifacts (e.g., tarballs) to releases.
+- [x] Confirm version bump rules align with conventional commits. (Docs: `docs/release-automation.md#version-mapping-quick-reference`, validated via `semantic-release --dry-run` during run 18024216996.)
+- [x] Decide whether to attach build artifacts (e.g., tarballs) to releases. (Decision: continue shipping only the default `@semantic-release/npm` tarball for `bmad-drj`; no additional build artifacts required as of release `v1.1.0`. Re-evaluate when new distributables exist.)
