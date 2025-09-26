@@ -9,9 +9,9 @@ Validate that the new evidence automation script reliably captures GitHub Action
 
 ## Test Strategy Overview
 
-- Total scenarios: 6
-- Level mix: Process 2, Integration 3, Negative 1
-- Priority mix: P0 = 4, P1 = 2, P2 = 0
+- Total scenarios: 7
+- Level mix: Process 2, Integration 3, Negative 1, Security 1
+- Priority mix: P0 = 4, P1 = 3, P2 = 0
 - Dependencies: Story 1 change log template, `docs/release-automation.md`, `docs/versioning-and-releases.md`, `.github/workflows/release.yaml`, GitHub CLI (`gh`) configured, semantic-release configuration, evidence directory.
 
 ## Test Scenarios
@@ -35,9 +35,9 @@ Validate that the new evidence automation script reliably captures GitHub Action
 ## Tooling
 
 - `npm run release:evidence -- --run-id <run-id>`
-- `gh run view <run-id> --log --json status,workflowName`citeturn1search0
-- `gh run download <run-id> --name release --dir <target>`citeturn1search4
-- `npx semantic-release --dry-run --ci false`citeturn1search6
+- `gh run view <run-id> --log --json status,workflowName`[^cli-run-view]
+- `gh run download <run-id> --name release --dir <target>`[^cli-run-download]
+- `npx semantic-release --dry-run --ci false`[^semrel-dryrun]
 - Secret scan (e.g., `npm run lint:secrets` if available) or manual grep for `GITHUB_TOKEN`
 
 ## Exit Criteria
@@ -51,8 +51,8 @@ Validate that the new evidence automation script reliably captures GitHub Action
 - Consider wrapping automation command in CI job for reproducibility in future stories.
 - Retention policy should include pruning schedule (e.g., delete evidence older than 180 days) to maintain repo health.
 - Capture CLI version (`gh --version`) in evidence to ensure future reproducibility.
-- Use `gh auth status` output as part of evidence to demonstrate authenticated context before artifact pulls.citeturn0search9
-- Confirm retention settings respect GitHub’s 90-day default or customized values to avoid evidence loss.citeturn0search1
+- Record that `gh auth status` completed successfully (without storing raw output) to demonstrate an authenticated context before artifact pulls.[^gh-auth-status]
+- Confirm retention settings respect GitHub’s 90-day default or customized values to avoid evidence loss.[^actions-retention]
 
 ## Follow-Up Tasks
 
@@ -78,16 +78,16 @@ Test design stored at `docs/qa/assessments/release-governance.story-1.4-test-des
 
 ### Tooling Guidance
 
-- **FOSS-first Recommendation:** GitHub CLI (`gh auth status`, `gh run view`, `gh run download`) for authenticated evidence capture.citeturn0search9turn0search4
+- **FOSS-first Recommendation:** GitHub CLI (`gh auth status`, `gh run view`, `gh run download`) for authenticated evidence capture.[^gh-auth-status][^cli-run-view][^cli-run-download]
 - **Paid Option (if required):** None required; GitHub CLI and semantic-release cover needs.
-- **Automation / Scripts:** Extend `release:evidence` wrapper to call `gh auth status --active` and persist output, then fetch artifacts using `gh run download --dir docs/bmad/focused-epics/release-governance/evidence/<timestamp>`.citeturn0search9turn0search4
+- **Automation / Scripts:** Extend `release:evidence` wrapper to call `gh auth status --active`, log a success marker, then fetch artifacts using `gh run download --dir docs/bmad/focused-epics/release-governance/evidence/<timestamp>`.[^gh-auth-status][^cli-run-download]
 
 ### Risk & Compliance Notes
 
-- **Residual Risks:** Missing CLI authentication or expired retention windows will stall evidence capture—treat automation failures as release blockers.citeturn0search9turn0search1
+- **Residual Risks:** Missing CLI authentication or expired retention windows will stall evidence capture—treat automation failures as release blockers.[^gh-auth-status][^actions-retention]
 - **Compliance / Control Mapping:** Supports SOC2 CC8.1 change-management evidence retention expectations.
 - **Monitoring / Observability:** Record `gh --version` and automation exit codes in Story 1 change log; alert on failures.
-- **Rollback / Contingency:** Document manual artifact download via Actions UI as fallback (link to GitHub Docs).citeturn0search5
+- **Rollback / Contingency:** Document manual artifact download via the Actions UI as a fallback option.[^actions-download]
 
 ### Follow-Up Tasks
 
@@ -96,6 +96,20 @@ Test design stored at `docs/qa/assessments/release-governance.story-1.4-test-des
 
 ### Source Appendix
 
-1. gh auth status — GitHub CLI Manual (Accessed 2025-09-26).citeturn0search9
-2. Configuring Actions artifact retention — GitHub Docs (Accessed 2025-09-26).citeturn0search1
-3. semantic-release configuration (dry-run) — semantic-release Docs (Accessed 2025-09-26).citeturn0search6
+1. gh auth status — GitHub CLI Manual (Accessed 2025-09-26). https://cli.github.com/manual/gh_auth_status
+2. Configuring Actions artifact retention — GitHub Docs (Accessed 2025-09-26). https://docs.github.com/en/organizations/managing-organization-settings/configuring-the-retention-period-for-github-actions-artifacts-and-logs-in-your-organization
+3. semantic-release configuration (dry-run) — semantic-release Docs (Accessed 2025-09-26). https://semantic-release.gitbook.io/semantic-release/usage/configuration#dryrun
+
+## References
+
+[^gh-auth-status]: GitHub CLI Manual – `gh auth status`. https://cli.github.com/manual/gh_auth_status
+
+[^cli-run-view]: GitHub CLI Manual – `gh run view`. https://cli.github.com/manual/gh_run_view
+
+[^cli-run-download]: GitHub CLI Manual – `gh run download`. https://cli.github.com/manual/gh_run_download
+
+[^semrel-dryrun]: semantic-release Documentation – Dry run configuration. https://semantic-release.gitbook.io/semantic-release/usage/configuration#dryrun
+
+[^actions-retention]: GitHub Docs – Configuring Actions artifact retention. https://docs.github.com/en/organizations/managing-organization-settings/configuring-the-retention-period-for-github-actions-artifacts-and-logs-in-your-organization
+
+[^actions-download]: GitHub Docs – Downloading workflow artifacts. https://docs.github.com/en/actions/managing-workflow-runs/downloading-workflow-artifacts

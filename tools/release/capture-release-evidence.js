@@ -12,6 +12,8 @@ const { spawnSync } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
 
+const { Command } = require('commander');
+
 const EVIDENCE_ROOT = path.resolve(
   __dirname,
   '..',
@@ -65,8 +67,7 @@ function ensureGhAvailable() {
 }
 
 function checkGhAuth() {
-  const { stdout } = runCommand('gh', ['auth', 'status']);
-  return stdout;
+  runCommand('gh', ['auth', 'status']);
 }
 
 function buildEvidenceDirectory(runId, timestamp) {
@@ -182,72 +183,43 @@ function runSemanticReleaseDryRun(destPath) {
   writeFile(destPath, result.stdout);
 }
 
-function parseArgs(argv) {
-  const args = argv.slice(2);
-  const parsed = {
-    runId: undefined,
-    workflow: WORKFLOW_DEFAULT,
-    branch: undefined,
-    skipDryRun: false,
-  };
-
-  for (let i = 0; i < args.length; i += 1) {
-    const arg = args[i];
-    switch (arg) {
-      case '--run-id':
-      case '-r': {
-        parsed.runId = args[i + 1];
-        i += 1;
-        break;
-      }
-      case '--workflow':
-      case '-w': {
-        parsed.workflow = args[i + 1];
-        i += 1;
-        break;
-      }
-      case '--branch':
-      case '-b': {
-        parsed.branch = args[i + 1];
-        i += 1;
-        break;
-      }
-      case '--skip-dry-run': {
-        parsed.skipDryRun = true;
-        break;
-      }
-      case '--help':
-      case '-h': {
-        printHelp();
-        process.exit(0);
-        break;
-      }
-      default: {
-        console.warn(`Unknown argument: ${arg}`);
-        break;
-      }
-    }
-  }
-  return parsed;
+function createProgram() {
+  return new Command()
+    .name('release:evidence')
+    .description(
+      'Capture GitHub Actions evidence and semantic-release dry-run output for Story 1.4.',
+    )
+    .option('-r, --run-id <id>', 'Explicit GitHub Actions run ID to capture.')
+    .option('-w, --workflow <name>', 'Workflow file or name to search.', WORKFLOW_DEFAULT)
+    .option('-b, --branch <name>', 'Filter runs by branch when resolving latest run.')
+    .option('--skip-dry-run', 'Skip executing semantic-release dry run.')
+    .showHelpAfterError();
 }
 
-function printHelp() {
-  console.log(`Usage: npm run release:evidence -- [options]
+function parseArgs(argv) {
+  const program = createProgram();
+  program.exitOverride((err) => {
+    // Commander throws on help or parsing errors; allow help to exit gracefully.
+    if (err.code === 'commander.helpDisplayed') {
+      process.exit(0);
+    }
+    throw err;
+  });
 
-Options:
-  -r, --run-id <id>     Explicit GitHub Actions run ID to capture.
-  -w, --workflow <name> Workflow file or name to search (default: ${WORKFLOW_DEFAULT}).
-  -b, --branch <name>   Filter runs by branch when resolving latest run.
-      --skip-dry-run    Skip executing semantic-release dry run (useful for CI dry runs).
-  -h, --help            Show this message.
-`);
+  const parsed = program.parse(argv, { from: 'node' }).opts();
+  return {
+    runId: parsed.runId,
+    workflow: parsed.workflow || WORKFLOW_DEFAULT,
+    branch: parsed.branch,
+    skipDryRun: Boolean(parsed.skipDryRun),
+  };
 }
 
 function captureEvidence() {
   const args = parseArgs(process.argv);
 
   ensureGhAvailable();
-  const authStatus = checkGhAuth();
+  checkGhAuth();
 
   const resolvedRunId = resolveRunId(args.workflow, args.branch, args.runId);
   const timestamp = formatTimestamp();
@@ -255,7 +227,7 @@ function captureEvidence() {
 
   fs.mkdirSync(paths.baseDir, { recursive: true });
 
-  writeFile(paths.authStatus, authStatus.trim());
+  writeFile(paths.authStatus, `GitHub CLI authentication verified at ${timestamp}`);
 
   captureRunMetadata(resolvedRunId, paths.metadata);
 
