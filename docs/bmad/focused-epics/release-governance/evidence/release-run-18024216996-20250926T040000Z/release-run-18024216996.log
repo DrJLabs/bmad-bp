@@ -1,0 +1,970 @@
+Semantic Release (GitHub-only)	UNKNOWN STEP	﻿2025-09-26T00:24:59.6674922Z Current runner version: '2.328.0'
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6717887Z ##[group]Runner Image Provisioner
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6719986Z Hosted Compute Agent
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6721165Z Version: 20250912.392
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6722472Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6724000Z Build Date: 2025-09-12T15:23:14Z
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6725089Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6726129Z ##[group]Operating System
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6727589Z Ubuntu
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6729139Z 24.04.3
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6730111Z LTS
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6731143Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6732014Z ##[group]Runner Image
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6732994Z Image: ubuntu-24.04
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6733800Z Version: 20250922.53.1
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6735706Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250922.53/images/ubuntu/Ubuntu2404-Readme.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6739283Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250922.53
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6741081Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6742840Z ##[group]GITHUB_TOKEN Permissions
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6747044Z Contents: write
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6748166Z Metadata: read
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6749031Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6753993Z Secret source: Actions
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.6755831Z Prepare workflow directory
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.7341826Z Prepare all required actions
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:24:59.7394292Z Getting action download info
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.0297042Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.1881680Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4059829Z Complete job name: Semantic Release (GitHub-only)
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4775425Z ##[group]Run actions/checkout@v4
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4776285Z with:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4776661Z   fetch-depth: 0
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4777083Z   repository: DrJLabs/bmad-bp
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4777738Z   token: ***
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4778312Z   ssh-strict: true
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4778699Z   ssh-user: git
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4779103Z   persist-credentials: true
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4779544Z   clean: true
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4779946Z   sparse-checkout-cone-mode: true
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4780431Z   fetch-tags: false
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4780829Z   show-progress: true
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4781330Z   lfs: false
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4781699Z   submodules: false
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4782107Z   set-safe-directory: true
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.4782821Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.5890811Z Syncing repository: DrJLabs/bmad-bp
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.5892559Z ##[group]Getting Git version info
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.5893324Z Working directory is '/home/runner/work/bmad-bp/bmad-bp'
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.5894331Z [command]/usr/bin/git version
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.5991826Z git version 2.51.0
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6021096Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6046668Z Temporarily overriding HOME='/home/runner/work/_temp/c12710d0-7222-4cd3-9e28-1a41e1d1014c' before making global git config changes
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6049530Z Adding repository directory to the temporary git global config as a safe directory
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6053969Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bmad-bp/bmad-bp
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6095376Z Deleting the contents of '/home/runner/work/bmad-bp/bmad-bp'
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6100739Z ##[group]Initializing the repository
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6105706Z [command]/usr/bin/git init /home/runner/work/bmad-bp/bmad-bp
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6281647Z hint: Using 'master' as the name for the initial branch. This default branch name
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6284878Z hint: is subject to change. To configure the initial branch name to use in all
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6286305Z hint: of your new repositories, which will suppress this warning, call:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6287100Z hint:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6287590Z hint: 	git config --global init.defaultBranch <name>
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6288597Z hint:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6289178Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6290363Z hint: 'development'. The just-created branch can be renamed via this command:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6291074Z hint:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6291467Z hint: 	git branch -m <name>
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6291909Z hint:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6292501Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6293862Z Initialized empty Git repository in /home/runner/work/bmad-bp/bmad-bp/.git/
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6303088Z [command]/usr/bin/git remote add origin https://github.com/DrJLabs/bmad-bp
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6350362Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6351533Z ##[group]Disabling automatic garbage collection
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6355788Z [command]/usr/bin/git config --local gc.auto 0
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6387785Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6389163Z ##[group]Setting up auth
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6396327Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6430074Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6817487Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.6853754Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.7117163Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.7155588Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.7156810Z ##[group]Fetching the repository
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:00.7175597Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.7828874Z From https://github.com/DrJLabs/bmad-bp
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.7841543Z  * [new branch]      fork       -> origin/fork
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.7842606Z  * [new branch]      main       -> origin/main
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.7843525Z  * [new tag]         v1.0.0     -> v1.0.0
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.7844897Z  * [new tag]         v1.0.1     -> v1.0.1
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.7943593Z [command]/usr/bin/git branch --list --remote origin/main
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.7972722Z   origin/main
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.7984261Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.8010170Z cfb3edab47cff0ffdd0d75f7971dd0c128d959ef
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.8018170Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.8019626Z ##[group]Determining the checkout info
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.8021182Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.8025243Z [command]/usr/bin/git sparse-checkout disable
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.8075119Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.8106288Z ##[group]Checking out the ref
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.8110703Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9017846Z Switched to a new branch 'main'
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9019994Z branch 'main' set up to track 'origin/main'.
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9050024Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9091691Z [command]/usr/bin/git log -1 --format=%H
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9115377Z cfb3edab47cff0ffdd0d75f7971dd0c128d959ef
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9401498Z ##[group]Run actions/setup-node@v4
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9402529Z with:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9403197Z   node-version: 20
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9403936Z   cache: npm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9404726Z   cache-dependency-path: package-lock.json
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9405797Z   always-auth: false
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9406579Z   check-latest: false
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9407638Z   token: ***
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:01.9408670Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:02.1508885Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:02.1516611Z ##[group]Environment details
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:05.8553273Z node: v20.19.5
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:05.8554028Z npm: 10.8.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:05.8554425Z yarn: 1.22.22
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:05.8556213Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:05.8578429Z [command]/opt/hostedtoolcache/node/20.19.5/x64/bin/npm config get cache
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:06.2221350Z /home/runner/.npm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:06.3897856Z Cache hit for: node-cache-Linux-x64-npm-385dd334e5680a4ef12e1048f3a4169203d32b610a0cba6b24a29506438cab4f
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:07.0665430Z Received 29622933 of 29622933 (100.0%), 52.0 MBs/sec
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:07.0666265Z Cache Size: ~28 MB (29622933 B)
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:07.0693865Z [command]/usr/bin/tar -xf /home/runner/work/_temp/2d1cf8cf-d8b2-4ea2-a43a-1f0ab88f16b5/cache.tzst -P -C /home/runner/work/bmad-bp/bmad-bp --use-compress-program unzstd
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:07.2505364Z Cache restored successfully
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:07.2576289Z Cache restored from key: node-cache-Linux-x64-npm-385dd334e5680a4ef12e1048f3a4169203d32b610a0cba6b24a29506438cab4f
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:07.2739944Z ##[group]Run npm ci
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:07.2740282Z [36;1mnpm ci[0m
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:07.2904991Z shell: /usr/bin/bash -e {0}
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:07.2905304Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:14.9049504Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:15.1244001Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1191849Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1192529Z > bmad-drj@1.0.1 prepare
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1193097Z > husky
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1193270Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1831636Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1832919Z added 840 packages, and audited 1049 packages in 10s
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1833639Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1838688Z 239 packages are looking for funding
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1841280Z   run `npm fund` for details
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1850915Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.1851634Z found 0 vulnerabilities
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.2208682Z ##[group]Run npm run validate
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.2209037Z [36;1mnpm run validate[0m
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.2209263Z [36;1mnpm run format:check[0m
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.2209478Z [36;1mnpm run lint[0m
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.2246415Z shell: /usr/bin/bash -e {0}
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.2246663Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.3759580Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.3760652Z > bmad-drj@1.0.1 validate
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.3761214Z > node tools/cli.js validate
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.3761486Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6442264Z Validating agents...
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6530067Z   ✓ analyst
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6577338Z   ✓ architect
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6628582Z   ✓ bmad-master
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6646183Z   ✓ bmad-orchestrator
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6746466Z   ✓ dev
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6754650Z   ✓ pm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6761397Z   ✓ po
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6785480Z   ✓ qa
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6832083Z   ✓ researcher
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6839318Z   ✓ sm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6849007Z   ✓ ux-expert
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6849658Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6850024Z Validating teams...
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.6938299Z   ✓ team-all
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.7001995Z   ✓ team-fullstack
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.7053334Z   ✓ team-ide-minimal
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.7095313Z   ✓ team-no-ui
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.7096753Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.7097614Z All configurations are valid!
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.8396114Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.8396658Z > bmad-drj@1.0.1 format:check
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.8397320Z > prettier --check "**/*.{js,cjs,mjs,json,md,yaml}"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.8397679Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:17.9333829Z Checking formatting...
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:26.9183050Z All matched files use Prettier code style!
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:27.0574221Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:27.0575050Z > bmad-drj@1.0.1 lint
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:27.0575589Z > eslint . --ext .js,.cjs,.mjs,.yaml --max-warnings=0
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:27.0575897Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:30.7839598Z ##[group]Run npm run build
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:30.7839864Z [36;1mnpm run build[0m
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:30.7873423Z shell: /usr/bin/bash -e {0}
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:30.7873928Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:30.8999429Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:30.9000011Z > bmad-drj@1.0.1 build
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:30.9000573Z > node tools/cli.js build
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:30.9000858Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1298767Z Cleaning output directories...
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1360798Z Cleaned: dist
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1361104Z Building agent bundles...
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1365055Z   Building agent: analyst
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1501295Z   Building agent: architect
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1635262Z   Building agent: bmad-master
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1707407Z   Building agent: bmad-orchestrator
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1747225Z   Building agent: dev
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1809947Z   Building agent: pm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1844036Z   Building agent: po
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1861767Z   Building agent: qa
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1898550Z   Building agent: researcher
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1948942Z   Building agent: sm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1973621Z   Building agent: ux-expert
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.1998922Z Built 11 agent bundles in 1 locations
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2008785Z Building team bundles...
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2009226Z   Building team: team-all
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2293521Z   Building team: team-fullstack
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2395494Z   Building team: team-ide-minimal
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2479470Z   Building team: team-no-ui
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2576471Z Built 4 team bundles in 1 locations
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2577344Z Building expansion pack bundles...
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2582462Z   Building expansion pack: bmad-2d-phaser-game-dev
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2586214Z     Building individual agents for bmad-2d-phaser-game-dev:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2587015Z       - game-designer
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2628556Z       - game-developer
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2652462Z       - game-sm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2674092Z     Building team bundle for bmad-2d-phaser-game-dev
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2750188Z       ✓ Using expansion override for data#bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2756800Z       ✓ Using expansion override for tasks#advanced-elicitation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2788880Z       ✓ Using expansion override for tasks#game-design-brainstorming.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2791645Z       ✓ Using expansion override for templates#game-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2794722Z       ✓ Using expansion override for templates#level-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2797579Z       ✓ Using expansion override for templates#game-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2800859Z       ✓ Using expansion override for checklists#game-design-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2804251Z       ✓ Using expansion override for templates#game-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2806910Z       ✓ Using expansion override for checklists#game-story-dod-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2809705Z       ✓ Using expansion override for data#development-guidelines.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2812141Z       ✓ Using expansion override for tasks#create-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2815361Z       ✓ Using expansion override for templates#game-story-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2870692Z     ✓ Created bundle: dist/expansion-packs/bmad-2d-phaser-game-dev/teams/phaser-2d-nodejs-game-team.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2871606Z   Building expansion pack: bmad-2d-unity-game-dev
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2872253Z     Building individual agents for bmad-2d-unity-game-dev:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2872765Z       - game-architect
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2933588Z       - game-designer
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.2987721Z       - game-developer
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3011871Z       - game-sm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3034342Z     Building team bundle for bmad-2d-unity-game-dev
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3112317Z       ✓ Using expansion override for data#bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3117772Z       ✓ Using expansion override for tasks#advanced-elicitation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3146091Z       ✓ Using expansion override for tasks#game-design-brainstorming.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3149727Z       ✓ Using expansion override for templates#game-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3152359Z       ✓ Using expansion override for templates#level-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3155033Z       ✓ Using expansion override for templates#game-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3157941Z       ✓ Using expansion override for checklists#game-design-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3161436Z       ✓ Using expansion override for templates#game-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3164207Z       ✓ Using expansion override for checklists#game-architect-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3166904Z       ✓ Using expansion override for data#development-guidelines.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3171724Z       ✓ Using expansion override for checklists#game-story-dod-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3174329Z       ✓ Using expansion override for tasks#create-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3176844Z       ✓ Using expansion override for tasks#correct-course-game.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3179747Z       ✓ Using expansion override for templates#game-story-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3182458Z       ✓ Using expansion override for checklists#game-change-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3253842Z     ✓ Created bundle: dist/expansion-packs/bmad-2d-unity-game-dev/teams/unity-2d-game-team.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3254791Z   Building expansion pack: bmad-creative-writing
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3255404Z     Building individual agents for bmad-creative-writing:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3255919Z       - beta-reader
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3283256Z       - book-critic
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3294945Z     ⚠ Dependency tasks#critical-review not found in expansion pack or core
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3297899Z     ⚠ Dependency checklists#genre-tropes-checklist not found in expansion pack or core
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3301019Z       - character-psychologist
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3326223Z       - cover-designer
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3335049Z     ⚠ Dependency tasks#generate-cover-brief not found in expansion pack or core
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3338251Z     ⚠ Dependency tasks#generate-cover-prompts not found in expansion pack or core
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3341169Z     ⚠ Dependency tasks#assemble-kdp-package not found in expansion pack or core
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3344017Z     ⚠ Dependency templates#cover-design-brief-tmpl not found in expansion pack or core
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3346958Z     ⚠ Dependency checklists#kdp-cover-ready-checklist not found in expansion pack or core
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3349993Z       - dialog-specialist
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3375203Z       - editor
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3401748Z       - genre-specialist
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3437873Z       - narrative-designer
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3469358Z       - plot-architect
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3500104Z       - world-builder
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3529865Z     Building team bundle for bmad-creative-writing
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3539889Z     ⚠ Team agent-team missing bmad-orchestrator, adding automatically
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3614699Z       ✓ Using expansion override for data#bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3618785Z       ✓ Using expansion override for tasks#advanced-elicitation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3621175Z       ✓ Using expansion override for tasks#create-doc.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3629244Z       ✓ Using expansion override for tasks#analyze-story-structure.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3631576Z       ✓ Using expansion override for tasks#execute-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3634069Z       ✓ Using expansion override for templates#story-outline-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3636417Z       ✓ Using expansion override for templates#premise-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3638958Z       ✓ Using expansion override for templates#scene-list-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3641360Z       ✓ Using expansion override for templates#chapter-draft-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3643794Z       ✓ Using expansion override for checklists#plot-structure-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3646085Z       ✓ Using expansion override for data#story-structures.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3648707Z       ✓ Using expansion override for tasks#develop-character.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3651663Z       ✓ Using expansion override for tasks#workshop-dialog.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3653810Z       ✓ Using expansion override for tasks#character-depth-pass.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3656241Z       ✓ Using expansion override for templates#character-profile-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3658800Z       ✓ Using expansion override for checklists#character-consistency-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3660947Z       ✓ Using expansion override for tasks#build-world.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3663434Z       ✓ Using expansion override for templates#world-guide-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3665939Z       ✓ Using expansion override for checklists#world-building-continuity-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3668526Z       ✓ Using expansion override for checklists#fantasy-magic-system-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3670987Z       ✓ Using expansion override for checklists#steampunk-gadget-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3673242Z       ✓ Using expansion override for tasks#final-polish.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3675672Z       ✓ Using expansion override for tasks#incorporate-feedback.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3678287Z       ✓ Using expansion override for checklists#line-edit-quality-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3680550Z       ✓ Using expansion override for checklists#publication-readiness-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3682726Z       ✓ Using expansion override for tasks#provide-feedback.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3685123Z       ✓ Using expansion override for tasks#quick-feedback.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3687529Z       ✓ Using expansion override for tasks#analyze-reader-feedback.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3690152Z       ✓ Using expansion override for templates#beta-feedback-form.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3692607Z       ✓ Using expansion override for checklists#beta-feedback-closure-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3694887Z       ✓ Using expansion override for checklists#comedic-timing-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3697124Z       ✓ Using expansion override for tasks#outline-scenes.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3699723Z       ✓ Using expansion override for tasks#generate-scene-list.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3702142Z       ✓ Using expansion override for checklists#genre-tropes-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3704631Z       ✓ Using expansion override for checklists#scifi-technology-plausibility-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3706888Z       ✓ Using expansion override for checklists#romance-emotional-beats-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3709327Z     ⚠ Dependency tasks#critical-review not found in expansion pack or core
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3711579Z     ⚠ Dependency checklists#genre-tropes-checklist not found in expansion pack or core
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3863013Z     ✓ Created bundle: dist/expansion-packs/bmad-creative-writing/teams/agent-team.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3863841Z   Building expansion pack: bmad-godot-game-dev
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3864576Z     Building individual agents for bmad-godot-game-dev:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3865039Z       - bmad-orchestrator
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3895284Z       - game-analyst
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3934783Z       - game-architect
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.3980902Z       - game-designer
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4021715Z       - game-developer
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4043032Z       - game-pm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4084233Z       - game-po
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4111221Z       - game-qa
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4161934Z       - game-sm
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4200055Z       - game-ux-expert
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4241784Z     Building team bundle for bmad-godot-game-dev
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4344369Z       ✓ Using expansion override for data#bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4345549Z       ✓ Using expansion override for data#brainstorming-techniques.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4348698Z       ✓ Using expansion override for tasks#advanced-elicitation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4350922Z       ✓ Using expansion override for tasks#create-deep-research-prompt.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4353213Z       ✓ Using expansion override for tasks#create-doc.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4355634Z       ✓ Using expansion override for tasks#document-project.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4359437Z       ✓ Using expansion override for tasks#facilitate-brainstorming-session.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4361163Z       ✓ Using expansion override for templates#brainstorming-output-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4363939Z       ✓ Using expansion override for templates#competitor-analysis-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4366897Z       ✓ Using expansion override for templates#market-research-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4369761Z       ✓ Using expansion override for templates#game-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4372935Z       ✓ Using expansion override for data#elicitation-methods.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4375498Z       ✓ Using expansion override for tasks#kb-mode-interaction.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4382279Z       ✓ Using expansion override for tasks#execute-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4384643Z       ✓ Using expansion override for tasks#shard-doc.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4387870Z       ✓ Using expansion override for tasks#game-design-brainstorming.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4391786Z       ✓ Using expansion override for templates#game-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4394009Z       ✓ Using expansion override for templates#level-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4397433Z       ✓ Using expansion override for checklists#game-design-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4400932Z       ✓ Using expansion override for templates#game-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4402915Z       ✓ Using expansion override for checklists#game-architect-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4406495Z       ✓ Using expansion override for data#development-guidelines.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4408789Z       ✓ Using expansion override for tasks#apply-qa-fixes.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4411928Z       ✓ Using expansion override for checklists#game-story-dod-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4416252Z       ✓ Using expansion override for tasks#review-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4419886Z       ✓ Using expansion override for tasks#game-test-design.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4422541Z       ✓ Using expansion override for tasks#game-risk-profile.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4425205Z       ✓ Using expansion override for data#technical-preferences.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4428284Z       ✓ Using expansion override for templates#game-story-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4430844Z       ✓ Using expansion override for templates#game-qa-gate-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4433349Z       ✓ Using expansion override for tasks#create-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4436075Z       ✓ Using expansion override for tasks#correct-course-game.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4438766Z       ✓ Using expansion override for checklists#game-change-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4441549Z       ✓ Using expansion override for tasks#game-brownfield-create-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4443910Z       ✓ Using expansion override for tasks#game-brownfield-create-epic.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4447179Z       ✓ Using expansion override for tasks#validate-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4450279Z       ✓ Using expansion override for checklists#game-po-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4455682Z       ✓ Using expansion override for tasks#brownfield-create-epic.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4458147Z       ✓ Using expansion override for tasks#brownfield-create-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4460820Z       ✓ Using expansion override for templates#brownfield-prd-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4463881Z       ✓ Using expansion override for templates#game-prd-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4466147Z       ✓ Using expansion override for tasks#generate-ai-frontend-prompt.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4470315Z       ✓ Using expansion override for templates#game-ui-spec-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4608693Z     ✓ Created bundle: dist/expansion-packs/bmad-godot-game-dev/teams/godot-game-team.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4609720Z   Building expansion pack: bmad-infrastructure-devops
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4610491Z     Building individual agents for bmad-infrastructure-devops:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4611099Z       - infra-devops-platform
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4646379Z     ⚠ No agent-teams directory found for bmad-infrastructure-devops
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4647107Z Built 5 expansion pack bundles
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4647439Z Build completed successfully!
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4820029Z ##[group]Run npx semantic-release --ci
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4820543Z [36;1mnpx semantic-release --ci[0m
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4854551Z shell: /usr/bin/bash -e {0}
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4854782Z env:
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4855232Z   GITHUB_TOKEN: ***
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:31.4855430Z ##[endgroup]
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.4695020Z [12:25:32 AM] [semantic-release] › ℹ  Running semantic-release version 24.2.7
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7732145Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "verifyConditions" from "@semantic-release/changelog"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7733693Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "verifyConditions" from "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7735143Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "verifyConditions" from "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7737774Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "verifyConditions" from "@semantic-release/git"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7740202Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "verifyConditions" from "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7744830Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "analyzeCommits" from "@semantic-release/commit-analyzer"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7747665Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "analyzeCommits" from "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7749350Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "verifyRelease" from "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7751196Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "generateNotes" from "@semantic-release/release-notes-generator"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7753030Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "generateNotes" from "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7757391Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "prepare" from "@semantic-release/changelog"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7758926Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "prepare" from "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7760945Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "prepare" from "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7763071Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "prepare" from "@semantic-release/git"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7765310Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "publish" from "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7767687Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "publish" from "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7769143Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "publish" from "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7773713Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "addChannel" from "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7774994Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "addChannel" from "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7776319Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "addChannel" from "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7778566Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "success" from "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7780410Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "success" from "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7782525Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "fail" from "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:32.7783736Z [12:25:32 AM] [semantic-release] › ✔  Loaded plugin "fail" from "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.7545535Z [12:25:33 AM] [semantic-release] › ✔  Run automated release from branch main on repository git+https://github.com/DrJLabs/bmad-bp.git
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9245047Z [12:25:33 AM] [semantic-release] › ✔  Allowed to push to the Git repository
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9249266Z [12:25:33 AM] [semantic-release] › ℹ  Start step "verifyConditions" of plugin "@semantic-release/changelog"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9261977Z [12:25:33 AM] [semantic-release] › ✔  Completed step "verifyConditions" of plugin "@semantic-release/changelog"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9264046Z [12:25:33 AM] [semantic-release] › ℹ  Start step "verifyConditions" of plugin "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9286878Z [12:25:33 AM] [semantic-release] › ✔  Completed step "verifyConditions" of plugin "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9288879Z [12:25:33 AM] [semantic-release] › ℹ  Start step "verifyConditions" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9296179Z [12:25:33 AM] [semantic-release] › ✔  Completed step "verifyConditions" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9297662Z [12:25:33 AM] [semantic-release] › ℹ  Start step "verifyConditions" of plugin "@semantic-release/git"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9310775Z [12:25:33 AM] [semantic-release] › ✔  Completed step "verifyConditions" of plugin "@semantic-release/git"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9313176Z [12:25:33 AM] [semantic-release] › ℹ  Start step "verifyConditions" of plugin "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:33.9325598Z [12:25:33 AM] [semantic-release] [@semantic-release/github] › ℹ  Verify GitHub authentication (https://api.github.com)
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2124746Z [12:25:34 AM] [semantic-release] › ✔  Completed step "verifyConditions" of plugin "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2207761Z [12:25:34 AM] [semantic-release] › ℹ  Found git tag v1.0.1 associated with version 1.0.1 on branch main
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2351430Z [12:25:34 AM] [semantic-release] › ℹ  Found 6 commits since last release
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2354845Z [12:25:34 AM] [semantic-release] › ℹ  Start step "analyzeCommits" of plugin "@semantic-release/commit-analyzer"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2481599Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  Analyzing commit: Merge pull request #12 from DrJLabs/feat/release-evidence-closure
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2482271Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2482464Z chore: close release evidence governance
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2484869Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  The commit should not trigger a release
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2487305Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  Analyzing commit: fix: resolve release governance documentation feedback
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2494148Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  The release type for the commit is patch
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2495649Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  Analyzing commit: docs: address release governance review feedback
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2500551Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  The commit should not trigger a release
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2502213Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  Analyzing commit: chore: close release evidence governance
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2503793Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  The commit should not trigger a release
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2505470Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  Analyzing commit: chore: record reviewer telemetry 18019837228
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2507086Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  The commit should not trigger a release
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2508945Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  Analyzing commit: docs: mark release governance story 1.2 complete
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2510515Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  The commit should not trigger a release
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2512008Z [12:25:34 AM] [semantic-release] [@semantic-release/commit-analyzer] › ℹ  Analysis of 6 commits complete: patch release
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2513492Z [12:25:34 AM] [semantic-release] › ✔  Completed step "analyzeCommits" of plugin "@semantic-release/commit-analyzer"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2514450Z [12:25:34 AM] [semantic-release] › ℹ  Start step "analyzeCommits" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2526697Z [12:25:34 AM] [semantic-release] › ✔  Completed step "analyzeCommits" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2601999Z [12:25:34 AM] [semantic-release] › ℹ  The next release version is 1.0.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2613271Z [12:25:34 AM] [semantic-release] › ℹ  Start step "verifyRelease" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2629146Z [12:25:34 AM] [semantic-release] › ✔  Completed step "verifyRelease" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.2631516Z [12:25:34 AM] [semantic-release] › ℹ  Start step "generateNotes" of plugin "@semantic-release/release-notes-generator"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.3022020Z [12:25:34 AM] [semantic-release] › ✔  Completed step "generateNotes" of plugin "@semantic-release/release-notes-generator"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.3023478Z [12:25:34 AM] [semantic-release] › ℹ  Start step "generateNotes" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.3028686Z [12:25:34 AM] [semantic-release] › ✔  Completed step "generateNotes" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.3029963Z [12:25:34 AM] [semantic-release] › ℹ  Start step "prepare" of plugin "@semantic-release/changelog"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.3054488Z [12:25:34 AM] [semantic-release] [@semantic-release/changelog] › ℹ  Update /home/runner/work/bmad-bp/bmad-bp/CHANGELOG.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.3075880Z [12:25:34 AM] [semantic-release] › ✔  Completed step "prepare" of plugin "@semantic-release/changelog"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.3158764Z [12:25:34 AM] [semantic-release] › ℹ  Start step "prepare" of plugin "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.3189924Z [12:25:34 AM] [semantic-release] [@semantic-release/npm] › ℹ  Write version 1.0.2 to package.json in /home/runner/work/bmad-bp/bmad-bp
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.4628754Z v1.0.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.4699924Z [12:25:34 AM] [semantic-release] [@semantic-release/npm] › ℹ  Creating npm package version 1.0.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.7771690Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.7772386Z > bmad-drj@1.0.2 prepare
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.7772855Z > husky
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:34.7773047Z 
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4118685Z npm notice
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4120729Z npm notice 📦  bmad-drj@1.0.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4121190Z npm notice Tarball Contents
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4128594Z npm notice 8.0kB .bmad-core/agents/researcher.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4129233Z npm notice 835B .bmad-core/core-config.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4129840Z npm notice 263B .bmad-core/install-manifest.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4130577Z npm notice 10.7kB .bmad-core/tasks/create-deep-research-prompt.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4131474Z npm notice 6.1kB .bmad-core/tasks/validate-plan-with-research.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4132195Z npm notice 3.2kB .bmad-core/workflows/focused-epic.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4132751Z npm notice 1.4kB .releaserc.json
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4133168Z npm notice 348.0kB AGENTS.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4133603Z npm notice 119.0kB CHANGELOG.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4134050Z npm notice 8.7kB CONTRIBUTING.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4134440Z npm notice 1.3kB LICENSE
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4134938Z npm notice 1.2kB PR-opencode-agents-generator.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4135447Z npm notice 10.9kB README.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4135980Z npm notice 333B bmad-core/agent-teams/team-all.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4136657Z npm notice 419B bmad-core/agent-teams/team-fullstack.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4137371Z npm notice 202B bmad-core/agent-teams/team-ide-minimal.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4138226Z npm notice 259B bmad-core/agent-teams/team-no-ui.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4138821Z npm notice 5.6kB bmad-core/agents/analyst.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4139376Z npm notice 5.6kB bmad-core/agents/architect.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4139952Z npm notice 6.1kB bmad-core/agents/bmad-master.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4140579Z npm notice 7.8kB bmad-core/agents/bmad-orchestrator.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4141153Z npm notice 6.7kB bmad-core/agents/dev.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4141671Z npm notice 5.0kB bmad-core/agents/pm.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4141985Z npm notice 5.3kB bmad-core/agents/po.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4142297Z npm notice 6.1kB bmad-core/agents/qa.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4142616Z npm notice 8.0kB bmad-core/agents/researcher.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4142928Z npm notice 4.2kB bmad-core/agents/sm.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4143488Z npm notice 4.6kB bmad-core/agents/ux-expert.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4143896Z npm notice 18.9kB bmad-core/checklists/architect-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4144453Z npm notice 8.4kB bmad-core/checklists/change-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4144839Z npm notice 13.1kB bmad-core/checklists/pm-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4145238Z npm notice 16.6kB bmad-core/checklists/po-master-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4145657Z npm notice 2.4kB bmad-core/checklists/researcher-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4146078Z npm notice 5.2kB bmad-core/checklists/story-dod-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4146505Z npm notice 6.0kB bmad-core/checklists/story-draft-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4146869Z npm notice 614B bmad-core/core-config.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4147186Z npm notice 31.9kB bmad-core/data/bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4147561Z npm notice 1.9kB bmad-core/data/brainstorming-techniques.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4148167Z npm notice 5.1kB bmad-core/data/elicitation-methods.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4148638Z npm notice 97B bmad-core/data/technical-preferences.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4149021Z npm notice 3.4kB bmad-core/data/test-levels-framework.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4149427Z npm notice 4.0kB bmad-core/data/test-priorities-matrix.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4149827Z npm notice 4.4kB bmad-core/tasks/advanced-elicitation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4150204Z npm notice 5.5kB bmad-core/tasks/apply-qa-fixes.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4150591Z npm notice 4.9kB bmad-core/tasks/brownfield-create-epic.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4151005Z npm notice 4.6kB bmad-core/tasks/brownfield-create-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4151392Z npm notice 7.2kB bmad-core/tasks/correct-course.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4151779Z npm notice 9.4kB bmad-core/tasks/create-brownfield-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4152294Z npm notice 10.7kB bmad-core/tasks/create-deep-research-prompt.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4153061Z npm notice 7.3kB bmad-core/tasks/create-next-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4154120Z npm notice 13.6kB bmad-core/tasks/document-project.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4154913Z npm notice 4.7kB bmad-core/tasks/facilitate-brainstorming-session.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4155754Z npm notice 4.6kB bmad-core/tasks/generate-ai-frontend-prompt.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4156434Z npm notice 5.6kB bmad-core/tasks/index-docs.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4157020Z npm notice 2.7kB bmad-core/tasks/kb-mode-interaction.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4157571Z npm notice 7.5kB bmad-core/tasks/nfr-assess.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4158253Z npm notice 3.9kB bmad-core/tasks/qa-gate.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4158767Z npm notice 9.6kB bmad-core/tasks/review-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4159327Z npm notice 8.5kB bmad-core/tasks/risk-profile.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4159856Z npm notice 5.8kB bmad-core/tasks/shard-doc.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4160424Z npm notice 4.5kB bmad-core/tasks/test-design.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4160939Z npm notice 6.8kB bmad-core/tasks/trace-requirements.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4161562Z npm notice 6.4kB bmad-core/tasks/validate-next-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4162234Z npm notice 6.1kB bmad-core/tasks/validate-plan-with-research.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4162909Z npm notice 27.9kB bmad-core/templates/architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4163619Z npm notice 4.8kB bmad-core/templates/brainstorming-output-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4164410Z npm notice 20.9kB bmad-core/templates/brownfield-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4164923Z npm notice 14.7kB bmad-core/templates/brownfield-prd-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4165390Z npm notice 11.9kB bmad-core/templates/competitor-analysis-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4165874Z npm notice 10.4kB bmad-core/templates/front-end-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4166334Z npm notice 13.8kB bmad-core/templates/front-end-spec-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4166805Z npm notice 33.3kB bmad-core/templates/fullstack-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4167275Z npm notice 10.2kB bmad-core/templates/market-research-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4167677Z npm notice 11.9kB bmad-core/templates/prd-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4168610Z npm notice 8.3kB bmad-core/templates/project-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4169058Z npm notice 3.1kB bmad-core/templates/qa-gate-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4169607Z npm notice 1.9kB bmad-core/templates/research-validation-log.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4170020Z npm notice 4.6kB bmad-core/templates/story-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4170436Z npm notice 11.2kB bmad-core/workflows/brownfield-fullstack.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4170883Z npm notice 6.8kB bmad-core/workflows/brownfield-service.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4171289Z npm notice 7.2kB bmad-core/workflows/brownfield-ui.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4171666Z npm notice 2.2kB bmad-core/workflows/focused-epic.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4172074Z npm notice 9.6kB bmad-core/workflows/greenfield-fullstack.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4172503Z npm notice 7.6kB bmad-core/workflows/greenfield-service.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4172894Z npm notice 9.2kB bmad-core/workflows/greenfield-ui.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4173232Z npm notice 3.8kB common/tasks/create-doc.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4173579Z npm notice 4.0kB common/tasks/execute-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4173942Z npm notice 8.8kB common/utils/bmad-doc-template.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4174331Z npm notice 1.7kB common/utils/workflow-management.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4174680Z npm notice 113.6kB dist/agents/analyst.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4174992Z npm notice 150.9kB dist/agents/architect.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4175317Z npm notice 368.5kB dist/agents/bmad-master.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4175662Z npm notice 58.5kB dist/agents/bmad-orchestrator.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4175979Z npm notice 27.9kB dist/agents/dev.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4176258Z npm notice 96.2kB dist/agents/pm.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4176539Z npm notice 59.4kB dist/agents/po.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4176820Z npm notice 56.1kB dist/agents/qa.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4177111Z npm notice 62.1kB dist/agents/researcher.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4177395Z npm notice 34.2kB dist/agents/sm.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4177687Z npm notice 31.7kB dist/agents/ux-expert.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4178381Z npm notice 99.5kB dist/expansion-packs/bmad-2d-phaser-game-dev/agents/game-designer.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4179020Z npm notice 56.0kB dist/expansion-packs/bmad-2d-phaser-game-dev/agents/game-developer.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4179621Z npm notice 31.2kB dist/expansion-packs/bmad-2d-phaser-game-dev/agents/game-sm.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4180280Z npm notice 417.0kB dist/expansion-packs/bmad-2d-phaser-game-dev/teams/phaser-2d-nodejs-game-team.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4180945Z npm notice 163.9kB dist/expansion-packs/bmad-2d-unity-game-dev/agents/game-architect.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4181557Z npm notice 160.7kB dist/expansion-packs/bmad-2d-unity-game-dev/agents/game-designer.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4182160Z npm notice 24.4kB dist/expansion-packs/bmad-2d-unity-game-dev/agents/game-developer.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4182731Z npm notice 43.2kB dist/expansion-packs/bmad-2d-unity-game-dev/agents/game-sm.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4183341Z npm notice 653.8kB dist/expansion-packs/bmad-2d-unity-game-dev/teams/unity-2d-game-team.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4183965Z npm notice 31.0kB dist/expansion-packs/bmad-creative-writing/agents/beta-reader.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4184553Z npm notice 4.3kB dist/expansion-packs/bmad-creative-writing/agents/book-critic.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4185190Z npm notice 30.7kB dist/expansion-packs/bmad-creative-writing/agents/character-psychologist.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4185822Z npm notice 4.1kB dist/expansion-packs/bmad-creative-writing/agents/cover-designer.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4186444Z npm notice 30.2kB dist/expansion-packs/bmad-creative-writing/agents/dialog-specialist.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4187038Z npm notice 29.4kB dist/expansion-packs/bmad-creative-writing/agents/editor.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4187626Z npm notice 33.7kB dist/expansion-packs/bmad-creative-writing/agents/genre-specialist.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4188464Z npm notice 29.9kB dist/expansion-packs/bmad-creative-writing/agents/narrative-designer.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4189080Z npm notice 37.8kB dist/expansion-packs/bmad-creative-writing/agents/plot-architect.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4190012Z npm notice 31.4kB dist/expansion-packs/bmad-creative-writing/agents/world-builder.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4190717Z npm notice 205.7kB dist/expansion-packs/bmad-creative-writing/teams/agent-team.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4191313Z npm notice 66.7kB dist/expansion-packs/bmad-godot-game-dev/agents/bmad-orchestrator.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4191907Z npm notice 131.3kB dist/expansion-packs/bmad-godot-game-dev/agents/game-analyst.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4192485Z npm notice 174.0kB dist/expansion-packs/bmad-godot-game-dev/agents/game-architect.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4193070Z npm notice 167.5kB dist/expansion-packs/bmad-godot-game-dev/agents/game-designer.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4193654Z npm notice 30.7kB dist/expansion-packs/bmad-godot-game-dev/agents/game-developer.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4194217Z npm notice 96.3kB dist/expansion-packs/bmad-godot-game-dev/agents/game-pm.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4194781Z npm notice 64.0kB dist/expansion-packs/bmad-godot-game-dev/agents/game-po.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4195321Z npm notice 60.7kB dist/expansion-packs/bmad-godot-game-dev/agents/game-qa.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4195851Z npm notice 55.2kB dist/expansion-packs/bmad-godot-game-dev/agents/game-sm.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4196399Z npm notice 41.8kB dist/expansion-packs/bmad-godot-game-dev/agents/game-ux-expert.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4196985Z npm notice 1.1MB dist/expansion-packs/bmad-godot-game-dev/teams/godot-game-team.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4197647Z npm notice 90.5kB dist/expansion-packs/bmad-infrastructure-devops/agents/infra-devops-platform.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4198362Z npm notice 528.0kB dist/teams/team-all.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4198695Z npm notice 430.8kB dist/teams/team-fullstack.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4199038Z npm notice 196.7kB dist/teams/team-ide-minimal.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4199372Z npm notice 371.4kB dist/teams/team-no-ui.txt
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4199776Z npm notice 5.7kB docs/bmad/focused-epics/release-governance/epic.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4200315Z npm notice 2.7kB docs/bmad/focused-epics/release-governance/story-1-dod-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4200892Z npm notice 2.0kB docs/bmad/focused-epics/release-governance/story-1-risk-profile.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4201471Z npm notice 9.8kB docs/bmad/focused-epics/release-governance/story-1-test-design.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4202050Z npm notice 2.9kB docs/bmad/focused-epics/release-governance/story-1.2-risk-profile.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4202638Z npm notice 6.8kB docs/bmad/focused-epics/release-governance/story-1.2-test-design.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4203175Z npm notice 18.8kB docs/bmad/focused-epics/release-governance/story-1.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4203636Z npm notice 8.7kB docs/bmad/focused-epics/reviewer-agent/epic.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4204140Z npm notice 4.7kB docs/bmad/focused-epics/reviewer-agent/story-1-risk-profile.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4204684Z npm notice 7.2kB docs/bmad/focused-epics/reviewer-agent/story-1-test-design.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4205179Z npm notice 12.7kB docs/bmad/focused-epics/reviewer-agent/story-1.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4205684Z npm notice 5.5kB docs/bmad/focused-epics/reviewer-agent/story-2-risk-profile.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4206228Z npm notice 7.8kB docs/bmad/focused-epics/reviewer-agent/story-2-test-design.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4206714Z npm notice 11.4kB docs/bmad/focused-epics/reviewer-agent/story-2.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4207226Z npm notice 5.4kB docs/bmad/focused-epics/reviewer-agent/story-3-risk-profile.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4207760Z npm notice 7.8kB docs/bmad/focused-epics/reviewer-agent/story-3-test-design.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4208454Z npm notice 19.2kB docs/bmad/focused-epics/reviewer-agent/story-3.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4208871Z npm notice 6.6kB docs/bmad/issues/reviewer-rollout.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4209298Z npm notice 3.8kB docs/bmad/issues/reviewer-telemetry-thresholds.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4209906Z npm notice 1.2kB docs/bmad/qa/assessments/release-governance.story-1.2-po-validation-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4210745Z npm notice 1.6kB docs/bmad/qa/assessments/release-governance.story-1.3-po-validation-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4211421Z npm notice 1.5kB docs/bmad/qa/assessments/release-governance.story-1.3-review-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4212093Z npm notice 2.1kB docs/bmad/qa/assessments/story-1.1-qa-gate-20250924.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4212575Z npm notice 2.2kB docs/bmad/qa/assessments/story-1.2-qa-gate-20250924.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4212971Z npm notice 9.7kB docs/bmad/reviewer/README.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4213284Z npm notice 13.4kB docs/core-architecture.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4213669Z npm notice 12.2kB docs/enhanced-ide-development-workflow.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4214037Z npm notice 7.4kB docs/expansion-packs.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4214332Z npm notice 4.6kB docs/flattener.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4214657Z npm notice 4.4kB docs/GUIDING-PRINCIPLES.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4215039Z npm notice 5.0kB docs/how-to-contribute-with-pull-requests.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4215544Z npm notice 2.6kB docs/qa/assessments/release-governance.story-1-nfr-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4216119Z npm notice 5.1kB docs/qa/assessments/release-governance.story-1-trace-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4216703Z npm notice 1.8kB docs/qa/assessments/release-governance.story-1.2-nfr-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4217282Z npm notice 2.8kB docs/qa/assessments/release-governance.story-1.2-trace-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4217861Z npm notice 1.7kB docs/qa/assessments/release-governance.story-1.3-nfr-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4218631Z npm notice 4.0kB docs/qa/assessments/release-governance.story-1.3-risk-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4219255Z npm notice 5.7kB docs/qa/assessments/release-governance.story-1.3-test-design-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4219874Z npm notice 2.1kB docs/qa/assessments/release-governance.story-1.3-trace-20250925.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4220373Z npm notice 2.4kB docs/qa/assessments/story-1.3-nfr-20250924.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4220806Z npm notice 9.4kB docs/qa/assessments/story-1.3-trace-20250924.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4221341Z npm notice 1.2kB docs/qa/gates/1.3-integrate-reviewer-into-focused-epic-workflow.yml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4221974Z npm notice 1.2kB docs/qa/gates/release-governance.story-1-release-workflow-alignment.yml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4222693Z npm notice 240B docs/qa/gates/release-governance.story-1.2-release-evidence-artifact-governance.yml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4223380Z npm notice 1.1kB docs/qa/gates/release-governance.story-1.3-close-release-evidence.yml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4223837Z npm notice 6.5kB docs/release-automation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4224177Z npm notice 3.8kB docs/researcher-mode-strategy.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4224585Z npm notice 12.9kB docs/stories/1.2.release-evidence-governance.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4225041Z npm notice 10.8kB docs/stories/1.3.release-evidence-audit-closure.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4225407Z npm notice 24.9kB docs/user-guide.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4225720Z npm notice 3.6kB docs/versioning-and-releases.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4226029Z npm notice 4.4kB docs/versions.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4226339Z npm notice 22.0kB docs/working-in-the-brownfield.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4226658Z npm notice 3.6kB eslint.config.mjs
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4227187Z npm notice 334B expansion-packs/bmad-2d-phaser-game-dev/agent-teams/phaser-2d-nodejs-game-team.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4227823Z npm notice 4.7kB expansion-packs/bmad-2d-phaser-game-dev/agents/game-designer.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4228612Z npm notice 5.1kB expansion-packs/bmad-2d-phaser-game-dev/agents/game-developer.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4229151Z npm notice 4.5kB expansion-packs/bmad-2d-phaser-game-dev/agents/game-sm.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4229750Z npm notice 9.2kB expansion-packs/bmad-2d-phaser-game-dev/checklists/game-design-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4230419Z npm notice 7.7kB expansion-packs/bmad-2d-phaser-game-dev/checklists/game-story-dod-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4230986Z npm notice 265B expansion-packs/bmad-2d-phaser-game-dev/config.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4231476Z npm notice 9.5kB expansion-packs/bmad-2d-phaser-game-dev/data/bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4232174Z npm notice 16.2kB expansion-packs/bmad-2d-phaser-game-dev/data/development-guidelines.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4232814Z npm notice 9.1kB expansion-packs/bmad-2d-phaser-game-dev/tasks/advanced-elicitation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4233519Z npm notice 5.7kB expansion-packs/bmad-2d-phaser-game-dev/tasks/create-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4234141Z npm notice 11.1kB expansion-packs/bmad-2d-phaser-game-dev/tasks/game-design-brainstorming.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4234811Z npm notice 21.9kB expansion-packs/bmad-2d-phaser-game-dev/templates/game-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4235454Z npm notice 14.0kB expansion-packs/bmad-2d-phaser-game-dev/templates/game-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4236097Z npm notice 12.8kB expansion-packs/bmad-2d-phaser-game-dev/templates/game-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4236731Z npm notice 8.1kB expansion-packs/bmad-2d-phaser-game-dev/templates/game-story-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4237374Z npm notice 18.0kB expansion-packs/bmad-2d-phaser-game-dev/templates/level-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4238228Z npm notice 9.7kB expansion-packs/bmad-2d-phaser-game-dev/workflows/game-dev-greenfield.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4238895Z npm notice 8.2kB expansion-packs/bmad-2d-phaser-game-dev/workflows/game-prototype.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4239531Z npm notice 346B expansion-packs/bmad-2d-unity-game-dev/agent-teams/unity-2d-game-team.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4240133Z npm notice 5.5kB expansion-packs/bmad-2d-unity-game-dev/agents/game-architect.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4240707Z npm notice 5.0kB expansion-packs/bmad-2d-unity-game-dev/agents/game-designer.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4241260Z npm notice 7.3kB expansion-packs/bmad-2d-unity-game-dev/agents/game-developer.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4241799Z npm notice 4.4kB expansion-packs/bmad-2d-unity-game-dev/agents/game-sm.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4242411Z npm notice 18.0kB expansion-packs/bmad-2d-unity-game-dev/checklists/game-architect-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4243071Z npm notice 8.5kB expansion-packs/bmad-2d-unity-game-dev/checklists/game-change-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4243716Z npm notice 9.2kB expansion-packs/bmad-2d-unity-game-dev/checklists/game-design-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4244367Z npm notice 6.5kB expansion-packs/bmad-2d-unity-game-dev/checklists/game-story-dod-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4244931Z npm notice 247B expansion-packs/bmad-2d-unity-game-dev/config.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4245422Z npm notice 32.6kB expansion-packs/bmad-2d-unity-game-dev/data/bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4245991Z npm notice 16.5kB expansion-packs/bmad-2d-unity-game-dev/data/development-guidelines.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4246599Z npm notice 9.1kB expansion-packs/bmad-2d-unity-game-dev/tasks/advanced-elicitation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4247193Z npm notice 6.3kB expansion-packs/bmad-2d-unity-game-dev/tasks/correct-course-game.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4247780Z npm notice 10.6kB expansion-packs/bmad-2d-unity-game-dev/tasks/create-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4248571Z npm notice 11.1kB expansion-packs/bmad-2d-unity-game-dev/tasks/game-design-brainstorming.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4249192Z npm notice 12.6kB expansion-packs/bmad-2d-unity-game-dev/tasks/validate-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4249834Z npm notice 42.2kB expansion-packs/bmad-2d-unity-game-dev/templates/game-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4250461Z npm notice 13.9kB expansion-packs/bmad-2d-unity-game-dev/templates/game-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4251097Z npm notice 35.2kB expansion-packs/bmad-2d-unity-game-dev/templates/game-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4251717Z npm notice 8.1kB expansion-packs/bmad-2d-unity-game-dev/templates/game-story-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4252347Z npm notice 18.0kB expansion-packs/bmad-2d-unity-game-dev/templates/level-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4252999Z npm notice 9.7kB expansion-packs/bmad-2d-unity-game-dev/workflows/game-dev-greenfield.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4253646Z npm notice 8.3kB expansion-packs/bmad-2d-unity-game-dev/workflows/game-prototype.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4254370Z npm notice 513B expansion-packs/bmad-creative-writing/agent-teams/agent-team.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4254932Z npm notice 4.9kB expansion-packs/bmad-creative-writing/agents/beta-reader.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4255622Z npm notice 2.1kB expansion-packs/bmad-creative-writing/agents/book-critic.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4256202Z npm notice 5.1kB expansion-packs/bmad-creative-writing/agents/character-psychologist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4256779Z npm notice 1.9kB expansion-packs/bmad-creative-writing/agents/cover-designer.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4257358Z npm notice 4.9kB expansion-packs/bmad-creative-writing/agents/dialog-specialist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4257898Z npm notice 4.9kB expansion-packs/bmad-creative-writing/agents/editor.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4258638Z npm notice 5.0kB expansion-packs/bmad-creative-writing/agents/genre-specialist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4259215Z npm notice 4.8kB expansion-packs/bmad-creative-writing/agents/narrative-designer.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4259783Z npm notice 5.2kB expansion-packs/bmad-creative-writing/agents/plot-architect.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4260337Z npm notice 5.0kB expansion-packs/bmad-creative-writing/agents/world-builder.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4260994Z npm notice 689B expansion-packs/bmad-creative-writing/checklists/beta-feedback-closure-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4261743Z npm notice 739B expansion-packs/bmad-creative-writing/checklists/character-consistency-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4262452Z npm notice 671B expansion-packs/bmad-creative-writing/checklists/comedic-timing-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4263153Z npm notice 718B expansion-packs/bmad-creative-writing/checklists/cyberpunk-aesthetic-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4263858Z npm notice 556B expansion-packs/bmad-creative-writing/checklists/ebook-formatting-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4264561Z npm notice 743B expansion-packs/bmad-creative-writing/checklists/epic-poetry-meter-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4265277Z npm notice 667B expansion-packs/bmad-creative-writing/checklists/fantasy-magic-system-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4266000Z npm notice 684B expansion-packs/bmad-creative-writing/checklists/foreshadowing-payoff-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4266690Z npm notice 722B expansion-packs/bmad-creative-writing/checklists/genre-tropes-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4267380Z npm notice 650B expansion-packs/bmad-creative-writing/checklists/historical-accuracy-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4268352Z npm notice 673B expansion-packs/bmad-creative-writing/checklists/horror-suspense-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4269045Z npm notice 674B expansion-packs/bmad-creative-writing/checklists/kdp-cover-ready-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4269730Z npm notice 602B expansion-packs/bmad-creative-writing/checklists/line-edit-quality-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4270409Z npm notice 598B expansion-packs/bmad-creative-writing/checklists/marketing-copy-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4271099Z npm notice 711B expansion-packs/bmad-creative-writing/checklists/mystery-clue-trail-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4271803Z npm notice 826B expansion-packs/bmad-creative-writing/checklists/orbital-mechanics-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4272491Z npm notice 1.4kB expansion-packs/bmad-creative-writing/checklists/plot-structure-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4273492Z npm notice 664B expansion-packs/bmad-creative-writing/checklists/publication-readiness-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4294215Z npm notice 610B expansion-packs/bmad-creative-writing/checklists/romance-emotional-beats-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4295359Z npm notice 610B expansion-packs/bmad-creative-writing/checklists/scene-quality-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4296170Z npm notice 717B expansion-packs/bmad-creative-writing/checklists/scifi-technology-plausibility-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4297012Z npm notice 804B expansion-packs/bmad-creative-writing/checklists/sensitivity-representation-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4297768Z npm notice 742B expansion-packs/bmad-creative-writing/checklists/steampunk-gadget-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4298978Z npm notice 659B expansion-packs/bmad-creative-writing/checklists/thriller-pacing-stakes-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4299852Z npm notice 675B expansion-packs/bmad-creative-writing/checklists/timeline-continuity-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4300620Z npm notice 687B expansion-packs/bmad-creative-writing/checklists/world-building-continuity-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4301369Z npm notice 714B expansion-packs/bmad-creative-writing/checklists/ya-appropriateness-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4301943Z npm notice 478B expansion-packs/bmad-creative-writing/config.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4302431Z npm notice 6.1kB expansion-packs/bmad-creative-writing/data/bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4302991Z npm notice 1.2kB expansion-packs/bmad-creative-writing/data/story-structures.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4303531Z npm notice 10.9kB expansion-packs/bmad-creative-writing/docs/brief.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4303994Z npm notice 4.6kB expansion-packs/bmad-creative-writing/README.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4304547Z npm notice 4.4kB expansion-packs/bmad-creative-writing/tasks/advanced-elicitation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4305173Z npm notice 491B expansion-packs/bmad-creative-writing/tasks/analyze-reader-feedback.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4305806Z npm notice 1.5kB expansion-packs/bmad-creative-writing/tasks/analyze-story-structure.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4306431Z npm notice 970B expansion-packs/bmad-creative-writing/tasks/assemble-kdp-package.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4307037Z npm notice 618B expansion-packs/bmad-creative-writing/tasks/brainstorm-premise.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4307595Z npm notice 540B expansion-packs/bmad-creative-writing/tasks/build-world.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4308406Z npm notice 516B expansion-packs/bmad-creative-writing/tasks/character-depth-pass.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4308991Z npm notice 3.8kB expansion-packs/bmad-creative-writing/tasks/create-doc.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4309563Z npm notice 682B expansion-packs/bmad-creative-writing/tasks/create-draft-section.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4310142Z npm notice 800B expansion-packs/bmad-creative-writing/tasks/critical-review.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4310716Z npm notice 590B expansion-packs/bmad-creative-writing/tasks/develop-character.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4311294Z npm notice 4.0kB expansion-packs/bmad-creative-writing/tasks/execute-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4311854Z npm notice 529B expansion-packs/bmad-creative-writing/tasks/expand-premise.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4312401Z npm notice 490B expansion-packs/bmad-creative-writing/tasks/expand-synopsis.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4312952Z npm notice 489B expansion-packs/bmad-creative-writing/tasks/final-polish.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4313525Z npm notice 794B expansion-packs/bmad-creative-writing/tasks/generate-cover-brief.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4314141Z npm notice 766B expansion-packs/bmad-creative-writing/tasks/generate-cover-prompts.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4314751Z npm notice 475B expansion-packs/bmad-creative-writing/tasks/generate-scene-list.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4315334Z npm notice 532B expansion-packs/bmad-creative-writing/tasks/incorporate-feedback.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4315905Z npm notice 489B expansion-packs/bmad-creative-writing/tasks/outline-scenes.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4316464Z npm notice 549B expansion-packs/bmad-creative-writing/tasks/provide-feedback.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4317031Z npm notice 471B expansion-packs/bmad-creative-writing/tasks/publish-chapter.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4317581Z npm notice 450B expansion-packs/bmad-creative-writing/tasks/quick-feedback.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4318388Z npm notice 530B expansion-packs/bmad-creative-writing/tasks/select-next-arc.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4318967Z npm notice 1.3kB expansion-packs/bmad-creative-writing/tasks/workshop-dialog.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4319573Z npm notice 2.3kB expansion-packs/bmad-creative-writing/templates/beta-feedback-form.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4320212Z npm notice 2.0kB expansion-packs/bmad-creative-writing/templates/chapter-draft-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4320862Z npm notice 2.2kB expansion-packs/bmad-creative-writing/templates/character-profile-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4321686Z npm notice 2.4kB expansion-packs/bmad-creative-writing/templates/cover-design-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4322481Z npm notice 2.0kB expansion-packs/bmad-creative-writing/templates/premise-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4323101Z npm notice 1.3kB expansion-packs/bmad-creative-writing/templates/scene-list-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4323722Z npm notice 2.6kB expansion-packs/bmad-creative-writing/templates/story-outline-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4324342Z npm notice 2.1kB expansion-packs/bmad-creative-writing/templates/world-guide-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4324993Z npm notice 6.5kB expansion-packs/bmad-creative-writing/workflows/book-cover-design-workflow.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4325688Z npm notice 1.7kB expansion-packs/bmad-creative-writing/workflows/novel-greenfield-workflow.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4326371Z npm notice 1.4kB expansion-packs/bmad-creative-writing/workflows/novel-serial-workflow.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4327054Z npm notice 1.9kB expansion-packs/bmad-creative-writing/workflows/novel-snowflake-workflow.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4327707Z npm notice 2.0kB expansion-packs/bmad-creative-writing/workflows/novel-writing.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4328577Z npm notice 1.9kB expansion-packs/bmad-creative-writing/workflows/screenplay-development.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4329218Z npm notice 1.7kB expansion-packs/bmad-creative-writing/workflows/series-planning.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4329855Z npm notice 1.2kB expansion-packs/bmad-creative-writing/workflows/short-story-creation.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4330490Z npm notice 370B expansion-packs/bmad-godot-game-dev/agent-teams/godot-game-team.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4331076Z npm notice 7.8kB expansion-packs/bmad-godot-game-dev/agents/bmad-orchestrator.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4331629Z npm notice 5.7kB expansion-packs/bmad-godot-game-dev/agents/game-analyst.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4332168Z npm notice 8.7kB expansion-packs/bmad-godot-game-dev/agents/game-architect.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4332723Z npm notice 5.1kB expansion-packs/bmad-godot-game-dev/agents/game-designer.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4333261Z npm notice 9.8kB expansion-packs/bmad-godot-game-dev/agents/game-developer.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4333775Z npm notice 5.3kB expansion-packs/bmad-godot-game-dev/agents/game-pm.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4334266Z npm notice 6.9kB expansion-packs/bmad-godot-game-dev/agents/game-po.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4334750Z npm notice 9.0kB expansion-packs/bmad-godot-game-dev/agents/game-qa.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4335231Z npm notice 4.5kB expansion-packs/bmad-godot-game-dev/agents/game-sm.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4335746Z npm notice 5.3kB expansion-packs/bmad-godot-game-dev/agents/game-ux-expert.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4336354Z npm notice 14.9kB expansion-packs/bmad-godot-game-dev/checklists/game-architect-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4336995Z npm notice 10.9kB expansion-packs/bmad-godot-game-dev/checklists/game-change-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4337621Z npm notice 9.6kB expansion-packs/bmad-godot-game-dev/checklists/game-design-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4338456Z npm notice 15.0kB expansion-packs/bmad-godot-game-dev/checklists/game-po-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4339509Z npm notice 8.1kB expansion-packs/bmad-godot-game-dev/checklists/game-story-dod-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4340107Z npm notice 963B expansion-packs/bmad-godot-game-dev/config.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4340580Z npm notice 35.2kB expansion-packs/bmad-godot-game-dev/data/bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4341135Z npm notice 1.9kB expansion-packs/bmad-godot-game-dev/data/brainstorming-techniques.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4341742Z npm notice 23.1kB expansion-packs/bmad-godot-game-dev/data/development-guidelines.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4342320Z npm notice 5.1kB expansion-packs/bmad-godot-game-dev/data/elicitation-methods.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4342889Z npm notice 63B expansion-packs/bmad-godot-game-dev/data/technical-preferences.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4343386Z npm notice 10.3kB expansion-packs/bmad-godot-game-dev/README.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4344063Z npm notice 9.0kB expansion-packs/bmad-godot-game-dev/tasks/advanced-elicitation.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4344631Z npm notice 8.6kB expansion-packs/bmad-godot-game-dev/tasks/apply-qa-fixes.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4345310Z npm notice 4.9kB expansion-packs/bmad-godot-game-dev/tasks/brownfield-create-epic.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4345917Z npm notice 4.6kB expansion-packs/bmad-godot-game-dev/tasks/brownfield-create-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4346506Z npm notice 8.0kB expansion-packs/bmad-godot-game-dev/tasks/correct-course-game.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4347122Z npm notice 7.4kB expansion-packs/bmad-godot-game-dev/tasks/create-deep-research-prompt.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4347702Z npm notice 3.8kB expansion-packs/bmad-godot-game-dev/tasks/create-doc.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4348520Z npm notice 11.7kB expansion-packs/bmad-godot-game-dev/tasks/create-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4349088Z npm notice 13.5kB expansion-packs/bmad-godot-game-dev/tasks/document-project.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4349638Z npm notice 4.1kB expansion-packs/bmad-godot-game-dev/tasks/execute-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4350276Z npm notice 4.7kB expansion-packs/bmad-godot-game-dev/tasks/facilitate-brainstorming-session.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4350947Z npm notice 4.9kB expansion-packs/bmad-godot-game-dev/tasks/game-brownfield-create-epic.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4351585Z npm notice 4.6kB expansion-packs/bmad-godot-game-dev/tasks/game-brownfield-create-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4352224Z npm notice 11.1kB expansion-packs/bmad-godot-game-dev/tasks/game-design-brainstorming.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4353141Z npm notice 9.4kB expansion-packs/bmad-godot-game-dev/tasks/game-risk-profile.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4353858Z npm notice 7.2kB expansion-packs/bmad-godot-game-dev/tasks/game-test-design.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4354454Z npm notice 4.6kB expansion-packs/bmad-godot-game-dev/tasks/generate-ai-frontend-prompt.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4355057Z npm notice 2.7kB expansion-packs/bmad-godot-game-dev/tasks/kb-mode-interaction.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4355628Z npm notice 11.8kB expansion-packs/bmad-godot-game-dev/tasks/review-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4356160Z npm notice 5.8kB expansion-packs/bmad-godot-game-dev/tasks/shard-doc.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4356704Z npm notice 12.4kB expansion-packs/bmad-godot-game-dev/tasks/validate-game-story.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4357335Z npm notice 4.8kB expansion-packs/bmad-godot-game-dev/templates/brainstorming-output-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4358168Z npm notice 14.7kB expansion-packs/bmad-godot-game-dev/templates/brownfield-prd-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4358876Z npm notice 11.8kB expansion-packs/bmad-godot-game-dev/templates/competitor-analysis-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4359538Z npm notice 46.6kB expansion-packs/bmad-godot-game-dev/templates/game-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4360161Z npm notice 13.9kB expansion-packs/bmad-godot-game-dev/templates/game-brief-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4360765Z npm notice 35.9kB expansion-packs/bmad-godot-game-dev/templates/game-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4361371Z npm notice 11.4kB expansion-packs/bmad-godot-game-dev/templates/game-prd-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4361964Z npm notice 7.2kB expansion-packs/bmad-godot-game-dev/templates/game-qa-gate-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4362566Z npm notice 15.1kB expansion-packs/bmad-godot-game-dev/templates/game-story-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4363172Z npm notice 23.1kB expansion-packs/bmad-godot-game-dev/templates/game-ui-spec-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4363787Z npm notice 24.4kB expansion-packs/bmad-godot-game-dev/templates/level-design-doc-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4364438Z npm notice 17.5kB expansion-packs/bmad-godot-game-dev/templates/market-research-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4365076Z npm notice 687B expansion-packs/bmad-godot-game-dev/templates/shared-epic-guidelines.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4365675Z npm notice 8.8kB expansion-packs/bmad-godot-game-dev/utils/bmad-doc-template.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4366294Z npm notice 1.7kB expansion-packs/bmad-godot-game-dev/utils/workflow-management.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4367088Z npm notice 10.2kB expansion-packs/bmad-godot-game-dev/workflows/game-dev-greenfield.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4367719Z npm notice 10.8kB expansion-packs/bmad-godot-game-dev/workflows/game-prototype.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4368812Z npm notice 5.8kB expansion-packs/bmad-infrastructure-devops/agents/infra-devops-platform.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4369541Z npm notice 18.6kB expansion-packs/bmad-infrastructure-devops/checklists/infrastructure-checklist.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4370162Z npm notice 424B expansion-packs/bmad-infrastructure-devops/config.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4370692Z npm notice 11.3kB expansion-packs/bmad-infrastructure-devops/data/bmad-kb.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4371282Z npm notice 3.9kB expansion-packs/bmad-infrastructure-devops/README.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4371885Z npm notice 1.1kB expansion-packs/bmad-infrastructure-devops/tasks/advanced-actions-guide.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4372554Z npm notice 8.6kB expansion-packs/bmad-infrastructure-devops/tasks/review-infrastructure.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4373227Z npm notice 9.9kB expansion-packs/bmad-infrastructure-devops/tasks/validate-infrastructure.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4373986Z npm notice 19.4kB expansion-packs/bmad-infrastructure-devops/templates/infrastructure-architecture-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4374848Z npm notice 22.3kB expansion-packs/bmad-infrastructure-devops/templates/infrastructure-platform-from-arch-tmpl.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4375424Z npm notice 324B expansion-packs/README.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4375714Z npm notice 4.9kB package.json
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4376002Z npm notice 658B prettier.config.mjs
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4376313Z npm notice 1.1kB tools/bmad-npx-wrapper.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4376648Z npm notice 26.3kB tools/builders/web-builder.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4376983Z npm notice 3.8kB tools/bump-all-versions.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4377323Z npm notice 2.6kB tools/bump-expansion-version.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4377621Z npm notice 4.9kB tools/cli.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4377917Z npm notice 2.6kB tools/flattener/aggregate.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4378482Z npm notice 1.9kB tools/flattener/binary.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4378802Z npm notice 1.8kB tools/flattener/discovery.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4379124Z npm notice 1.1kB tools/flattener/files.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4379452Z npm notice 3.7kB tools/flattener/ignoreRules.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4379777Z npm notice 23.2kB tools/flattener/main.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4380098Z npm notice 6.3kB tools/flattener/projectRoot.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4380415Z npm notice 1.3kB tools/flattener/prompts.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4380760Z npm notice 12.2kB tools/flattener/stats.helpers.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4381097Z npm notice 2.5kB tools/flattener/stats.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4381426Z npm notice 15.0kB tools/flattener/test-matrix.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4381741Z npm notice 3.0kB tools/flattener/xml.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4382095Z npm notice 7.4kB tools/implement-fork-friendly-ci.sh
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4382453Z npm notice 22.2kB tools/installer/bin/bmad.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4382842Z npm notice 1.6kB tools/installer/config/ide-agent-config.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4383275Z npm notice 7.2kB tools/installer/config/install.config.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4383680Z npm notice 8.4kB tools/installer/lib/config-loader.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4384057Z npm notice 11.2kB tools/installer/lib/file-manager.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4384436Z npm notice 7.2kB tools/installer/lib/ide-base-setup.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4384806Z npm notice 100.6kB tools/installer/lib/ide-setup.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4385159Z npm notice 72.6kB tools/installer/lib/installer.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4385542Z npm notice 6.0kB tools/installer/lib/memory-profiler.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4385925Z npm notice 2.8kB tools/installer/lib/module-manager.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4386312Z npm notice 8.5kB tools/installer/lib/resource-locator.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4386684Z npm notice 25.3kB tools/installer/package-lock.json
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4387029Z npm notice 972B tools/installer/package.json
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4387346Z npm notice 98B tools/installer/README.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4387827Z npm notice 5.3kB tools/lib/dependency-resolver.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4388384Z npm notice 938B tools/lib/yaml-utils.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4388926Z npm notice 2.1kB tools/md-assets/web-agent-startup-instructions.md
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4389333Z npm notice 2.2kB tools/preview-release-notes.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4389681Z npm notice 9.9kB tools/reviewer/collect-scans.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4390001Z npm notice 383B tools/reviewer/jscpd.json
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4390319Z npm notice 1.3kB tools/reviewer/lint-docs.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4390647Z npm notice 3.1kB tools/reviewer/preflight.sh
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4390980Z npm notice 3.1kB tools/reviewer/prune-cache.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4391325Z npm notice 2.7kB tools/reviewer/prune-cache.test.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4391676Z npm notice 4.1kB tools/reviewer/resolve-config.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4392047Z npm notice 3.7kB tools/reviewer/resolve-config.test.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4392392Z npm notice 358B tools/reviewer/semgrep.yaml
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4392731Z npm notice 11.4kB tools/reviewer/telemetry-sync.mjs
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4393103Z npm notice 7.7kB tools/reviewer/validate-metrics.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4393426Z npm notice 652B tools/setup-hooks.sh
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4393727Z npm notice 7.7kB tools/shared/bannerArt.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4394058Z npm notice 1.3kB tools/sync-installer-version.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4394378Z npm notice 675B tools/sync-version.sh
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4394705Z npm notice 1.7kB tools/update-expansion-version.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4395083Z npm notice 22.7kB tools/upgraders/v3-to-v4-upgrader.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4395417Z npm notice 2.5kB tools/version-bump.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4395704Z npm notice 7.7kB tools/yaml-format.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4396004Z npm notice Tarball Details
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4396238Z npm notice name: bmad-drj
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4396470Z npm notice version: 1.0.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4396768Z npm notice filename: bmad-drj-1.0.2.tgz
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4397058Z npm notice package size: 2.7 MB
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4397331Z npm notice unpacked size: 10.1 MB
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4397685Z npm notice shasum: b2f164e1ab2899b14267f867edd119ecdc3c3694
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4398551Z npm notice integrity: sha512-zEPar3uc6O6cp[...]rhH3RWxITVARw==
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4398910Z npm notice total files: 446
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4399113Z npm notice
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4399325Z bmad-drj-1.0.2.tgz
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4400072Z [12:25:36 AM] [semantic-release] › ✔  Completed step "prepare" of plugin "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4400766Z [12:25:36 AM] [semantic-release] › ℹ  Start step "prepare" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4401524Z [12:25:36 AM] [semantic-release] [@semantic-release/exec] › ℹ  Call script node tools/sync-installer-version.js
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4633849Z Synced installer version to 1.0.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4684675Z [12:25:36 AM] [semantic-release] › ✔  Completed step "prepare" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.4729473Z [12:25:36 AM] [semantic-release] › ℹ  Start step "prepare" of plugin "@semantic-release/git"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:36.6099732Z [12:25:36 AM] [semantic-release] [@semantic-release/git] › ℹ  Found 4 file(s) to commit
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:52.2789206Z [12:25:52 AM] [semantic-release] [@semantic-release/git] › ℹ  Prepared Git release: v1.0.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:52.2790694Z [12:25:52 AM] [semantic-release] › ✔  Completed step "prepare" of plugin "@semantic-release/git"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:52.2837718Z [12:25:52 AM] [semantic-release] › ℹ  Start step "generateNotes" of plugin "@semantic-release/release-notes-generator"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:52.3103113Z [12:25:52 AM] [semantic-release] › ✔  Completed step "generateNotes" of plugin "@semantic-release/release-notes-generator"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:52.3105073Z [12:25:52 AM] [semantic-release] › ℹ  Start step "generateNotes" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:25:52.3110929Z [12:25:52 AM] [semantic-release] › ✔  Completed step "generateNotes" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:18.7108206Z [12:26:18 AM] [semantic-release] › ✔  Created tag v1.0.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:18.7111497Z [12:26:18 AM] [semantic-release] › ℹ  Start step "publish" of plugin "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:18.7137151Z [12:26:18 AM] [semantic-release] [@semantic-release/npm] › ℹ  Skip publishing to npm registry as npmPublish is false
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:18.7138566Z [12:26:18 AM] [semantic-release] › ✔  Completed step "publish" of plugin "@semantic-release/npm"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:18.7139912Z [12:26:18 AM] [semantic-release] › ℹ  Start step "publish" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:18.7147755Z [12:26:18 AM] [semantic-release] › ✔  Completed step "publish" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:18.7148900Z [12:26:18 AM] [semantic-release] › ℹ  Start step "publish" of plugin "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:20.4530609Z [12:26:20 AM] [semantic-release] [@semantic-release/github] › ℹ  Published file https://github.com/DrJLabs/bmad-bp/releases/download/untagged-540393d6d64f0a3a77b9/bmad-drj-1.0.2.tgz
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.2059853Z [12:26:21 AM] [semantic-release] [@semantic-release/github] › ℹ  Published GitHub release: https://github.com/DrJLabs/bmad-bp/releases/tag/v1.0.2
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.2061775Z [12:26:21 AM] [semantic-release] › ✔  Completed step "publish" of plugin "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.2066235Z [12:26:21 AM] [semantic-release] › ℹ  Start step "success" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.2077738Z [12:26:21 AM] [semantic-release] › ✔  Completed step "success" of plugin "@semantic-release/exec"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.2079281Z [12:26:21 AM] [semantic-release] › ℹ  Start step "success" of plugin "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.4207684Z [12:26:21 AM] [semantic-release] [@semantic-release/github] › ⚠  DEPRECATION: 'false' for 'successComment' is deprecated and will be removed in a future major version. Use 'successCommentCondition' instead.
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.4210292Z [12:26:21 AM] [semantic-release] [@semantic-release/github] › ℹ  Skip commenting on issues and pull requests.
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.4212177Z [12:26:21 AM] [semantic-release] [@semantic-release/github] › ⚠  DEPRECATION: 'false' for 'failComment' or 'failTitle' is deprecated and will be removed in a future major version. Use 'failCommentCondition' instead.
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.4213425Z [12:26:21 AM] [semantic-release] [@semantic-release/github] › ℹ  Skip closing issue.
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.4214251Z [12:26:21 AM] [semantic-release] › ✔  Completed step "success" of plugin "@semantic-release/github"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.4215011Z [12:26:21 AM] [semantic-release] › ✔  Published release 1.0.2 on default channel
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.4472335Z Post job cleanup.
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.6034010Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-385dd334e5680a4ef12e1048f3a4169203d32b610a0cba6b24a29506438cab4f, not saving cache.
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.6159477Z Post job cleanup.
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7115970Z [command]/usr/bin/git version
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7154689Z git version 2.51.0
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7200873Z Temporarily overriding HOME='/home/runner/work/_temp/e8febf9e-ff55-4257-a4c7-e99d54dcff06' before making global git config changes
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7202334Z Adding repository directory to the temporary git global config as a safe directory
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7214886Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bmad-bp/bmad-bp
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7250486Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7283902Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7521678Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7546581Z http.https://github.com/.extraheader
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7565110Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7602058Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Semantic Release (GitHub-only)	UNKNOWN STEP	2025-09-26T00:26:21.7995492Z Cleaning up orphan processes

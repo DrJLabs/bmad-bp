@@ -1,0 +1,13 @@
+{
+  "conclusion": "success",
+  "createdAt": "2025-09-26T00:24:54Z",
+  "databaseId": 18024216996,
+  "displayTitle": "Merge pull request #12 from DrJLabs/feat/release-evidence-closure",
+  "event": "push",
+  "headBranch": "main",
+  "headSha": "cfb3edab47cff0ffdd0d75f7971dd0c128d959ef",
+  "status": "completed",
+  "updatedAt": "2025-09-26T00:26:23Z",
+  "url": "https://github.com/DrJLabs/bmad-bp/actions/runs/18024216996",
+  "workflowName": "Release"
+}
