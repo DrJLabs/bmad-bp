@@ -1,0 +1,69 @@
+# prettier-ignore
+schema: 1
+story: "1.4"
+story_title: "Automate Release Evidence Capture & Post-Change Validation"
+gate: CONCERNS
+status_reason: "Awaiting live release run evidence and automated doc anchor validation."
+reviewer: "Quinn (Test Architect)"
+updated: "2025-09-26T02:47:56Z"
+quality_score: 90
+expires: "2025-10-03T02:47:56Z"
+top_issues:
+  - id: "REL-1.4-AC3"
+    severity: high
+    finding: "Release workflow evidence on main not yet captured; AC3 remains open."
+    suggested_action: "Trigger release.yaml after a release-worthy commit and run npm run release:evidence -- --run-id <run> to update Story 1 change log."
+  - id: "DOC-1.4-ANCHORS"
+    severity: medium
+    finding: "Documentation anchors rely on manual verification; no automated check ensures retention guidance remains linked."
+    suggested_action: "Add Markdown link check or CI lint to validate release automation anchors."
+waiver:
+  active: false
+
+trace:
+  totals:
+    requirements: 3
+    full: 0
+    partial: 2
+    none: 1
+  planning_ref: "qa/assessments/release-governance.story-1.4-test-design-20250926.md"
+  uncovered:
+    - ac: "AC3"
+      reason: "Pending execution of automation after real release run."
+  notes: "qa/assessments/release-governance.story-1.4-trace-20250926.md"
+
+evidence:
+  tests_reviewed: 4
+  risks_identified: 2
+  trace:
+    ac_covered:
+      - 1
+      - 2
+    ac_gaps:
+      - 3
+
+nfr_validation:
+  security:
+    status: PASS
+    notes: "Automation relies on gh auth and avoids leaking secrets."
+  performance:
+    status: PASS
+    notes: "CLI helper executes quickly; no performance concerns detected."
+  reliability:
+    status: CONCERNS
+    notes: "Need to validate automation against live release workflow outputs."
+  maintainability:
+    status: PASS
+    notes: "Unit tests cover helper functions; docs guide future maintainers."
+
+recommendations:
+  immediate:
+    - action: "Execute automation after next main release and update Story 1 change log with run ID, release URL, and evidence directory."
+      refs:
+        - "docs/bmad/focused-epics/release-governance/story-1.md"
+        - "docs/stories/1.4.release-evidence-automation.md"
+  future:
+    - action: "Introduce Markdown link checking for release documentation anchors."
+      refs:
+        - "docs/release-automation.md"
+        - "docs/versioning-and-releases.md"
