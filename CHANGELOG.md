@@ -1,3 +1,12 @@
+## <small>1.0.2 (2025-09-26)</small>
+
+- Merge pull request #12 from DrJLabs/feat/release-evidence-closure ([cfb3eda](https://github.com/DrJLabs/bmad-bp/commit/cfb3eda)), closes [#12](https://github.com/DrJLabs/bmad-bp/issues/12)
+- fix: resolve release governance documentation feedback ([0e3189e](https://github.com/DrJLabs/bmad-bp/commit/0e3189e))
+- docs: address release governance review feedback ([4895940](https://github.com/DrJLabs/bmad-bp/commit/4895940))
+- docs: mark release governance story 1.2 complete ([b1a18f9](https://github.com/DrJLabs/bmad-bp/commit/b1a18f9))
+- chore: close release evidence governance ([1105f38](https://github.com/DrJLabs/bmad-bp/commit/1105f38))
+- chore: record reviewer telemetry 18019837228 ([efa43b5](https://github.com/DrJLabs/bmad-bp/commit/efa43b5))
+
 ## <small>1.0.1 (2025-09-25)</small>
 
 - Merge pull request #11 from DrJLabs/chore/research-story-1-validation ([c31dcf7](https://github.com/DrJLabs/bmad-bp/commit/c31dcf7)), closes [#11](https://github.com/DrJLabs/bmad-bp/issues/11)
