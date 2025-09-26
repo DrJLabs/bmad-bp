@@ -352,7 +352,7 @@ function captureEvidence() {
 
   fs.mkdirSync(paths.baseDir, { recursive: true });
 
-  writeFile(paths.authStatus, `GitHub CLI authentication verified at ${timestamp}`);
+  writeFile(paths.authStatus, 'GitHub CLI authentication verified.');
 
   captureRunMetadata(resolvedRunId, paths.metadata);
 
