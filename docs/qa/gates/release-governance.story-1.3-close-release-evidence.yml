@@ -1,0 +1,28 @@
+schema: 1
+story: "1.3"
+story_title: "Close Release Evidence & Governance Checklist"
+gate: "PASS"
+status_reason: "Evidence trail captured (dry-run + release run 18021773065) and documentation cross-links verified; release workflow skipped due to no new commits but run recorded."
+reviewer: "Quinn (Test Architect)"
+updated: "2025-09-25T22:05:00Z"
+
+reviewer_artifacts:
+  report_md: "artifacts/reviewer/20250925T010832Z/report.md"
+  report_sarif: "artifacts/reviewer/20250925T010832Z/report.sarif"
+  report_json: "artifacts/reviewer/20250925T010832Z/report.json"
+  metrics: "artifacts/reviewer/20250925T010832Z/metrics.json"
+
+waiver: { active: false }
+
+top_issues:
+  - id: "REL-1.3-SKIP"
+    severity: low
+    finding: "Latest release workflow run skipped because no new commits."
+    suggested_action: "Re-run release workflow after next merge that triggers semantic-release."
+
+risk_summary:
+  totals: { critical: 0, high: 0, medium: 0, low: 1 }
+  recommendations:
+    must_fix: []
+    monitor:
+      - "Track next release workflow execution to produce release artifacts when applicable."

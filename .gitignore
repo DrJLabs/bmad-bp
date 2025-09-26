@@ -8,6 +8,7 @@ pnpm-workspace.yaml
 # Logs
 logs/
 *.log
+!docs/bmad/focused-epics/release-governance/evidence/*.log
 npm-debug.log*
 
 # Build output
@@ -17,6 +18,7 @@ release-tarballs/
 
 # Environment variables
 .env
+.env.*
 
 # System files
 .DS_Store

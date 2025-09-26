@@ -1,0 +1,19 @@
+GitHub Actions Run: https://github.com/DrJLabs/bmad-bp/actions/runs/18019240174
+Event: workflow_dispatch (manual) on main
+Started: 2025-09-25T19:12:41Z
+Duration: 00:00:44
+Runner: ubuntu-latest
+
+Job: release
+  ✔ Checkout repository
+  ✔ Setup Node.js 20
+  ✔ Install dependencies (npm ci)
+  ✔ npm run validate
+  ✔ npm run format:check
+  ✔ npm run lint
+  ✔ Run semantic-release (GitHub plugins only)
+      Outcome: skip (no new commits; release v1.0.0 already current)
+  ✔ Upload workflow run summary
+
+Release page inspected: https://github.com/DrJLabs/bmad-bp/releases/tag/v1.0.0 (tarball asset `bmad-drj-1.0.0.tgz` present)
+Notes: Captured as baseline evidence for Story 1.2 and referenced by Story 1.3.

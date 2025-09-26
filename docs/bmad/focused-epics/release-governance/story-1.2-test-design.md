@@ -27,11 +27,11 @@ Confirm that release documentation, evidence capture, and artifact policies full
 ## Test Data
 
 - Latest `Release` workflow run (or newly triggered run) to populate evidence.
-- `semantic-release --dry-run --ci false` output for mapping validation.
+- `semantic-release --dry-run --no-ci` output for mapping validation.
 
 ## Tooling
 
-- `npx semantic-release --dry-run --ci false`
+- `npx semantic-release --dry-run --no-ci`
 - GitHub Actions run logs (`Release` workflow)
 - File diff tools to confirm documentation updates
 

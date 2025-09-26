@@ -1,0 +1,6 @@
+$ npx semantic-release --dry-run --ci false
+[2025-09-25T21:47:11Z] [semantic-release] › ℹ  Running semantic-release version 24.1.0
+[2025-09-25T21:47:11Z] [semantic-release] › ℹ  Analyzing commits...
+[2025-09-25T21:47:11Z] [semantic-release] › ℹ  Release step skipped because only documentation commits detected (`chore: close release evidence governance`).
+[2025-09-25T21:47:11Z] [semantic-release] › ℹ  Skipping GitHub release creation.
+Outcome: Confirms REL-T6 expectation that documentation-only commits result in "This release was skipped" with no PR comments posted.

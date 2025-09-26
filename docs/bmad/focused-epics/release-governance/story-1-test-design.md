@@ -76,7 +76,7 @@ Validate that the updated release pipeline executes successfully with GitHub-onl
 
 - **FOSS-first Recommendation:** Use upstream `semantic-release` CLI with the GitHub plugin trio and local `--dry-run` before PR updates.
 - **Paid Option (if required):** None — GitHub-hosted runners and OSS tooling cover the required scenarios.
-- **Automation / Scripts:** `npx semantic-release --dry-run --ci false`; GitHub workflow dispatch variant with `permissions: contents: read` for REL-T3 validation.
+- **Automation / Scripts:** `npx semantic-release --dry-run --no-ci`; GitHub workflow dispatch variant with `permissions: contents: read` for REL-T3 validation.
 
 ### Risk & Compliance Notes
 
