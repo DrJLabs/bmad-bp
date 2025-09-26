@@ -1,3 +1,12 @@
+## 1.1.0 (2025-09-26)
+
+- 📝 Add docstrings to `feat/release-evidence-closure` ([51fca69](https://github.com/DrJLabs/bmad-bp/commit/51fca69))
+- Merge pull request #13 from DrJLabs/feat/release-evidence-closure ([5ee58c7](https://github.com/DrJLabs/bmad-bp/commit/5ee58c7)), closes [#13](https://github.com/DrJLabs/bmad-bp/issues/13)
+- Merge pull request #14 from DrJLabs/coderabbitai/docstrings/98fa7ba ([e4f0f26](https://github.com/DrJLabs/bmad-bp/commit/e4f0f26)), closes [#14](https://github.com/DrJLabs/bmad-bp/issues/14)
+- fix: address release evidence review feedback ([98fa7ba](https://github.com/DrJLabs/bmad-bp/commit/98fa7ba))
+- fix: sanitize gh auth evidence note ([dfb8f51](https://github.com/DrJLabs/bmad-bp/commit/dfb8f51))
+- feat: automate release evidence capture ([0b137dc](https://github.com/DrJLabs/bmad-bp/commit/0b137dc))
+
 ## <small>1.0.2 (2025-09-26)</small>
 
 - Merge pull request #12 from DrJLabs/feat/release-evidence-closure ([cfb3eda](https://github.com/DrJLabs/bmad-bp/commit/cfb3eda)), closes [#12](https://github.com/DrJLabs/bmad-bp/issues/12)
