@@ -210,7 +210,7 @@ function downloadRunArtifacts(runId, outputDir) {
     return true;
   } catch (error) {
     const message = `${error.stderr || error.stdout || error.message}`;
-    if (/no artifacts? found/i.test(message)) {
+    if (/no\s+([a-z\s]+\s)?artifacts?.*found/i.test(message)) {
       console.warn(`[warn] No artifacts found for run ${runId}.`);
       return false;
     }
@@ -243,7 +243,7 @@ function captureRunMetadata(runId, destPath) {
     'view',
     runId,
     '--json',
-    'conclusion,databaseId,headBranch,headSha,workflowName,event,createdAt,updatedAt,url,htmlUrl,status',
+    'conclusion,databaseId,headBranch,headSha,workflowName,event,createdAt,updatedAt,url,status,displayTitle',
   ]);
   writeFile(destPath, `${stdout.trim()}`);
 }

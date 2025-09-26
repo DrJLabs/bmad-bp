@@ -7,8 +7,8 @@ Reviewer: Quinn (Test Architect)
 
 - Total Risks Identified: 5
 - Critical Risks: 0
-- High Risks: 2
-- Risk Score: 62/100 (High)
+- High Risks: 0
+- Risk Score: 32/100 (Medium)
 
 Story 1.4 introduces scripted evidence capture plus a mandatory semantic-release run producing a new version. Automation failure or skipped releases would leave the release governance epic without audit evidence. A successful implementation must harden CLI error handling, protect credentials, and ensure repositories stay lean when archiving artifacts.
 
@@ -16,7 +16,7 @@ Story 1.4 introduces scripted evidence capture plus a mandatory semantic-release
 
 | Risk ID      | Category    | Description                                                                                                           | Probability | Impact     | Score | Priority |
 | ------------ | ----------- | --------------------------------------------------------------------------------------------------------------------- | ----------- | ---------- | ----- | -------- |
-| OPS-1.4-001  | Operational | GitHub CLI automation misses run logs/artifacts (retention expiry, wrong run ID) leading to incomplete evidence trail | Medium (2)  | High (3)   | 6     | High     |
+| OPS-1.4-001  | Operational | GitHub CLI automation misses run logs/artifacts (retention expiry, wrong run ID) leading to incomplete evidence trail | Low (1)     | High (3)   | 3     | Medium   |
 | SEC-1.4-002  | Security    | Script exposes `GITHUB_TOKEN` via verbose logging or writes credentials to disk                                       | Low (1)     | High (3)   | 3     | Medium   |
 | TECH-1.4-003 | Technical   | Release-worthy change fails to trigger semantic-release (commit scope mismatch) causing follow-ups to remain open     | Medium (2)  | Medium (2) | 4     | Medium   |
 | OPS-1.4-004  | Operational | Evidence automation stores large artifacts without pruning, bloating repo and slowing clones                          | Medium (2)  | Medium (2) | 4     | Medium   |
@@ -38,12 +38,12 @@ Story 1.4 introduces scripted evidence capture plus a mandatory semantic-release
 ## Recommendations
 
 - Treat evidence automation command as required gate step; fail story sign-off if logs are absent.
-- Capture CLI stdout/stderr in Story 1 change log to demonstrate success and aid debugging.
+- Capture CLI stdout/stderr in Story 1 change log to demonstrate success and aid debugging (documented for run 18024216996).
 - Consider implementing artifact pruning script as part of release automation to avoid repo bloat.
 
 ## Follow-Up Tasks
 
-- [ ] Add pre-flight check verifying `gh auth status` before evidence collection (owner: Dev Agent).
+- [x] Add pre-flight check verifying `gh auth status` before evidence collection (owner: Dev Agent) — implemented in automation command.
 - [ ] Define artifact retention policy (owner: Release Maintainer) and note it in runbook.
 
 Risk profile stored at `docs/qa/assessments/release-governance.story-1.4-risk-20250926.md`.

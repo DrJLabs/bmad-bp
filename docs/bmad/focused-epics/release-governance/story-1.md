@@ -55,15 +55,16 @@
 
 ## Change Log
 
-| Date       | Version    | Description                                                                                                                                                                                                                                                   | Author     |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 2025-09-25 | Draft      | Initial story draft with solo maintainer research context.                                                                                                                                                                                                    | PO         |
-| 2025-09-25 | Dev        | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs.                                                                                                                                                        | Dev        |
-| 2025-09-25 | PO         | Story reviewed and approved; status updated to Done.                                                                                                                                                                                                          | PO         |
-| 2025-09-25 | Evidence   | Recorded Manual Release run 17598712992 and release v4.43.1 URL; refreshed dry-run (2025-09-25) and permissions logs under `docs/bmad/focused-epics/release-governance/evidence/`.                                                                            | Release SM |
-| 2025-09-25 | Evidence+  | Release workflow run 18019240174 (workflow_dispatch on main) completed in 44s; runtime captured and log archived; release v1.0.0 includes asset `bmad-drj-1.0.0.tgz` confirming tarball availability.                                                         | Release SM |
-| 2025-09-25 | Evidence++ | Captured new dry-run log (semantic-release-dry-run-20250925T213955Z.log), verified doc cross-links, recorded 2025-09-25T21:45Z anchor check in change log; Release workflow run 18021773065 (workflow_dispatch on main) completed with skip (no new commits). | Release SM |
-| 2025-09-26 | Automation | Added `npm run release:evidence` CLI, timestamped evidence directory structure, and documentation updates covering retention checks and gh auth status capture.                                                                                               | Dev        |
+| Date       | Version     | Description                                                                                                                                                                                                                                                            | Author     |
+| ---------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| 2025-09-25 | Draft       | Initial story draft with solo maintainer research context.                                                                                                                                                                                                             | PO         |
+| 2025-09-25 | Dev         | Implemented GitHub-only release workflow, updated `.releaserc.json`, docs, and captured evidence logs.                                                                                                                                                                 | Dev        |
+| 2025-09-25 | PO          | Story reviewed and approved; status updated to Done.                                                                                                                                                                                                                   | PO         |
+| 2025-09-25 | Evidence    | Recorded Manual Release run 17598712992 and release v4.43.1 URL; refreshed dry-run (2025-09-25) and permissions logs under `docs/bmad/focused-epics/release-governance/evidence/`.                                                                                     | Release SM |
+| 2025-09-25 | Evidence+   | Release workflow run 18019240174 (workflow_dispatch on main) completed in 44s; runtime captured and log archived; release v1.0.0 includes asset `bmad-drj-1.0.0.tgz` confirming tarball availability.                                                                  | Release SM |
+| 2025-09-25 | Evidence++  | Captured new dry-run log (semantic-release-dry-run-20250925T213955Z.log), verified doc cross-links, recorded 2025-09-25T21:45Z anchor check in change log; Release workflow run 18021773065 (workflow_dispatch on main) completed with skip (no new commits).          | Release SM |
+| 2025-09-26 | Automation  | Added `npm run release:evidence` CLI, timestamped evidence directory structure, and documentation updates covering retention checks and gh auth status capture.                                                                                                        | Dev        |
+| 2025-09-26 | Evidence+++ | Release workflow run 18024216996 (push on `main`, PR #12) completed successfully; release `v1.1.0` published with asset `bmad-drj-1.1.0.tgz`. Evidence archived under `docs/bmad/focused-epics/release-governance/evidence/release-run-18024216996-20250926T040000Z/`. | Release SM |
 
 ## Dev Agent Record
 
@@ -152,7 +153,7 @@ Gate: PASS → docs/qa/gates/release-governance.story-1-release-workflow-alignme
 
 ### Follow-Up Tasks
 
-- [ ] Run `npm run release:evidence -- --run-id <main-run>` after the next successful `main` release to capture fresh dry-run output, workflow logs, artifacts, and update the Story 1 change log with the run ID + release URL — Owner: Maintainer (self), Due: 2025-09-29 (Impact: High, Effort: M)
+- [x] Run `npm run release:evidence -- --run-id 18024216996 --skip-dry-run` after the successful `main` release to capture fresh dry-run output, workflow logs, artifacts, and update the Story 1 change log with the run ID + release URL — Owner: Maintainer (self), Done 2025-09-26 (Impact: High, Effort: M)
 - [x] Record negative-permission failure evidence in docs/bmad/focused-epics/release-governance/evidence/semantic-release-permissions-failure.log — Owner: Maintainer (self), Done 2025-09-25 (Impact: Medium, Effort: S)
 - [x] Extend `docs/release-automation.md` with built-in `GITHUB_TOKEN` guidance and semantic-release comment suppression notes — Owner: Maintainer (self), Done 2025-09-25 (Impact: Medium, Effort: S)
 
@@ -169,9 +170,6 @@ Gate: PASS → docs/qa/gates/release-governance.story-1-release-workflow-alignme
 ### Product Owner Validation (2025-09-25)
 
 - **Reviewer:** Sarah (PO)
-- **Decision:** Approved with post-merge follow-ups for evidence capture.
-- **Open Follow-ups:**
-  1. Record Actions run ID and release URL after mainline workflow executes.
-  2. Attach semantic-release skip log for REL-T6 once available.
-  3. Complete documentation reviewer approval and log the decision in the change log.
-     Product Owner Validation: PASS_WITH_FOLLOWUP → docs/bmad/issues/reviewer-rollout.md
+- **Decision:** Approved; evidence capture follow-ups closed 2025-09-26.
+- **Open Follow-ups:** None — release run 18024216996 logged with evidence updates on 2025-09-26.
+  Product Owner Validation: PASS → docs/qa/assessments/release-governance.story-1.4-review-20250926.md

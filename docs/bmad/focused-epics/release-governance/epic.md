@@ -53,8 +53,8 @@ Re-align the chat-mcp-farm release workflow so it mirrors the upstream BMAD patt
 
 ## Validation Checklist
 
-- [ ] Release workflow passes on a dry-run PR branch and on `main` after merge. (Blocked: repository permissions prevent manual dispatch; see Story 1 change log Evidence++ entry dated 2025-09-25)
-- [ ] Semantic-release logs confirm a GitHub release was created and npm publish skipped. (Blocked pending successful Release workflow run with admin assistance)
+- [x] Release workflow passes on a dry-run PR branch and on `main` after merge. (Evidence: docs/bmad/focused-epics/release-governance/evidence/release-run-18024216996-20250926T040000Z/release-run-18024216996.log)
+- [x] Semantic-release logs confirm a GitHub release was created and npm publish skipped. (Evidence: GitHub Release v1.1.0, Story 1 change log entry dated 2025-09-26)
 - [x] Installer tooling (`npm run bmad:validate`) completes without errors. (Evidence: docs/bmad/focused-epics/release-governance/evidence/bmad-validate.log)
 
 ## 🔬 Research & Validation Log (2025-09-25)

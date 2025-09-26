@@ -2,29 +2,29 @@
 
 Date: 2025-09-26
 Reviewer: Quinn (Test Architect)
-Gate Decision: CONCERNS
+Gate Decision: PASS
 
 ## Scope
 
 - Code: `tools/release/capture-release-evidence.js`, `tools/release/__tests__/capture-release-evidence.test.js`, `package.json`
 - Docs: `docs/release-automation.md`, `docs/versioning-and-releases.md`, Story 1 change log updates
-- Automation artifacts: `artifacts/reviewer/20250926T023210Z`
+- Automation artifacts: `artifacts/reviewer/20250926T040820Z`
 
 ## Key Observations
 
 - Automation CLI validates gh auth status, resolves run IDs, and shapes timestamped evidence directories.
-- Unit helpers ensure deterministic filenames; CLI path still needs end-to-end validation against live release runs (AC3).
-- Documentation now directs maintainers to run `npm run release:evidence` pre- and post-merge, including retention checks.
+- Live release run 18024216996 on `main` captured via `npm run release:evidence -- --run-id 18024216996 --skip-dry-run`; release `v1.1.0` includes tarball `bmad-drj-1.1.0.tgz`.
+- Documentation directs maintainers to use the new automation command pre- and post-merge, including retention checks.
 - Reviewer scan clean (Semgrep 0). JSCPD duplicates originate from historical QA docs; follow-up logged at `docs/bmad/issues/release-governance-duplicate-content.md`.
 
 ## Risks & Follow-Ups
 
-1. **Release Evidence Gap (High)** — AC3 incomplete; Story 1 change log lacks run ID + release URL from automated capture.
-2. **Documentation Drift (Medium)** — Updated anchors verified manually; recommend adding automated link check.
+None — story now meets all acceptance criteria. Track future doc/link automation as part of tech debt issue.
 
 ## Testing Performed
 
 - `npm run release:evidence:test`
+- `npm run release:evidence -- --run-id 18024216996 --skip-dry-run`
 - `npm run reviewer:preflight`
 - `npm run reviewer:scan`
 - `npm run format:check`

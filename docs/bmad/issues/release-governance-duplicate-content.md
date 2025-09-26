@@ -8,11 +8,11 @@
 
 ## Action Items
 
-1. Audit duplicate segments reported in `artifacts/reviewer/20250926T023210Z/jscpd/jscpd-report.json` and group by source file.
+1. Audit duplicate segments reported in `artifacts/reviewer/20250926T040820Z/jscpd/jscpd-report.json` and group by source file.
 2. Decide whether to refactor common guidance into shared includes or suppress duplicates via reviewer configuration.
 3. Update reviewer baseline to acknowledge resolved duplicates and re-run `npm run reviewer:scan` to confirm counts drop below threshold.
 
 ## Sources
 
-- Reviewer metrics: `artifacts/reviewer/20250926T023210Z/metrics.json`
-- JSCPD report: `artifacts/reviewer/20250926T023210Z/jscpd/jscpd-report.json`
+- Reviewer metrics: `artifacts/reviewer/20250926T040820Z/metrics.json`
+- JSCPD report: `artifacts/reviewer/20250926T040820Z/jscpd/jscpd-report.json`
