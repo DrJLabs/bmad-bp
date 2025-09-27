@@ -1,5 +1,5 @@
 {
-  "name": "bmad-method",
+  "name": "bmad-drj",
   "version": "1.1.0",
   "description": "BMad Method installer - AI-powered Agile development framework",
   "keywords": [
@@ -11,16 +11,16 @@
     "installer",
     "agents"
   ],
-  "homepage": "https://github.com/bmad-team/bmad-method#readme",
+  "homepage": "https://github.com/DrJLabs/bmad-bp#readme",
   "bugs": {
-    "url": "https://github.com/bmad-team/bmad-method/issues"
+    "url": "https://github.com/DrJLabs/bmad-bp/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bmad-team/bmad-method.git"
+    "url": "https://github.com/DrJLabs/bmad-bp.git"
   },
   "license": "MIT",
-  "author": "BMad Team",
+  "author": "DrJLabs",
   "main": "lib/installer.js",
   "bin": {
     "bmad": "./bin/bmad.js",

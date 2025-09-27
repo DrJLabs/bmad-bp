@@ -235,8 +235,8 @@ As your project grows and the code starts to build consistent patterns, coding s
 ## Getting Help
 
 - **Discord Community**: [Join Discord](https://discord.gg/gk8jAdXWmj)
-- **GitHub Issues**: [Report bugs](https://github.com/bmadcode/bmad-method/issues)
-- **Documentation**: [Browse docs](https://github.com/bmadcode/bmad-method/docs)
+- **GitHub Issues**: [Report bugs](https://github.com/DrJLabs/bmad-bp/issues)
+- **Documentation**: [Browse docs](https://github.com/DrJLabs/bmad-bp/tree/main/docs)
 - **YouTube**: [BMadCode Channel](https://www.youtube.com/@BMadCode)
 
 ## Conclusion

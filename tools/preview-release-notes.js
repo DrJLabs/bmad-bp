@@ -54,11 +54,11 @@ if (chores.length > 0) {
 
 console.log('\n## 📦 Installation\n');
 console.log('```bash');
-console.log('npx bmad-method install');
+console.log('npx -p bmad-drj bmad-method install');
 console.log('```');
 
 console.log(
-  `\n**Full Changelog**: https://github.com/bmadcode/BMAD-METHOD/compare/${latestTag}...v${nextVersion}`,
+  `\n**Full Changelog**: https://github.com/DrJLabs/bmad-bp/compare/${latestTag}...v${nextVersion}`,
 );
 
 console.log(`\n---\n📊 **Summary**: ${commits.length} commits since ${latestTag}`);
