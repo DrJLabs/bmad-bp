@@ -1,3 +1,9 @@
+## <small>1.1.2 (2025-09-28)</small>
+
+- Merge pull request #19 from DrJLabs/chore/fix-manual-release-prettier ([0a384e3](https://github.com/DrJLabs/bmad-bp/commit/0a384e3)), closes [#19](https://github.com/DrJLabs/bmad-bp/issues/19)
+- fix: format release notes in manual workflow ([a8a4986](https://github.com/DrJLabs/bmad-bp/commit/a8a4986))
+- fix: invoke prettier via npx in manual release ([e36ee3e](https://github.com/DrJLabs/bmad-bp/commit/e36ee3e))
+
 ## <small>1.1.1 (2025-09-28)</small>
 
 - fix reviewer stage guidance and template paths ([63aa10a](https://github.com/DrJLabs/bmad-bp/commit/63aa10a))
