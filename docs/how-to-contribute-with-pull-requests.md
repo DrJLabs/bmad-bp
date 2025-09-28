@@ -30,8 +30,8 @@ A pull request (PR) is how you propose changes to a project on GitHub. Think of 
 
 ```bash
 # Replace YOUR-USERNAME with your actual GitHub username
-git clone https://github.com/YOUR-USERNAME/bmad-method.git
-cd bmad-method
+git clone https://github.com/YOUR-USERNAME/bmad-bp.git
+cd bmad-bp
 ```
 
 ### 3. Create a New Branch

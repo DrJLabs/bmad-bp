@@ -10,7 +10,7 @@ Deliver a workflow-ready reviewer persona that augments BMAD with free static ch
 
 - Current functionality: BMAD workflows stop at manual development handoff; reviewer quality depends on external PR bots.
 - Technology stack: Node.js tooling, YAML-driven workflows, Markdown documentation.
-- Integration points: `.bmad-core/workflows/focused-epic.yaml`, `bmad-core/core-config.yaml`, `tools/` helper scripts, docs under `docs/`.
+- Integration points: `.bmad-core/workflows/focused-epic.yaml`, `.bmad-core/core-config.yaml`, `tools/` helper scripts, docs under `docs/`.
 
 **Enhancement Details**
 

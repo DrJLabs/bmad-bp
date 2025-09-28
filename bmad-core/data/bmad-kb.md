@@ -88,7 +88,7 @@ BMad transforms you into a "Vibe CEO" - directing a team of specialized AI agent
 
 ```bash
 # Interactive installation (recommended)
-npx bmad-method install
+npx -p bmad-drj bmad-method install
 ```
 
 **Installation Steps**:
@@ -181,7 +181,7 @@ npx bmad-method install
 
 ## Core Configuration (core-config.yaml)
 
-**New in V4**: The `bmad-core/core-config.yaml` file is a critical innovation that enables BMad to work seamlessly with any project structure, providing maximum flexibility and backwards compatibility.
+**New in V4**: The `.bmad-core/core-config.yaml` file is a critical innovation that enables BMad to work seamlessly with any project structure, providing maximum flexibility and backwards compatibility.
 
 ### What is core-config.yaml?
 
@@ -783,7 +783,7 @@ Expansion packs extend BMAD-METHOD™ beyond traditional software development in
 3. **Install via CLI**:
 
    ```bash
-   npx bmad-method install
+   npx -p bmad-drj bmad-method install
    # Select "Install expansion pack" option
    ```
 

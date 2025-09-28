@@ -2,10 +2,10 @@
 
 > **HIGHLY RECOMMENDED: Use Gemini Web or Gemini CLI for Brownfield Documentation Generation!**
 >
-> Gemini Web's 1M+ token context window or Gemini CLI (when it's working) can analyze your ENTIRE codebase, or critical sections of it, all at once (obviously within reason):
+> Gemini Web's 1M+ token context window or Gemini CLI when available can analyze your ENTIRE codebase, or critical sections of it, all at once (obviously within reason):
 >
 > - Upload via GitHub URL or use gemini cli in the project folder
-> - If working in the web: use `npx bmad-method flatten` to flatten your project into a single file, then upload that file to your web agent.
+> - If working in the web: use `npx -p bmad-drj bmad-method flatten` to flatten your project into a single file, then upload that file to your web agent.
 
 ## What is Brownfield Development?
 
@@ -27,7 +27,7 @@ If you have just completed an MVP with BMad, and you want to continue with post-
 ## The Complete Brownfield Workflow
 
 1. **Follow the [<ins>User Guide - Installation</ins>](user-guide.md#installation) steps to setup your agent in the web.**
-2. **Generate a 'flattened' single file of your entire codebase** run: `npx bmad-method flatten`
+2. **Generate a 'flattened' single file of your entire codebase** run: `npx -p bmad-drj bmad-method flatten`
 
 ### Choose Your Approach
 

@@ -164,7 +164,7 @@ graph TD
 
 Before installing BMad Method, ensure you have:
 
-- **Node.js** ≥ 18, **npm** ≥ 9
+- **Node.js** ≥ 20.10.0, **npm** ≥ 9
 - **Git** installed and configured
 - **(Optional)** VS Code with "Markdown All in One" + "Markdown Preview Mermaid Support" extensions
 
@@ -184,7 +184,7 @@ If you want to do the planning on the web with Claude (Sonnet 4 or Opus), Gemini
 
 ```bash
 # Interactive installation (recommended)
-npx bmad-method install
+npx -p bmad-drj bmad-method install
 ```
 
 ### Codex (CLI & Web)
@@ -193,9 +193,9 @@ BMAD integrates with OpenAI Codex via `AGENTS.md` and committed core agent files
 
 - Two installation modes:
   - Codex (local only): keeps `.bmad-core/` ignored for local dev.
-    - `npx bmad-method install -f -i codex -d .`
+    - `npx -p bmad-drj bmad-method install -f -i codex -d .`
   - Codex Web Enabled: ensures `.bmad-core/` is tracked so you can commit it for Codex Web.
-    - `npx bmad-method install -f -i codex-web -d .`
+    - `npx -p bmad-drj bmad-method install -f -i codex-web -d .`
 
 - What gets generated:
   - `AGENTS.md` at the project root with a BMAD section containing
@@ -501,7 +501,7 @@ When creating custom web bundles or uploading to AI platforms, include your `tec
 
 ## Core Configuration
 
-The `bmad-core/core-config.yaml` file is a critical config that enables BMad to work seamlessly with differing project structures, more options will be made available in the future. Currently the most important is the devLoadAlwaysFiles list section in the yaml.
+The `.bmad-core/core-config.yaml` file is a critical config that enables BMad to work seamlessly with differing project structures, more options will be made available in the future. Currently the most important is the devLoadAlwaysFiles list section in the yaml.
 
 ### Developer Context Files
 

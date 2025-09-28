@@ -26,7 +26,19 @@
     "bmad": "./bin/bmad.js",
     "bmad-method": "./bin/bmad.js"
   },
+  "files": [
+    "bin/",
+    "lib/",
+    "config/",
+    "bmad-core/",
+    "common/",
+    "docs/",
+    "expansion-packs/",
+    "README.md"
+  ],
   "scripts": {
+    "prepack": "node ./scripts/prepack.js",
+    "postpack": "node ./scripts/postpack.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

@@ -16,7 +16,7 @@
 2. Build `tools/reviewer/run.js` that merges scan JSON, churn data, metrics, and git diff into a single prompt payload while sanitizing secrets/paths before serialization, respecting `BMAD_REVIEWER_MODEL` overrides.
 3. Emit artifacts per run: Markdown summary (`report.md`), SARIF findings (`report.sarif`), and machine-readable `report.json` capturing severity, confidence, scores, recommended owners, remediation ETA, and evidence references.
 4. Include reproducibility metadata block (tool versions, commit SHA, diff stats, prompt hash) within each artifact header.
-5. Wire agent config into `bmad-core/core-config.yaml` so orchestrator can invoke the reviewer role; ensure downstream agents discover persona metadata.
+5. Wire agent config into `.bmad-core/core-config.yaml` so orchestrator can invoke the reviewer role; ensure downstream agents discover persona metadata.
 6. Provide CLI alias (`bmad reviewer run`) executing the pipeline end-to-end, returning non-zero exit on high-risk findings when `--strict` flag used and surfacing remediation steps.
 7. Support skip flags (`BMAD_REVIEWER_SKIP=1`) and dry-run mode (`--dry-run`) for previews; dry-run outputs Markdown preview without persisting artifacts.
 8. Store artifacts under `artifacts/reviewer/<timestamp>/` using hashed diff identifier to avoid collisions and link from QA gates.
@@ -28,7 +28,7 @@
 - [x] Author `.bmad-core/agents/reviewer.md` capturing persona mode guidance, evidence weighting rubric, severity thresholds, confidence scoring, and escalation instructions. (AC 1)
 - [x] Implement `tools/reviewer/run.js` orchestrating data ingestion, sanitization, prompt assembly, and artifact emission with reproducibility metadata. (AC 2,3,4,9)
 - [x] Build `report.json` schema and integrate AJV-based validation within the pipeline and CI hooks. **Owner:** Dev — **Completed:** 2025-09-24 (AC 3,10)
-- [x] Register reviewer role in `bmad-core/core-config.yaml` and ensure orchestrator loads persona metadata. (AC 5)
+- [x] Register reviewer role in `.bmad-core/core-config.yaml` and ensure orchestrator loads persona metadata. (AC 5)
 - [x] Add CLI alias `bmad reviewer run` (via package.json or CLI wrapper) supporting `--strict`, `--dry-run`, and telemetry output to stdout/metrics. (AC 6,7,10)
 - [x] Implement sanitization module with regex allowlist (API keys, tokens, paths) returning redaction report; abort pipeline on sanitization failure. **Owner:** QA — **Completed:** 2025-09-24 (AC 2,9)
 - [x] Persist artifacts to `artifacts/reviewer/<timestamp>/` with hashed diff identifier and update QA documentation to consume outputs. (AC 3,8)
@@ -95,7 +95,7 @@
 ### File List
 
 - `.bmad-core/agents/reviewer.md`
-- `bmad-core/core-config.yaml`
+- `.bmad-core/core-config.yaml`
 - `tools/reviewer/collect-scans.js`
 - `tools/reviewer/validate-metrics.js`
 - `tools/reviewer/telemetry-sync.js`
