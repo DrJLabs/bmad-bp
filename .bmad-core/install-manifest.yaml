@@ -31,7 +31,7 @@ files:
     hash: df34e60ccfac2624
     modified: false
   - path: .bmad-core/workflows/focused-epic.yaml
-    hash: "439149029136e817"
+    hash: 439149029136e817
     modified: false
   - path: .bmad-core/workflows/brownfield-ui.yaml
     hash: 8a8068093272d00f

@@ -74,7 +74,12 @@ sequence:
 
            bmad reviewer run --mode "$MODE" ${BMAD_REVIEWER_MODEL:+--model "$BMAD_REVIEWER_MODEL"}
            ```
-        3. `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --mode "$MODE"` (reuse `$MODE` computed above)
+        3. Capture the reviewer artifact directory created above and sync telemetry with the concrete metrics file:
+
+           ```bash
+           REVIEWER_ARTIFACT_DIR="$(ls -td artifacts/reviewer/*/ | head -n1)"
+           npm run reviewer:telemetry-sync -- --metrics "${REVIEWER_ARTIFACT_DIR%/}/metrics.json" --mode "$MODE"
+           ```
       Workflow inputs:
         - `BMAD_REVIEWER_SKIP` (default false) → bypass reviewer stage for doc-only/trivial diffs
         - `BMAD_REVIEWER_STRICT` (default false) → enforce strict-mode gating when ready
