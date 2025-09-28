@@ -2,9 +2,8 @@
 
 ## Previous Versions
 
-- [Version 3](https://github.com/bmadcode/BMad-Method/tree/V3)
-- [Version 2](https://github.com/bmadcode/BMad-Method/tree/V2)
-- [Version 1](https://github.com/bmadcode/BMad-Method/tree/V1)
+- [DrJLabs Releases](https://github.com/DrJLabs/bmad-bp/releases)
+- Legacy V1–V3 archives live in the original BMadCode repository (retain locally if you still depend on them).
 
 ## Current Version: V4
 

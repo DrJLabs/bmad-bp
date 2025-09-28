@@ -12,17 +12,17 @@ A pull request (PR) is how you propose changes to a project on GitHub. Think of 
 
 **Required before submitting PRs:**
 
-- **For bug fixes**: Create an issue using the [bug report template](https://github.com/bmadcode/bmad-method/issues/new?template=bug_report.md)
+- **For bug fixes**: Create an issue using the [bug report template](https://github.com/DrJLabs/bmad-bp/issues/new?template=bug_report.md)
 - **For new features**:
   1. Discuss in Discord [#general-dev channel](https://discord.gg/gk8jAdXWmj)
-  2. Create an issue using the [feature request template](https://github.com/bmadcode/bmad-method/issues/new?template=feature_request.md)
+  2. Create an issue using the [feature request template](https://github.com/DrJLabs/bmad-bp/issues/new?template=feature_request.md)
 - **For large changes**: Always open an issue first to discuss alignment
 
 ## Step-by-Step Guide
 
 ### 1. Fork the Repository
 
-1. Go to the [BMad-Method repository](https://github.com/bmadcode/bmad-method)
+1. Go to the [BMad-Method repository](https://github.com/DrJLabs/bmad-bp)
 2. Click the "Fork" button in the top-right corner
 3. This creates your own copy of the project
 
@@ -30,8 +30,8 @@ A pull request (PR) is how you propose changes to a project on GitHub. Think of 
 
 ```bash
 # Replace YOUR-USERNAME with your actual GitHub username
-git clone https://github.com/YOUR-USERNAME/bmad-method.git
-cd bmad-method
+git clone https://github.com/YOUR-USERNAME/bmad-bp.git
+cd bmad-bp
 ```
 
 ### 3. Create a New Branch
@@ -134,9 +134,9 @@ git push origin fix/typo-in-readme
 - 💬 Join our [Discord Community](https://discord.gg/gk8jAdXWmj) for real-time help:
   - **#general-dev** - Technical questions and feature discussions
   - **#bugs-issues** - Get help with bugs before filing issues
-- 💬 Ask questions in [GitHub Discussions](https://github.com/bmadcode/bmad-method/discussions)
-- 🐛 Report bugs using the [bug report template](https://github.com/bmadcode/bmad-method/issues/new?template=bug_report.md)
-- 💡 Suggest features using the [feature request template](https://github.com/bmadcode/bmad-method/issues/new?template=feature_request.md)
+- 💬 Ask questions in [GitHub Discussions](https://github.com/DrJLabs/bmad-bp/discussions)
+- 🐛 Report bugs using the [bug report template](https://github.com/DrJLabs/bmad-bp/issues/new?template=bug_report.md)
+- 💡 Suggest features using the [feature request template](https://github.com/DrJLabs/bmad-bp/issues/new?template=feature_request.md)
 - 📖 Read the full [Contributing Guidelines](../CONTRIBUTING.md)
 
 ## Example: Good vs Bad PRs

@@ -21,30 +21,6 @@ This is a simple step-by-step guide to help you efficiently manage your developm
 3. **Execute**: `*develop-story {selected-story}` (runs execute-checklist task)
 4. **Review generated report** in `{selected-story}`
 
-> ⚙️ **Reviewer Stage Reminder:** After development completes, the focused-epic workflow now runs the reviewer persona automatically. Ensure `reviewer.enabled` remains true (or set via workflow input) so the stage executes before QA gates.
-
-### Reviewer Stage After Development
-
-- **Command chain:**
-  1. `bash tools/reviewer/preflight.sh`
-  2. Determine reviewer mode/model overrides, then run:
-
-     ```bash
-     MODE="default"
-     if [ "${BMAD_REVIEWER_STRICT:-}" = "true" ] || [ "${BMAD_REVIEWER_STRICT:-}" = "1" ]; then
-       MODE="strict"
-     fi
-
-     bmad reviewer run --mode "$MODE" ${BMAD_REVIEWER_MODEL:+--model "$BMAD_REVIEWER_MODEL"}
-     npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --mode "$MODE"
-     ```
-
-- **Skip conditions:** set `BMAD_REVIEWER_SKIP=1` (or `story.review.override_skip: true`) for doc-only/trivial (<5 LOC) diffs.
-- **Strict mode:** enable via `BMAD_REVIEWER_STRICT=1` or config toggle once the rollout checklist thresholds are green.
-- **Artifacts:** reviewer outputs live under `artifacts/reviewer/<timestamp>/` — attach `report.md`, `report.sarif`, `report.json`, and `metrics.json` to QA deliverables.
-- **Telemetry:** every run must call the sync command above so [`docs/bmad/issues/reviewer-rollout.md`](docs/bmad/issues/reviewer-rollout.md) records runtime, findings, and false-positive rate.
-- **Rollback:** toggle `reviewer.enabled: false` in `.bmad-core/core-config.yaml` and comment the workflow block if the stage must be suspended; retain telemetry rows for audit history.
-
 ## Test Architect Integration Throughout Workflow
 
 The Test Architect (Quinn) provides comprehensive quality assurance throughout the development lifecycle. Here's how to leverage each capability at the right time.

@@ -1,5 +1,5 @@
 {
-  "name": "bmad-method",
+  "name": "bmad-drj",
   "version": "1.1.0",
   "description": "BMad Method installer - AI-powered Agile development framework",
   "keywords": [
@@ -11,22 +11,34 @@
     "installer",
     "agents"
   ],
-  "homepage": "https://github.com/bmad-team/bmad-method#readme",
+  "homepage": "https://github.com/DrJLabs/bmad-bp#readme",
   "bugs": {
-    "url": "https://github.com/bmad-team/bmad-method/issues"
+    "url": "https://github.com/DrJLabs/bmad-bp/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bmad-team/bmad-method.git"
+    "url": "https://github.com/DrJLabs/bmad-bp.git"
   },
   "license": "MIT",
-  "author": "BMad Team",
+  "author": "DrJLabs",
   "main": "lib/installer.js",
   "bin": {
     "bmad": "./bin/bmad.js",
     "bmad-method": "./bin/bmad.js"
   },
+  "files": [
+    "bin/",
+    "lib/",
+    "config/",
+    "bmad-core/",
+    "common/",
+    "docs/",
+    "expansion-packs/",
+    "README.md"
+  ],
   "scripts": {
+    "prepack": "node ./scripts/prepack.js",
+    "postpack": "node ./scripts/postpack.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

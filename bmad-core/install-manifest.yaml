@@ -1,0 +1,11 @@
+version: 4.43.2
+installed_at: "2025-09-25T16:00:00.000Z"
+install_type: obsidian-export
+agent: null
+ides_setup: []
+expansion_packs: []
+files:
+  - .github/workflows/release.yaml
+  - .releaserc.json
+  - docs/release-automation.md
+  - docs/versioning-and-releases.md

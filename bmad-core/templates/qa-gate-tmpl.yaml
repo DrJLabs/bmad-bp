@@ -17,6 +17,12 @@ status_reason: "{{status_reason}}" # 1-2 sentence summary of why this gate decis
 reviewer: "Quinn (Test Architect)"
 updated: "{{iso_timestamp}}"
 
+reviewer_artifacts:
+  report_md: "artifacts/reviewer/<timestamp>/report.md"
+  report_sarif: "artifacts/reviewer/<timestamp>/report.sarif"
+  report_json: "artifacts/reviewer/<timestamp>/report.json"
+  metrics: "artifacts/reviewer/<timestamp>/metrics.json"
+
 # Always present but only active when WAIVED
 waiver: { active: false }
 

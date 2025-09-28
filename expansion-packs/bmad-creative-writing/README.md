@@ -37,7 +37,7 @@ The Creative Writing Expansion Pack extends BMad-Method with a comprehensive sui
 ### Via BMad Installer (After PR Acceptance)
 
 ```bash
-npx bmad-method install
+npx -p bmad-drj bmad-method install
 # Select "Creative Writing Studio" from the expansion packs list
 ```
 
