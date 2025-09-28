@@ -239,7 +239,7 @@ commands:
       Return control to the default assistant persona once reviewer tasks are complete.
 ```
 
-### 'Research & Validation Specialist' (id: researcher)
+### Research & Validation Specialist (id: researcher)
 
 Source: .bmad-core/agents/researcher.md
 
