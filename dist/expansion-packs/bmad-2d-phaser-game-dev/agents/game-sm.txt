@@ -89,6 +89,7 @@ dependencies:
 
 ==================== START: .bmad-2d-phaser-game-dev/tasks/create-game-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Game Development Story Task
 
 ## Purpose
@@ -309,13 +310,14 @@ This task ensures game development stories are immediately actionable and enable
 
 ==================== START: .bmad-2d-phaser-game-dev/tasks/execute-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Checklist Validation Task
 
 This task provides instructions for validating documentation against checklists. The agent MUST follow these instructions to ensure thorough and systematic validation of documents.
 
 ## Available Checklists
 
-If the user asks or does not specify a specific checklist, list the checklists available to the agent persona. If the task is being run not with a specific agent, tell the user to check the .bmad-2d-phaser-game-dev/checklists folder to select the appropriate one to run.
+If the user asks or does not specify a specific checklist, list the checklists available to the agent persona. If the task is being run not with a specific agent, tell the user to check the .bmad-core/checklists folder to select the appropriate one to run.
 
 ## Instructions
 
@@ -323,7 +325,7 @@ If the user asks or does not specify a specific checklist, list the checklists a
    - If user or the task being run provides a checklist name:
      - Try fuzzy matching (e.g. "architecture checklist" -> "architect-checklist")
      - If multiple matches found, ask user to clarify
-     - Load the appropriate checklist from .bmad-2d-phaser-game-dev/checklists/
+     - Load the appropriate checklist from .bmad-core/checklists/
    - If no checklist specified:
      - Ask the user which checklist they want to use
      - Present the available options from the files in the checklists folder
@@ -656,6 +658,7 @@ sections:
 
 ==================== START: .bmad-2d-phaser-game-dev/checklists/game-story-dod-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Development Story Definition of Done Checklist
 
 ## Story Completeness

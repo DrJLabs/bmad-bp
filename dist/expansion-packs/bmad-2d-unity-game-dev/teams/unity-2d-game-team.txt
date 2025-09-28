@@ -478,6 +478,7 @@ dependencies:
 
 ==================== START: .bmad-2d-unity-game-dev/data/bmad-kb.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # BMad Knowledge Base - 2D Unity Game Development
 
 ## Overview
@@ -591,7 +592,7 @@ You are developing games as a "Player Experience CEO" - thinking like a game dir
 
 ```bash
 # Interactive installation (recommended)
-npx bmad-method install
+npx -p bmad-drj bmad-method install
 # Select the bmad-2d-unity-game-dev expansion pack when prompted
 ```
 
@@ -1221,7 +1222,7 @@ This 2D Unity Game Development expansion pack extends BMad-Method beyond traditi
 1. **Install via CLI**:
 
    ```bash
-   npx bmad-method install
+   npx -p bmad-drj bmad-method install
    # Select "Install game development expansion pack" option
    ```
 
@@ -1251,6 +1252,7 @@ This knowledge base provides the foundation for effective game development using
 
 ==================== START: .bmad-2d-unity-game-dev/data/brainstorming-techniques.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Brainstorming Techniques Data
 
 ## Creative Expansion
@@ -1291,6 +1293,7 @@ This knowledge base provides the foundation for effective game development using
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/advanced-elicitation.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Advanced Game Design Elicitation Task
 
 ## Purpose
@@ -1405,6 +1408,7 @@ The questions and perspectives offered should always consider:
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/create-deep-research-prompt.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Deep Research Prompt Task
 
 This task helps create comprehensive research prompts for various types of deep analysis. It can process inputs from brainstorming sessions, project briefs, market research, or specific research questions to generate targeted prompts for deeper investigation.
@@ -1418,6 +1422,14 @@ Generate well-structured research prompts that:
 - Outline expected deliverables and formats
 - Guide systematic investigation of complex topics
 - Ensure actionable insights are captured
+
+## Mode Awareness
+
+Always tailor the prompt to the researcher’s active mode:
+
+- **Solo (default):** Emphasize low-overhead research with fast, high-impact wins. Highlight FOSS-first tools, automation scripts, and deprioritize bureaucracy.
+- **Small-team:** Balance depth with knowledge sharing. Capture owner/reviewer assignments, CI/CD touchpoints, and lightweight governance artifacts.
+- **Enterprise:** Require exhaustive coverage, compliance control mapping, and audit-ready documentation. Call out data classification, sign-off checkpoints, and vendor due diligence.
 
 ## Research Type Selection
 
@@ -1524,6 +1536,10 @@ CRITICAL: collaborate with the user to articulate clear, specific objectives for
 - Key decisions the research will inform
 - Success criteria for the research
 - Constraints and boundaries
+- **Mode considerations:**
+  - Solo → Focus on immediate implementation guidance and risk triage.
+  - Small-team → Capture collaboration touchpoints, ownership, and shared artifacts.
+  - Enterprise → Include compliance, governance, and audit evidence requirements.
 
 #### B. Research Questions
 
@@ -1534,12 +1550,20 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Central questions that must be answered
 - Priority ranking of questions
 - Dependencies between questions
+- **Mode considerations:**
+  - Solo → Prioritize questions that unblock development quickly.
+  - Small-team → Add questions about process integration, release readiness, and shared tooling.
+  - Enterprise → Expand to regulatory obligations, threat modeling, and long-term scalability.
 
 **Supporting Questions:**
 
 - Additional context-building questions
 - Nice-to-have insights
 - Future-looking considerations
+- **Mode considerations:**
+  - Solo → Capture backlog ideas with clear ROI.
+  - Small-team → Identify knowledge gaps between functions (dev, ops, product).
+  - Enterprise → Surface cross-org dependencies, change management, and vendor impacts.
 
 #### C. Research Methodology
 
@@ -1549,6 +1573,10 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Primary research approaches (if applicable)
 - Data quality requirements
 - Source credibility criteria
+- **Mode considerations:**
+  - Solo → Emphasize open docs, standards bodies, and community knowledge bases.
+  - Small-team → Add lightweight interviews or async surveys with stakeholders.
+  - Enterprise → Require authoritative standards, legal guidance, and formal approvals.
 
 **Analysis Frameworks:**
 
@@ -1556,6 +1584,10 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Comparison criteria
 - Evaluation methodologies
 - Synthesis approaches
+- **Mode considerations:**
+  - Solo → Leverage simplified scoring matrices for fast prioritization.
+  - Small-team → Incorporate frameworks that aid group decision-making (e.g., RICE, DACI).
+  - Enterprise → Use risk matrices, compliance control mapping, and cost-benefit analyses.
 
 #### D. Output Requirements
 
@@ -1565,6 +1597,10 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Detailed findings structure
 - Visual/tabular presentations
 - Supporting documentation
+- **Mode considerations:**
+  - Solo → Provide concise action lists and automation scripts/snippets.
+  - Small-team → Include handoff packets, change summaries, and owner/reviewer tables.
+  - Enterprise → Produce audit trails, risk registers, and linkage to corporate standards.
 
 **Key Deliverables:**
 
@@ -1572,6 +1608,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Decision-support elements
 - Action-oriented recommendations
 - Risk and uncertainty documentation
+- **FOSS-first guidance:** Always prefer open-source tooling; document justification when recommending paid services.
 
 ### 4. Prompt Generation
 
@@ -1581,6 +1618,12 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 ## Research Objective
 
 [Clear statement of what this research aims to achieve]
+
+## Active Mode
+
+- Operating mode: [solo | small-team | enterprise]
+- Resource & time constraints: [hours, budget, access limits]
+- Collaboration & approvals: [owners, reviewers, stakeholders]
 
 ## Background Context
 
@@ -1604,15 +1647,20 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 
 ### Information Sources
 
-- [Specific source types and priorities]
+- [Priority source types: standards bodies, OSS docs, vendor references]
 
 ### Analysis Frameworks
 
-- [Specific frameworks to apply]
+- [Frameworks/models tuned to the active mode]
 
 ### Data Requirements
 
 - [Quality, recency, credibility needs]
+
+## Tooling & Source Preferences
+
+- Preferred FOSS tools/platforms: [...]
+- Paid tooling (if unavoidable) + justification: [...]
 
 ## Expected Deliverables
 
@@ -1620,17 +1668,23 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 
 - Key findings and insights
 - Critical implications
-- Recommended actions
+- Recommended actions with owners
 
 ### Detailed Analysis
 
-[Specific sections needed based on research type]
+[Specific sections needed based on research type and mode]
 
 ### Supporting Materials
 
-- Data tables
-- Comparison matrices
-- Source documentation
+- Data tables / comparison matrices
+- Source documentation with access dates
+- Risk register or checklist excerpts
+
+## Governance & Risk
+
+- Compliance or security considerations
+- Monitoring / observability requirements
+- Residual risks and open questions
 
 ## Success Criteria
 
@@ -1638,7 +1692,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 
 ## Timeline and Priority
 
-[If applicable, any time constraints or phasing]
+[Time constraints, review cadence, follow-up milestones]
 ```
 
 ### 5. Review and Refinement
@@ -1646,12 +1700,12 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 1. **Present Complete Prompt**
    - Show the full research prompt
    - Explain key elements and rationale
-   - Highlight any assumptions made
+   - Highlight how the prompt satisfies the active mode requirements
 
 2. **Gather Feedback**
    - Are the objectives clear and correct?
    - Do the questions address all concerns?
-   - Is the scope appropriate?
+   - Is the scope appropriate for the active mode?
    - Are output requirements sufficient?
 
 3. **Refine as Needed**
@@ -1674,6 +1728,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Which team members should review results
 - How to validate findings
 - When to revisit or expand research
+- Which checklist items (from `researcher-checklist.md`) must be completed for the selected mode
 
 ## Important Notes
 
@@ -1681,17 +1736,20 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Be specific rather than general in research questions
 - Consider both current state and future implications
 - Balance comprehensiveness with focus
-- Document assumptions and limitations clearly
+- Document assumptions, limitations, and confidence levels clearly
 - Plan for iterative refinement based on initial findings
+- Always log the active mode and cite sources with access dates to maintain traceability
+- Favor open-source tooling; when recommending paid solutions, provide cost/risk comparison and migration path
 ==================== END: .bmad-2d-unity-game-dev/tasks/create-deep-research-prompt.md ====================
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/create-doc.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Document from Template (YAML Driven)
 
 ## ⚠️ CRITICAL EXECUTION NOTICE ⚠️
 
-**THIS IS AN EXECUTABLE WORKFLOW - NOT REFERENCE MATERIAL**
+### THIS IS AN EXECUTABLE WORKFLOW - NOT REFERENCE MATERIAL
 
 When this task is invoked:
 
@@ -1792,6 +1850,7 @@ User can type `#yolo` to toggle to YOLO mode (process all sections at once).
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/document-project.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Document an Existing Project
 
 ## Purpose
@@ -2138,10 +2197,11 @@ Apply the advanced elicitation task after major sections to refine based on user
 ==================== END: .bmad-2d-unity-game-dev/tasks/document-project.md ====================
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/facilitate-brainstorming-session.md ====================
-<!-- Powered by BMAD™ Core -->
----
+## <!-- Powered by BMAD™ Core -->
+
 docOutputLocation: docs/brainstorming-session-results.md
-template: '.bmad-2d-unity-game-dev/templates/brainstorming-output-tmpl.yaml'
+template: '.bmad-core/templates/brainstorming-output-tmpl.yaml'
+
 ---
 
 # Facilitate Brainstorming Session Task
@@ -3229,6 +3289,7 @@ sections:
 
 ==================== START: .bmad-2d-unity-game-dev/data/elicitation-methods.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Elicitation Methods Data
 
 ## Core Reflective Methods
@@ -3387,6 +3448,7 @@ sections:
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/kb-mode-interaction.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # KB Mode Interaction Task
 
 ## Purpose
@@ -3466,6 +3528,7 @@ Or ask me about anything else related to BMad-Method!
 
 ==================== START: .bmad-2d-unity-game-dev/utils/workflow-management.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Workflow Management
 
 Enables BMad orchestrator to manage and execute team workflows.
@@ -3539,13 +3602,14 @@ Agents should be workflow-aware: know active workflow, their role, access artifa
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/execute-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Checklist Validation Task
 
 This task provides instructions for validating documentation against checklists. The agent MUST follow these instructions to ensure thorough and systematic validation of documents.
 
 ## Available Checklists
 
-If the user asks or does not specify a specific checklist, list the checklists available to the agent persona. If the task is being run not with a specific agent, tell the user to check the .bmad-2d-unity-game-dev/checklists folder to select the appropriate one to run.
+If the user asks or does not specify a specific checklist, list the checklists available to the agent persona. If the task is being run not with a specific agent, tell the user to check the .bmad-core/checklists folder to select the appropriate one to run.
 
 ## Instructions
 
@@ -3553,7 +3617,7 @@ If the user asks or does not specify a specific checklist, list the checklists a
    - If user or the task being run provides a checklist name:
      - Try fuzzy matching (e.g. "architecture checklist" -> "architect-checklist")
      - If multiple matches found, ask user to clarify
-     - Load the appropriate checklist from .bmad-2d-unity-game-dev/checklists/
+     - Load the appropriate checklist from .bmad-core/checklists/
    - If no checklist specified:
      - Ask the user which checklist they want to use
      - Present the available options from the files in the checklists folder
@@ -3629,6 +3693,7 @@ The LLM will:
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/shard-doc.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Document Sharding Task
 
 ## Purpose
@@ -3639,20 +3704,20 @@ The LLM will:
 
 ## Primary Method: Automatic with markdown-tree
 
-[[LLM: First, check if markdownExploder is set to true in .bmad-2d-unity-game-dev/core-config.yaml. If it is, attempt to run the command: `md-tree explode {input file} {output path}`.
+[[LLM: First, check if markdownExploder is set to true in .bmad-core/core-config.yaml. If it is, attempt to run the command: `md-tree explode {input file} {output path}`.
 
 If the command succeeds, inform the user that the document has been sharded successfully and STOP - do not proceed further.
 
 If the command fails (especially with an error indicating the command is not found or not available), inform the user: "The markdownExploder setting is enabled but the md-tree command is not available. Please either:
 
 1. Install @kayvan/markdown-tree-parser globally with: `npm install -g @kayvan/markdown-tree-parser`
-2. Or set markdownExploder to false in .bmad-2d-unity-game-dev/core-config.yaml
+2. Or set markdownExploder to false in .bmad-core/core-config.yaml
 
 **IMPORTANT: STOP HERE - do not proceed with manual sharding until one of the above actions is taken.**"
 
 If markdownExploder is set to false, inform the user: "The markdownExploder setting is currently false. For better performance and reliability, you should:
 
-1. Set markdownExploder to true in .bmad-2d-unity-game-dev/core-config.yaml
+1. Set markdownExploder to true in .bmad-core/core-config.yaml
 2. Install @kayvan/markdown-tree-parser globally with: `npm install -g @kayvan/markdown-tree-parser`
 
 I will now proceed with the manual sharding process."
@@ -3818,6 +3883,7 @@ Document sharded successfully:
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/game-design-brainstorming.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Design Brainstorming Techniques Task
 
 This task provides a comprehensive toolkit of creative brainstorming techniques specifically designed for game design ideation and innovative thinking. The game designer can use these techniques to facilitate productive brainstorming sessions focused on game mechanics, player experience, and creative concepts.
@@ -5669,6 +5735,7 @@ sections:
 
 ==================== START: .bmad-2d-unity-game-dev/checklists/game-design-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Design Document Quality Checklist
 
 ## Document Completeness
@@ -6908,6 +6975,7 @@ sections:
 
 ==================== START: .bmad-2d-unity-game-dev/checklists/game-architect-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Architect Solution Validation Checklist
 
 This checklist serves as a comprehensive framework for the Game Architect to validate the technical design and architecture before game development execution. The Game Architect should systematically work through each item, ensuring the game architecture is robust, scalable, performant, and aligned with the Game Design Document requirements.
@@ -7303,6 +7371,7 @@ After presenting the report, ask the user if they would like detailed analysis o
 
 ==================== START: .bmad-2d-unity-game-dev/data/development-guidelines.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Development Guidelines (Unity & C#)
 
 ## Overview
@@ -7893,6 +7962,7 @@ These guidelines ensure consistent, high-quality game development that meets per
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/validate-next-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Validate Next Story Task
 
 ## Purpose
@@ -7910,11 +7980,11 @@ To comprehensively validate a story draft before implementation begins, ensuring
   - **Story file**: The drafted story to validate (provided by user or discovered in `devStoryLocation`)
   - **Parent epic**: The epic containing this story's requirements
   - **Architecture documents**: Based on configuration (sharded or monolithic)
-  - **Story template**: `bmad-core/templates/story-tmpl.md` for completeness validation
+  - **Story template**: `.bmad-core/templates/story-tmpl.yaml` for completeness validation
 
 ### 1. Template Completeness Validation
 
-- Load `bmad-core/templates/story-tmpl.md` and extract all section headings from the template
+- Load `.bmad-core/templates/story-tmpl.yaml` and extract all section headings from the template
 - **Missing sections check**: Compare story sections against template sections to verify all required sections are present
 - **Placeholder validation**: Ensure no template placeholders remain unfilled (e.g., `{{EpicNum}}`, `{{role}}`, `_TBD_`)
 - **Agent section verification**: Confirm all sections from template exist for future agent use
@@ -8031,6 +8101,7 @@ Provide a structured validation report including:
 
 ==================== START: .bmad-2d-unity-game-dev/checklists/game-story-dod-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Development Story Definition of Done (DoD) Checklist
 
 ## Instructions for Developer Agent
@@ -8159,6 +8230,7 @@ Be honest - it's better to flag issues now than have them discovered during play
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/create-game-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Game Story Task
 
 ## Purpose
@@ -8347,6 +8419,7 @@ This task ensures game development stories are immediately actionable and enable
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/correct-course-game.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Correct Course Task - Game Development
 
 ## Purpose
@@ -8752,6 +8825,7 @@ sections:
 
 ==================== START: .bmad-2d-unity-game-dev/checklists/game-change-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Development Change Navigation Checklist
 
 **Purpose:** To systematically guide the Game SM agent and user through analysis and planning when a significant change (performance issue, platform constraint, technical blocker, gameplay feedback) is identified during Unity game development.
@@ -11810,6 +11884,7 @@ sections:
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/advanced-elicitation.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Advanced Game Design Elicitation Task
 
 ## Purpose
@@ -11924,6 +11999,7 @@ The questions and perspectives offered should always consider:
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/correct-course-game.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Correct Course Task - Game Development
 
 ## Purpose
@@ -12069,6 +12145,7 @@ Based on the analysis and agreed path forward:
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/create-game-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Game Story Task
 
 ## Purpose
@@ -12257,6 +12334,7 @@ This task ensures game development stories are immediately actionable and enable
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/game-design-brainstorming.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Design Brainstorming Techniques Task
 
 This task provides a comprehensive toolkit of creative brainstorming techniques specifically designed for game design ideation and innovative thinking. The game designer can use these techniques to facilitate productive brainstorming sessions focused on game mechanics, player experience, and creative concepts.
@@ -12551,6 +12629,7 @@ This task provides a comprehensive toolkit of creative brainstorming techniques 
 
 ==================== START: .bmad-2d-unity-game-dev/tasks/validate-game-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Validate Game Story Task
 
 ## Purpose
@@ -12755,6 +12834,7 @@ Based on validation results, provide specific recommendations for:
 
 ==================== START: .bmad-2d-unity-game-dev/checklists/game-architect-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Architect Solution Validation Checklist
 
 This checklist serves as a comprehensive framework for the Game Architect to validate the technical design and architecture before game development execution. The Game Architect should systematically work through each item, ensuring the game architecture is robust, scalable, performant, and aligned with the Game Design Document requirements.
@@ -13150,6 +13230,7 @@ After presenting the report, ask the user if they would like detailed analysis o
 
 ==================== START: .bmad-2d-unity-game-dev/checklists/game-change-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Development Change Navigation Checklist
 
 **Purpose:** To systematically guide the Game SM agent and user through analysis and planning when a significant change (performance issue, platform constraint, technical blocker, gameplay feedback) is identified during Unity game development.
@@ -13357,6 +13438,7 @@ Keep it technically precise and actionable.]]
 
 ==================== START: .bmad-2d-unity-game-dev/checklists/game-design-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Design Document Quality Checklist
 
 ## Document Completeness
@@ -13562,6 +13644,7 @@ _Outline immediate next actions for the team based on this assessment._
 
 ==================== START: .bmad-2d-unity-game-dev/checklists/game-story-dod-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Development Story Definition of Done (DoD) Checklist
 
 ## Instructions for Developer Agent
@@ -14056,6 +14139,7 @@ workflow:
 
 ==================== START: .bmad-2d-unity-game-dev/data/bmad-kb.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # BMad Knowledge Base - 2D Unity Game Development
 
 ## Overview
@@ -14169,7 +14253,7 @@ You are developing games as a "Player Experience CEO" - thinking like a game dir
 
 ```bash
 # Interactive installation (recommended)
-npx bmad-method install
+npx -p bmad-drj bmad-method install
 # Select the bmad-2d-unity-game-dev expansion pack when prompted
 ```
 
@@ -14799,7 +14883,7 @@ This 2D Unity Game Development expansion pack extends BMad-Method beyond traditi
 1. **Install via CLI**:
 
    ```bash
-   npx bmad-method install
+   npx -p bmad-drj bmad-method install
    # Select "Install game development expansion pack" option
    ```
 
@@ -14829,6 +14913,7 @@ This knowledge base provides the foundation for effective game development using
 
 ==================== START: .bmad-2d-unity-game-dev/data/development-guidelines.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Game Development Guidelines (Unity & C#)
 
 ## Overview

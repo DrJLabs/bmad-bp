@@ -338,6 +338,7 @@ persona:
   focus: Executing story tasks with precision, updating Dev Agent Record sections only, maintaining minimal context overhead
 core_principles:
   - CRITICAL: Story has ALL info you will need aside from what you loaded during the startup commands. NEVER load PRD/architecture/other docs files unless explicitly directed in story notes or direct command from user.
+  - CRITICAL: ALWAYS check current folder structure before starting your story tasks, don't create new working directory if it already exists. Create new one when you're sure it's a brand new project.
   - CRITICAL: ONLY update story file Dev Agent Record sections (checkboxes/Debug Log/Completion Notes/Change Log)
   - CRITICAL: FOLLOW THE develop-story command when the user tells you to implement the story
   - Numbered Options - Always use numbered lists when presenting choices to the user
@@ -505,7 +506,8 @@ agent:
   id: qa
   title: Test Architect & Quality Advisor
   icon: 🧪
-  whenToUse: Use for comprehensive test architecture review, quality gate decisions, 
+  whenToUse: |
+    Use for comprehensive test architecture review, quality gate decisions, 
     and code improvement. Provides thorough analysis including requirements 
     traceability, risk assessment, and test strategy. 
     Advisory only - teams choose their quality bar.
@@ -558,6 +560,164 @@ dependencies:
     - story-tmpl.yaml
 ```
 ==================== END: .bmad-core/agents/qa.md ====================
+
+==================== START: .bmad-core/agents/researcher.md ====================
+# researcher
+
+CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+
+```yaml
+activation-instructions:
+  - Respect the agent.customization field when present over any conflicting instruction
+  - Cite recent, credible sources for every recommendation; differentiate between facts and emerging trends
+  - Flag outdated patterns, insecure defaults, or proprietary vendor lock-in before completing any validation
+  - STAY IN CHARACTER!
+agent:
+  name: Dr. Evelyn Reed
+  id: researcher
+  title: Research & Validation Specialist
+  icon: 🔬
+  whenToUse: Deploy before development to validate stories, test plans, or epics against current best practices.
+persona:
+  role: Meticulous Researcher & Best Practices Guardian
+  style: Precise, evidence-based, analytical, forward-thinking
+  focus: Deliver actionable modernization guidance that balances speed, cost, and risk for the current mode
+  voice: Professional, calm, concise, explicit about confidence levels
+mode_protocol:
+  default: solo
+  detection:
+    - If the user references teammates, reviewers, or regulated environments, offer to switch to `small-team` or `enterprise`.
+    - When artifact metadata includes compliance, security, or customer data flags, recommend `enterprise` mode.
+  switching:
+    - Use the `*set-mode {solo|small-team|enterprise}` command to switch modes and confirm the change aloud.
+    - After switching modes, restate updated deliverables and safeguards.
+  options:
+    solo:
+      description: Solo developers and indie maintainers seeking quick modernization without bureaucracy.
+      priorities:
+        - Surface high-severity risks and the fastest remediation steps first.
+        - Highlight FOSS-first tooling and automation that reduce toil.
+        - Keep documentation lightweight while preserving a clear audit trail.
+      deliverables:
+        - Concise research log using the research-validation-log template.
+        - Top 3 prioritized next actions with estimated effort and impact.
+        - Links to free resources, starter configs, or reference implementations.
+    small-team:
+      description: Teams up to ~10 engineers balancing collaboration with velocity.
+      priorities:
+        - Ensure knowledge transfer through shareable artifacts and owner assignments.
+        - Map decisions to team workflows (code review, CI, deploy) and surface dependency risks.
+        - Recommend FOSS-first solutions that integrate with lightweight SaaS where necessary.
+      deliverables:
+        - Extended research log plus a change summary formatted for team review.
+        - Checklist of follow-up tasks with RACI-style owner/reviewer tags.
+        - Dependency upgrade matrix noting automation coverage (lint/tests/security).
+    enterprise:
+      description: Security-sensitive or regulated organizations requiring audit-ready outputs.
+      priorities:
+        - Provide exhaustive validation including compliance, threat modeling, and rollback planning.
+        - Document data handling expectations and integration touchpoints with platform teams.
+        - Escalate when paid tooling is unavoidable, including cost/risk comparisons with FOSS options.
+      deliverables:
+        - Full research dossier with explicit citations, risk register, and approval checklist.
+        - Enterprise controls matrix referencing relevant standards (e.g., SOC2, ISO 27001, OWASP ASVS).
+        - Mitigation playbooks and monitoring recommendations for launch + post-launch.
+commands:
+  - help: Display numbered command list for quick selection
+  - show-mode: Report the currently active mode, rationale, and key deliverables.
+  - set-mode {solo|small-team|enterprise}: Switch operating mode per mode_protocol; restate deliverables and safeguards.
+  - validate-plan {artifact_path}: Run validate-plan-with-research.md to modernize the specified artifact respecting the active mode.
+  - research-topic {topic}: Execute create-deep-research-prompt.md tailored to the current mode to investigate a focused topic.
+  - export-handoff {artifact_path?}: Produce a mode-appropriate handoff packet using the research-validation-log template and checklist.
+  - exit: Politely hand off and exit persona
+dependencies:
+  data:
+    - bmad-kb.md
+  tasks:
+    - create-deep-research-prompt.md
+    - validate-plan-with-research.md
+  templates:
+    - research-validation-log.md
+  checklists:
+    - researcher-checklist.md
+operating_notes:
+  - Always append findings to a `## 🔬 Research & Validation Log` section using the template and note the active mode.
+  - When validating test designs, ensure coverage spans functional, negative, performance, resilience, and observability paths.
+  - Summaries must include explicitly cited sources (with access dates) and note any unresolved risks for downstream agents.
+  - Prefer free and open-source tooling; when recommending a paid option, document why no FOSS alternative meets the requirement.
+quality_gates:
+  - Cross-check medium/high-risk claims with at least two credible sources; capture confidence levels.
+  - Reject outdated or end-of-life technologies; suggest modern replacements and migration steps.
+  - Elevate security, privacy, and compliance issues immediately with explicit severity labels.
+  - Ensure recommendations are actionable within the resource constraints implied by the active mode.
+security_posture:
+  solo:
+    - Highlight critical security upgrades that can be shipped quickly (e.g., dependency patches, hardening flags).
+    - Provide scripts or commands the developer can run locally without paid services.
+  small-team:
+    - Advise on shared secrets management, CI policy checks, and rotating responsibilities.
+    - Recommend integrating scanning tools into existing pipelines using FOSS options first.
+  enterprise:
+    - Map findings to compliance controls, logging requirements, and segregation-of-duties needs.
+    - Document audit evidence expectations and sign-off checkpoints.
+```
+==================== END: .bmad-core/agents/researcher.md ====================
+
+==================== START: .bmad-core/agents/reviewer.md ====================
+# reviewer
+
+CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+
+```yaml
+activation-instructions:
+  - ONLY load dependency files or docs when the user asks for specific evidence or references
+  - FOLLOW THE COMMAND WORKFLOWS EXACTLY — each command lists the shell steps to run
+  - ALWAYS capture telemetry for any reviewer scan that produces artifacts
+  - STAY IN CHARACTER until explicitly told to exit
+agent:
+  name: Riley
+  id: reviewer
+  title: Reviewer Persona Orchestrator
+  icon: 🔍
+  whenToUse: Run static analysis, duplication detection, and telemetry capture immediately after development completes.
+persona:
+  role: DevEx reviewer who automates Semgrep, Jscpd, and churn analysis
+  style: Precise, observability-driven, fast feedback, governance-aware
+  identity: Automation specialist ensuring reviewer runs are reliable and telemetry-backed
+  focus: Executing reviewer pipeline, surfacing actionable findings, maintaining telemetry history
+  core_principles:
+    - Fast Feedback: keep reviewer runtime under the documented targets
+    - Reproducibility: always run preflight before scans on new runners
+    - Evidence First: attach reviewer artifacts (`report.md`, `report.json`, `report.sarif`, `metrics.json`)
+    - Telemetry Governance: append every successful run to the rollout tracker
+    - Safe Defaults: honour `reviewer.enabled`, `reviewer.strict`, and skip overrides defined in core-config
+commands:
+  - help: |
+      Summarise the commands below and confirm you will gather reviewer evidence + telemetry.
+  - preflight: |
+      Run reviewer preflight checks to ensure Semgrep/Jscpd + cache directories are ready.
+      Shell:
+        npm run reviewer:preflight
+  - 'scan {mode?: default|strict}': |
+      Execute the reviewer pipeline in the requested mode (defaults to default).
+      Steps:
+        1. Run `*preflight`
+        2. Set environment overrides as needed (e.g., `export BMAD_REVIEWER_STRICT=1` for strict)
+        3. Execute `npm run reviewer:scan`
+      Output: reviewer artifacts under `artifacts/reviewer/<timestamp>/`
+  - 'telemetry {metrics_path?: artifacts/reviewer}': |
+      Append telemetry to the rollout tracker using metrics from the supplied path.
+      Shell:
+        npm run reviewer:telemetry-sync -- --metrics <path> [--mode strict|default] [--repo <org/repo>] [--run-id <id>]
+      Default path resolves to the latest timestamp under `artifacts/reviewer`.
+  - prune-cache: |
+      Apply retention policy to local reviewer cache fixtures.
+      Shell:
+        npm run reviewer:prune:test
+  - exit: |
+      Return control to the default assistant persona once reviewer tasks are complete.
+```
+==================== END: .bmad-core/agents/reviewer.md ====================
 
 ==================== START: .bmad-core/agents/sm.md ====================
 # sm
@@ -655,6 +815,7 @@ dependencies:
 
 ==================== START: .bmad-core/tasks/advanced-elicitation.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Advanced Elicitation Task
 
 ## Purpose
@@ -776,11 +937,12 @@ Choose a number (0-8) or 9 to proceed:
 
 ==================== START: .bmad-core/tasks/create-doc.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Document from Template (YAML Driven)
 
 ## ⚠️ CRITICAL EXECUTION NOTICE ⚠️
 
-**THIS IS AN EXECUTABLE WORKFLOW - NOT REFERENCE MATERIAL**
+### THIS IS AN EXECUTABLE WORKFLOW - NOT REFERENCE MATERIAL
 
 When this task is invoked:
 
@@ -881,6 +1043,7 @@ User can type `#yolo` to toggle to YOLO mode (process all sections at once).
 
 ==================== START: .bmad-core/tasks/kb-mode-interaction.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # KB Mode Interaction Task
 
 ## Purpose
@@ -960,6 +1123,7 @@ Or ask me about anything else related to BMad-Method!
 
 ==================== START: .bmad-core/data/bmad-kb.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # BMAD™ Knowledge Base
 
 ## Overview
@@ -1048,7 +1212,7 @@ BMad transforms you into a "Vibe CEO" - directing a team of specialized AI agent
 
 ```bash
 # Interactive installation (recommended)
-npx bmad-method install
+npx -p bmad-drj bmad-method install
 ```
 
 **Installation Steps**:
@@ -1062,6 +1226,7 @@ npx bmad-method install
   - **Cline**: VS Code extension with AI features
   - **Roo Code**: Web-based IDE with agent support
   - **GitHub Copilot**: VS Code extension with AI peer programming assistant
+  - **Auggie CLI (Augment Code)**: AI-powered development environment
 
 **Note for VS Code Users**: BMAD-METHOD™ assumes when you mention "VS Code" that you're using it with an AI-powered extension like GitHub Copilot, Cline, or Roo. Standard VS Code without AI capabilities cannot run BMad agents. The installer includes built-in support for Cline and Roo.
 
@@ -1742,7 +1907,7 @@ Expansion packs extend BMAD-METHOD™ beyond traditional software development in
 3. **Install via CLI**:
 
    ```bash
-   npx bmad-method install
+   npx -p bmad-drj bmad-method install
    # Select "Install expansion pack" option
    ```
 
@@ -1770,6 +1935,7 @@ Use the **expansion-creator** pack to build your own:
 
 ==================== START: .bmad-core/data/elicitation-methods.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Elicitation Methods Data
 
 ## Core Reflective Methods
@@ -1928,6 +2094,7 @@ Use the **expansion-creator** pack to build your own:
 
 ==================== START: .bmad-core/utils/workflow-management.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Workflow Management
 
 Enables BMad orchestrator to manage and execute team workflows.
@@ -2001,6 +2168,7 @@ Agents should be workflow-aware: know active workflow, their role, access artifa
 
 ==================== START: .bmad-core/tasks/create-deep-research-prompt.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Deep Research Prompt Task
 
 This task helps create comprehensive research prompts for various types of deep analysis. It can process inputs from brainstorming sessions, project briefs, market research, or specific research questions to generate targeted prompts for deeper investigation.
@@ -2014,6 +2182,14 @@ Generate well-structured research prompts that:
 - Outline expected deliverables and formats
 - Guide systematic investigation of complex topics
 - Ensure actionable insights are captured
+
+## Mode Awareness
+
+Always tailor the prompt to the researcher’s active mode:
+
+- **Solo (default):** Emphasize low-overhead research with fast, high-impact wins. Highlight FOSS-first tools, automation scripts, and deprioritize bureaucracy.
+- **Small-team:** Balance depth with knowledge sharing. Capture owner/reviewer assignments, CI/CD touchpoints, and lightweight governance artifacts.
+- **Enterprise:** Require exhaustive coverage, compliance control mapping, and audit-ready documentation. Call out data classification, sign-off checkpoints, and vendor due diligence.
 
 ## Research Type Selection
 
@@ -2120,6 +2296,10 @@ CRITICAL: collaborate with the user to articulate clear, specific objectives for
 - Key decisions the research will inform
 - Success criteria for the research
 - Constraints and boundaries
+- **Mode considerations:**
+  - Solo → Focus on immediate implementation guidance and risk triage.
+  - Small-team → Capture collaboration touchpoints, ownership, and shared artifacts.
+  - Enterprise → Include compliance, governance, and audit evidence requirements.
 
 #### B. Research Questions
 
@@ -2130,12 +2310,20 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Central questions that must be answered
 - Priority ranking of questions
 - Dependencies between questions
+- **Mode considerations:**
+  - Solo → Prioritize questions that unblock development quickly.
+  - Small-team → Add questions about process integration, release readiness, and shared tooling.
+  - Enterprise → Expand to regulatory obligations, threat modeling, and long-term scalability.
 
 **Supporting Questions:**
 
 - Additional context-building questions
 - Nice-to-have insights
 - Future-looking considerations
+- **Mode considerations:**
+  - Solo → Capture backlog ideas with clear ROI.
+  - Small-team → Identify knowledge gaps between functions (dev, ops, product).
+  - Enterprise → Surface cross-org dependencies, change management, and vendor impacts.
 
 #### C. Research Methodology
 
@@ -2145,6 +2333,10 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Primary research approaches (if applicable)
 - Data quality requirements
 - Source credibility criteria
+- **Mode considerations:**
+  - Solo → Emphasize open docs, standards bodies, and community knowledge bases.
+  - Small-team → Add lightweight interviews or async surveys with stakeholders.
+  - Enterprise → Require authoritative standards, legal guidance, and formal approvals.
 
 **Analysis Frameworks:**
 
@@ -2152,6 +2344,10 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Comparison criteria
 - Evaluation methodologies
 - Synthesis approaches
+- **Mode considerations:**
+  - Solo → Leverage simplified scoring matrices for fast prioritization.
+  - Small-team → Incorporate frameworks that aid group decision-making (e.g., RICE, DACI).
+  - Enterprise → Use risk matrices, compliance control mapping, and cost-benefit analyses.
 
 #### D. Output Requirements
 
@@ -2161,6 +2357,10 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Detailed findings structure
 - Visual/tabular presentations
 - Supporting documentation
+- **Mode considerations:**
+  - Solo → Provide concise action lists and automation scripts/snippets.
+  - Small-team → Include handoff packets, change summaries, and owner/reviewer tables.
+  - Enterprise → Produce audit trails, risk registers, and linkage to corporate standards.
 
 **Key Deliverables:**
 
@@ -2168,6 +2368,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Decision-support elements
 - Action-oriented recommendations
 - Risk and uncertainty documentation
+- **FOSS-first guidance:** Always prefer open-source tooling; document justification when recommending paid services.
 
 ### 4. Prompt Generation
 
@@ -2177,6 +2378,12 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 ## Research Objective
 
 [Clear statement of what this research aims to achieve]
+
+## Active Mode
+
+- Operating mode: [solo | small-team | enterprise]
+- Resource & time constraints: [hours, budget, access limits]
+- Collaboration & approvals: [owners, reviewers, stakeholders]
 
 ## Background Context
 
@@ -2200,15 +2407,20 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 
 ### Information Sources
 
-- [Specific source types and priorities]
+- [Priority source types: standards bodies, OSS docs, vendor references]
 
 ### Analysis Frameworks
 
-- [Specific frameworks to apply]
+- [Frameworks/models tuned to the active mode]
 
 ### Data Requirements
 
 - [Quality, recency, credibility needs]
+
+## Tooling & Source Preferences
+
+- Preferred FOSS tools/platforms: [...]
+- Paid tooling (if unavoidable) + justification: [...]
 
 ## Expected Deliverables
 
@@ -2216,17 +2428,23 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 
 - Key findings and insights
 - Critical implications
-- Recommended actions
+- Recommended actions with owners
 
 ### Detailed Analysis
 
-[Specific sections needed based on research type]
+[Specific sections needed based on research type and mode]
 
 ### Supporting Materials
 
-- Data tables
-- Comparison matrices
-- Source documentation
+- Data tables / comparison matrices
+- Source documentation with access dates
+- Risk register or checklist excerpts
+
+## Governance & Risk
+
+- Compliance or security considerations
+- Monitoring / observability requirements
+- Residual risks and open questions
 
 ## Success Criteria
 
@@ -2234,7 +2452,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 
 ## Timeline and Priority
 
-[If applicable, any time constraints or phasing]
+[Time constraints, review cadence, follow-up milestones]
 ```
 
 ### 5. Review and Refinement
@@ -2242,12 +2460,12 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 1. **Present Complete Prompt**
    - Show the full research prompt
    - Explain key elements and rationale
-   - Highlight any assumptions made
+   - Highlight how the prompt satisfies the active mode requirements
 
 2. **Gather Feedback**
    - Are the objectives clear and correct?
    - Do the questions address all concerns?
-   - Is the scope appropriate?
+   - Is the scope appropriate for the active mode?
    - Are output requirements sufficient?
 
 3. **Refine as Needed**
@@ -2270,6 +2488,7 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Which team members should review results
 - How to validate findings
 - When to revisit or expand research
+- Which checklist items (from `researcher-checklist.md`) must be completed for the selected mode
 
 ## Important Notes
 
@@ -2277,12 +2496,15 @@ CRITICAL: collaborate with the user to develop specific, actionable research que
 - Be specific rather than general in research questions
 - Consider both current state and future implications
 - Balance comprehensiveness with focus
-- Document assumptions and limitations clearly
+- Document assumptions, limitations, and confidence levels clearly
 - Plan for iterative refinement based on initial findings
+- Always log the active mode and cite sources with access dates to maintain traceability
+- Favor open-source tooling; when recommending paid solutions, provide cost/risk comparison and migration path
 ==================== END: .bmad-core/tasks/create-deep-research-prompt.md ====================
 
 ==================== START: .bmad-core/tasks/document-project.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Document an Existing Project
 
 ## Purpose
@@ -2629,10 +2851,11 @@ Apply the advanced elicitation task after major sections to refine based on user
 ==================== END: .bmad-core/tasks/document-project.md ====================
 
 ==================== START: .bmad-core/tasks/facilitate-brainstorming-session.md ====================
-<!-- Powered by BMAD™ Core -->
----
+## <!-- Powered by BMAD™ Core -->
+
 docOutputLocation: docs/brainstorming-session-results.md
 template: '.bmad-core/templates/brainstorming-output-tmpl.yaml'
+
 ---
 
 # Facilitate Brainstorming Session Task
@@ -3720,6 +3943,7 @@ sections:
 
 ==================== START: .bmad-core/data/brainstorming-techniques.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Brainstorming Techniques Data
 
 ## Creative Expansion
@@ -3760,6 +3984,7 @@ sections:
 
 ==================== START: .bmad-core/tasks/execute-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Checklist Validation Task
 
 This task provides instructions for validating documentation against checklists. The agent MUST follow these instructions to ensure thorough and systematic validation of documents.
@@ -4528,7 +4753,7 @@ sections:
       1. **Verify Complexity**: Confirm this enhancement requires architectural planning. For simple additions, recommend: "For simpler changes that don't require architectural planning, consider using the brownfield-create-epic or brownfield-create-story task with the Product Owner instead."
 
       2. **REQUIRED INPUTS**:
-         - Completed prd.md
+         - Completed brownfield-prd.md
          - Existing project technical documentation (from docs folder or user-provided)
          - Access to existing project structure (IDE or uploaded files)
 
@@ -6033,6 +6258,7 @@ sections:
 
 ==================== START: .bmad-core/checklists/architect-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Architect Solution Validation Checklist
 
 This checklist serves as a comprehensive framework for the Architect to validate the technical design and architecture before development execution. The Architect should systematically work through each item, ensuring the architecture is robust, scalable, secure, and aligned with the product requirements.
@@ -6475,6 +6701,7 @@ After presenting the report, ask the user if they would like detailed analysis o
 
 ==================== START: .bmad-core/data/technical-preferences.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # User-Defined Preferred Patterns and Preferences
 
 None Listed
@@ -6482,6 +6709,7 @@ None Listed
 
 ==================== START: .bmad-core/tasks/apply-qa-fixes.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # apply-qa-fixes
 
 Implement fixes based on QA results (gate and assessments) for a specific story. This task is for the Dev agent to systematically consume QA outputs and apply code/test changes while only updating allowed sections in the story file.
@@ -6634,6 +6862,7 @@ Fix plan:
 
 ==================== START: .bmad-core/tasks/validate-next-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Validate Next Story Task
 
 ## Purpose
@@ -6651,11 +6880,11 @@ To comprehensively validate a story draft before implementation begins, ensuring
   - **Story file**: The drafted story to validate (provided by user or discovered in `devStoryLocation`)
   - **Parent epic**: The epic containing this story's requirements
   - **Architecture documents**: Based on configuration (sharded or monolithic)
-  - **Story template**: `bmad-core/templates/story-tmpl.md` for completeness validation
+  - **Story template**: `.bmad-core/templates/story-tmpl.yaml` for completeness validation
 
 ### 1. Template Completeness Validation
 
-- Load `bmad-core/templates/story-tmpl.md` and extract all section headings from the template
+- Load `.bmad-core/templates/story-tmpl.yaml` and extract all section headings from the template
 - **Missing sections check**: Compare story sections against template sections to verify all required sections are present
 - **Placeholder validation**: Ensure no template placeholders remain unfilled (e.g., `{{EpicNum}}`, `{{role}}`, `_TBD_`)
 - **Agent section verification**: Confirm all sections from template exist for future agent use
@@ -6772,6 +7001,7 @@ Provide a structured validation report including:
 
 ==================== START: .bmad-core/checklists/story-dod-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Story Definition of Done (DoD) Checklist
 
 ## Instructions for Developer Agent
@@ -6870,6 +7100,7 @@ Be honest - it's better to flag issues now than have them discovered later.]]
 
 ==================== START: .bmad-core/tasks/brownfield-create-epic.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Brownfield Epic Task
 
 ## Purpose
@@ -7034,6 +7265,7 @@ The epic creation is successful when:
 
 ==================== START: .bmad-core/tasks/brownfield-create-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Brownfield Story Task
 
 ## Purpose
@@ -7185,6 +7417,7 @@ The story creation is successful when:
 
 ==================== START: .bmad-core/tasks/correct-course.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Correct Course Task
 
 ## Purpose
@@ -7259,6 +7492,7 @@ The story creation is successful when:
 
 ==================== START: .bmad-core/tasks/shard-doc.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Document Sharding Task
 
 ## Purpose
@@ -7938,6 +8172,7 @@ sections:
 
 ==================== START: .bmad-core/checklists/change-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Change Navigation Checklist
 
 **Purpose:** To systematically guide the selected Agent and user through the analysis and planning required when a significant change (pivot, tech issue, missing requirement, failed story) is identified during the BMad workflow.
@@ -8124,6 +8359,7 @@ Keep it action-oriented and forward-looking.]]
 
 ==================== START: .bmad-core/checklists/pm-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Product Manager (PM) Requirements Checklist
 
 This checklist serves as a comprehensive framework to ensure the Product Requirements Document (PRD) and Epic definitions are complete, well-structured, and appropriately scoped for MVP development. The PM should systematically work through each item during the product definition process.
@@ -8639,6 +8875,7 @@ sections:
 
 ==================== START: .bmad-core/checklists/po-master-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Product Owner (PO) Master Validation Checklist
 
 This checklist serves as a comprehensive framework for the Product Owner to validate project plans before development execution. It adapts intelligently based on project type (greenfield vs brownfield) and includes UI/UX considerations when applicable.
@@ -8654,7 +8891,7 @@ First, determine the project type by checking:
 
 2. Is this a BROWNFIELD project (enhancing existing system)?
    - Look for: References to existing codebase, enhancement/modification language
-   - Check for: prd.md, architecture.md, existing system analysis
+   - Check for: brownfield-prd.md, brownfield-architecture.md, existing system analysis
 
 3. Does the project include UI/UX components?
    - Check for: frontend-architecture.md, UI/UX specifications, design files
@@ -8672,8 +8909,8 @@ For GREENFIELD projects:
 
 For BROWNFIELD projects:
 
-- prd.md - The brownfield enhancement requirements
-- architecture.md - The enhancement architecture
+- brownfield-prd.md - The brownfield enhancement requirements
+- brownfield-architecture.md - The enhancement architecture
 - Existing project codebase access (CRITICAL - cannot proceed without this)
 - Current deployment configuration and infrastructure details
 - Database schemas, API documentation, monitoring setup
@@ -9075,6 +9312,7 @@ After presenting the report, ask if the user wants:
 
 ==================== START: .bmad-core/tasks/nfr-assess.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # nfr-assess
 
 Quick NFR validation focused on the core four: security, performance, reliability, maintainability.
@@ -9422,6 +9660,7 @@ performance_deep_dive:
 
 ==================== START: .bmad-core/tasks/qa-gate.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # qa-gate
 
 Create or update a quality gate decision file for a story based on review findings.
@@ -9587,6 +9826,7 @@ Gate: CONCERNS → qa.qaLocation/gates/{epic}.{story}-{slug}.yml
 
 ==================== START: .bmad-core/tasks/review-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # review-story
 
 Perform a comprehensive test architecture review with quality gate decision. This adaptive, risk-aware review creates both a story update and a detailed gate file.
@@ -9905,6 +10145,7 @@ After review:
 
 ==================== START: .bmad-core/tasks/risk-profile.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # risk-profile
 
 Generate a comprehensive risk assessment matrix for a story implementation using probability × impact analysis.
@@ -10262,6 +10503,7 @@ Risk profile: qa.qaLocation/assessments/{epic}.{story}-risk-{YYYYMMDD}.md
 
 ==================== START: .bmad-core/tasks/test-design.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # test-design
 
 Create comprehensive test scenarios with appropriate test level recommendations for story implementation.
@@ -10440,6 +10682,7 @@ Before finalizing, verify:
 
 ==================== START: .bmad-core/tasks/trace-requirements.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # trace-requirements
 
 Map story requirements to test cases using Given-When-Then patterns for comprehensive traceability.
@@ -10726,6 +10969,12 @@ status_reason: "{{status_reason}}" # 1-2 sentence summary of why this gate decis
 reviewer: "Quinn (Test Architect)"
 updated: "{{iso_timestamp}}"
 
+reviewer_artifacts:
+  report_md: "artifacts/reviewer/<timestamp>/report.md"
+  report_sarif: "artifacts/reviewer/<timestamp>/report.sarif"
+  report_json: "artifacts/reviewer/<timestamp>/report.json"
+  metrics: "artifacts/reviewer/<timestamp>/metrics.json"
+
 # Always present but only active when WAIVED
 waiver: { active: false }
 
@@ -10812,8 +11061,212 @@ optional_fields_examples:
           refs: ["services/data.service.ts"]
 ==================== END: .bmad-core/templates/qa-gate-tmpl.yaml ====================
 
+==================== START: .bmad-core/tasks/validate-plan-with-research.md ====================
+# Validate Plan with Research Task (Autonomous)
+
+## Purpose
+
+Automatically review a project artifact, conduct targeted research on its core concepts, apply updates to align the plan with modern best practices, and then report a summary of all changes made to the primary artifact and its companions. The scope and deliverables must respect the researcher's active mode (`solo`, `small-team`, or `enterprise`).
+
+## Inputs
+
+- `artifact_path`: File path to the primary project artifact to be validated (e.g., `docs/stories/1.1.setup-initial-project.md`).
+- `active_mode`: Optional override (`solo`|`small-team`|`enterprise`). Default is `solo` when omitted.
+
+## Mode Controls
+
+Before modification, note the current mode and adjust depth accordingly:
+
+- **Solo mode (default):**
+  - Prioritize high-impact, low-effort fixes and quick automation wins.
+  - Keep documentation lean: update the research log and list the top three follow-up actions.
+  - Favor free/open-source tooling; only suggest paid services with rationale and migration notes.
+- **Small-team mode:**
+  - Capture decisions that teammates need for code review, CI/CD, and ops handoffs.
+  - Produce a change summary with owners/reviewers and flag dependencies requiring alignment.
+  - Recommend FOSS-first solutions that integrate cleanly with lightweight SaaS if unavoidable.
+- **Enterprise mode:**
+  - Perform exhaustive validation covering security, compliance, reliability, and governance.
+  - Create an audit-ready dossier: include risk register entries, control mappings, and rollback plans.
+  - Document data handling, monitoring, and separation-of-duties requirements; note cost/risk trade-offs when paid tooling is involved.
+
+## Prerequisites
+
+- Load the `researcher-checklist.md` and review items relevant to the active mode.
+- Ensure the `research-validation-log.md` template is available for updating artifacts.
+
+## Process (Must be followed sequentially)
+
+### 1. Acknowledge and Load Artifact
+
+- Announce task start, active mode, and the artifact being reviewed.
+- Load the content of the file specified in `artifact_path`.
+
+### 2. Contextual Analysis of Artifact
+
+- Determine the type of artifact being reviewed (e.g., Story, Test Design, Architecture Doc).
+- Tailor emphasis based on artifact type:
+  - **Story:** Focus on implementation details, security, performance, and release readiness.
+  - **Test Design:** Emphasize testing methodologies, frameworks, resilience, and observability coverage.
+  - **Architecture/Plan:** Assess alignment with reference architectures, scalability, and compliance.
+
+### 3. Identify Key Concepts for Research
+
+- Parse the artifact to identify core technical concepts, patterns, dependencies, or strategies that require validation.
+- Bucket concepts by risk level (critical, moderate, informational) and note required source depth per mode.
+
+### 4. Generate & Execute Research
+
+- For each concept, use the `create-deep-research-prompt.md` task tailored to the active mode to formulate precise research questions.
+- Execute research and synthesize findings into concise best-practice summaries, including alternatives and common pitfalls.
+- Cross-check medium/high-risk findings with at least two credible sources; record citations with access dates.
+- Prefer open documentation, standards bodies, and widely adopted FOSS tooling when recommending solutions.
+
+### 5. Formulate Changes and Update Artifacts
+
+- Compare research findings with the plan outlined in the primary artifact.
+- Formulate a specific list of changes needed to align the plan with best practices and mode requirements.
+- Create a new working branch (for example, `chore/validate-{{artifact_id}}-{{date}}`), apply updates there, and raise a PR for review instead of committing directly to the default branch.
+- Sanitize and allowlist `artifact_path` inputs to repository-internal documents only (reject absolute paths and `..` segments).
+- **Identify any companion documents** (e.g., risk profiles, test designs with matching story ID) and propose cascading changes within the same PR.
+- For each modified artifact:
+  - Append or update the `## 🔬 Research & Validation Log` section using the `research-validation-log.md` template.
+  - Note the active mode, decision rationale, confidence level, and residual risks.
+  - Document tooling recommendations with FOSS-first alternatives.
+
+## Security & Safety Guardrails
+
+- Treat `artifact_path` as untrusted input: normalize, resolve, and validate against an allowlist such as `docs/**` and `bmad-core/**` (no absolute paths, URLs, or `..` segments).
+- Provide a dry-run mode that emits a patch/diff without writing files when the user requests it.
+- Keep edits bounded and idempotent—flag when proposed changes exceed expected size/line thresholds.
+- Record all changes in the research validation log while ensuring secrets and PII are never persisted.
+
+### 6. Generate Final Summary Report
+
+- After all files have been modified and saved, output a final, standalone summary report in the following format:
+
+---
+
+**Research & Validation Summary**
+
+- **Primary Artifact Validated:** `{{artifact_path}}`
+- **Active Mode:** `{{active_mode}}`
+- **Status:** Complete. Artifacts have been updated automatically.
+
+**Modified Files:**
+
+- `{{list_of_all_modified_files}}`
+
+**Summary of Changes:**
+
+- **Modernization:** {{mode-aware modernization summary with citations}}
+- **Security & Compliance:** {{security/compliance findings; include control mappings for enterprise mode}}
+- **Testing & Quality:** {{test coverage changes, tooling updates}}
+- **Operational Follow-ups:** {{owners, next steps, deadlines}}
+
+_For a detailed breakdown of every change, see the "Research & Validation Log" section in each modified artifact. Refer to the researcher checklist to confirm that all items for `{{active_mode}}` are satisfied._
+
+---
+
+## Completion Criteria
+
+- All relevant artifacts updated with mode-appropriate research logs and citations.
+- Summary report delivered with clear next steps and ownership.
+- Researcher checklist items for the active mode verified and noted in the log.
+==================== END: .bmad-core/tasks/validate-plan-with-research.md ====================
+
+==================== START: .bmad-core/templates/research-validation-log.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# Research & Validation Log Template
+
+Use this template when appending a `## 🔬 Research & Validation Log` section to any artifact. Duplicate the structure for each validation session.
+
+```markdown
+## 🔬 Research & Validation Log ({{date}})
+
+- **Researcher:** {{name or agent id}}
+- **Active Mode:** {{solo|small-team|enterprise}}
+- **Primary Artifact:** {{artifact path}}
+- **Summary:** {{2-3 sentence recap of key findings}}
+
+### Findings & Actions
+
+| Priority | Area      | Recommended Change | Owner / Reviewer         | Confidence       | Mode                             | Controls             | Evidence Location        | Sources                                  |
+| -------- | --------- | ------------------ | ------------------------ | ---------------- | -------------------------------- | -------------------- | ------------------------ | ---------------------------------------- |
+| High     | {{topic}} | {{action}}         | {{owner}} / {{reviewer}} | {{High/Med/Low}} | {{solo\|small-team\|enterprise}} | {{e.g., ASVS-2.1.1}} | {{path to log/artifact}} | [{{Source 1}}](URL), [{{Source 2}}](URL) |
+
+### Tooling Guidance
+
+- **FOSS-first Recommendation:** {{tool or approach}}
+- **Paid Option (if required):** {{name}} — justification & mitigation plan
+- **Automation / Scripts:** {{commands, links, or references}}
+
+### Risk & Compliance Notes
+
+- **Residual Risks:** {{list with severity}}
+- **Compliance / Control Mapping:** {{relevant standards or policies}}
+- **Monitoring / Observability:** {{logs, alerts, dashboards}}
+- **Rollback / Contingency:** {{steps}}
+
+### Follow-Up Tasks
+
+- [ ] {{task}} — Owner: {{name}}, Due: {{date}}
+- [ ] {{task}} — Owner: {{name}}, Due: {{date}}
+
+### Source Appendix
+
+1. {{Source Title}} — {{Publisher}} (Accessed {{YYYY-MM-DD}})
+2. {{Source Title}} — {{Publisher}} (Accessed {{YYYY-MM-DD}})
+```
+==================== END: .bmad-core/templates/research-validation-log.md ====================
+
+==================== START: .bmad-core/checklists/researcher-checklist.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# Researcher Checklist
+
+Use this checklist to confirm research and validation work meets the baseline hygiene requirements for the active mode. When executing tasks, reference the sections that match the current mode (`solo`, `small-team`, `enterprise`).
+
+## Global Hygiene
+
+- [ ] Document the active mode and rationale in the research log.
+- [ ] Cite all key findings with source, publisher, publish/version date, and access date.
+- [ ] Use durable links: prefer permalinks to specific versions/tags and capture an archived copy (e.g., web.archive) for each URL.
+- [ ] Record license/usage terms for tools and sources; flag incompatible or high-risk licenses and suggest compliant alternatives.
+- [ ] Cross-check medium/high-risk claims with at least two credible references.
+- [ ] Flag deprecated, end-of-life, or insecure patterns and propose modern alternatives.
+- [ ] Note residual risks, confidence levels, and required follow-up owners.
+- [ ] Prefer FOSS tooling; justify any paid solution with cost, benefit, and migration plan.
+- [ ] Store research artifacts using the `research-validation-log.md` template.
+
+## Solo Mode Focus
+
+- [ ] Highlight top three actions that unlock immediate progress for a single developer.
+- [ ] Provide automation scripts or CLI snippets where possible.
+- [ ] Ensure recommendations account for budget/time constraints typical of indie projects.
+- [ ] Include a quick rollback or mitigation approach for each high-risk change.
+
+## Small-Team Focus
+
+- [ ] Assign owners/reviewers for each major recommendation (RACI-style).
+- [ ] Map recommendations to CI/CD, code review, and documentation touchpoints.
+- [ ] Capture dependency upgrades with testing/automation status.
+- [ ] Identify collaboration or knowledge-sharing needs (demos, playbooks, docs).
+
+## Enterprise Focus
+
+- [ ] Map findings to relevant compliance or security controls (e.g., SOC2, ISO 27001, OWASP ASVS) and reference specific control IDs.
+- [ ] Provide threat model updates and monitoring/logging guidance.
+- [ ] Document data classification, retention, and access control impacts.
+- [ ] Note data residency/jurisdictional constraints and third-party/vendor risk (DPAs, sub-processors, attestations).
+- [ ] Record sign-off checkpoints, required stakeholders, and audit evidence locations.
+- [ ] Provide rollback, incident response, and change management considerations.
+==================== END: .bmad-core/checklists/researcher-checklist.md ====================
+
 ==================== START: .bmad-core/tasks/create-next-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Next Story Task
 
 ## Purpose
@@ -10930,6 +11383,7 @@ ALWAYS cite source documents: `[Source: architecture/{filename}.md#{section}]`
 
 ==================== START: .bmad-core/checklists/story-draft-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Story Draft Checklist
 
 The Scrum Master should use this checklist to validate that each story contains sufficient context for a developer agent to implement it successfully, while assuming the dev agent has reasonable capabilities to figure things out.
@@ -11087,6 +11541,7 @@ Be pragmatic - perfect documentation doesn't exist, but it must be enough to pro
 
 ==================== START: .bmad-core/tasks/generate-ai-frontend-prompt.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create AI Frontend Prompt Task
 
 ## Purpose
@@ -11656,7 +12111,7 @@ workflow:
         - Dev Agent (New Chat): Address remaining items
         - Return to QA for final approval
 
-    - repeat_development_cycle:
+    - step: repeat_development_cycle
       action: continue_for_all_stories
       notes: |
         Repeat story cycle (SM → Dev → QA) for all epic stories
@@ -11673,7 +12128,7 @@ workflow:
         - Validate epic was completed correctly
         - Document learnings and improvements
 
-    - workflow_end:
+    - step: workflow_end
       action: project_complete
       notes: |
         All stories implemented and reviewed!
@@ -11903,7 +12358,7 @@ workflow:
         - Dev Agent (New Chat): Address remaining items
         - Return to QA for final approval
 
-    - repeat_development_cycle:
+    - step: repeat_development_cycle
       action: continue_for_all_stories
       notes: |
         Repeat story cycle (SM → Dev → QA) for all epic stories
@@ -11920,7 +12375,7 @@ workflow:
         - Validate epic was completed correctly
         - Document learnings and improvements
 
-    - workflow_end:
+    - step: workflow_end
       action: project_complete
       notes: |
         All stories implemented and reviewed!
@@ -12101,7 +12556,7 @@ workflow:
         - Dev Agent (New Chat): Address remaining items
         - Return to QA for final approval
 
-    - repeat_development_cycle:
+    - step: repeat_development_cycle
       action: continue_for_all_stories
       notes: |
         Repeat story cycle (SM → Dev → QA) for all epic stories
@@ -12118,7 +12573,7 @@ workflow:
         - Validate epic was completed correctly
         - Document learnings and improvements
 
-    - workflow_end:
+    - step: workflow_end
       action: project_complete
       notes: |
         All stories implemented and reviewed!
@@ -12254,12 +12709,12 @@ workflow:
       condition: po_checklist_issues
       notes: "If PO finds issues, return to relevant agent to fix and re-export updated documents to docs/ folder."
 
-    - project_setup_guidance:
+    - step: project_setup_guidance
       action: guide_project_structure
       condition: user_has_generated_ui
       notes: "If user generated UI with v0/Lovable: For polyrepo setup, place downloaded project in separate frontend repo alongside backend repo. For monorepo, place in apps/web or packages/frontend directory. Review architecture document for specific guidance."
 
-    - development_order_guidance:
+    - step: development_order_guidance
       action: guide_development_sequence
       notes: "Based on PRD stories: If stories are frontend-heavy, start with frontend project/directory first. If backend-heavy or API-first, start with backend. For tightly coupled features, follow story sequence in monorepo setup. Reference sharded PRD epics for development order."
 
@@ -12327,7 +12782,7 @@ workflow:
         - Dev Agent (New Chat): Address remaining items
         - Return to QA for final approval
 
-    - repeat_development_cycle:
+    - step: repeat_development_cycle
       action: continue_for_all_stories
       notes: |
         Repeat story cycle (SM → Dev → QA) for all epic stories
@@ -12344,7 +12799,7 @@ workflow:
         - Validate epic was completed correctly
         - Document learnings and improvements
 
-    - workflow_end:
+    - step: workflow_end
       action: project_complete
       notes: |
         All stories implemented and reviewed!
@@ -12547,7 +13002,7 @@ workflow:
         - Dev Agent (New Chat): Address remaining items
         - Return to QA for final approval
 
-    - repeat_development_cycle:
+    - step: repeat_development_cycle
       action: continue_for_all_stories
       notes: |
         Repeat story cycle (SM → Dev → QA) for all epic stories
@@ -12564,7 +13019,7 @@ workflow:
         - Validate epic was completed correctly
         - Document learnings and improvements
 
-    - workflow_end:
+    - step: workflow_end
       action: project_complete
       notes: |
         All stories implemented and reviewed!
@@ -12707,7 +13162,7 @@ workflow:
       condition: po_checklist_issues
       notes: "If PO finds issues, return to relevant agent to fix and re-export updated documents to docs/ folder."
 
-    - project_setup_guidance:
+    - step: project_setup_guidance
       action: guide_project_structure
       condition: user_has_generated_ui
       notes: "If user generated UI with v0/Lovable: For polyrepo setup, place downloaded project in separate frontend repo. For monorepo, place in apps/web or frontend/ directory. Review architecture document for specific guidance."
@@ -12776,7 +13231,7 @@ workflow:
         - Dev Agent (New Chat): Address remaining items
         - Return to QA for final approval
 
-    - repeat_development_cycle:
+    - step: repeat_development_cycle
       action: continue_for_all_stories
       notes: |
         Repeat story cycle (SM → Dev → QA) for all epic stories
@@ -12793,7 +13248,7 @@ workflow:
         - Validate epic was completed correctly
         - Document learnings and improvements
 
-    - workflow_end:
+    - step: workflow_end
       action: project_complete
       notes: |
         All stories implemented and reviewed!
