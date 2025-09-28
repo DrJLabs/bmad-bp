@@ -1,3 +1,13 @@
+## 1.2.0 (2025-09-28)
+
+- Merge pull request #20 from DrJLabs/feat/reviewer-updates ([ed73317](https://github.com/DrJLabs/bmad-bp/commit/ed73317)), closes [#20](https://github.com/DrJLabs/bmad-bp/issues/20)
+- Update AGENTS.md ([b6e213c](https://github.com/DrJLabs/bmad-bp/commit/b6e213c))
+- Update AGENTS.md ([68edc76](https://github.com/DrJLabs/bmad-bp/commit/68edc76))
+- Update AGENTS.md ([c542445](https://github.com/DrJLabs/bmad-bp/commit/c542445))
+- fix: address reviewer feedback ([6e4494d](https://github.com/DrJLabs/bmad-bp/commit/6e4494d))
+- fix: format agents doc ([6b5061c](https://github.com/DrJLabs/bmad-bp/commit/6b5061c))
+- feat: refresh reviewer assets ([288d506](https://github.com/DrJLabs/bmad-bp/commit/288d506))
+
 ## <small>1.1.2 (2025-09-28)</small>
 
 - Merge pull request #19 from DrJLabs/chore/fix-manual-release-prettier ([0a384e3](https://github.com/DrJLabs/bmad-bp/commit/0a384e3)), closes [#19](https://github.com/DrJLabs/bmad-bp/issues/19)
