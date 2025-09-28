@@ -243,7 +243,7 @@ commands:
 
 Source: .bmad-core/agents/researcher.md
 
-- When to use: 'Deploy before development to validate stories, test plans, or epics against current best practices.'
+- When to use: Deploy before development to validate stories, test plans, or epics against current best practices.
 - How to activate: Mention "As researcher, ..." or "Use 'Research & Validation Specialist' to ..."
 
 ```yaml
