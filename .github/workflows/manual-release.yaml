@@ -129,7 +129,7 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Format release notes
-        run: prettier --write release_notes.md
+        run: npx prettier --write release_notes.md
 
       - name: Create and push tag
         run: |
