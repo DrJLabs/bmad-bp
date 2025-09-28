@@ -24,7 +24,7 @@ reviewer:
   skipTrivialDiff: true
   perStoryOverrideKey: story.review.override_skip
   telemetryTracker: docs/bmad/issues/reviewer-rollout.md
-  metricsFile: artifacts/reviewer/metrics.json
+  metricsFile: artifacts/reviewer/<timestamp>/metrics.json
 devDebugLog: .ai/debug-log.md
 devStoryLocation: docs/stories
 slashPrefix: BMad

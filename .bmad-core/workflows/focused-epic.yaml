@@ -64,8 +64,22 @@ sequence:
       Execute the reviewer pipeline immediately after development unless `BMAD_REVIEWER_SKIP` is true.
       Steps:
         1. `bash tools/reviewer/preflight.sh`
-        2. `bmad reviewer run --mode ${{ inputs.reviewer_strict && 'strict' || 'default' }} --model ${{ inputs.reviewer_model }}`
-        3. `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer`
+        2. Determine reviewer mode/model overrides, then run:
+
+           ```bash
+           MODE="default"
+           if [ "${BMAD_REVIEWER_STRICT:-}" = "true" ] || [ "${BMAD_REVIEWER_STRICT:-}" = "1" ]; then
+             MODE="strict"
+           fi
+
+           bmad reviewer run --mode "$MODE" ${BMAD_REVIEWER_MODEL:+--model "$BMAD_REVIEWER_MODEL"}
+           ```
+        3. Capture the reviewer artifact directory created above and sync telemetry with the concrete metrics file:
+
+           ```bash
+           REVIEWER_ARTIFACT_DIR="$(ls -td artifacts/reviewer/*/ | head -n1)"
+           npm run reviewer:telemetry-sync -- --metrics "${REVIEWER_ARTIFACT_DIR%/}/metrics.json" --mode "$MODE"
+           ```
       Workflow inputs:
         - `BMAD_REVIEWER_SKIP` (default false) → bypass reviewer stage for doc-only/trivial diffs
         - `BMAD_REVIEWER_STRICT` (default false) → enforce strict-mode gating when ready
