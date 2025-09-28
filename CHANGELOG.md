@@ -1,3 +1,17 @@
+## <small>1.1.1 (2025-09-28)</small>
+
+- fix reviewer stage guidance and template paths ([63aa10a](https://github.com/DrJLabs/bmad-bp/commit/63aa10a))
+- Merge pull request #16 from DrJLabs/feat/release-evidence-closure ([239b3d5](https://github.com/DrJLabs/bmad-bp/commit/239b3d5)), closes [#16](https://github.com/DrJLabs/bmad-bp/issues/16)
+- Merge pull request #17 from DrJLabs/chore/close-epic-release-governance ([1ee4e06](https://github.com/DrJLabs/bmad-bp/commit/1ee4e06)), closes [#17](https://github.com/DrJLabs/bmad-bp/issues/17)
+- Merge pull request #18 from DrJLabs/chore/close-epic-release-governance ([0ab4357](https://github.com/DrJLabs/bmad-bp/commit/0ab4357)), closes [#18](https://github.com/DrJLabs/bmad-bp/issues/18)
+- chore: align release packaging with drjlabs assets ([2107db2](https://github.com/DrJLabs/bmad-bp/commit/2107db2))
+- chore: close release evidence story 1.4 ([2f3725a](https://github.com/DrJLabs/bmad-bp/commit/2f3725a))
+- chore: close release governance epic follow-ups ([7f5b89c](https://github.com/DrJLabs/bmad-bp/commit/7f5b89c))
+- chore: fix core config references and packaging commands ([d72186d](https://github.com/DrJLabs/bmad-bp/commit/d72186d))
+- chore: record reviewer telemetry 18028311791 ([0f5cbc3](https://github.com/DrJLabs/bmad-bp/commit/0f5cbc3))
+- chore: record reviewer telemetry 18030114834 ([1b53097](https://github.com/DrJLabs/bmad-bp/commit/1b53097))
+- fix: correct workflow file extensions ([4647fd5](https://github.com/DrJLabs/bmad-bp/commit/4647fd5))
+
 ## 1.1.0 (2025-09-26)
 
 - 📝 Add docstrings to `feat/release-evidence-closure` ([51fca69](https://github.com/DrJLabs/bmad-bp/commit/51fca69))
