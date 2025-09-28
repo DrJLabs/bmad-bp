@@ -27,8 +27,18 @@ This is a simple step-by-step guide to help you efficiently manage your developm
 
 - **Command chain:**
   1. `bash tools/reviewer/preflight.sh`
-  2. `bmad reviewer run --mode ${{ inputs.reviewer_strict && 'strict' || 'default' }} --model ${{ inputs.reviewer_model }}`
-  3. `npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --mode ${{ inputs.reviewer_strict && 'strict' || 'default' }}`
+  2. Determine reviewer mode/model overrides, then run:
+
+     ```bash
+     MODE="default"
+     if [ "${BMAD_REVIEWER_STRICT:-}" = "true" ] || [ "${BMAD_REVIEWER_STRICT:-}" = "1" ]; then
+       MODE="strict"
+     fi
+
+     bmad reviewer run --mode "$MODE" ${BMAD_REVIEWER_MODEL:+--model "$BMAD_REVIEWER_MODEL"}
+     npm run reviewer:telemetry-sync -- --metrics artifacts/reviewer --mode "$MODE"
+     ```
+
 - **Skip conditions:** set `BMAD_REVIEWER_SKIP=1` (or `story.review.override_skip: true`) for doc-only/trivial (<5 LOC) diffs.
 - **Strict mode:** enable via `BMAD_REVIEWER_STRICT=1` or config toggle once the rollout checklist thresholds are green.
 - **Artifacts:** reviewer outputs live under `artifacts/reviewer/<timestamp>/` — attach `report.md`, `report.sarif`, `report.json`, and `metrics.json` to QA deliverables.

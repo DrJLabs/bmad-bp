@@ -1,7 +1,7 @@
 const path = require('node:path');
 const fs = require('fs-extra');
 
-const projectRoot = path.resolve(__dirname, '..', '..');
+const projectRoot = path.resolve(__dirname, '..', '..', '..');
 const packageRoot = path.resolve(__dirname, '..');
 const resources = ['bmad-core', 'common', 'docs', 'expansion-packs'];
 
