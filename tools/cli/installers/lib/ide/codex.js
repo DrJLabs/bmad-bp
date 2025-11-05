@@ -217,9 +217,13 @@ class CodexSetup extends BaseIdeSetup {
     }
   }
 
-  async readAndProcessWithProject(filePath, metadata, projectDir) {
+  async readAndProcessWithProject(filePath, metadata, _projectDir) {
     const content = await fs.readFile(filePath, 'utf8');
-    return super.processContent(content, metadata, projectDir);
+
+    // Codex prompts are installed globally. Keep {project-root} placeholders so
+    // each Codex workspace can resolve them to its own project directory
+    // rather than the most recently installed one.
+    return super.processContent(content, metadata, null);
   }
 
   /**
